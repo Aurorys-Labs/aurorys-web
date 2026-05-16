@@ -1,62 +1,43 @@
-# Aurorys Labs Website
+# Astro Starter Kit: Minimal
 
-> Public marketing website for Aurorys Labs — premium boutique cybersecurity consulting.
-> Built with Astro 5.x, React 19, Tailwind CSS 4, and shadcn/ui.
-
----
-
-## 🚀 Tech Stack
-
-- **Framework**: Astro 5.x (static-first, content & SEO optimized)
-- **Interactivity**: React 19 Islands (glass cards, canvas effects, forms)
-- **Styling**: Tailwind CSS 4
-- **Animations**: Framer Motion (pointer tracking, scroll reveals, SVG paths)
-- **Package Manager**: Bun
-- **Design System**: shadcn/ui + custom liquid glass primitives
-
-## 📁 Project Structure
-
+```sh
+bun create astro@latest -- --template minimal
 ```
-.
-├── public/              # Static assets (images, videos, fonts)
+
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
 ├── src/
-│   ├── components/      # React/Astro UI components
-│   ├── layouts/         # BaseLayout, page shells
-│   ├── pages/           # Astro file-based routing
-│   ├── styles/          # Global CSS, Tailwind tokens
-│   └── content/         # Astro Content Collections (blog, etc.)
-├── .github/             # GitHub Actions CI/CD
-├── docker/              # Docker configuration
-└── README.md
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-## 🔒 Security First
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-This repository follows a DevSecOps pipeline:
-- Pre-commit hooks (gitleaks, detect-private-key, biome-check)
-- GitHub Actions: lint → type-check → build → Semgrep → Trivy → audit
-- Self-hosted runner on Coolify VPS for sovereign CI/CD
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## 🏗️ Development
+Any static assets, like images, can be placed in the `public/` directory.
 
-```bash
-# Install dependencies
-bun install
+## 🧞 Commands
 
-# Start dev server
-bun run dev
+All commands are run from the root of the project, from a terminal:
 
-# Build for production
-bun run build
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
 
-# Preview production build
-bun run preview
-```
+## 👀 Want to learn more?
 
-## 📄 License
-
-© 2026 Aurorys Labs. All rights reserved.
-
----
-
-Built with precision. Secured by design.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

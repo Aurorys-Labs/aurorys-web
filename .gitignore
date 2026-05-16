@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+.astro/
+
+# Environment (CRITICAL - never commit)
+.env
+.env.*
+*.local
+
+# Secrets patterns
+*.pem
+*.key
+credentials.*
+*secret*
+*.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Playwright / testing
+screenshots/
+test-results/
+
+# Astro / build artifacts
+.astro/

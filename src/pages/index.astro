@@ -1,99 +1,33 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { RainbowButtonDemo } from "../components/RainbowButtonDemo";
+import { HeroSlideshow } from "../components/react/HeroSlideshow";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { Navbar } from "../components/react/Navbar";
 ---
 
-<html lang="en" class="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Aurorys Labs — Dependency Verification</title>
-    <style>
-      body { margin: 0; padding: 0; overflow-x: hidden; }
-    </style>
-  </head>
-  <body class="bg-background text-foreground font-sans min-h-[100dvh] antialiased">
-    <div class="fixed inset-0 -z-20" style="background-image: url('/images/astrophotography/astro-image1.webp'); background-size: cover; background-position: center;"></div>
-    <div class="fixed inset-0 -z-10 bg-background/60"></div>
+<BaseLayout title="Aurorys Labs | Premium Cybersecurity Consulting">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image10.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
 
-    <main class="relative z-10 max-w-3xl mx-auto px-6 py-16" style="display: flex; flex-direction: column; gap: 3rem;">
-      <h1 class="text-5xl font-bold gradient-text" style="background: linear-gradient(135deg, #00e8a0, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-        Dependency Verification
-      </h1>
+  <AuroraOverlay client:load />
 
-      <div class="glass-card">
-        <h2 class="text-xl font-semibold mb-3">Glass Card via Tailwind</h2>
-        <p class="text-muted-foreground text-sm mb-4" style="max-width: 40rem;">
-          This card uses Tailwind utility classes: backdrop-blur, border-white/10, bg-white/3.
-          If you see blurred glass over the astrophotograph, Tailwind works.
-        </p>
-        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-          <Button client:load variant="default">shadcn Button</Button>
-          <Button client:load variant="outline">Outline</Button>
-          <Badge client:load variant="secondary">shadcn Badge</Badge>
-        </div>
-      </div>
+  <div class="absolute top-0 left-0 right-0 z-30 flex justify-center pt-20 md:pt-24">
+    <a href="/contact" class="backdrop-blur-md bg-[rgba(13,17,23,0.4)] border border-white/[0.06] rounded-full px-4 py-1.5 inline-flex items-center gap-2 text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-stellar)] transition-colors">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--aurora-green-solid)] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--aurora-green-solid)]"></span>
+      </span>
+      Accepting Founding Clients — 15-20% off
+    </a>
+  </div>
 
-      <div class="glass-card">
-        <h2 class="text-xl font-semibold mb-3">Rainbow Button — ported from old-nextjs</h2>
-        <p class="text-muted-foreground text-sm mb-4" style="max-width: 40rem;">
-          Uses Radix Slot, CVA, and animate-rainbow keyframe. Should show animated gradient border.
-        </p>
-        <RainbowButtonDemo client:load />
-      </div>
+  <Navbar client:load />
 
-      <div class="glass-card">
-        <h2 class="text-xl font-semibold mb-3">Font Verification</h2>
-        <p class="font-sans text-lg mb-2">Geist Sans (variable): The quick brown fox jumps over the lazy dog.</p>
-        <p class="font-mono text-lg mb-2">Geist Mono (variable): const verify = () => true;</p>
-        <p class="text-lg" style="font-family: 'Instrument Serif', serif; font-style: italic;">
-          Instrument Serif Italic: Security by Design. Premium boutique consulting.
-        </p>
-      </div>
-
-      <div class="glass-card">
-        <h2 class="text-xl font-semibold mb-3">Stack Status</h2>
-        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-          <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <span>Astro 5.x + React 19</span>
-            <Badge client:load variant="secondary">Island Active</Badge>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <span>Tailwind CSS 4</span>
-            <Badge client:load variant="secondary">Glass Card Renders</Badge>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <span>shadcn/ui</span>
-            <Badge client:load variant="secondary">Button + Badge OK</Badge>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <span>Rainbow Button (port)</span>
-            <Badge client:load variant="secondary">Animated</Badge>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
-            <span>Custom Fonts</span>
-            <Badge client:load variant="secondary">Geist + Serif</Badge>
-          </div>
-          <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
-            <span>Astrophotograph Background</span>
-            <Badge client:load variant="secondary">WebP Loaded</Badge>
-          </div>
-        </div>
-      </div>
-    </main>
-  </body>
-</html>
-
-<style>
-  .glass-card {
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 1.5px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem;
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
-    backdrop-filter: blur(24px) saturate(150%);
-    background: rgba(255, 255, 255, 0.03);
-  }
-</style>
+  <HeroSlideshow client:load />
+</BaseLayout>

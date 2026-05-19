@@ -1,0 +1,70 @@
+:root {
+  /* Night Sky Foundation */
+  --bg-primary: #080c10;
+  --bg-secondary: #0d1117;
+  --bg-tertiary: #131920;
+  --surface-1: #111820;
+  --surface-2: #171f28;
+  --surface-3: #1e2838;
+
+  /* Aurora Accents — All Gradients */
+  --aurora-green: linear-gradient(135deg, #00b87d, #00e8a0);
+  --aurora-green-dim: linear-gradient(135deg, #009966, #00b87d);
+  --aurora-green-solid: #00e8a0;
+
+  --aurora-blue: linear-gradient(135deg, #2563eb, #3b82f6);
+  --aurora-blue-dim: linear-gradient(135deg, #1d4ed8, #2563eb);
+  --aurora-blue-solid: #3b82f6;
+
+  --aurora-cyan: linear-gradient(135deg, #06b6d4, #22d3ee);
+  --aurora-cyan-dim: linear-gradient(135deg, #0891b2, #06b6d4);
+  --aurora-cyan-solid: #22d3ee;
+
+  --aurora-violet: linear-gradient(135deg, #7c3aed, #a78bfa);
+  --aurora-violet-dim: linear-gradient(135deg, #6d28d9, #7c3aed);
+  --aurora-violet-solid: #a78bfa;
+
+  --aurora-rose: linear-gradient(135deg, #e879a8, #f472b6);
+  --aurora-rose-solid: #f472b6;
+
+  --aurora-purple: linear-gradient(135deg, #9333ea, #c084fc);
+  --aurora-purple-solid: #c084fc;
+
+  --aurora-pink: linear-gradient(135deg, #ec4899, #f472b6);
+  --aurora-pink-solid: #f472b6;
+
+  /* Combined Aurora Gradients */
+  --aurora-spectrum: linear-gradient(135deg, #00e8a0, #3b82f6, #a78bfa, #f472b6);
+  --aurora-twilight: linear-gradient(135deg, #2563eb, #7c3aed, #e879a8);
+  --aurora-dawn: linear-gradient(135deg, #06b6d4, #00e8a0, #c9a84c);
+
+  /* Aurum Gold — Strategic Prestige */
+  --aurum-gold: linear-gradient(135deg, #A0782A, #C9A84C 40%, #E8C97A 60%, #C9A84C);
+  --aurum-gold-subtle: linear-gradient(135deg, #A0782A, #C9A84C);
+  --aurum-gold-light: linear-gradient(135deg, #C9A84C, #E8C97A);
+  --aurum-gold-solid: #C9A84C;
+
+  /* Text Hierarchy */
+  --text-stellar: #E8EDF2;
+  --text-muted: #8B95A1;
+  --text-faint: #4B5563;
+  --text-inverse: #080c10;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.15);
+
+  /* Rainbow Button Colors (legacy names + new names) */
+  --color-1: #00e8a0;
+  --color-2: #a78bfa;
+  --color-3: #f472b6;
+  --color-4: #c9a84c;
+  --color-5: #00b87d;
+
+  --color-rainbow-1: var(--color-1);
+  --color-rainbow-2: var(--color-2);
+  --color-rainbow-3: var(--color-3);
+  --color-rainbow-4: var(--color-4);
+  --color-rainbow-5: var(--color-5);
+}

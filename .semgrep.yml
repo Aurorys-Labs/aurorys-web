@@ -1,0 +1,16 @@
+# Semgrep Configuration
+# Rules: security-audit, owasp-top-ten
+# Run: semgrep --config=auto --config=p/security-audit --config=p/owasp-top-ten .
+
+rules:
+  - id: no-hardcoded-secrets
+    pattern-regex: (?i)(password|secret|key|token)\s*[:=]\s*["'][^"']{8,}["']
+    languages: [js, ts, jsx, tsx, json, yaml]
+    message: "Potential hardcoded secret detected"
+    severity: ERROR
+
+  - id: no-eval
+    pattern: eval(...)
+    languages: [js, ts]
+    message: "Avoid using eval() - security risk"
+    severity: WARNING

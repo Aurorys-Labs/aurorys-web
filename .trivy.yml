@@ -1,0 +1,16 @@
+# Trivy Configuration
+# Run: trivy fs .
+
+scan:
+  scanners:
+    - vuln
+    - misconfig
+    - secret
+
+severity:
+  - HIGH
+  - CRITICAL
+
+exit-code: 1
+
+ignorefile: .trivyignore

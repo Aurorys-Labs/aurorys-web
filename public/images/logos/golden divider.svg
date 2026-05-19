@@ -1,0 +1,15 @@
+<svg width="1000" height="40" viewBox="0 0 1000 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gold gradient that fades out on both sides -->
+    <linearGradient id="goldFade" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#E6C47A" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#CFAE6A" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#F2D28F" stop-opacity="1"/>
+      <stop offset="80%" stop-color="#CFAE6A" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#E6C47A" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main divider line -->
+  <rect x="100" y="19" width="800" height="2" fill="url(#goldFade)" rx="1"/>
+</svg>

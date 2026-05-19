@@ -1,29 +1,24 @@
-# Build stage
-FROM oven/bun:1 AS builder
+# Development stage
+FROM oven/bun:1 AS dev
 
 WORKDIR /app
-
-# Copy package files
 COPY package.json bun.lock ./
-
-# Install dependencies
 RUN bun install --frozen-lockfile
-
-# Copy source code
 COPY . .
+EXPOSE 4321
+CMD ["bun", "run", "dev", "--host", "0.0.0.0"]
 
-# Build the Astro site
+# Production build stage
+FROM oven/bun:1 AS builder
+WORKDIR /app
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
+COPY . .
 RUN bun run build
 
-# Production stage
-FROM nginx:alpine AS production
-
-# Copy built assets from builder
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy nginx config
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Production serve stage
+FROM oven/bun:1 AS production
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+EXPOSE 4321
+CMD ["bun", "run", "preview", "--host", "0.0.0.0"]

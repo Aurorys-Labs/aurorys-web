@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RainbowButton } from "@/components/ui/rainbow-button";
-import { Badge } from "@/components/ui/badge";
+import { InteractiveGlowButton } from "@/components/ui/interactive-glow-button";
 import heroData from "@/lib/data/hero.json";
 
 interface Slide {
@@ -15,41 +15,21 @@ interface Slide {
   ctaSecondary?: { label: string; href: string };
 }
 
-const SLIDES: Slide[] = heroData.hero.slides as Slide[];
+const ALL_SLIDES: Slide[] = heroData.hero.slides as Slide[];
+const SLIDES = ALL_SLIDES.slice(0, 3);
 
-const tagStyles: Record<string, string> = {
-  Architecture: "border-[var(--aurora-green-solid)]/30 text-[var(--aurora-green-solid)] bg-[var(--aurora-green-solid)]/5",
-  Blueprints: "border-[var(--aurora-green-solid)]/30 text-[var(--aurora-green-solid)] bg-[var(--aurora-green-solid)]/5",
-  "Ship Secure": "border-[var(--aurora-green-solid)]/30 text-[var(--aurora-green-solid)] bg-[var(--aurora-green-solid)]/5",
-  Assessment: "border-[var(--aurora-blue-solid)]/30 text-[var(--aurora-blue-solid)] bg-[var(--aurora-blue-solid)]/5",
-  "Risk Priority": "border-[var(--aurora-rose-solid)]/30 text-[var(--aurora-rose-solid)] bg-[var(--aurora-rose-solid)]/5",
-  "Clear Roadmap": "border-[var(--aurora-cyan-solid)]/30 text-[var(--aurora-cyan-solid)] bg-[var(--aurora-cyan-solid)]/5",
-  Sovereignty: "border-[var(--aurora-violet-solid)]/30 text-[var(--aurora-violet-solid)] bg-[var(--aurora-violet-solid)]/5",
-  "Self-Hosted": "border-[var(--aurora-cyan-solid)]/30 text-[var(--aurora-cyan-solid)] bg-[var(--aurora-cyan-solid)]/5",
-  Independence: "border-[var(--aurum-gold-solid)]/30 text-[var(--aurum-gold-solid)] bg-[var(--aurum-gold-solid)]/5",
-};
+import { domainPill } from "@/lib/domain-colors";
 
 const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 80 : -80,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction > 0 ? -80 : 80,
-    opacity: 0,
-  }),
+  enter: (direction: number) => ({ x: direction > 0 ? 80 : -80, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (direction: number) => ({ x: direction > 0 ? -80 : 80, opacity: 0 }),
 };
 
 const staggerItem = {
   hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
   visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
+    opacity: 1, y: 0, filter: "blur(0px)",
     transition: { delay: i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   }),
 };
@@ -94,10 +74,7 @@ export function HeroSlideshow() {
             className="flex flex-col items-center"
           >
             <motion.h1
-              custom={0}
-              variants={staggerItem}
-              initial="hidden"
-              animate="visible"
+              custom={0} variants={staggerItem} initial="hidden" animate="visible"
               className="font-sans font-bold text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight tracking-tight max-w-5xl text-gradient-aurora"
               style={{ backgroundSize: "200% auto" }}
             >
@@ -105,49 +82,32 @@ export function HeroSlideshow() {
             </motion.h1>
 
             <motion.p
-              custom={1}
-              variants={staggerItem}
-              initial="hidden"
-              animate="visible"
+              custom={1} variants={staggerItem} initial="hidden" animate="visible"
               className="text-lg md:text-xl text-white/70 max-w-2xl mb-6 leading-relaxed"
             >
               {slide.subtitle}
             </motion.p>
 
             <motion.div
-              custom={2}
-              variants={staggerItem}
-              initial="hidden"
-              animate="visible"
+              custom={2} variants={staggerItem} initial="hidden" animate="visible"
               className="flex flex-wrap justify-center gap-2 mb-10"
             >
               {slide.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={`text-xs px-3 py-1 rounded-full border font-medium ${tagStyles[tag] || "border-white/20 text-white/60 bg-white/[0.03]"}`}
-                >
-                  {tag}
-                </span>
+                <span key={tag} className={domainPill(tag)}>{tag}</span>
               ))}
             </motion.div>
 
             <motion.div
-              custom={3}
-              variants={staggerItem}
-              initial="hidden"
-              animate="visible"
+              custom={3} variants={staggerItem} initial="hidden" animate="visible"
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <RainbowButton variant="glass" size="lg" className="rounded-xl" asChild>
                 <a href={slide.ctaPrimary.href}>{slide.ctaPrimary.label}</a>
               </RainbowButton>
               {slide.ctaSecondary && (
-                <a
-                  href={slide.ctaSecondary.href}
-                  className="inline-flex items-center justify-center h-11 px-8 rounded-full border border-white/20 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/30 transition-all duration-200 text-sm font-medium"
-                >
+                <InteractiveGlowButton href={slide.ctaSecondary.href}>
                   {slide.ctaSecondary.label}
-                </a>
+                </InteractiveGlowButton>
               )}
             </motion.div>
           </motion.div>

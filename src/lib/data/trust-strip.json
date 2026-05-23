@@ -1,0 +1,7 @@
+{
+  "frameworks": ["OWASP", "NIST CSF", "MITRE ATT&CK", "CIS Benchmarks", "GDPR", "DPDP", "HIPAA", "ISO 27001", "LLM OWASP Top 10", "PCI-DSS"],
+  "tools": ["Docker", "Terraform", "Ansible", "Trivy", "Grafana", "OpenTelemetry", "Prometheus", "Cloudflare", "Tailscale", "Authentik", "Jenkins", "Woodpecker", "Snyk", "Gitleaks", "Wazuh"],
+  "frameworksLabel": "Frameworks we follow",
+  "toolsLabel": "Tools we speak",
+  "methodologyText": "Our methodology: 19,000+ word documented security playbook. No security heroism — just thorough, repeatable processes vetted by industry standards."
+}

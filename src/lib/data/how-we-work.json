@@ -1,0 +1,15 @@
+{
+  "sectionTitle": "How We Work",
+  "sectionSubtitle": "Our method — from first conversation to lasting capability.",
+  "steps": [
+    { "icon": "Search", "title": "Discover", "body": "We understand your environment — infrastructure, team, risks, goals. No two companies are the same, and neither are our recommendations." },
+    { "icon": "PenTool", "title": "Design", "body": "We create a detailed blueprint tailored to your needs — architecture, templates, implementation guides, and review checkpoints. Everything is documented. Everything is yours." },
+    { "icon": "Compass", "title": "Guide", "body": "Your team implements with our oversight. Blueprint-only: defined checkpoints. Build Partnership: weekly syncs, async access, pair sessions, milestone reviews, and training woven into delivery." },
+    { "icon": "GraduationCap", "title": "Transfer", "body": "We train your team to maintain and extend what we've built together. By the end, you don't need us — but you'll want us for the next challenge." },
+    { "icon": "Radio", "title": "Advise", "body": "For ongoing support, our Beacon advisory program provides monthly reviews, strategic guidance, and incident availability. Always available. Never required." }
+  ],
+  "sharedResponsibility": {
+    "title": "Shared Responsibility Model",
+    "body": "We're accountable for the quality of our guidance, blueprints, and specifications. You're accountable for implementing them. We flag when implementation diverges from our recommendations. You own the outcome — because that's the only way it stays strong after we leave."
+  }
+}

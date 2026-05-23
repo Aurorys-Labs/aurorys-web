@@ -1,0 +1,28 @@
+{
+  "sectionTitle": "Two Ways to Engage. One Clear Difference.",
+  "sectionSubtitle": "Every engagement starts with a Blueprint — the architecture, templates, and implementation guide your team needs. What happens next is up to you.",
+  "blueprint": {
+    "name": "Blueprint",
+    "description": "Architecture, templates, and implementation guide. Your team builds it."
+  },
+  "buildPartnership": {
+    "name": "Build Partnership",
+    "description": "Everything in Blueprint, plus weekly syncs, async access, training, and post-implementation validation."
+  },
+  "rows": [
+    { "feature": "Architecture & design", "blueprint": true, "build": true },
+    { "feature": "IaC starter templates", "blueprint": true, "build": true },
+    { "feature": "Implementation guide", "blueprint": true, "build": true },
+    { "feature": "Review checkpoints", "blueprintText": "1-2 defined checkpoints", "buildText": "Weekly reviews + milestone validation" },
+    { "feature": "Async access", "blueprint": false, "buildText": "Slack/email for questions" },
+    { "feature": "Weekly sync calls", "blueprint": false, "build": true },
+    { "feature": "Team training sessions", "blueprintText": "1 knowledge transfer session", "buildText": "Ongoing training woven into delivery" },
+    { "feature": "Implementation validation", "blueprintText": "Review at defined checkpoints", "buildText": "Validate every critical implementation" },
+    { "feature": "Decision log", "blueprint": false, "buildText": "Running document of decisions + rationale" },
+    { "feature": "Pair sessions", "blueprint": false, "buildText": "2-3 guided implementation sessions" },
+    { "feature": "Post-implementation review", "blueprint": false, "build": true },
+    { "feature": "Best for", "blueprintText": "Teams with engineering capacity who need the plan", "buildText": "Teams who want senior guidance during implementation" }
+  ],
+  "sovereigntyNote": "For sovereignty engagements specifically, Build Partnership adds: real-time guidance through migration execution, validation at each migration phase, hands-on troubleshooting during critical migration windows, post-migration hardening review and security validation, and training on the new infrastructure for your operations team.",
+  "cta": { "label": "See How We Work", "href": "/how-we-work" }
+}

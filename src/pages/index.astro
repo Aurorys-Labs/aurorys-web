@@ -4,9 +4,20 @@ import "../styles/global.css";
 import { HeroSlideshow } from "../components/react/HeroSlideshow";
 import { AuroraOverlay } from "../components/react/AuroraOverlay";
 import { Navbar } from "../components/react/Navbar";
+import { MobileNav } from "../components/react/MobileNav";
+import { TrustStrip } from "../components/react/TrustStrip";
+import { SolutionsBento, SolutionsBentoSkeleton } from "../components/react/SolutionsBento";
+import { PricingPath } from "../components/react/PricingPath";
+import { AurorysWay } from "../components/react/AurorysWay";
+import { HowWeWork } from "../components/react/HowWeWork";
+import { BlueprintVsBuild } from "../components/react/BlueprintVsBuild";
+import { Roots } from "../components/react/Roots";
+import { PreFooterCTA } from "../components/react/PreFooterCTA";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
 ---
 
-<BaseLayout title="Aurorys Labs | Premium Cybersecurity Consulting">
+<BaseLayout title="Aurorys Labs | Cybersecurity Consulting and Solutions for Growing teams">
   <div class="fixed inset-0 -z-20">
     <div
       class="w-full h-full"
@@ -28,6 +39,29 @@ import { Navbar } from "../components/react/Navbar";
   </div>
 
   <Navbar client:load />
+  <MobileNav client:load />
 
   <HeroSlideshow client:load />
+
+  <TrustStrip client:load />
+
+  <SolutionsBento client:load>
+    <SolutionsBentoSkeleton slot="fallback" />
+  </SolutionsBento>
+
+  <PricingPath client:load />
+
+  <AurorysWay client:load />
+
+  <HowWeWork client:load />
+
+  <BlueprintVsBuild client:load />
+
+  <Roots client:load />
+
+  <PreFooterCTA client:load />
+
+  <ContactSection />
+
+  <Footer />
 </BaseLayout>

@@ -1,0 +1,60 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Aurorys Labs | Cybersecurity Consulting",
+	description = "Premium boutique cybersecurity consulting. We design secure, resilient, and sovereign digital infrastructure.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#050505" />
+    <link rel="icon" type="image/svg+xml" href="/images/logos/normal updated colors.svg" />
+    <title>{title}</title>
+
+    <style is:global>
+      @font-face {
+        font-family: "Geist";
+        src: url("/fonts/Geist[wght].woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Geist";
+        src: url("/fonts/Geist-Italic[wght].woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Geist Mono";
+        src: url("/fonts/GeistMono[wght].woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Instrument Serif";
+        src: url("/fonts/InstrumentSerif-Italic.ttf") format("truetype");
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+    </style>
+  </head>
+  <body class="bg-bg-primary text-text-primary antialiased min-h-[100dvh]">
+    <slot />
+  </body>
+</html>

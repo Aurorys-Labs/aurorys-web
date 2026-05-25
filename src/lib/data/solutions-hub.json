@@ -1,0 +1,699 @@
+{
+	"sectionTitle": "Our Solutions",
+	"sectionSubtitle": "Capabilities across security architecture, DevSecOps, compliance, and infrastructure sovereignty. Every engagement delivers blueprints your team can build — not just recommendations they'll forget.",
+	"problemPills": [
+		{
+			"id": "all",
+			"label": "Browse All Solutions",
+			"targets": [
+				"first-light",
+				"foundation",
+				"pulse",
+				"clearance",
+				"escape-velocity",
+				"beacon",
+				"program-foundation",
+				"sprint",
+				"build-partnership",
+				"observability",
+				"surge",
+				"full-constellation",
+				"custom"
+			]
+		},
+		{
+			"id": "audit",
+			"label": "Pass an Audit",
+			"targets": ["clearance", "program-foundation", "full-constellation"]
+		},
+		{
+			"id": "sovereign",
+			"label": "Deploy Sovereign Infrastructure",
+			"targets": ["foundation", "escape-velocity", "surge"]
+		},
+		{
+			"id": "fractional",
+			"label": "Get Fractional Leadership",
+			"targets": ["beacon", "custom", "full-constellation"]
+		},
+		{
+			"id": "assessment",
+			"label": "Get an Assessment",
+			"targets": ["first-light", "sprint"]
+		},
+		{
+			"id": "specific",
+			"label": "Fix One Specific Thing",
+			"targets": ["sprint", "custom"]
+		}
+	],
+	"cards": [
+		{
+			"id": "first-light",
+			"icon": "Sparkles",
+			"title": "First Light",
+			"subtitle": "Understand where you stand and what to fix first.",
+			"price": "Starting from $10K · 3-4 weeks",
+			"domains": ["Assessment", "Risk", "Compliance"],
+			"whenYouNeedThis": "You don't know what you don't know. Your security is whatever your team has had time for — which isn't much. Start here.",
+			"body": "A comprehensive review of your architecture, infrastructure, and compliance posture — delivering a prioritized roadmap that tells you exactly what to address, in what order, and why.",
+			"deliverables": [
+				"Architecture and infrastructure review",
+				"Vulnerability assessment and triage",
+				"Risk prioritization by business impact",
+				"Compliance posture evaluation",
+				"Security roadmap and remediation guidance"
+			],
+			"whatThisIsNot": "A penetration test. If our assessment reveals that a pen test would be valuable, we'll tell you — and recommend firms who specialize in that.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Architecture review from specialty firm",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					},
+					{
+						"item": "Vulnerability scan & triage report",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{
+						"item": "Compliance posture mapping",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					},
+					{ "item": "Engineering execution roadmap", "vendor": "-", "us": "✓" }
+				],
+				"vendorTotal": "$15K - $40K",
+				"ourPrice": "$10K",
+				"note": "Individual vendors operate in silos. We compile everything into one engineering roadmap."
+			},
+			"ctaTrackText": "Unsure about your security posture?",
+			"ctaMappingText": "Reveal your posture and prioritize remediation.",
+			"cta": {
+				"label": "Reveal Your Posture",
+				"href": "/compliance"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "foundation",
+			"icon": "Compass",
+			"title": "Foundation",
+			"subtitle": "Build security into your foundation from the start.",
+			"price": "Starting from $20K · 5-7 weeks",
+			"domains": ["Architecture", "Hardening"],
+			"whenYouNeedThis": "You're building something new — a product, a platform, a company. Security decisions made now compound. Get them right.",
+			"body": "A complete security architecture designed for your specific stack, team, and risk profile. Includes threat modeling, architecture design, IaC starter templates, implementation guide, and a review cycle to validate your team's work.",
+			"deliverables": [
+				"Threat model and risk assessment",
+				"Security architecture design",
+				"IaC starter templates (Terraform/Pulumi)",
+				"Implementation guide",
+				"Review cycle and validation",
+				"Knowledge transfer session"
+			],
+			"whatThisIsNot": "A penetration test. A compliance audit. A vendor pitch disguised as consulting. Architecture only. For architecture + DevSecOps pipeline, see Pulse.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Threat modeling & risk assessment",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					},
+					{
+						"item": "Security architecture blueprint",
+						"vendor": "$10K - $30K",
+						"us": "Included"
+					},
+					{
+						"item": "Production-ready IaC starter templates",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Dedicated review cycle & validation",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					}
+				],
+				"vendorTotal": "$20K - $60K",
+				"ourPrice": "$20K",
+				"note": "We don't just hand off recommendations — we deliver code templates your team can deploy."
+			},
+			"ctaTrackText": "Deploying new platforms or services?",
+			"ctaMappingText": "Design your security architecture baseline.",
+			"cta": {
+				"label": "Design Your Foundation",
+				"href": "/security-paths"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "pulse",
+			"icon": "GitBranch",
+			"title": "Pulse",
+			"subtitle": "Ship fast. Ship secure. Ship with confidence.",
+			"price": "Starting from $20K · 5-7 weeks",
+			"domains": ["DevSecOps", "Supply Chain", "Secrets"],
+			"whenYouNeedThis": "Your CI/CD pipeline moves fast — but security gates are missing, manual, or bolted on after the fact. Time to fix that.",
+			"body": "A security-first CI/CD pipeline design — SAST, DAST, dependency scanning, secret detection, container security, and deployment gates. Starter templates included so your team isn't starting from zero.",
+			"deliverables": [
+				"CI/CD security pipeline design",
+				"SAST/DAST integration plan",
+				"Secrets management architecture",
+				"Container security baseline",
+				"Deployment gate configuration",
+				"Implementation guide + review cycle"
+			],
+			"whatThisIsNot": "A managed DevOps service. We design the pipeline — your team implements it with our guidance.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "CI/CD pipeline security review",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{
+						"item": "Secrets management architecture",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{
+						"item": "Container security configuration",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{ "item": "Sovereign deployment gate spec", "vendor": "-", "us": "✓" }
+				],
+				"vendorTotal": "$15K - $30K",
+				"ourPrice": "$20K",
+				"note": "Configure automated security checks without slowing down your deployment cycles."
+			},
+			"ctaTrackText": "Need automated pipeline checks?",
+			"ctaMappingText": "Secure your CI/CD gates and secrets.",
+			"cta": {
+				"label": "Secure Your Pipeline",
+				"href": "#contact?subject=PULSE"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "clearance",
+			"icon": "ShieldCheck",
+			"title": "Clearance",
+			"subtitle": "Compliance that opens doors, not just checks boxes.",
+			"price": "Starting from $22K · 6-8 weeks",
+			"domains": ["Compliance", "Audit", "Governance"],
+			"whenYouNeedThis": "Your next enterprise customer wants SOC 2. Your investors asked about security posture. You need to get audit-ready — without derailing your engineering team for six months.",
+			"body": "We assess your posture against your target framework, map the gaps, and build a remediation plan that gets you audit-ready. We guide — your team implements. When the auditor comes, you're prepared.",
+			"deliverables": [
+				"Compliance gap analysis",
+				"Policy and control framework",
+				"Control mapping (NIST, CIS, OWASP, MITRE)",
+				"Audit preparation guidance",
+				"Remediation roadmap",
+				"Knowledge transfer session"
+			],
+			"whatThisIsNot": "A compliance automation platform. We don't push a button and make you compliant. We build the roadmap — your team walks it.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Gap assessment & control check",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{
+						"item": "Custom policy framework development",
+						"vendor": "$10K - $20K",
+						"us": "Included"
+					},
+					{
+						"item": "Audit readiness preparation & testing",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					},
+					{
+						"item": "Direct engineer-to-engineer guidance",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "$20K - $45K",
+				"ourPrice": "$22K",
+				"note": "We prepare your actual technical infrastructure for audits, rather than just generating paperwork."
+			},
+			"ctaTrackText": "Faced with an upcoming compliance audit?",
+			"ctaMappingText": "Build custom controls and policies.",
+			"cta": {
+				"label": "Get Audit-Ready",
+				"href": "/compliance"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "escape-velocity",
+			"icon": "Rocket",
+			"title": "Escape Velocity",
+			"subtitle": "Own your infrastructure. Control your costs. Keep your data where you decide.",
+			"price": "Starting from $22K · 5-8 weeks",
+			"domains": ["Infrastructure", "Migration", "Cost Optimization"],
+			"whenYouNeedThis": "Your cloud bill keeps climbing. Your data lives in someone else's data center. You're paying for compute you don't fully control. Time to explore alternatives.",
+			"body": "From cloud dependency to digital ownership — migration planning, infrastructure hardening, cost optimization, and security architecture baked in. Multiple paths depending on your goals: full migration, hybrid, or selective optimization.",
+			"deliverables": [
+				"Cloud audit and cost analysis",
+				"Migration strategy and planning",
+				"Trust boundary definition",
+				"Infrastructure hardening baseline",
+				"Security architecture (included)",
+				"Implementation guide"
+			],
+			"whatThisIsNot": "A simple cloud migration. We don't just lift-and-shift. We design secure boundaries so you hold your own keys and control costs.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Sovereignty migration planning",
+						"vendor": "$10K - $20K",
+						"us": "Included"
+					},
+					{
+						"item": "Infrastructure hardening baseline",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					},
+					{
+						"item": "Cloud cost optimization audit",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{
+						"item": "Keys & encryption custody design",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "$20K - $45K",
+				"ourPrice": "$22K",
+				"note": "We ensure digital sovereignty is baked into your migration blueprint so you own your hosting nodes."
+			},
+			"ctaTrackText": "Struggling with runaway cloud hosting fees?",
+			"ctaMappingText": "Formulate a digital sovereignty blueprint.",
+			"cta": {
+				"label": "Chart Your Path",
+				"href": "/security-paths"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "beacon",
+			"icon": "Orbit",
+			"title": "Beacon",
+			"subtitle": "Security leadership without the full-time hire.",
+			"price": "Starting from $8K/month",
+			"domains": ["Advisory", "Architecture", "Training"],
+			"whenYouNeedThis": "You need a security architect on the team — but not full-time, and not at $150K+/year. You need someone who knows your stack, reviews your decisions, and picks up the phone when something happens.",
+			"body": "Monthly reviews, strategic guidance, architecture decisions, incident advisory, and compliance updates. Your long-term security partner — always available, never required.",
+			"deliverables": [
+				"Monthly security posture review",
+				"Strategic security guidance",
+				"Architecture decision support",
+				"Incident advisory availability",
+				"Compliance updates and monitoring",
+				"Priority access for full engagements"
+			],
+			"whatThisIsNot": "A managed SOC. A 24/7 incident response team. We provide advisory and guidance — not operational monitoring or incident remediation.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Full-time Security Architect salary",
+						"vendor": "$15K - $25K/mo",
+						"us": "Not required"
+					},
+					{
+						"item": "Continuous posture & threat tracking",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Direct architect query access line",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "$15K - $25K/mo",
+				"ourPrice": "$8K/mo",
+				"note": "Get executive-level advisory and architecture validation on a flexible, fractional basis."
+			},
+			"ctaTrackText": "Need fractional security leadership?",
+			"ctaMappingText": "Bring on a senior architect when needed.",
+			"cta": {
+				"label": "Let's Talk About Advisory",
+				"href": "#contact?subject=BEACON"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "program-foundation",
+			"icon": "FileText",
+			"title": "Program Foundation",
+			"subtitle": "The operational backbone your security program needs before anything else.",
+			"price": "Starting from $15K · 4-6 weeks",
+			"domains": ["Governance", "Risk", "Training"],
+			"whenYouNeedThis": "You have security tools and some controls, but no formal security program. No policies. No incident response plan. No risk management methodology. You need the operational foundation before you can build on top of it.",
+			"body": "The foundational elements every organization needs regardless of their specific focus — security policies, risk methodology, incident response, and security awareness. This is what we often discover is missing during an Assessment.",
+			"deliverables": [
+				"Security policy framework (infosec policy, acceptable use, access control)",
+				"Risk management methodology",
+				"Incident response plan",
+				"Security awareness program",
+				"Asset inventory and classification",
+				"Vulnerability management process",
+				"Access control framework (IAM, least privilege, MFA)",
+				"Security metrics and reporting"
+			],
+			"whatThisIsNot": "A technical architecture blueprint. A compliance audit. This is the operational and governance layer that makes architecture and compliance work.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Policy framework development",
+						"vendor": "$5K - $15K",
+						"us": "Included"
+					},
+					{
+						"item": "Incident response plan & scenarios",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{
+						"item": "Risk management methodology mapping",
+						"vendor": "$5K - $10K",
+						"us": "Included"
+					},
+					{ "item": "Woven team awareness training", "vendor": "-", "us": "✓" }
+				],
+				"vendorTotal": "$15K - $35K",
+				"ourPrice": "$15K",
+				"note": "We deliver the operational and governance framework required to satisfy enterprise security standards."
+			},
+			"ctaTrackText": "Lacking basic security policies or incident plans?",
+			"ctaMappingText": "Deploy your operational program baseline.",
+			"cta": {
+				"label": "Establish Your Program",
+				"href": "#contact?subject=PROGRAM_FOUNDATION"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "sprint",
+			"icon": "Zap",
+			"title": "Sprint",
+			"subtitle": "Focused 2-week engagement on one specific area.",
+			"price": "Starting from $8K · 2 weeks",
+			"domains": ["Assessment", "Architecture", "DevSecOps"],
+			"whenYouNeedThis": "You have one specific problem that needs attention now. Not a full assessment. Not a comprehensive blueprint. A focused, time-boxed engagement on one critical area.",
+			"body": "A Security Sprint is a highly scoped, time-boxed engagement on one critical area. Three formats depending on your needs: Assessment Sprint ($8K), Build Partnership Sprint ($12K), or Extended Sprint ($15K). rules of engagement: Pre-sprint gate checks, 4-point check-in system, strict timebox guarantee. We don't start until you're ready.",
+			"deliverables": [
+				"Focused assessment of the target area",
+				"Prioritized findings and triage report",
+				"Remediation guidance and templates",
+				"Implementation recommendations",
+				"Pre-sprint gate check validation",
+				"Strict timebox assurance"
+			],
+			"whatThisIsNot": "A comprehensive engagement. Sprints are focused and time-boxed. If we discover broader issues during the sprint, we'll flag them — but addressing them requires a separate engagement.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Standard compliance/posture audit",
+						"vendor": "$10K",
+						"us": "Included"
+					},
+					{
+						"item": "Focused 2-week deep-dive investigation",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Fixed timebox delivery assurance",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "$10K",
+				"ourPrice": "$8K",
+				"note": "Avoid long, draggy consulting timelines. Target a single security friction point inside 2 weeks."
+			},
+			"ctaTrackText": "Need to solve a single, immediate security issue?",
+			"ctaMappingText": "Triage one critical sector in a fast-paced sprint.",
+			"cta": {
+				"label": "Explore Sprints",
+				"href": "/solutions/sprints"
+			},
+			"hasDedicatedPage": true,
+			"detailPageLink": "/solutions/sprints"
+		},
+		{
+			"id": "build-partnership",
+			"icon": "Handshake",
+			"title": "Build Partnership",
+			"subtitle": "Your team builds it. We make sure they build it right.",
+			"price": "Starting from +$25K · +4-6 weeks",
+			"domains": ["Advisory", "Training", "Architecture"],
+			"whenYouNeedThis": "Your team has the blueprint but wants senior guidance during implementation — not just a review after the fact. You want an embedded security architect for the build phase.",
+			"body": "Weekly sync calls, async access for questions, and hands-on guidance throughout your build phase. We review every critical decision, validate every implementation milestone, and train your team as they build.",
+			"deliverables": [
+				"Implementation milestone plan (week-by-week)",
+				"Weekly sync calls throughout build phase",
+				"Async access (Slack/email) for decisions",
+				"Code/architecture review at each milestone",
+				"Decision log (running document of decisions)",
+				"2-3 pair sessions for complex implementation work",
+				"Post-implementation validation + hardening review"
+			],
+			"whatThisIsNot": "We don't write your Terraform. We don't take 24/7 on-call responsibility. We don't manage your pipeline.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Retained contractor architect reviews",
+						"vendor": "$25K - $50K",
+						"us": "Included"
+					},
+					{
+						"item": "Milestone-by-milestone validation reviews",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Direct pair-programming support sessions",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{ "item": "Shared execution decision log", "vendor": "-", "us": "✓" }
+				],
+				"vendorTotal": "$25K - $50K",
+				"ourPrice": "$25K",
+				"note": "We act as an extension of your engineering team to ensure your implementation matches specs."
+			},
+			"ctaTrackText": "Need architectural validation during setup?",
+			"ctaMappingText": "Add guided implementation support to blueprints.",
+			"cta": {
+				"label": "Add Guided Build",
+				"href": "#contact?subject=BUILD_PARTNERSHIP"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "observability",
+			"icon": "Eye",
+			"title": "Observability",
+			"subtitle": "Proactive monitoring. Critical alerts. Engineer review.",
+			"price": "Starting from $2K/month",
+			"domains": ["Monitoring", "Risk", "Compliance"],
+			"whenYouNeedThis": "You have infrastructure running but no visibility into what's happening. You need to know when something's wrong — before your customers do.",
+			"body": "Proactive monitoring + scheduled reports. Automated critical alerts + bi-weekly reports + engineer review. Not a 24/7 SOC — but critical findings reach you fast.",
+			"deliverables": [
+				"Integration with our SIEM/observability infrastructure",
+				"Automated critical alerts with engineer review within 24-48 hours",
+				"Bi-weekly or monthly security reports",
+				"Trend analysis and anomaly detection",
+				"Priority access for incident advisory"
+			],
+			"whatThisIsNot": "A 24/7 SOC. Real-time incident response. We monitor and alert — your team responds.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Commercial SIEM platform subscriptions",
+						"vendor": "$1K - $3K/mo",
+						"us": "Included"
+					},
+					{
+						"item": "Ongoing security analyst monitor retainer",
+						"vendor": "$2K - $5K/mo",
+						"us": "Included"
+					},
+					{ "item": "Direct dashboard integrations", "vendor": "-", "us": "✓" }
+				],
+				"vendorTotal": "$3K - $8K/mo",
+				"ourPrice": "$2K/mo",
+				"note": "Bundle enterprise SIEM infrastructure setup and engineer review for proactive alerting."
+			},
+			"ctaTrackText": "Lacking visibility into threat events?",
+			"ctaMappingText": "Deploy active monitoring and review logs.",
+			"cta": {
+				"label": "Add Observability",
+				"href": "#contact?subject=OBSERVABILITY"
+			},
+			"hasDedicatedPage": false
+		},
+		{
+			"id": "surge",
+			"icon": "Flame",
+			"title": "Surge",
+			"subtitle": "Production-ready infrastructure. Deployed in days. Owned by you from day one.",
+			"price": "Starting from $8K · days",
+			"domains": ["Infrastructure", "Hardening", "Cost Optimization"],
+			"whenYouNeedThis": "You want production-ready infrastructure — auth, VPN, observability, the works — but you don't want to spend months building it from scratch. You want it deployed fast, hardened, and handed over.",
+			"body": "We deploy our pre-built, battle-tested infrastructure stacks on your hardware. You provision the compute. We deploy everything. We hand over the keys. You own it from that point forward. Stacks include: Sovereign Base ($8K), Observability Engine ($12K), and Aurorys Core ($30K+).",
+			"deliverables": [
+				"Network topology design",
+				"Full infrastructure deployment on your instances",
+				"Auth configurations (SSO, MFA)",
+				"Mesh VPN setup",
+				"Observability stack integration",
+				"Day-0 Golden Snapshot immutable backup"
+			],
+			"whatThisIsNot": "Managed services. We deploy once and hand off. We are NOT responsible for updates or maintenance after keys transfer.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "DevOps payroll to build secure baseline (3-6 mo)",
+						"vendor": "$40K - $80K",
+						"us": "Included"
+					},
+					{
+						"item": "Production-ready stack deployment in days",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Complete day-0 snapshot custody handover",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "$40K - $80K",
+				"ourPrice": "$8K",
+				"note": "Skip months of greenfield infrastructure assembly. Deploy hardened components instantly."
+			},
+			"ctaTrackText": "Want production-ready pipelines in days?",
+			"ctaMappingText": "Deploy hardened infrastructure templates.",
+			"cta": {
+				"label": "Explore Surge Stacks",
+				"href": "/solutions/surge"
+			},
+			"hasDedicatedPage": true,
+			"detailPageLink": "/solutions/surge"
+		},
+		{
+			"id": "full-constellation",
+			"icon": "Stars",
+			"title": "Full Constellation",
+			"subtitle": "The complete security overhaul. Every capability. One engagement.",
+			"price": "Starting from $120K · 6 months",
+			"domains": [
+				"Architecture",
+				"DevSecOps",
+				"Compliance",
+				"Infrastructure",
+				"Advisory"
+			],
+			"whenYouNeedThis": "You're serious about security. Not one area — the whole picture. You want to go from \"we have some security\" to \"we have a security program, architecture, pipeline, compliance posture, and ongoing leadership\" in one comprehensive engagement.",
+			"body": "Every capability we offer, integrated into one comprehensive engagement. Assessment, architecture, DevSecOps, compliance, sovereignty, and advisory — delivered as a cohesive program, not a collection of disconnected projects.",
+			"deliverables": [
+				"Comprehensive First Light Posture Assessment",
+				"Foundation Security Architecture Blueprint",
+				"Pulse DevSecOps Pipeline configuration",
+				"Clearance compliance readiness audits",
+				"Escape Velocity sovereignty migration plan",
+				"6 months of fractional CISO advisory",
+				"Build partnership implementation support"
+			],
+			"whatThisIsNot": "A series of disconnected consulting audits. This is a unified security transformation program managed by a single engineering team.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Siloed deliverables from multiple consultants",
+						"vendor": "$167K - $262K",
+						"us": "Included"
+					},
+					{
+						"item": "Direct cross-functional coordination loops",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Cohesive security transformation guarantee",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "$167K - $262K",
+				"ourPrice": "$120K",
+				"note": "A single engineering workforce delivering end-to-end security posture, saving 35-40% in friction."
+			},
+			"ctaTrackText": "Ready for a complete security transformation?",
+			"ctaMappingText": "Configure the full 6-month constellation overhaul.",
+			"cta": {
+				"label": "Explore Full Constellation",
+				"href": "/solutions/full-constellation"
+			},
+			"hasDedicatedPage": true,
+			"detailPageLink": "/solutions/full-constellation"
+		},
+		{
+			"id": "custom",
+			"icon": "MessageSquare",
+			"title": "Something else on your mind?",
+			"subtitle": "Every engagement is scoped individually. Let's talk.",
+			"price": "Scoped individually",
+			"domains": ["Advisory", "Strategy"],
+			"whenYouNeedThis": "You need something specific that doesn't fit the packages above — or a custom comprehensive engagement. Let's figure out the right approach together.",
+			"body": "If you need specific custom architectures, custom integrations, or long-term strategic support that doesn't fit standard paths, we scope every engagement to your team's needs.",
+			"deliverables": [
+				"Custom scoped documentation",
+				"Tailored implementation plans",
+				"Strategic reviews and validation support"
+			],
+			"whatThisIsNot": "A rigid template. We scope our custom work based on first principles.",
+			"valueComparison": {
+				"rows": [
+					{
+						"item": "Uncapped hourly consulting billing schemes",
+						"vendor": "$150 - $400/hr",
+						"us": "-"
+					},
+					{
+						"item": "Flat-rate deliverables commitment",
+						"vendor": "-",
+						"us": "✓"
+					},
+					{
+						"item": "Dedicated scope custom spec templates",
+						"vendor": "-",
+						"us": "✓"
+					}
+				],
+				"vendorTotal": "Variable",
+				"ourPrice": "Scoped flat-rate",
+				"note": "We ensure zero runaway consulting hours by locking deliverables to custom flat rates."
+			},
+			"ctaTrackText": "Have unique or complex requirements?",
+			"ctaMappingText": "Schedule a scoping call for custom engagements.",
+			"cta": {
+				"label": "Start a Conversation",
+				"href": "#contact?subject=CUSTOM"
+			},
+			"hasDedicatedPage": false
+		}
+	]
+}

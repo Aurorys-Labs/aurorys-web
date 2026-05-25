@@ -1,68 +1,78 @@
 {
-  "sectionTitle": "The Aurorys Way",
-  "sectionSubtitle": "We don't just deliver security. We build capability — so your team is stronger after we leave than before we arrived.",
-  "largeCards": [
-    {
-      "icon": "Shield",
-      "title": "Security capability, not dependency",
-      "subtitle": "Not just risk reduction — deal-closing, fund-raising, ship-faster capability.",
-      "body": "We position around what security makes possible: closing enterprise deals, passing investor diligence, shipping with confidence, building trust with your customers. Security isn't a cost center — it's a growth enabler. We built Aurorys Labs on a specific conviction: that growing organizations deserve security expertise they can actually build from — not just findings they can read.",
-      "bullets": ["Compliance that opens enterprise doors", "Security posture that passes investor diligence", "Architecture that scales with your growth", "Remediation roadmaps your team can actually execute"]
-    },
-    {
-      "icon": "Lock",
-      "title": "Privacy first. No vendor lock-in.",
-      "subtitle": "You own your systems, your infrastructure, and your data.",
-      "body": "We believe organizations should retain full control over their digital environments. We help clients avoid long-term dependency on vendors — including us. Everything we produce transfers to you on delivery. No lock-in. Including ours.",
-      "bullets": ["Data ownership and control", "Flexible infrastructure choices", "Private and self-hosted options", "Migration independence"]
-    }
-  ],
-  "mediumCards": [
-    {
-      "icon": "FileText",
-      "title": "Blueprint-first delivery",
-      "subtitle": "Your team gets the HOW, not just the WHAT.",
-      "body": "We take a different approach. We deliver the architecture, the templates, the guidance, and the knowledge — and your team owns it all from day one. Working artifacts, not just findings. You're never dependent on us. But you'll want us for the next challenge."
-    },
-    {
-      "icon": "UserCheck",
-      "title": "Direct access to senior expertise",
-      "subtitle": "The person who designs your security delivers your security.",
-      "body": "No junior analysts running the engagement while the partner signs off. No bait-and-switch. You work directly with a senior security architect — someone with deep engineering experience who understands your stack, your constraints, and your goals. Faster decisions. No communication layers. No surprises."
-    },
-    {
-      "icon": "Eye",
-      "title": "AI-accelerated, human-validated",
-      "subtitle": "Faster turnaround. More consistent findings. Better value.",
-      "body": "We use AI-assisted research, analysis, and delivery across our engagements — competing on speed AND quality simultaneously. Something larger firms can't do (too slow) and most boutiques can't do (not thorough enough). AI handles the repetitive work. Humans handle the judgment. Every finding is reviewed by a senior security architect."
-    },
-    {
-      "icon": "Sparkles",
-      "title": "Teach-first philosophy",
-      "subtitle": "Your team is stronger after we leave.",
-      "body": "Every engagement includes knowledge transfer — woven into the delivery, not bolted on as a separate session. We explain why each control matters, how to maintain it, and how to extend it. When we leave, your team can carry it forward without us."
-    }
-  ],
-  "smallCards": [
-    {
-      "icon": "Database",
-      "title": "Data control by design",
-      "body": "Clear control over data storage, access, and lifecycle."
-    },
-    {
-      "icon": "Globe",
-      "title": "Global compliance ready",
-      "body": "Aligned with international frameworks and standards."
-    },
-    {
-      "icon": "Wrench",
-      "title": "Adaptable across technologies",
-      "body": "Flexible across languages, infrastructures, and environments."
-    },
-    {
-      "icon": "TrendingUp",
-      "title": "Measured risk reduction",
-      "body": "We don't promise invulnerability. We deliver measured risk reduction and long-term clarity."
-    }
-  ]
+	"sectionTitle": "The Aurorys Way",
+	"sectionSubtitle": "We don't just deliver security. We build capability — so your team is stronger after we leave than before we arrived.",
+	"largeCards": [
+		{
+			"icon": "Shield",
+			"title": "Security capability, not dependency",
+			"subtitle": "Not just risk reduction — deal-closing, fund-raising, ship-faster capability.",
+			"body": "We position around what security makes possible: closing enterprise deals, passing investor diligence, shipping with confidence, building trust with your customers. Security isn't a cost center — it's a growth enabler. We built Aurorys Labs on a specific conviction: that growing organizations deserve security expertise they can actually build from — not just findings they can read.",
+			"bullets": [
+				"Compliance that opens enterprise doors",
+				"Security posture that passes investor diligence",
+				"Architecture that scales with your growth",
+				"Remediation roadmaps your team can actually execute"
+			]
+		},
+		{
+			"icon": "Lock",
+			"title": "Privacy first. No vendor lock-in.",
+			"subtitle": "You own your systems, your infrastructure, and your data.",
+			"body": "We believe organizations should retain full control over their digital environments. We help clients avoid long-term dependency on vendors — including us. Everything we produce transfers to you on delivery. No lock-in. Including ours.",
+			"bullets": [
+				"Data ownership and control",
+				"Flexible infrastructure choices",
+				"Private and self-hosted options",
+				"Migration independence"
+			]
+		}
+	],
+	"mediumCards": [
+		{
+			"icon": "FileText",
+			"title": "Blueprint-first delivery",
+			"subtitle": "Your team gets the HOW, not just the WHAT.",
+			"body": "We take a different approach. We deliver the architecture, the templates, the guidance, and the knowledge — and your team owns it all from day one. Working artifacts, not just findings. You're never dependent on us. But you'll want us for the next challenge."
+		},
+		{
+			"icon": "UserCheck",
+			"title": "Direct access to senior expertise",
+			"subtitle": "The person who designs your security delivers your security.",
+			"body": "No junior analysts running the engagement while the partner signs off. No bait-and-switch. You work directly with a senior security architect — someone with deep engineering experience who understands your stack, your constraints, and your goals. Faster decisions. No communication layers. No surprises."
+		},
+		{
+			"icon": "Eye",
+			"title": "AI-accelerated, human-validated",
+			"subtitle": "Faster turnaround. More consistent findings. Better value.",
+			"body": "We use AI-assisted research, analysis, and delivery across our engagements — competing on speed AND quality simultaneously. Something larger firms can't do (too slow) and most boutiques can't do (not thorough enough). AI handles the repetitive work. Humans handle the judgment. Every finding is reviewed by a senior security architect."
+		},
+		{
+			"icon": "Sparkles",
+			"title": "Teach-first philosophy",
+			"subtitle": "Your team is stronger after we leave.",
+			"body": "Every engagement includes knowledge transfer — woven into the delivery, not bolted on as a separate session. We explain why each control matters, how to maintain it, and how to extend it. When we leave, your team can carry it forward without us."
+		}
+	],
+	"smallCards": [
+		{
+			"icon": "Database",
+			"title": "Data control by design",
+			"body": "Clear control over data storage, access, and lifecycle."
+		},
+		{
+			"icon": "Globe",
+			"title": "Global compliance ready",
+			"body": "Aligned with international frameworks and standards."
+		},
+		{
+			"icon": "Wrench",
+			"title": "Adaptable across technologies",
+			"body": "Flexible across languages, infrastructures, and environments."
+		},
+		{
+			"icon": "TrendingUp",
+			"title": "Measured risk reduction",
+			"body": "We don't promise invulnerability. We deliver measured risk reduction and long-term clarity."
+		}
+	]
 }

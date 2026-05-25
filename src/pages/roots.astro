@@ -1,0 +1,170 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+
+import rootsData from "../lib/data/roots-page.json";
+---
+
+<BaseLayout title={`${rootsData.hero.title} | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image9.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width px-6 text-center space-y-6">
+      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora leading-tight tracking-tight mb-6">
+        {rootsData.hero.title}
+      </h1>
+      <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+        {rootsData.hero.subtitle}
+      </p>
+    </div>
+  </section>
+
+  {/* Metaphor and Mission */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6 space-y-12 text-left">
+      <div class="max-w-3xl mx-auto space-y-12">
+        <div class="space-y-6">
+          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
+            {rootsData.aurora.title}
+          </h2>
+          {rootsData.aurora.paragraphs.map((p) => (
+            <p class="text-white/80 text-base leading-relaxed font-sans">
+              {p}
+            </p>
+          ))}
+        </div>
+
+        <div class="space-y-6 pt-6">
+          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
+            {rootsData.whyWeExist.title}
+          </h2>
+          {rootsData.whyWeExist.paragraphs.map((p) => (
+            <p class="text-white/80 text-base leading-relaxed font-sans">
+              {p}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Beliefs Section */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-3xl mb-12 text-left">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+          {rootsData.beliefs.title}
+        </h2>
+        <p class="text-[var(--text-muted)] text-base font-sans">
+          The core principles that guide every design, implementation, and engagement we deliver.
+        </p>
+      </div>
+
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 [column-fill:balance] text-left">
+        {rootsData.beliefs.items.map((item, idx) => {
+          const tints = [
+            "glass-card-tinted-sky",
+            "",
+            "glass-card-tinted-violet",
+            "",
+            "glass-card-tinted-green",
+            "",
+            "glass-card-tinted-fuchsia",
+          ];
+          const tint = tints[idx % tints.length];
+          return (
+            <div class={`break-inside-avoid inline-block w-full mb-6 glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-3 hover:border-white/[0.12] transition-all duration-300 group ${tint}`}>
+              <h3 class="font-sans font-bold text-base text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors">
+                {item.bold}
+              </h3>
+              <p class="text-white/70 text-sm leading-relaxed font-sans">
+                {item.body}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  {/* Metaphor / Quote Display Scale */}
+  <section class="relative z-10 py-8">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card glass-card-tinted-violet p-16 relative overflow-hidden rounded-3xl text-center">
+          <div class="absolute inset-0 bg-[var(--aurum-gold-subtle)]/5 blur-3xl opacity-30 rounded-full pointer-events-none" />
+          <blockquote class="font-serif italic text-3xl md:text-4xl text-[var(--text-stellar)] max-w-2xl mx-auto relative z-10 leading-relaxed" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);">
+            "We're here to build <span class="text-gradient-aurora">capability</span>, not dependency."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Founder and Commitment */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6 space-y-12 text-left">
+      <div class="max-w-3xl mx-auto space-y-12">
+        <div class="space-y-6">
+          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
+            {rootsData.founder.title}
+          </h2>
+          {rootsData.founder.paragraphs.map((p) => (
+            <p class="text-white/80 text-base leading-relaxed font-sans">
+              {p}
+            </p>
+          ))}
+        </div>
+
+        <div class="space-y-6 pt-6">
+          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
+            {rootsData.commitment.title}
+          </h2>
+          {rootsData.commitment.paragraphs.map((p) => (
+            <p class="text-white/80 text-base leading-relaxed font-sans">
+              {p}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Cross Links & CTA */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-black/10">
+    <div class="content-width mx-auto px-6">
+      <h3 class="font-sans font-bold text-xl text-[var(--text-stellar)] mb-8">
+        {rootsData.crossLinks.title}
+      </h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        {rootsData.crossLinks.links.map((link) => (
+          <a
+            href={link.href}
+            class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

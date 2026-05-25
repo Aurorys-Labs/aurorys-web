@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import Footer from "../../components/astro/Footer.astro";
+import { AuroraOverlay } from "../../components/react/AuroraOverlay";
+import { MobileNav } from "../../components/react/MobileNav";
+import { Navbar } from "../../components/react/Navbar";
+---
+
+<BaseLayout title="Terms of Service | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image13.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-8 md:pt-40 md:pb-12">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-4">
+        <h1 class="font-heading font-semibold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora leading-tight tracking-tight">
+          Terms of Service
+        </h1>
+        <p class="text-sm font-mono text-[var(--text-muted)]">
+          Last Updated: May 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Legal Content */}
+  <section class="relative z-10 py-12 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/[0.06] backdrop-blur-xl bg-[rgba(13,17,23,0.35)] space-y-8 text-left font-sans text-white/80 leading-relaxed">
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">1. Acceptance of Terms</h2>
+            <p>
+              By accessing this website, you agree to comply with and be bound by these Terms of Service.
+              If you do not agree with any of these terms, please do not use this site or our services.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">2. Services Offered</h2>
+            <p>
+              Aurorys Labs provides cybersecurity consulting services, system audits, vulnerability assessments,
+              architecture design, and compliance guidance. Specific deliverables and engagements are governed
+              by individual Statements of Work (SOWs) signed separately between Aurorys Labs and the client.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">3. Intellectual Property</h2>
+            <p>
+              All content on this website, including text, graphics, logos, and code templates, is the property
+              of Aurorys Labs. Clients receive license rights to consulting deliverables (like infrastructure blueprints)
+              as detailed in their individual agreements, allowing full use for their internal security posture.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">4. Disclaimers</h2>
+            <p>
+              Our consulting services and recommendations are based on cybersecurity best practices at the time of delivery.
+              While we aim to dramatically reduce attack surfaces, no assessment can guarantee absolute security.
+              All recommendations are provided "as is" to help clients build resilient systems.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">5. Governing Law</h2>
+            <p>
+              These terms and any disputes arising out of the use of this website shall be governed by the laws of the
+              jurisdiction in which Aurorys Labs operates, without regard to conflicts of law principles.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

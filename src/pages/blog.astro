@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+
+import blogPosts from "../lib/data/blog-posts.json";
+---
+
+<BaseLayout title="Blog | Insights & Methodology | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image11.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width mx-auto px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora tracking-tight leading-tight mb-6">
+          Insights & Blueprint Methodology
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] leading-relaxed">
+          Technical posts, infrastructure guides, and transparency reports for engineering teams.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Post Grid (Bento Masonry Style) */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post, idx) => {
+          const gridClasses = [
+            "lg:col-span-2 col-span-1",
+            "lg:row-span-2 col-span-1",
+            "col-span-1",
+            "col-span-1",
+            "lg:col-span-3 col-span-1"
+          ];
+          const gridClass = gridClasses[idx] || "col-span-1";
+          const isLarge = idx === 0 || idx === 4;
+
+          return (
+            <div class={`glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.25)] flex flex-col justify-between hover:border-white/[0.12] transition-all duration-300 group ${gridClass}`}>
+              <div class="space-y-4">
+                <div class="flex items-center justify-between text-xs text-[var(--text-muted)] font-mono">
+                  <span class="text-[var(--aurora-green-solid)] font-semibold uppercase tracking-wider">{post.category}</span>
+                  <span>{post.date}</span>
+                </div>
+                <h3 class={`font-sans font-bold text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors leading-snug ${isLarge ? "text-2xl" : "text-lg"}`}>
+                  {post.title}
+                </h3>
+                <p class="text-white/70 text-sm leading-relaxed font-sans">
+                  {post.summary}
+                </p>
+                {post.tags && post.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    {post.tags.map((tag) => (
+                      <span class="backdrop-blur-sm text-[10px] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/[0.03] text-white/50 font-mono">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div class="pt-6 border-t border-white/[0.04] mt-6 flex items-center justify-between">
+                <span class="text-xs text-[var(--text-muted)] font-sans">{post.readTime}</span>
+                <a
+                  href={`/blog/${post.id}`}
+                  class="inline-flex items-center gap-1 text-xs font-semibold font-sans text-[var(--aurora-green-solid)] hover:text-white transition-colors"
+                >
+                  Read Post &rarr;
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

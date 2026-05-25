@@ -1,0 +1,234 @@
+{
+	"hero": {
+		"title": "How We Work",
+		"subtitle": "No black boxes. No surprise invoices. Here's exactly how we work — from first conversation to lasting capability."
+	},
+	"steps": [
+		{
+			"icon": "Search",
+			"title": "Discover",
+			"body": "We start every engagement by understanding your environment — your infrastructure, your team, your risks, your goals. This isn't a questionnaire. It's a conversation. We review your architecture, scan your attack surface, and map your compliance posture. No two companies are the same, and neither are our recommendations.",
+			"whatHappens": "Initial call (60 min) → Environment review → Attack surface scan → Stakeholder interviews → Discovery report delivered"
+		},
+		{
+			"icon": "PenTool",
+			"title": "Design",
+			"body": "We create a detailed blueprint tailored to your specific needs — architecture, templates, implementation guides, and review checkpoints. Everything is documented. Everything is yours. The blueprint is the core deliverable — it's what your team will build from.",
+			"whatHappens": "Architecture design → Threat modeling → IaC template creation → Implementation guide → Review checkpoint definition → Blueprint delivered"
+		},
+		{
+			"icon": "Compass",
+			"title": "Guide",
+			"body": "Your team implements with our oversight. The level of guidance depends on your engagement tier. Blueprint-only: you implement independently with 1-2 review checkpoints. Build Partnership: weekly sync calls, async Slack/email access, pair programming, and milestone reviews.",
+			"whatHappens": "Weekly syncs → Async Q&A → Milestone reviews → Pair sessions → Decision log → Implementation validation"
+		},
+		{
+			"icon": "GraduationCap",
+			"title": "Transfer",
+			"body": "We train your team to maintain and extend what we've built together. By the end of the engagement, you don't need us — but you'll want us for the next challenge. Knowledge transfer isn't a separate session — it's woven into every step.",
+			"whatHappens": "Knowledge transfer session(s) → Documentation handoff → Q&A → Team takes ownership"
+		},
+		{
+			"icon": "Radio",
+			"title": "Advise",
+			"body": "For ongoing support, our Beacon advisory program provides monthly reviews, strategic guidance, and incident availability. Always available. Never required. Think of it as a fractional security architect who already knows your stack.",
+			"whatHappens": "Monthly posture review → Strategic guidance → Architecture decision support → Incident advisory → Compliance updates"
+		}
+	],
+	"howWeActuallyWork": {
+		"title": "How We Actually Work",
+		"subtitle": "The five steps — Discover, Design, Guide, Transfer, Advise — are the framework. Here's what happens inside each one.",
+		"sections": [
+			{
+				"id": "vertical-slices",
+				"title": "Vertical Slices, Not Waterfalls",
+				"body": "We don't deliver everything at the end. We work in vertical slices — each slice is a complete, working piece of the deliverable that your team can review, test, and build on. You see progress every week, course corrections happen early when they're cheap, and your team starts learning before the engagement is over."
+			},
+			{
+				"id": "grilling-phase",
+				"title": "We Ask Hard Questions Before We Start",
+				"body": "Before every engagement, we go through a grilling phase. This isn't a questionnaire — it's a structured conversation where we challenge assumptions, surface constraints, and make sure we're solving the right problem. We ask hard questions because we'd rather lose an engagement than sign one that isn't the right fit."
+			},
+			{
+				"id": "knowledge-transfer",
+				"title": "Knowledge Transfer Isn't a Separate Session",
+				"body": "Most consulting firms tack on a \"knowledge transfer session\" at the end — an hour of slides nobody remembers. We take a different approach: knowledge transfer is woven into every step of the engagement (during design, during guide, during review, and during handoff). By the end, your team owns the outcome."
+			}
+		]
+	},
+	"sharedResponsibility": {
+		"title": "Shared Responsibility Model",
+		"subtitle": "We're accountable for the quality of our guidance, blueprints, and specifications. You're accountable for implementing them.",
+		"firmResponsibilities": [
+			"Quality and accuracy of our architecture designs",
+			"Thoroughness of our assessments and gap analyses",
+			"Clarity and completeness of our implementation guides",
+			"Timely review of your implementation at defined checkpoints",
+			"Flagging when implementation diverges from our recommendations"
+		],
+		"clientResponsibilities": [
+			"Implementing the architecture and controls we design",
+			"Making timely decisions when we present options",
+			"Providing access to systems, code, and stakeholders as needed",
+			"Maintaining what we've built together after the engagement ends"
+		],
+		"neitherGuarantees": [
+			"100% security. No one can guarantee this, and anyone who does is lying. We deliver measured risk reduction and systemic resilience — not false promises.",
+			"An automatic audit pass. Alignment with CIS or SOC 2 simplifies your audits, but security is an active operational state, not a static checklist.",
+			"Flawless execution. We provide clean blueprints and validate milestones, but your team holds the keyboard. We flag drift; you control the risk decisions."
+		]
+	},
+	"frameworkAlignment": {
+		"title": "Built on Recognized Frameworks",
+		"subtitle": "Our methodology is built on and aligned with recognized security frameworks — because your auditors, your customers, and your board need to see that your security program rests on established standards.",
+		"nistTable": [
+			{
+				"function": "Identify",
+				"coverage": "First Light assessment, threat modeling, risk register"
+			},
+			{
+				"function": "Protect",
+				"coverage": "Foundation architecture, Pulse pipeline, access controls"
+			},
+			{
+				"function": "Detect",
+				"coverage": "Observability pack, monitoring hooks, alerting"
+			},
+			{
+				"function": "Respond",
+				"coverage": "Incident response planning, Beacon advisory"
+			},
+			{
+				"function": "Recover",
+				"coverage": "Day-0 snapshots (Surge), disaster recovery planning, resilience architecture"
+			}
+		],
+		"cisBody": "CIS Controls give us the prioritized implementation groups — basic, foundational, organizational — that tell us what to do first. When we say \"start here,\" it's because CIS has already ranked the most impactful controls.",
+		"owaspBody": "OWASP Top 10 and MITRE ATT&CK give us the specific threats and attack patterns to design against. When we deliver a threat model, it maps to MITRE ATT&CK techniques. When we design pipeline security, it addresses OWASP Top 10 categories. This ensures deliverables hold up under audit, review, and attack.",
+		"complianceBody": "SOC 2 Type II and ISO 27001 mappings are embedded directly into our blueprints. We don't believe in compliance theater. Every control we recommend serves a dual purpose: building a defensible security posture first, and satisfying auditor evidence requests second."
+	},
+	"blueprintVsBuild": {
+		"title": "Two ways to engage. One clear difference.",
+		"subtitle": "Every engagement starts with a Blueprint — the architecture, templates, and implementation guide your team needs. What happens next is up to you.",
+		"rows": [
+			{
+				"label": "Architecture & design",
+				"blueprint": "Included",
+				"partnership": "Included"
+			},
+			{
+				"label": "IaC starter templates",
+				"blueprint": "Included",
+				"partnership": "Included"
+			},
+			{
+				"label": "Implementation guide",
+				"blueprint": "Included",
+				"partnership": "Included"
+			},
+			{
+				"label": "Review checkpoints",
+				"blueprint": "Defined checkpoints",
+				"partnership": "Weekly reviews + milestone validation"
+			},
+			{
+				"label": "Async access",
+				"blueprint": "Not included",
+				"partnership": "Included (Slack/email)"
+			},
+			{
+				"label": "Weekly sync calls",
+				"blueprint": "Not included",
+				"partnership": "Included"
+			},
+			{
+				"label": "Team training sessions",
+				"blueprint": "Handoff sessions",
+				"partnership": "Ongoing training woven into delivery"
+			},
+			{
+				"label": "Implementation validation",
+				"blueprint": "Defined checkpoints",
+				"partnership": "Validate every critical milestone"
+			},
+			{
+				"label": "Decision log",
+				"blueprint": "Not included",
+				"partnership": "Included (running document)"
+			},
+			{
+				"label": "Pair sessions",
+				"blueprint": "Not included",
+				"partnership": "2-3 guided sessions"
+			},
+			{
+				"label": "Post-implementation review",
+				"blueprint": "Not included",
+				"partnership": "Included (validation + hardening)"
+			}
+		],
+		"closingNote": "Other firms leave you with a PDF and a handshake. We leave you with a blueprint your team can actually build from — and if you want us in the room while you build it, that's what Build Partnership is for."
+	},
+	"logistics": {
+		"title": "How Engagements Actually Work",
+		"subtitle": "Every engagement has a defined scope, a defined timeline, and a defined end. Here's how we keep it that way.",
+		"milestones": [
+			{
+				"percentage": "40%",
+				"title": "Engagement Start",
+				"desc": "Covers initial SOW signing, NDAs, the grilling phase, discovery, and initial design work."
+			},
+			{
+				"percentage": "30%",
+				"title": "Midpoint Milestone",
+				"desc": "Covers completion and review of the first major deliverable (architecture design or gap analysis)."
+			},
+			{
+				"percentage": "30%",
+				"title": "Final Handoff",
+				"desc": "Covers final deliverables handover, knowledge transfer sessions, and closing documentation."
+			}
+		],
+		"gateChecks": [
+			"Access to your infrastructure (read-only for assessment)",
+			"A designated technical contact with sufficient decision-making authority",
+			"Clarity on your compliance goals (if applicable)",
+			"Understanding of your team's implementation capacity",
+			"Signed SOW, NDA, and engagement documents"
+		],
+		"phasedRollouts": "We deliver in phases because security programs that try to do everything at once tend to do nothing well. Each phase builds on the last, and you can pause, adjust, or off-ramp between phases. Full Constellation is explicitly phase-gated — you can off-ramp after any phase."
+	},
+	"faqs": [
+		{
+			"q": "What's the difference between a Security Posture Assessment and a penetration test?",
+			"a": "Our assessment is an architecture review, vulnerability triage, and risk prioritization. We look at your systems from the outside in and the inside out — but we don't actively exploit vulnerabilities. If our assessment reveals that a pen test would be valuable, we'll tell you and recommend firms that specialize in that."
+		},
+		{
+			"q": "Can we just get the blueprint without the Build Partnership?",
+			"a": "Yes. The blueprint is a complete product — not a teaser for Partnership. Other firms leave you with a PDF. We leave you with a blueprint your team can actually build from: architecture, templates, implementation guide, and a review cycle. Build Partnership is for teams who want senior guidance during implementation."
+		},
+		{
+			"q": "What if we need help after the engagement ends?",
+			"a": "Our Beacon advisory program provides ongoing monthly reviews, strategic guidance, and incident availability. Or you can engage us for a new sprint on a specific area. We're always available — never required."
+		},
+		{
+			"q": "Do you guarantee we'll pass our compliance audit?",
+			"a": "No one can guarantee that. What we guarantee is a thorough gap analysis, a clear remediation roadmap, and guidance that prepares you for the audit. If you implement what we recommend, you'll be ready. If you skip critical controls, no consultant can save you."
+		},
+		{
+			"q": "What happens if our team can't implement the blueprint?",
+			"a": "We can add Build Partnership at any point during the engagement. Or we can break the implementation into smaller sprints. We design for your team's actual capacity — not an idealized version of it."
+		},
+		{
+			"q": "What if we need something that's not listed?",
+			"a": "Every engagement is scoped individually. If you need something specific that doesn't fit our standard packages, let's talk. We'll be honest about whether we're the right fit — and if we're not, we'll point you toward someone who is."
+		}
+	],
+	"crossLinks": {
+		"title": "Ready to take the next step?",
+		"links": [
+			{ "label": "Explore Our Solutions", "href": "/solutions" },
+			{ "label": "Book a Discovery Call", "href": "/contact" }
+		]
+	}
+}

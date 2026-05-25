@@ -1,39 +1,39 @@
 :root {
-  /* Font Families */
-  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
-  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-heading: "Neue Haas Grotesk Display", "Geist Variable", sans-serif;
+	/* Font Families */
+	--font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "Geist Mono Variable", ui-monospace, monospace;
+	--font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+	--font-heading: "Neue Haas Grotesk Display", "Geist Variable", sans-serif;
 
-  /* Type Scale */
-  --text-display: clamp(3rem, 8vw, 6rem);
-  --text-h1: clamp(2.5rem, 5vw, 4rem);
-  --text-h2: clamp(2rem, 4vw, 3rem);
-  --text-h3: 1.5rem;
-  --text-body: 1rem;
-  --text-small: 0.875rem;
-  --text-caption: 0.75rem;
-  --text-mono: 0.875rem;
+	/* Type Scale */
+	--text-display: clamp(3rem, 8vw, 6rem);
+	--text-h1: clamp(2.5rem, 5vw, 4rem);
+	--text-h2: clamp(2rem, 4vw, 3rem);
+	--text-h3: 1.5rem;
+	--text-body: 1rem;
+	--text-small: 0.875rem;
+	--text-caption: 0.75rem;
+	--text-mono: 0.875rem;
 
-  /* Line Heights */
-  --leading-display: 1.0;
-  --leading-heading: 1.1;
-  --leading-subheading: 1.2;
-  --leading-body: 1.6;
-  --leading-small: 1.5;
-  --leading-mono: 1.5;
+	/* Line Heights */
+	--leading-display: 1.0;
+	--leading-heading: 1.1;
+	--leading-subheading: 1.2;
+	--leading-body: 1.6;
+	--leading-small: 1.5;
+	--leading-mono: 1.5;
 
-  /* Letter Spacing */
-  --tracking-display: -0.03em;
-  --tracking-heading: -0.02em;
-  --tracking-subheading: -0.01em;
-  --tracking-caption: 0.01em;
+	/* Letter Spacing */
+	--tracking-display: -0.03em;
+	--tracking-heading: -0.02em;
+	--tracking-subheading: -0.01em;
+	--tracking-caption: 0.01em;
 
-  /* Font Weights */
-  --weight-black: 900;
-  --weight-bold: 700;
-  --weight-semibold: 600;
-  --weight-medium: 500;
-  --weight-regular: 400;
-  --weight-light: 300;
+	/* Font Weights */
+	--weight-black: 900;
+	--weight-bold: 700;
+	--weight-semibold: 600;
+	--weight-medium: 500;
+	--weight-regular: 400;
+	--weight-light: 300;
 }

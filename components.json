@@ -21,8 +21,8 @@
 	},
 	"menuColor": "default",
 	"menuAccent": "subtle",
-  "registries": {
-    "@magicui": "https://magicui.design/r",
-    "@aceternity": "https://ui.aceternity.com/r"
-  }
+	"registries": {
+		"@magicui": "https://magicui.design/r",
+		"@aceternity": "https://ui.aceternity.com/r"
+	}
 }

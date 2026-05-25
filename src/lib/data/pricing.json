@@ -1,111 +1,157 @@
 {
-  "sectionTitle": "Your Security Path",
-  "sectionSubtitle": "Ways to engage with us — from a single assessment to ongoing partnership. Every package bundles our capabilities into a clear path forward. Assessment is baked into every engagement, never extra.",
-  "packages": [
-    {
-      "name": "Clarity",
-      "icon": "Search",
-      "subtitle": "See where you stand. Know what to fix first.",
-      "flag": "Start Here",
-      "domains": ["Assessment", "Risk", "Compliance"],
-      "body": "A comprehensive assessment to identify vulnerabilities, map your compliance posture, and define a clear path forward.",
-      "bullets": ["Architecture Review", "Risk Prioritization", "Security Roadmap", "Vulnerability Assessment", "Remediation Guidance"],
-      "price": "$10K",
-      "timeline": "3-4 weeks",
-      "cta": "Reveal Your Posture",
-      "href": "/?subject=REQ_AUDIT#contact",
-      "variant": "primary"
-    },
-    {
-      "name": "Blueprint",
-      "icon": "PenTool",
-      "subtitle": "Security designed into your foundation from day one.",
-      "domains": ["Architecture", "Hardening"],
-      "body": "Build your next venture on a solid foundation with security baked into every layer.",
-      "bullets": ["Secure Architecture Design", "Threat Modeling", "IaC Starter Templates", "Implementation Guide", "Review Cycle"],
-      "price": "$20K",
-      "timeline": "5-7 weeks",
-      "cta": "Design Your Foundation",
-      "href": "/?subject=START_BUILD#contact",
-      "variant": "secondary"
-    },
-    {
-      "name": "Independence",
-      "icon": "Mountain",
-      "subtitle": "Break free from cloud dependency. Own your infrastructure.",
-      "flag": "Flagship",
-      "domains": ["Infrastructure", "Migration", "Cost Optimization"],
-      "body": "Accelerate your growth with a robust, scalable, and secure infrastructure plan — with architecture and hardening included.",
-      "bullets": ["Infrastructure Assessment", "Migration Planning", "Security Architecture (included)", "Infrastructure Hardening", "Cost Optimization"],
-      "price": "$22K",
-      "timeline": "5-8 weeks",
-      "cta": "Chart Your Path",
-      "href": "/?subject=INIT_MIGRATION#contact",
-      "variant": "flagship"
-    },
-    {
-      "name": "Clearance",
-      "icon": "BadgeCheck",
-      "subtitle": "Audit-ready. Enterprise-deal-ready.",
-      "domains": ["Compliance", "Audit", "Governance"],
-      "body": "Ensure your systems meet industry compliance standards and are ready for rigorous audits.",
-      "bullets": ["Readiness Gap Analysis", "Policy and Control Framework", "Audit Preparation", "Compliance Alignment", "Remediation Roadmap"],
-      "price": "$22K",
-      "timeline": "6-8 weeks",
-      "cta": "Get Audit-Ready",
-      "href": "/?subject=PING_HELLO#contact",
-      "variant": "secondary"
-    },
-    {
-      "name": "Beacon",
-      "icon": "Radio",
-      "subtitle": "Your long-term security architect — always available, never required.",
-      "flag": "Ongoing",
-      "domains": ["Advisory", "Architecture", "Training"],
-      "body": "Monthly reviews, strategic guidance, incident advisory, and architectural evolution. A fractional security architect who knows your stack.",
-      "bullets": ["Security Strategy", "Incident Advisory", "Architecture Review", "Compliance Updates", "Priority Access"],
-      "price": "$8K/mo",
-      "timeline": "Ongoing",
-      "cta": "Let's Talk About Advisory",
-      "href": "/?subject=START_BUILD#contact",
-      "variant": "secondary"
-    }
-  ],
-  "addons": [
-    {
-      "name": "Build Partnership",
-      "icon": "Wrench",
-      "subtitle": "Add to any blueprint",
-      "body": "Your team builds it. We make sure they build it right. Weekly syncs, async access, training, milestone reviews, decision log, and post-implementation validation.",
-      "price": "Starting from +$25K",
-      "cta": "Add Guided Implementation",
-      "href": "/?subject=START_BUILD#contact"
-    },
-    {
-      "name": "Observability",
-      "icon": "Eye",
-      "subtitle": "Add to any engagement",
-      "body": "Proactive monitoring and scheduled reports. Automated critical alerts, bi-weekly reports, and engineer review. Not a 24/7 SOC — but critical findings reach you fast.",
-      "price": "$2K+/mo + $3K setup",
-      "cta": "Add Monitoring",
-      "href": "/?subject=REQ_AUDIT#contact"
-    }
-  ],
-  "fullConstellation": {
-    "name": "Full Constellation",
-    "icon": "Stars",
-    "subtitle": "The complete security overhaul. Every capability. One engagement.",
-    "body": "From assessment to architecture, DevSecOps to compliance, sovereignty to advisory — the most comprehensive engagement we offer. For teams ready to transform their security posture end to end.",
-    "price": "$120K",
-    "timeline": "6-9 months",
-    "cta": "Explore Full Constellation",
-    "href": "/full-constellation",
-    "includes": ["First Light Assessment", "Architecture Blueprint", "DevSecOps Pipeline", "Compliance Readiness", "Sovereign Infrastructure", "6-9 Months Advisory"]
-  },
-  "everyEngagement": [
-    { "title": "Discovery & Assessment", "desc": "Baked in, never extra. Every engagement starts with understanding your environment." },
-    { "title": "Blueprint + Starter Templates", "desc": "Working artifacts your team can build from — not just recommendations." },
-    { "title": "Knowledge Transfer", "desc": "Your team learns to maintain what we design. That's the point." }
-  ],
-  "footer": "Starting from pricing. Exact cost determined after a free discovery call. What influences final pricing: scope complexity, infrastructure size, number of environments, compliance frameworks required, team size. We scope every engagement individually — and we're transparent about what drives cost."
+	"sectionTitle": "Your Security Path",
+	"sectionSubtitle": "Ways to engage with us — from a single assessment to ongoing partnership. Every package bundles our capabilities into a clear path forward. Assessment is baked into every engagement, never extra.",
+	"packages": [
+		{
+			"name": "Clarity",
+			"icon": "Search",
+			"subtitle": "See where you stand. Know what to fix first.",
+			"flag": "Start Here",
+			"domains": ["Assessment", "Risk", "Compliance"],
+			"body": "A comprehensive assessment to identify vulnerabilities, map your compliance posture, and define a clear path forward.",
+			"bullets": [
+				"Architecture Review",
+				"Risk Prioritization",
+				"Security Roadmap",
+				"Vulnerability Assessment",
+				"Remediation Guidance"
+			],
+			"price": "$10K",
+			"timeline": "3-4 weeks",
+			"cta": "Reveal Your Posture",
+			"href": "/?subject=REQ_AUDIT#contact",
+			"variant": "primary"
+		},
+		{
+			"name": "Blueprint",
+			"icon": "PenTool",
+			"subtitle": "Security designed into your foundation from day one.",
+			"domains": ["Architecture", "Hardening"],
+			"body": "Build your next venture on a solid foundation with security baked into every layer.",
+			"bullets": [
+				"Secure Architecture Design",
+				"Threat Modeling",
+				"IaC Starter Templates",
+				"Implementation Guide",
+				"Review Cycle"
+			],
+			"price": "$20K",
+			"timeline": "5-7 weeks",
+			"cta": "Design Your Foundation",
+			"href": "/?subject=START_BUILD#contact",
+			"variant": "secondary"
+		},
+		{
+			"name": "Independence",
+			"icon": "Mountain",
+			"subtitle": "Break free from cloud dependency. Own your infrastructure.",
+			"flag": "Flagship",
+			"domains": ["Infrastructure", "Migration", "Cost Optimization"],
+			"body": "Accelerate your growth with a robust, scalable, and secure infrastructure plan — with architecture and hardening included.",
+			"bullets": [
+				"Infrastructure Assessment",
+				"Migration Planning",
+				"Security Architecture (included)",
+				"Infrastructure Hardening",
+				"Cost Optimization"
+			],
+			"price": "$22K",
+			"timeline": "5-8 weeks",
+			"cta": "Chart Your Path",
+			"href": "/?subject=INIT_MIGRATION#contact",
+			"variant": "flagship"
+		},
+		{
+			"name": "Clearance",
+			"icon": "BadgeCheck",
+			"subtitle": "Audit-ready. Enterprise-deal-ready.",
+			"domains": ["Compliance", "Audit", "Governance"],
+			"body": "Ensure your systems meet industry compliance standards and are ready for rigorous audits.",
+			"bullets": [
+				"Readiness Gap Analysis",
+				"Policy and Control Framework",
+				"Audit Preparation",
+				"Compliance Alignment",
+				"Remediation Roadmap"
+			],
+			"price": "$22K",
+			"timeline": "6-8 weeks",
+			"cta": "Get Audit-Ready",
+			"href": "/?subject=PING_HELLO#contact",
+			"variant": "secondary"
+		},
+		{
+			"name": "Beacon",
+			"icon": "Radio",
+			"subtitle": "Your long-term security architect — always available, never required.",
+			"flag": "Ongoing",
+			"domains": ["Advisory", "Architecture", "Training"],
+			"body": "Monthly reviews, strategic guidance, incident advisory, and architectural evolution. A fractional security architect who knows your stack.",
+			"bullets": [
+				"Security Strategy",
+				"Incident Advisory",
+				"Architecture Review",
+				"Compliance Updates",
+				"Priority Access"
+			],
+			"price": "$8K/mo",
+			"timeline": "Ongoing",
+			"cta": "Let's Talk About Advisory",
+			"href": "/?subject=START_BUILD#contact",
+			"variant": "secondary"
+		}
+	],
+	"addons": [
+		{
+			"name": "Build Partnership",
+			"icon": "Wrench",
+			"subtitle": "Add to any blueprint",
+			"body": "Your team builds it. We make sure they build it right. Weekly syncs, async access, training, milestone reviews, decision log, and post-implementation validation.",
+			"price": "Starting from +$25K",
+			"cta": "Add Guided Implementation",
+			"href": "/?subject=START_BUILD#contact"
+		},
+		{
+			"name": "Observability",
+			"icon": "Eye",
+			"subtitle": "Add to any engagement",
+			"body": "Proactive monitoring and scheduled reports. Automated critical alerts, bi-weekly reports, and engineer review. Not a 24/7 SOC — but critical findings reach you fast.",
+			"price": "$2K+/mo + $3K setup",
+			"cta": "Add Monitoring",
+			"href": "/?subject=REQ_AUDIT#contact"
+		}
+	],
+	"fullConstellation": {
+		"name": "Full Constellation",
+		"icon": "Stars",
+		"subtitle": "The complete security overhaul. Every capability. One engagement.",
+		"body": "From assessment to architecture, DevSecOps to compliance, sovereignty to advisory — the most comprehensive engagement we offer. For teams ready to transform their security posture end to end.",
+		"price": "$120K",
+		"timeline": "6-9 months",
+		"cta": "Explore Full Constellation",
+		"href": "/solutions/full-constellation",
+		"includes": [
+			"First Light Assessment",
+			"Architecture Blueprint",
+			"DevSecOps Pipeline",
+			"Compliance Readiness",
+			"Sovereign Infrastructure",
+			"6-9 Months Advisory"
+		]
+	},
+	"everyEngagement": [
+		{
+			"title": "Discovery & Assessment",
+			"desc": "Baked in, never extra. Every engagement starts with understanding your environment."
+		},
+		{
+			"title": "Blueprint + Starter Templates",
+			"desc": "Working artifacts your team can build from — not just recommendations."
+		},
+		{
+			"title": "Knowledge Transfer",
+			"desc": "Your team learns to maintain what we design. That's the point."
+		}
+	],
+	"footer": "Starting from pricing. Exact cost determined after a free discovery call. What influences final pricing: scope complexity, infrastructure size, number of environments, compliance frameworks required, team size. We scope every engagement individually — and we're transparent about what drives cost."
 }

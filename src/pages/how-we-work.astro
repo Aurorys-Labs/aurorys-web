@@ -1,0 +1,276 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+import { EngagementLogistics } from "../components/react/how-we-work/EngagementLogistics";
+import { FAQAccordion } from "../components/react/how-we-work/FAQAccordion";
+import { FrameworkAlignment } from "../components/react/how-we-work/FrameworkAlignment";
+import { VerticalSlices } from "../components/react/how-we-work/VerticalSlices";
+
+import {
+	Box,
+	Compass,
+	GraduationCap,
+	PenTool,
+	Radio,
+	Search,
+} from "lucide-react";
+import howData from "../lib/data/how-we-work-extended.json";
+
+// Icon mapping for 5-step method
+const iconMap = {
+	Search,
+	PenTool,
+	Compass,
+	GraduationCap,
+	Radio,
+};
+---
+
+<BaseLayout title={`${howData.hero.title} | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image7.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Hero Section */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width px-6 text-center space-y-6">
+      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent mb-6 leading-tight tracking-tight">
+        {howData.hero.title}
+      </h1>
+      <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+        {howData.hero.subtitle}
+      </p>
+    </div>
+  </section>
+
+  {/* 1. The 5-Step Method */}
+  <section class="relative z-10 py-16 px-6">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto mb-12 text-center">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+          Our Five-Step Method
+        </h2>
+        <p class="text-white/60 text-base font-sans leading-relaxed">
+          How we take your organization from initial assessment to ongoing security maturity.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.35)] text-left">
+          <div class="space-y-8">
+            {howData.steps.map((step, idx) => {
+              const IconComponent = iconMap[step.icon] || Search;
+
+              return (
+                <div class="flex items-start gap-6 relative group">
+                  <div class="flex flex-col items-center shrink-0">
+                    <div
+                      class="w-12 h-12 rounded-xl flex items-center justify-center border border-white/[0.08]"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(0,232,160,0.05), rgba(167,139,250,0.05))",
+                        color: "var(--aurora-green-solid)",
+                      }}
+                    >
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    {idx < howData.steps.length - 1 && (
+                      <div class="w-px h-28 my-2 bg-gradient-to-b from-[var(--aurora-green-solid)]/40 via-[var(--aurora-violet-solid)]/20 to-transparent" />
+                    )}
+                  </div>
+                  <div class="pt-1 space-y-2">
+                    <h3 class="font-heading font-medium text-xl text-[var(--text-stellar)]">
+                      {step.title}
+                    </h3>
+                    <p class="text-white/80 text-sm font-sans leading-relaxed">
+                      {step.body}
+                    </p>
+                    <div class="text-xs font-mono text-[var(--text-muted)] pt-1">
+                      {step.whatHappens}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 2. How We Actually Work */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <VerticalSlices data={howData.howWeActuallyWork} client:load />
+    </div>
+  </section>
+
+  {/* 3. Shared Responsibility Model */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6 text-left space-y-8">
+      <div class="max-w-3xl mb-12 text-left">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+          {howData.sharedResponsibility.title}
+        </h2>
+        <p class="text-white/60 text-base font-sans leading-relaxed">
+          {howData.sharedResponsibility.subtitle}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* We are responsible */}
+        <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] space-y-4">
+          <h3 class="text-sm font-bold text-[var(--aurora-green-solid)] uppercase tracking-wider">
+            What We Are Responsible For
+          </h3>
+          <ul class="space-y-3 text-sm text-white/80 font-sans">
+            {howData.sharedResponsibility.firmResponsibilities.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <Box className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* You are responsible */}
+        <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] space-y-4">
+          <h3 class="text-sm font-bold text-[var(--aurora-blue-solid)] uppercase tracking-wider">
+            What You Are Responsible For
+          </h3>
+          <ul class="space-y-3 text-sm text-white/80 font-sans">
+            {howData.sharedResponsibility.clientResponsibilities.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <Box className="w-4 h-4 text-[var(--aurora-blue-solid)] shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* What neither guarantees */}
+      <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.2)] space-y-4">
+        <h3 class="text-sm font-bold text-white/50 uppercase tracking-wider">
+          What Neither Of Us Can Guarantee
+        </h3>
+        <ul class="space-y-3 text-sm text-white/70 font-sans">
+          {howData.sharedResponsibility.neitherGuarantees.map((item) => {
+            const [boldPart, rest] = item.split(". ");
+            return (
+              <li class="flex items-start gap-2.5 leading-relaxed">
+                <Box className="w-4 h-4 text-white/30 shrink-0 mt-0.5" />
+                <span>
+                  <strong class="text-[var(--text-stellar)]">{boldPart}.</strong> {rest}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div class="text-center pt-4">
+        <p class="font-serif italic text-xl text-[var(--text-stellar)]">
+          "You own the outcome — because that's the only way it stays strong after we leave."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* 4. Built on Recognized Frameworks */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <FrameworkAlignment data={howData.frameworkAlignment} client:load />
+    </div>
+  </section>
+
+  {/* 5. Blueprint vs. Build Partnership */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6 text-left space-y-8">
+      <div class="max-w-3xl mb-12 text-left">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+          {howData.blueprintVsBuild.title}
+        </h2>
+        <p class="text-white/60 text-base font-sans leading-relaxed">
+          {howData.blueprintVsBuild.subtitle}
+        </p>
+      </div>
+
+      <div class="glass-card rounded-2xl border border-white/[0.06] backdrop-blur-xl bg-[rgba(13,17,23,0.25)] overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-white/[0.08] bg-white/[0.02]">
+                <th class="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] w-2/5">Capability</th>
+                <th class="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] text-center w-1/4">Blueprint</th>
+                <th class="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] text-center w-1/3">Build Partnership</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.04] font-sans text-sm text-white/80">
+              {howData.blueprintVsBuild.rows.map((row) => (
+                <tr class="hover:bg-white/[0.01] transition-colors">
+                  <td class="py-4 px-6 font-semibold text-[var(--text-stellar)]">{row.label}</td>
+                  <td class={`py-4 px-6 text-center ${row.blueprint === "Not included" || row.blueprint === "✗" ? "text-white/20" : "text-white/80"}`}>
+                    {row.blueprint}
+                  </td>
+                  <td class="py-4 px-6 text-center text-[var(--aurora-blue-solid)] font-semibold">{row.partnership}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="py-4 px-6 bg-white/[0.01] border-t border-white/[0.06] text-xs text-[var(--text-muted)] text-center leading-relaxed">
+          {howData.blueprintVsBuild.closingNote}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 6. How Engagements Actually Work */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <EngagementLogistics data={howData.logistics} client:load />
+    </div>
+  </section>
+
+  {/* 7. FAQ */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <FAQAccordion faqs={howData.faqs} client:load />
+    </div>
+  </section>
+
+  {/* Cross Links & CTA */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center">
+    <div class="content-width px-6">
+      <h3 class="font-sans font-bold text-2xl text-[var(--text-stellar)] mb-8">
+        {howData.crossLinks.title}
+      </h3>
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-sans font-medium">
+        {howData.crossLinks.links.map((link) => (
+          <a
+            href={link.href}
+            class="text-[var(--aurora-blue-solid)] hover:text-white transition-colors underline underline-offset-4"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,101 @@
+{
+	"hero": {
+		"title": "Trust Center",
+		"subtitle": "We practice what we advise. Here's how we approach security for our own operations."
+	},
+	"principles": {
+		"title": "Our Security Principles",
+		"intro": "Security isn't something we reserve for clients. It's how we operate. The same principles that guide our engagements guide our own infrastructure.",
+		"items": [
+			{
+				"bold": "Self-hosted first.",
+				"body": "We run our own infrastructure wherever possible. Not because cloud is inherently insecure — but because owning your infrastructure gives you control over your data, your uptime, and your security posture. We practice sovereignty because we believe in it."
+			},
+			{
+				"bold": "Minimal attack surface.",
+				"body": "We don't expose services to the public internet unless they need to be there. Internal tools stay internal. Management interfaces stay behind VPN. If it doesn't need to be reachable, it isn't. We treat our attack surface the way we'd treat yours — with suspicion."
+			},
+			{
+				"bold": "Encryption everywhere.",
+				"body": "Data in transit is encrypted. Data at rest is encrypted. Communications between our team and with clients use end-to-end encrypted channels. We don't transmit sensitive information over unencrypted channels. Ever."
+			},
+			{
+				"bold": "Least privilege by default.",
+				"body": "Every system, every user, every service gets the minimum access required to function. No blanket permissions. No shared accounts. No standing access where temporary access will do."
+			},
+			{
+				"bold": "Defense in depth.",
+				"body": "No single control is a silver bullet. We layer security controls — network segmentation, authentication, monitoring, hardening — so that the failure of one control doesn't compromise the entire system."
+			},
+			{
+				"bold": "Assume breach.",
+				"body": "We design our infrastructure assuming that any single control can fail. What happens when the VPN goes down? What happens when an access key is compromised? We have answers to these questions before they become emergencies."
+			}
+		]
+	},
+	"dataHandling": {
+		"title": "How We Handle Your Data",
+		"intro": "We collect the minimum data necessary to deliver our engagements. Here's what we collect, how we store it, and when we delete it.",
+		"items": [
+			{
+				"bold": "What we collect:",
+				"body": "Client infrastructure details, architecture documentation, vulnerability findings, compliance evidence, and communication records. All collected with explicit consent during engagement."
+			},
+			{
+				"bold": "How we store it:",
+				"body": "Client data is stored on encrypted, self-hosted infrastructure. We don't use third-party cloud storage for client deliverables or sensitive findings. Access is restricted to the engagement team."
+			},
+			{
+				"bold": "How long we keep it:",
+				"body": "Engagement data is retained for the duration of the engagement plus 12 months for reference. After that, client data is deleted upon request. We don't hold data hostage."
+			},
+			{
+				"bold": "Who has access:",
+				"body": "Only the senior security architect assigned to your engagement. No junior staff. No subcontractors. No one who isn't directly involved in your engagement sees your data."
+			},
+			{
+				"bold": "What we never do:",
+				"body": "We never sell client data. We never use client data for marketing. We never share findings from one client with another. Your security posture is yours — not our case study."
+			}
+		]
+	},
+	"infrastructure": {
+		"title": "Our Infrastructure",
+		"paragraphs": [
+			"We walk the talk. Our infrastructure follows the same sovereignty principles we recommend to clients.",
+			"Self-hosted infrastructure for internal tools and client deliverables. VPN-protected management interfaces. Encrypted communications. Automated security monitoring. Regular vulnerability assessments of our own systems.",
+			"We don't share specific tool versions, network topologies, or configuration details publicly. Enough to demonstrate we practice what we advise — not enough to give an attacker a blueprint. If you want to discuss our infrastructure in detail, that's a conversation — not a web page."
+		]
+	},
+	"disclosure": {
+		"title": "Responsible Disclosure",
+		"intro": "If you discover a vulnerability in our systems, we want to know about it. We take all reports seriously and will respond promptly.",
+		"howToReport": "Email security@auroryslabs.com with details of the vulnerability. Include enough information for us to reproduce and verify the finding.",
+		"commitments": [
+			"Acknowledge your report within 48 hours",
+			"Provide a timeline for remediation within 5 business days",
+			"Notify you when the vulnerability is resolved",
+			"Credit you in our disclosure timeline (if you want it)"
+		],
+		"asks": [
+			"Don't exploit the vulnerability beyond what's necessary to demonstrate it",
+			"Don't access, modify, or delete data that isn't yours",
+			"Give us reasonable time to remediate before disclosing publicly"
+		],
+		"conclusion": "We believe responsible disclosure makes the internet safer for everyone. We honor it."
+	},
+	"compliance": {
+		"title": "Compliance Alignment",
+		"paragraphs": [
+			"Our own operations are guided by the same frameworks we recommend to clients: NIST CSF, CIS Benchmarks, and OWASP guidelines. We maintain alignment with these frameworks in our internal security practices.",
+			"We don't publish specific compliance certifications at this time. As the firm grows, we'll pursue formal certifications that align with our clients' requirements."
+		]
+	},
+	"crossLinks": {
+		"title": "Have questions about our security?",
+		"links": [
+			{ "label": "Contact Us", "href": "/contact" },
+			{ "label": "Explore Our Solutions", "href": "/solutions" }
+		]
+	}
+}

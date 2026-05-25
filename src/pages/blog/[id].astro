@@ -1,0 +1,372 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/astro/Footer.astro";
+import { AuroraOverlay } from "../../components/react/AuroraOverlay";
+import { MobileNav } from "../../components/react/MobileNav";
+import { Navbar } from "../../components/react/Navbar";
+import { TableOfContents } from "../../components/react/compliance/TableOfContents";
+
+import blogPosts from "../../lib/data/blog-posts.json";
+
+export function getStaticPaths() {
+	return blogPosts.map((post) => ({
+		params: { id: post.id },
+	}));
+}
+
+const { id } = Astro.params;
+
+// Rich long-form blog content aligned with Aurorys tone
+const blogContentMap: Record<
+	string,
+	{
+		title: string;
+		category: string;
+		date: string;
+		readTime: string;
+		prestigeQuote: string;
+		prestigeCite: string;
+		sections: { id: string; title: string; paragraphs: string[] }[];
+		graphicTitle: string;
+		graphicColors: string; // gradient classes
+		ctaSubject: string;
+	}
+> = {
+	"saas-startup-assessment": {
+		title: "How We'd Assess a SaaS Startup: A Hypothetical Walkthrough",
+		category: "Methodology",
+		date: "May 2026",
+		readTime: "6 min read",
+		prestigeQuote:
+			"We'd rather expose a critical vulnerability today than read about your breach in the news tomorrow.",
+		prestigeCite: "The Assessment Principle",
+		graphicTitle: "SaaS Threat Model Blueprint",
+		graphicColors:
+			"from-cyan-500/20 via-blue-500/10 to-transparent border-cyan-500/20",
+		ctaSubject: "SOLUTIONS_FIRST_LIGHT",
+		sections: [
+			{
+				id: "introduction",
+				title: "Introduction: Standard Audits Are Theater",
+				paragraphs: [
+					"Most startup security audits are a checkboxes game. An external auditor sends a spreadsheet, your team checks 'Yes' to password complexities, and a certificate is minted. Meanwhile, your production database has a wildcard admin role accessible from any network endpoint, and your developers are committing API keys directly to git.",
+					"We do things differently. Here is exactly how we would run a first-principles security posture assessment for a hypothetical SaaS startup.",
+				],
+			},
+			{
+				id: "step1-identity",
+				title: "1. Probe the Identity Perimeter",
+				paragraphs: [
+					"Our first stop is identity controls. We don't just ask if you have MFA enabled; we verify if your single sign-on (SSO) provider covers your third-party deployment tools and cloud consoles. Wildcard permissions on administrative roles represent a massive attack surface. We audit access boundaries to ensure least-privilege configurations.",
+				],
+			},
+			{
+				id: "step2-network",
+				title: "2. Verify Network Isolation boundaries",
+				paragraphs: [
+					"Next, we map the network topology. Production database nodes, Redis caches, and admin tooling endpoints should never live on public networks. We check for public access configurations and ensure that database interfaces are securely situated inside private subnets, behind zero-trust access proxies or private VPN gates.",
+				],
+			},
+			{
+				id: "step3-pipeline",
+				title: "3. Check Pipeline & Code Integration",
+				paragraphs: [
+					"Security isn't a check at release; it is woven into every commit. We audit your CI/CD pipelines to ensure secrets scanning tools are actively configured. Leaving hardcoded API keys in repository branches is the single most common trigger for modern data exposures.",
+				],
+			},
+			{
+				id: "conclusion",
+				title: "Conclusion: Roadmap Over Checklists",
+				paragraphs: [
+					"An assessment shouldn't leave you with anxiety. It should leave you with a prioritized, engineering-ready roadmap. In our First Light engagements, we translate findings directly into actionable tickets your team can resolve in sprints.",
+				],
+			},
+		],
+	},
+	"actionable-assessments": {
+		title:
+			"How to Make Your Security Assessment Actionable (Instead of Shelf-Worthy)",
+		category: "Security",
+		date: "May 2026",
+		readTime: "4 min read",
+		prestigeQuote:
+			"A recommendation you can't translate to a commit is just a waste of paper.",
+		prestigeCite: "Actionable Security Doctrine",
+		graphicTitle: "Audit-to-Ticket Pipeline",
+		graphicColors:
+			"from-emerald-500/20 via-teal-500/10 to-transparent border-emerald-500/20",
+		ctaSubject: "SOLUTIONS_SPRINT",
+		sections: [
+			{
+				id: "the-pdf-trap",
+				title: "The PDF Trap",
+				paragraphs: [
+					"Every security consultant delivers a report. Usually, it's a 150-page PDF filled with generic regulatory speak, compliance tables, and scary-looking risk scores. The founder reads the first five pages, gets overwhelmed, and files it away. The PDF sits on the virtual shelf gathering dust, and the systems remain exactly as vulnerable as before.",
+					"To make security work, assessments must be structured as actionable backlogs.",
+				],
+			},
+			{
+				id: "ticket-structure",
+				title: "Translating Findings to Engineering Tasks",
+				paragraphs: [
+					"Every security finding should read like an engineering task. Instead of writing 'Database access is insecure,' write a clear specification: 'Restrict PostgreSQL instance security group to allow ingress only from private subnet (10.0.1.0/24).' Provide the exact code snippets or configurations required so developers don't have to guess.",
+				],
+			},
+			{
+				id: "remediation-sprints",
+				title: "Run Remediation Sprints",
+				paragraphs: [
+					"Don't try to fix everything at once. Focus on remediation sprints: group tickets by context (e.g., identity first, network boundary second) and resolve them in 2-week sprints. Bounding the effort keeps engineering teams focused.",
+				],
+			},
+		],
+	},
+	"blueprint-model": {
+		title:
+			"The Blueprint Model: Why We Deliver Architecture, Not Just Recommendations",
+		category: "Methodology",
+		date: "May 2026",
+		readTime: "5 min read",
+		prestigeQuote:
+			"True security is a design property, not an afterthought checklist.",
+		prestigeCite: "Design Principles",
+		graphicTitle: "Architecture Blueprint Scheme",
+		graphicColors:
+			"from-violet-500/20 via-purple-500/10 to-transparent border-violet-500/20",
+		ctaSubject: "SOLUTIONS_FOUNDATION",
+		sections: [
+			{
+				id: "consulting-flaws",
+				title: "The Flaws of Traditional Security Consulting",
+				paragraphs: [
+					"Standard consultancies operate on recommendations: they analyze, find problems, write down suggestions, and hand them off. But writing 'use infrastructure-as-code' isn't helpful unless you also supply the baseline repository templates to start from.",
+					"We believe security is built through design and blueprints.",
+				],
+			},
+			{
+				id: "blueprint-philosophy",
+				title: "What is a Security Blueprint?",
+				paragraphs: [
+					"A security blueprint is production-ready architecture. It includes detailed system designs, threat models, hardened templates (e.g., Terraform, Pulumi, or Docker configs), and step-by-step guides. We deliver configurations your engineers can clone and deploy immediately.",
+				],
+			},
+			{
+				id: "retaining-keys",
+				title: "You Own the Baseline",
+				paragraphs: [
+					"Blueprints ensure you retain sovereignty over your infrastructure. We don't manage your servers. We deploy the blueprints, train your team on how they work, and transfer full ownership.",
+				],
+			},
+		],
+	},
+	"transparency-security": {
+		title: "Why We Don't Guarantee Security (And Why That's Honest, Not Lazy)",
+		category: "Methodology",
+		date: "May 2026",
+		readTime: "4 min read",
+		prestigeQuote: "Absolute security is a myth. Resilience is real.",
+		prestigeCite: "The Sovereignty Thesis",
+		graphicTitle: "Resilience Bounds Analysis",
+		graphicColors:
+			"from-rose-500/20 via-pink-500/10 to-transparent border-rose-500/20",
+		ctaSubject: "SOLUTIONS_FULL_CONSTELLATION",
+		sections: [
+			{
+				id: "honesty-in-security",
+				title: "The Honest Truth About Risk",
+				paragraphs: [
+					"If a security consultant guarantees that your systems will never be breached, they are lying or selling you insurance. Absolute protection does not exist in network security. Adversaries change, new software vulnerabilities emerge, and human configurations can drift.",
+					"An honest approach focuses on residual risk and operational resilience.",
+				],
+			},
+			{
+				id: "resilience-properties",
+				title: "Resilience Over Guarantees",
+				paragraphs: [
+					"Resilience means your systems can withstand failures, restrict lateral movement, and recover immediately. If an endpoint is compromised, network zoning restricts access to other zones. If a server is corrupted, an immutable snapshot allows Day-0 recovery in minutes.",
+				],
+			},
+			{
+				id: "sovereign-control",
+				title: "True Ownership of Risks",
+				paragraphs: [
+					"We help you understand residual risks so you can make informed decisions. We don't hide findings behind compliance jargon; we outline them directly so your engineers can actively monitor and maintain control.",
+				],
+			},
+		],
+	},
+	"startup-quick-wins": {
+		title:
+			"5 Things Every Startup Should Do This Week for Security (That Cost Nothing)",
+		category: "Security",
+		date: "May 2026",
+		readTime: "5 min read",
+		prestigeQuote: "Lock your doors before you start buying vault-grade locks.",
+		prestigeCite: "Hygiene Priority",
+		graphicTitle: "Day-0 Security Wins Checklist",
+		graphicColors:
+			"from-amber-500/20 via-yellow-500/10 to-transparent border-amber-500/20",
+		ctaSubject: "SOLUTIONS_CLEARANCE",
+		sections: [
+			{
+				id: "budget-myths",
+				title: "The Budget Myth",
+				paragraphs: [
+					"Many early-stage teams believe security is a luxury that requires expensive software, compliance frameworks, or dedicated hires. But the vast majority of cybersecurity compromises target simple, basic hygiene failures that cost nothing to resolve.",
+				],
+			},
+			{
+				id: "five-wins",
+				title: "The 5 Essential Free Wins",
+				paragraphs: [
+					"1. Enforce Multi-Factor Authentication (MFA) across your team on SSO and admin portals.",
+					"2. Integrate a secrets scanning tool in git pipelines to catch hardcoded secrets before commits reach remote branches.",
+					"3. Remove public access endpoints from databases and Redis layers, keeping them strictly inside private subnets.",
+					"4. Enforce encrypted, automatic backups of production databases stored securely in a separate region.",
+					"5. Write down a basic recovery plan detailing who handles communications and what gets shut down during an incident.",
+				],
+			},
+			{
+				id: "the-first-commit",
+				title: "Build Habits Early",
+				paragraphs: [
+					"Securing a system with 5 employees is simple. Securing a system after you scale to 50 employees is a massive refactoring project. Set the habits early, starting with your first infrastructure code configurations.",
+				],
+			},
+		],
+	},
+};
+
+const post = blogContentMap[id] || blogContentMap["saas-startup-assessment"];
+const postMeta = blogPosts.find((p) => p.id === id) || blogPosts[0];
+const postTags = postMeta?.tags || [];
+---
+
+<BaseLayout title={`${post.title} | Blog | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image11.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Article Header */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width mx-auto px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-3 text-xs font-mono">
+          <span class="text-[var(--aurora-green-solid)] font-semibold uppercase tracking-wider">{post.category}</span>
+          <span class="text-white/40">•</span>
+          <span class="text-white/60">{post.date}</span>
+          <span class="text-white/40">•</span>
+          <span class="text-white/60">{post.readTime}</span>
+        </div>
+        <h1 class="font-sans font-bold text-3xl md:text-5xl lg:text-6xl text-[var(--text-stellar)] tracking-tight leading-tight mb-6">
+          {post.title}
+        </h1>
+        {postTags.length > 0 && (
+          <div class="flex flex-wrap justify-center gap-1.5 pt-2">
+            {postTags.map((tag) => (
+              <span class="backdrop-blur-sm text-[10px] px-2.5 py-0.5 rounded-full border border-white/10 bg-white/[0.03] text-white/60 font-mono font-medium">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {/* Article Content Layout */}
+  <section class="relative z-10 py-8 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+        {/* Sticky Sidebar Navigation Table of Contents */}
+        <div class="lg:col-span-3 lg:sticky lg:top-28 hidden lg:block">
+          <TableOfContents
+            items={post.sections.map((sec) => ({
+              id: sec.id,
+              label: sec.title.split(": ").length > 1 ? sec.title.split(": ")[1] : sec.title,
+            }))}
+            client:load
+          />
+        </div>
+
+        {/* Main Content Reading Panel */}
+        <div class="lg:col-span-9 space-y-16">
+
+          <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] space-y-8 font-sans text-white/95 leading-relaxed text-left text-base">
+
+            {/* Dynamic CSS/SVG Graphic Placeholder */}
+            <div class={`w-full h-48 md:h-64 rounded-2xl border bg-gradient-to-br ${post.graphicColors} flex flex-col items-center justify-center relative overflow-hidden group mb-8`}>
+              <div class="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+              <div class="absolute w-24 h-24 rounded-full bg-[var(--aurora-green-solid)]/10 blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+              <div class="text-center space-y-3 relative z-10 px-4">
+                <div class="text-[10px] font-mono font-bold tracking-widest text-[var(--text-muted)] uppercase">
+                  Infographic Placeholder
+                </div>
+                <div class="text-base md:text-lg font-bold text-[var(--text-stellar)]">
+                  {post.graphicTitle}
+                </div>
+                <p class="text-xs text-white/40 max-w-sm mx-auto">
+                  (Final SVG logo grid will be integrated here upon assets upload)
+                </p>
+              </div>
+            </div>
+
+            {post.sections.map((section) => (
+              <div id={section.id} class="scroll-mt-28 space-y-4">
+                <h2 class="font-sans font-bold text-2xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.04] pb-2">
+                  {section.title}
+                </h2>
+                {section.paragraphs.map((p) => (
+                  <p class="text-white/80 text-sm md:text-base leading-relaxed">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            ))}
+
+            {/* Prestige Statement Block */}
+            <div class="py-12 my-8 relative overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.01] px-6 text-center">
+              <div class="absolute inset-0 bg-[var(--aurora-green-solid)]/5 blur-3xl opacity-30 rounded-full" />
+              <blockquote class="font-serif italic text-2xl md:text-3xl text-[var(--text-stellar)] max-w-2xl mx-auto relative z-10 leading-snug">
+                "{post.prestigeQuote}"
+              </blockquote>
+              <cite class="block mt-4 text-xs font-sans text-[var(--text-muted)] tracking-wider uppercase font-semibold not-italic relative z-10">
+                — {post.prestigeCite}
+              </cite>
+            </div>
+
+          </div>
+
+          {/* Quick Back to Blog */}
+          <div class="flex justify-start">
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--aurora-green-solid)] hover:text-white transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Return to Insights list
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

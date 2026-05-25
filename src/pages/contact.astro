@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+
+const explorationLinks = [
+	{
+		label: "See How We Assess",
+		desc: "Read about our First Light methodology.",
+		href: "/how-we-work",
+	},
+	{
+		label: "Explore Security Paths",
+		desc: "Compare engagement packages and sizing.",
+		href: "/security-paths",
+	},
+	{
+		label: "Understand GRC Pillars",
+		desc: "Learn about Governance, Risk, and Compliance.",
+		href: "/compliance",
+	},
+	{
+		label: "Read Our Roots",
+		desc: "Our commitment toDigital Sovereignty.",
+		href: "/roots",
+	},
+];
+---
+
+<BaseLayout title="Contact Us | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image7.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Dedicated Contact Hero Banner */}
+  <section class="relative z-10 pt-32 pb-6 md:pt-40 md:pb-8">
+    <div class="content-width mx-auto px-6 text-center space-y-6">
+      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora leading-tight tracking-tight mb-6">
+        Secure Uplink
+      </h1>
+      <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+        Ready to build security capability rather than dependency? Establish a secure connection below.
+      </p>
+    </div>
+  </section>
+
+  {/* Main Contact Section */}
+  <div class="relative z-10 pb-16">
+    <ContactSection hideHeader={true} />
+  </div>
+
+  {/* Not ready to talk? Section */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-12">
+        <div class="space-y-4">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)]">
+          Not ready to talk yet?
+        </h2>
+        <p class="text-[var(--text-muted)] text-[var(--text-body)] font-sans max-w-xl mx-auto">
+          No hard sell. No pressure. Here's what to explore instead to understand how we operate.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        {explorationLinks.map((item) => (
+          <a
+            href={item.href}
+            class="glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-2 hover:border-white/[0.12] transition-colors group"
+          >
+            <h3 class="font-sans font-bold text-lg text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors flex items-center gap-1.5">
+              {item.label}
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </h3>
+            <p class="text-white/60 text-sm leading-relaxed font-sans">
+              {item.desc}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

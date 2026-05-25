@@ -1,38 +1,46 @@
 :root {
-  /* Dark Theme Glass Preset */
-  --glass-bg: linear-gradient(120deg, rgba(11, 13, 17, 0.3), rgba(7, 11, 16, 0.5));
-  --glass-blur: blur(24px);
-  --glass-saturate: saturate(160%);
+	/* Dark Theme Glass Preset */
+	--glass-bg: linear-gradient(
+		120deg,
+		rgba(11, 13, 17, 0.3),
+		rgba(7, 11, 16, 0.5)
+	);
+	--glass-blur: blur(24px);
+	--glass-saturate: saturate(160%);
 
-  /* Apple-Inspired Border Weights (top-left light source, ~30deg) */
-  --glass-border-top: 1.5px solid rgba(255, 255, 255, 0.18);
-  --glass-border-left: 1px solid rgba(255, 255, 255, 0.10);
-  --glass-border-right: 1px solid rgba(255, 255, 255, 0.04);
-  --glass-border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+	/* Apple-Inspired Border Weights (top-left light source, ~30deg) */
+	--glass-border-top: 1.5px solid rgba(255, 255, 255, 0.18);
+	--glass-border-left: 1px solid rgba(255, 255, 255, 0.1);
+	--glass-border-right: 1px solid rgba(255, 255, 255, 0.04);
+	--glass-border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+	--glass-border: 1px solid rgba(255, 255, 255, 0.08);
 
-  /* Glass Shadows */
-  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  --glass-shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+	/* Glass Shadows */
+	--glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+	--glass-shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
-  /* Glass Radius */
-  --glass-radius: 1.5rem;
-  --glass-radius-sm: 1rem;
-  --glass-radius-lg: 2rem;
+	/* Glass Radius */
+	--glass-radius: 1.5rem;
+	--glass-radius-sm: 1rem;
+	--glass-radius-lg: 2rem;
 
-  /* Light Theme Glass (reference) */
-  --glass-bg-light: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(245, 247, 250, 0.16));
-  --glass-border-light: 1px solid rgba(0, 0, 0, 0.06);
-  --glass-border-top-light: 1.5px solid rgba(255, 255, 255, 0.40);
-  --glass-shadow-light: 0 4px 24px rgba(0, 0, 0, 0.06);
-  --glass-shadow-inner-light: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	/* Light Theme Glass (reference) */
+	--glass-bg-light: linear-gradient(
+		180deg,
+		rgba(255, 255, 255, 0.12),
+		rgba(245, 247, 250, 0.16)
+	);
+	--glass-border-light: 1px solid rgba(0, 0, 0, 0.06);
+	--glass-border-top-light: 1.5px solid rgba(255, 255, 255, 0.4);
+	--glass-shadow-light: 0 4px 24px rgba(0, 0, 0, 0.06);
+	--glass-shadow-inner-light: inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Light Theme Override */
 .light {
-  --glass-bg: var(--glass-bg-light);
-  --glass-border: var(--glass-border-light);
-  --glass-border-top: var(--glass-border-top-light);
-  --glass-shadow: var(--glass-shadow-light);
-  --glass-shadow-inner: var(--glass-shadow-inner-light);
+	--glass-bg: var(--glass-bg-light);
+	--glass-border: var(--glass-border-light);
+	--glass-border-top: var(--glass-border-top-light);
+	--glass-shadow: var(--glass-shadow-light);
+	--glass-shadow-inner: var(--glass-shadow-inner-light);
 }

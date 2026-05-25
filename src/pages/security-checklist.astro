@@ -1,0 +1,170 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+
+const checklistSections = [
+	{
+		title: "Identity & Access Control",
+		items: [
+			{
+				id: "mfa",
+				text: "Enforce Multi-Factor Authentication (MFA) on all developer and administrator accounts.",
+			},
+			{
+				id: "sso",
+				text: "Centralize identity with a single sign-on (SSO) provider where possible.",
+			},
+			{
+				id: "least-privilege",
+				text: "Remove wildcard/admin roles from non-administrative service accounts.",
+			},
+		],
+	},
+	{
+		title: "Secrets & Coding Practices",
+		items: [
+			{
+				id: "secrets-scanner",
+				text: "Integrate secrets scanning (e.g., git-secrets or Trufflehog) in your CI/CD pipelines.",
+			},
+			{
+				id: "enc-transit",
+				text: "Enforce HTTPS/TLS for all communication endpoints, with no HTTP fallback allowed.",
+			},
+			{
+				id: "prepared-stmt",
+				text: "Enforce parameterized database queries or modern ORMs to eliminate SQL injections.",
+			},
+		],
+	},
+	{
+		title: "Infrastructure & Sovereignty",
+		items: [
+			{
+				id: "priv-network",
+				text: "Keep database servers, internal cache stores, and management tools in private subnets.",
+			},
+			{
+				id: "vpn-only",
+				text: "Place all SSH/management interfaces behind a VPN or Zero-Trust Access proxy.",
+			},
+			{
+				id: "backup-enc",
+				text: "Verify that infrastructure backups are encrypted at rest and stored across separate cloud regions/accounts.",
+			},
+		],
+	},
+	{
+		title: "Policy & Audit Readiness",
+		items: [
+			{
+				id: "log-retention",
+				text: "Store critical application and infrastructure audit logs for a minimum of 90 days.",
+			},
+			{
+				id: "inc-response",
+				text: "Draft a basic Incident Response playbook with contact details and breach disclosure steps.",
+			},
+			{
+				id: "vendor-assess",
+				text: "Conduct a basic security and compliance assessment of your tier-1 third-party vendors.",
+			},
+		],
+	},
+];
+---
+
+<BaseLayout title="Security Checklist | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image12.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <h1 class="font-heading font-semibold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora leading-tight tracking-tight">
+          Startup Security Checklist
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+          Essential security hygiene tasks for engineering teams building cloud-native products.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Checklist Interactive Section */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto space-y-12">
+
+        <div class="glass-card p-6 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.15)] mb-8">
+          <p class="text-white/80 text-sm leading-relaxed font-sans text-center">
+            Security isn't a checklist, but a checklist helps you avoid the most common, costly oversights.
+            Use this interactive planner to review your current posture. All state remains local to your browser.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          {checklistSections.map((section) => (
+            <div class="glass-card p-6 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.25)] space-y-4">
+              <h2 class="font-heading font-semibold text-lg text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">
+                {section.title}
+              </h2>
+
+              <div class="space-y-3">
+                {section.items.map((item) => (
+                  <label class="flex items-start gap-3.5 cursor-pointer group text-left">
+                    <input
+                      type="checkbox"
+                      id={item.id}
+                      class="mt-1 w-4 h-4 rounded border-white/20 bg-white/[0.02] text-[var(--aurora-green-solid)] focus:ring-[var(--aurora-green-solid)] focus:ring-offset-black cursor-pointer shrink-0 transition-colors"
+                    />
+                    <span class="text-sm text-white/80 group-hover:text-white transition-colors font-sans leading-relaxed">
+                      {item.text}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Dynamic Checklist State Script */}
+        <script>
+          // Load state from localStorage on page load
+          const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+          checkboxes.forEach((cb) => {
+            const inputEl = cb as HTMLInputElement;
+            const savedVal = localStorage.getItem(`checklist_${inputEl.id}`);
+            if (savedVal === 'true') {
+              inputEl.checked = true;
+            }
+
+            // Add listener to save state change
+            inputEl.addEventListener('change', () => {
+              localStorage.setItem(`checklist_${inputEl.id}`, inputEl.checked.toString());
+            });
+          });
+        </script>
+
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

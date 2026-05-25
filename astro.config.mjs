@@ -1,8 +1,8 @@
-// @ts-check
-import { defineConfig } from "astro/config";
+import path from "path";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
-import path from "path";
+// @ts-check
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,4 +17,3 @@ export default defineConfig({
 		},
 	},
 });
-

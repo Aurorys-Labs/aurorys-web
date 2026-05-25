@@ -1,0 +1,293 @@
+{
+	"hero": {
+		"title": "Find Your Path",
+		"subtitle": "Security isn't one size fits all. The right path depends on where you are, what you're protecting, and where you want to be. Here's how to figure it out."
+	},
+	"pathCards": [
+		{
+			"startingPoint": "I don't know what I don't know about my security",
+			"path": "First Light",
+			"pathId": "first-light"
+		},
+		{
+			"startingPoint": "I'm building something new and need security from the start",
+			"path": "Foundation",
+			"pathId": "foundation"
+		},
+		{
+			"startingPoint": "My CI/CD pipeline needs security gates",
+			"path": "Pulse",
+			"pathId": "pulse"
+		},
+		{
+			"startingPoint": "My next customer wants SOC 2 and I need to get audit-ready",
+			"path": "Clearance",
+			"pathId": "clearance"
+		},
+		{
+			"startingPoint": "My cloud bill keeps growing and I want infrastructure I own",
+			"path": "Escape Velocity",
+			"pathId": "escape-velocity"
+		},
+		{
+			"startingPoint": "I need ongoing security guidance but not a full-time hire",
+			"path": "Beacon",
+			"pathId": "beacon"
+		},
+		{
+			"startingPoint": "I have one specific problem that needs attention now",
+			"path": "Sprint",
+			"pathId": "sprint"
+		},
+		{
+			"startingPoint": "I need production-ready infrastructure deployed fast",
+			"path": "Surge",
+			"pathId": "surge"
+		},
+		{
+			"startingPoint": "I want the complete security transformation",
+			"path": "Full Constellation",
+			"pathId": "full-constellation"
+		}
+	],
+	"paths": [
+		{
+			"id": "first-light",
+			"title": "First Light — Security Posture Assessment",
+			"pills": ["Assessment", "Risk", "Compliance"],
+			"price": "Starting from $10K · 3-4 weeks",
+			"whenYouNeedThis": "You don't know what you don't know. Your security is whatever your team has had time for — which isn't much. Start here.",
+			"body": "A comprehensive review of your architecture, infrastructure, and compliance posture — delivering a prioritized roadmap that tells you exactly what to address, in what order, and why.",
+			"deliverables": [
+				"Architecture and infrastructure review",
+				"Vulnerability assessment and triage",
+				"Risk prioritization by business impact",
+				"Compliance posture evaluation",
+				"Security roadmap and remediation guidance"
+			],
+			"ifSourcedSeparately": "A standalone architecture review from one firm ($5K-$15K) + a vulnerability assessment from another ($5K-$10K) + a compliance evaluation from a third ($5K-$15K) — and none of them share context. We deliver all of it in one engagement, starting from $10K.",
+			"cta": {
+				"label": "Reveal Your Posture",
+				"href": "/?subject=FIRST_LIGHT#contact"
+			}
+		},
+		{
+			"id": "foundation",
+			"title": "Foundation — Security Architecture Blueprint",
+			"pills": ["Architecture", "Hardening"],
+			"price": "Starting from $20K · 5-7 weeks",
+			"whenYouNeedThis": "You're building something new — a product, a platform, a company. Security decisions made now compound. Get them right.",
+			"body": "A complete security architecture designed for your specific stack, team, and risk profile. Includes threat modeling, architecture design, IaC starter templates, implementation guide, and a review cycle to validate your team's work.",
+			"deliverables": [
+				"Threat model and risk assessment",
+				"Security architecture design",
+				"IaC starter templates (Terraform/Pulumi)",
+				"Implementation guide",
+				"Review cycle and validation",
+				"Knowledge transfer session"
+			],
+			"ifSourcedSeparately": "A standalone threat model from one firm ($5K-$15K) + architecture design from another ($10K-$30K) + IaC templates from a third ($5K-$15K) — and none of them share context. We deliver all of it in one engagement, starting from $20K.",
+			"cta": {
+				"label": "Design Your Foundation",
+				"href": "/?subject=FOUNDATION#contact"
+			}
+		},
+		{
+			"id": "pulse",
+			"title": "Pulse — DevSecOps Pipeline Blueprint",
+			"pills": ["DevSecOps", "Supply Chain", "Secrets"],
+			"price": "Starting from $20K · 5-7 weeks",
+			"whenYouNeedThis": "Your CI/CD pipeline moves fast — but security gates are missing, manual, or bolted on after the fact. Time to fix that.",
+			"body": "A security-first CI/CD pipeline design — SAST, DAST, dependency scanning, secret detection, container security, and deployment gates. Starter templates included so your team isn't starting from zero.",
+			"deliverables": [
+				"CI/CD security pipeline design",
+				"SAST/DAST/SCA integration plan",
+				"Secrets management architecture",
+				"Container security baseline",
+				"Deployment gate configuration",
+				"Implementation guide + review cycle"
+			],
+			"ifSourcedSeparately": "A standalone pipeline assessment ($5K-$10K) + tool selection and integration plan ($10K-$20K) + secrets management design ($5K-$10K) + container security baseline ($5K-$10K) — managing 3-4 vendors and $25K-$50K in invoices. We deliver all of it in one engagement, starting from $20K.",
+			"cta": {
+				"label": "Secure Your Pipeline",
+				"href": "/?subject=PULSE#contact"
+			}
+		},
+		{
+			"id": "clearance",
+			"title": "Clearance — Compliance Readiness",
+			"pills": ["Compliance", "Audit", "Governance"],
+			"price": "Starting from $22K · 6-8 weeks",
+			"whenYouNeedThis": "Your next enterprise customer wants SOC 2. Your investors asked about security posture. You need to get audit-ready — without derailing your engineering team for six months.",
+			"body": "We assess your posture against your target framework, map the gaps, and build a remediation plan that gets you audit-ready. We guide — your team implements. When the auditor comes, you're prepared.",
+			"deliverables": [
+				"Compliance gap analysis",
+				"Policy and control framework",
+				"Control mapping (NIST, CIS, OWASP, MITRE)",
+				"Audit preparation guidance",
+				"Remediation roadmap",
+				"Knowledge transfer session"
+			],
+			"ifSourcedSeparately": "A standalone gap analysis ($5K-$10K) + policy development ($10K-$20K) + audit preparation ($5K-$15K) — and none of these vendors talk to each other about your specific context. We deliver all of it in one engagement, starting from $22K.",
+			"cta": {
+				"label": "Get Audit-Ready",
+				"href": "/?subject=CLEARANCE#contact"
+			}
+		},
+		{
+			"id": "escape-velocity",
+			"title": "Escape Velocity — Infrastructure Sovereignty",
+			"pills": ["Infrastructure", "Migration", "Cost Optimization"],
+			"price": "Starting from $22K · 5-8 weeks",
+			"whenYouNeedThis": "Your cloud bill keeps climbing. Your data lives in someone else's data center. You're paying for compute you don't fully control. Time to explore alternatives.",
+			"body": "From cloud dependency to digital ownership — migration planning, infrastructure hardening, cost optimization, and security architecture baked in. Multiple paths depending on your goals: full migration, hybrid, or selective optimization.",
+			"deliverables": [
+				"Cloud audit and cost analysis",
+				"Migration strategy and planning",
+				"Trust boundary definition",
+				"Infrastructure hardening baseline",
+				"Security architecture (included)",
+				"Implementation guide"
+			],
+			"ifSourcedSeparately": "A cloud cost audit ($5K-$10K) + migration planning ($10K-$20K) + security architecture ($10K-$20K) + infrastructure hardening ($5K-$15K) — four separate vendors, four separate invoices, zero shared context. We deliver all of it in one engagement, starting from $22K.",
+			"multiplePaths": true,
+			"pathsLink": "/compliance",
+			"cta": {
+				"label": "Chart Your Path",
+				"href": "/?subject=ESCAPE_VELOCITY#contact"
+			}
+		},
+		{
+			"id": "beacon",
+			"title": "Beacon — Ongoing Security Leadership",
+			"pills": ["Advisory", "Architecture", "Training"],
+			"price": "Starting from $8K/month",
+			"whenYouNeedThis": "You need a security architect on the team — but not full-time, and not at $150K+/year. You need someone who knows your stack, reviews your decisions, and picks up the phone when something happens.",
+			"body": "Monthly reviews, strategic guidance, architecture decisions, incident advisory, and compliance updates. Your long-term security partner — always available, never required.",
+			"deliverables": [
+				"Monthly security posture review",
+				"Strategic security guidance",
+				"Architecture decision support",
+				"Incident advisory availability",
+				"Compliance updates and monitoring",
+				"Priority access for full engagements"
+			],
+			"valueContext": "A full-time CISO costs $150K-$250K/year ($12.5K-$20K/month). Our advisory starts at $8K/month — senior expertise, fractional commitment.",
+			"cta": {
+				"label": "Let's Talk About Advisory",
+				"href": "/?subject=BEACON#contact"
+			}
+		},
+		{
+			"id": "sprint",
+			"title": "Sprint — Focused Security Engagement",
+			"pills": ["Assessment", "Architecture", "DevSecOps"],
+			"price": "Starting from $8K · 2 weeks",
+			"whenYouNeedThis": "You have one specific problem that needs attention now. Not a full assessment. Not a comprehensive blueprint. A focused, time-boxed engagement on one critical area.",
+			"body": "Two weeks of focused security work on a single domain. Assessment, Build Partnership, or Extended — depending on what you need.",
+			"formatsLink": "/solutions/sprints",
+			"cta": { "label": "Target Your Sprint", "href": "/solutions/sprints" }
+		},
+		{
+			"id": "surge",
+			"title": "Surge — Rapid Infrastructure Deploy",
+			"pills": ["Infrastructure", "Hardening", "Cost Optimization"],
+			"price": "Starting from $8K · days",
+			"whenYouNeedThis": "You want production-ready infrastructure — auth, VPN, observability, the works — but you don't want to spend months building it from scratch. You want it deployed fast, hardened, and handed over.",
+			"body": "We deploy our pre-built infrastructure stack on your hardware. You provision the compute. We deploy everything. We hand over the keys. You own it from that point forward. No managed services. No support retainers. No lock-in.",
+			"stacksLink": "/solutions/surge",
+			"cta": {
+				"label": "Deploy Your Infrastructure",
+				"href": "/solutions/surge"
+			}
+		},
+		{
+			"id": "full-constellation",
+			"title": "Full Constellation — Complete Security Transformation",
+			"pills": [
+				"Architecture",
+				"DevSecOps",
+				"Compliance",
+				"Infrastructure",
+				"Advisory"
+			],
+			"price": "Starting from $120K · 6 months",
+			"whenYouNeedThis": "You're serious about security. Not one area — the whole picture. You want to go from \"we have some security\" to \"we have a security program, architecture, pipeline, compliance posture, and ongoing leadership\" in one comprehensive engagement.",
+			"body": "Every capability we offer, integrated into one comprehensive engagement. Assessment, architecture, DevSecOps, compliance, sovereignty, and advisory — delivered as a cohesive program, not a collection of disconnected projects.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Security assessment: $10K-$15K",
+					"Architecture blueprint: $20K-$30K",
+					"DevSecOps pipeline: $20K-$30K",
+					"Compliance readiness: $22K-$35K",
+					"Sovereignty engagement: $22K-$40K",
+					"Build Partnership: $25K-$40K",
+					"6 months advisory: $48K-$72K",
+					"Managing 4-6 vendors who don't share context: priceless (and not in a good way)"
+				],
+				"totalSeparate": "$167K-$262K+ — and none of them share context.",
+				"constellationPrice": "Starting from $120K — one team, one context, one cohesive security program. 35-40% savings with integration that multiple vendors can't provide."
+			},
+			"detailPageLink": "/solutions/full-constellation",
+			"cta": {
+				"label": "Book a Discovery Call",
+				"href": "/?subject=FULL_CONSTELLATION#contact"
+			}
+		}
+	],
+	"roadLessTraveled": {
+		"title": "The Road Less Traveled",
+		"body": "Most security paths lead to the same destination: compliance, architecture, pipeline security. They're well-worn routes, and for good reason — most organizations need them.",
+		"body2": "But there's another path. One that fewer organizations take — not because it's harder, but because it requires a different mindset. It's the path to infrastructure sovereignty: owning your compute, controlling your costs, keeping your data where you decide.",
+		"body3": "It's the path where you stop renting infrastructure from cloud vendors and start owning it. Where your cloud bill becomes predictable. Where your data stays in your data center. Where you hold the keys to everything.",
+		"routes": [
+			{
+				"title": "Escape Velocity",
+				"description": "The strategic path. Cloud audit, migration planning, and architecture for infrastructure you own. Starting from $22K.",
+				"link": "/compliance",
+				"cta": "Explore sovereignty paths"
+			},
+			{
+				"title": "Surge",
+				"description": "The fast path. Production-ready infrastructure deployed in days, not months. You provision, we deploy, you own. Starting from $8K.",
+				"link": "/solutions/surge",
+				"cta": "Explore Surge"
+			}
+		],
+		"quote": "Two roads diverged in a wood, and I — I took the one less traveled by, and that has made all the difference.",
+		"quoteAttribution": "Robert Frost",
+		"closingNote": "The sovereignty path isn't for everyone. But for the organizations that take it, the difference is measurable — in cost savings, in control, in the peace of mind that comes from holding your own keys."
+	},
+	"bundleAdvantage": {
+		"title": "Why One Team Beats Four Vendors",
+		"body": "Every \"if sourced separately\" comparison on this page tells the same story: separate vendors don't share context. They don't talk to each other. They don't know what the other found, what the other recommended, or how their findings overlap.",
+		"body2": "We take a different approach. One team. One context. One cohesive security program. When our assessment finds a vulnerability that affects your architecture, the architecture team already knows — because they're the same team. When your compliance engagement surfaces a control gap, it's already mapped to your pipeline security — because it's the same engagement.",
+		"advantages": [
+			"Shared context — Every finding, every recommendation, every decision is informed by the full picture",
+			"No translation overhead — Your team doesn't have to explain the same context to four different vendors",
+			"Consistent methodology — One approach, one set of standards, one way of documenting",
+			"Unified deliverables — Architecture that accounts for compliance, pipeline security that aligns with your threat model, policies that map to your actual infrastructure",
+			"35-40% cost savings — Compared to sourcing each capability from separate vendors"
+		]
+	},
+	"notSure": {
+		"title": "Not Sure Which Path Is Yours?",
+		"body": "That's exactly what the First Light assessment is for. We map your entire landscape — architecture, infrastructure, compliance, risk — and give you a prioritized roadmap that tells you exactly what to address, in what order, and why. No guessing. No assumptions. Just clarity.",
+		"cta": {
+			"label": "Start With First Light",
+			"href": "/?subject=FIRST_LIGHT#contact"
+		},
+		"secondaryCta": {
+			"label": "Book a Discovery Call",
+			"href": "/?subject=PATH_FINDER#contact"
+		}
+	},
+	"crossLinks": {
+		"title": "Ready to take the next step?",
+		"links": [
+			{ "label": "Explore All Solutions", "href": "/solutions" },
+			{ "label": "How We Work", "href": "/how-we-work" },
+			{ "label": "Compliance Hub", "href": "/compliance" }
+		]
+	}
+}

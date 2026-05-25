@@ -1,0 +1,15 @@
+{
+  "name": "Aurorys Labs",
+  "short_name": "Aurorys",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080c10",
+  "theme_color": "#080c10"
+}

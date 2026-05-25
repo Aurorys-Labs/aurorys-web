@@ -1,47 +1,69 @@
 {
-  "hero": {
-    "badge": "Accepting Founding Clients — 15-20% off",
-    "slides": [
-      {
-        "id": "architecture",
-        "headline": "Security that scales with you — not after you.",
-        "subtitle": "Architecture blueprints, IaC starter templates, and implementation guidance for teams building what's next.",
-        "tags": ["Architecture", "Blueprints", "Ship Secure"],
-        "ctaPrimary": { "label": "Design Your Foundation", "href": "/?subject=START_BUILD#contact" },
-        "ctaSecondary": { "label": "Explore Solutions", "href": "/solutions" }
-      },
-      {
-        "id": "assessment",
-        "headline": "You don't know what you don't know. Start here.",
-        "subtitle": "A comprehensive review of your architecture, infrastructure, and compliance posture.",
-        "tags": ["Assessment", "Risk Priority", "Clear Roadmap"],
-        "ctaPrimary": { "label": "Reveal Your Posture", "href": "/?subject=REQ_AUDIT#contact" },
-        "ctaSecondary": { "label": "See How We Assess", "href": "/how-we-work" }
-      },
-      {
-        "id": "sovereignty",
-        "headline": "From cloud dependency to infrastructure you own.",
-        "subtitle": "Design sovereign systems that keep your data under your control. Self-hosted, privacy-first architecture.",
-        "tags": ["Sovereignty", "Self-Hosted", "Independence"],
-        "ctaPrimary": { "label": "Chart Your Path", "href": "/?subject=PING_HELLO#contact" },
-        "ctaSecondary": { "label": "Book a Discovery Call", "href": "/?subject=PING_HELLO#contact" }
-      },
-      {
-        "id": "advisory",
-        "headline": "A fractional security architect who knows your stack.",
-        "subtitle": "Ongoing strategic guidance from a senior security engineer embedded with your team. Architecture reviews, vendor assessments, and roadmap planning.",
-        "tags": ["Advisory", "vCISO", "Strategic"],
-        "ctaPrimary": { "label": "Start a Conversation", "href": "/?subject=PING_HELLO#contact" },
-        "ctaSecondary": { "label": "See What's Included", "href": "/solutions" }
-      },
-      {
-        "id": "compliance",
-        "headline": "Compliance, without the chaos.",
-        "subtitle": "Navigate SOC 2, GDPR, HIPAA with a clear remediation roadmap. We prepare your team for certification while building sustainable security foundations.",
-        "tags": ["Compliance", "SOC 2", "GDPR Ready"],
-        "ctaPrimary": { "label": "Get Audit-Ready", "href": "/?subject=REQ_AUDIT#contact" },
-        "ctaSecondary": { "label": "See How We Prepare You", "href": "/how-we-work" }
-      }
-    ]
-  }
+	"hero": {
+		"badge": "Accepting Founding Clients — 15-20% off",
+		"slides": [
+			{
+				"id": "architecture",
+				"headline": "Security that scales with you — not after you.",
+				"tagline": "Security capability, not dependency.",
+				"subtitle": "Architecture blueprints, IaC starter templates, and implementation guidance for teams building what's next.",
+				"tags": ["Architecture", "Blueprints", "Ship Secure"],
+				"ctaPrimary": {
+					"label": "Design Your Foundation",
+					"href": "/?subject=START_BUILD#contact"
+				},
+				"ctaSecondary": { "label": "Explore Solutions", "href": "/solutions" }
+			},
+			{
+				"id": "assessment",
+				"headline": "You don't know what you don't know. Start here.",
+				"subtitle": "A comprehensive review of your architecture, infrastructure, and compliance posture.",
+				"tags": ["Assessment", "Risk Priority", "Clear Roadmap"],
+				"ctaPrimary": {
+					"label": "Reveal Your Posture",
+					"href": "/?subject=REQ_AUDIT#contact"
+				},
+				"ctaSecondary": { "label": "See How We Assess", "href": "/how-we-work" }
+			},
+			{
+				"id": "sovereignty",
+				"headline": "From cloud dependency to infrastructure you own.",
+				"subtitle": "Design sovereign systems that keep your data under your control. Self-hosted, privacy-first architecture.",
+				"tags": ["Sovereignty", "Self-Hosted", "Independence"],
+				"ctaPrimary": {
+					"label": "Chart Your Path",
+					"href": "/security-paths"
+				},
+				"ctaSecondary": {
+					"label": "Book a Discovery Call",
+					"href": "/contact?subject=DISCOVERY_CALL#contact"
+				}
+			},
+			{
+				"id": "advisory",
+				"headline": "Security leadership without the full-time hire.",
+				"subtitle": "Ongoing strategic guidance from a senior security engineer embedded with your team. Architecture reviews, vendor assessments, and roadmap planning.",
+				"tags": ["Advisory", "vCISO", "Strategic"],
+				"ctaPrimary": {
+					"label": "Start a Conversation",
+					"href": "/?subject=PING_HELLO#contact"
+				},
+				"ctaSecondary": { "label": "See What's Included", "href": "/solutions" }
+			},
+			{
+				"id": "compliance",
+				"headline": "Compliance, without the chaos.",
+				"subtitle": "Navigate SOC 2, GDPR, HIPAA with a clear remediation roadmap. We prepare your team for certification while building sustainable security foundations.",
+				"tags": ["Compliance", "SOC 2", "GDPR Ready"],
+				"ctaPrimary": {
+					"label": "Get Audit-Ready",
+					"href": "/?subject=REQ_AUDIT#contact"
+				},
+				"ctaSecondary": {
+					"label": "See How We Prepare You",
+					"href": "/how-we-work"
+				}
+			}
+		]
+	}
 }

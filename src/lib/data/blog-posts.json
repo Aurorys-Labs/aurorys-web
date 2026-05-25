@@ -1,0 +1,52 @@
+[
+	{
+		"id": "saas-startup-assessment",
+		"title": "How We'd Assess a SaaS Startup: A Hypothetical Walkthrough",
+		"category": "Methodology",
+		"date": "May 2026",
+		"readTime": "6 min read",
+		"summary": "Walk through our complete security assessment process step-by-step for a hypothetical SaaS startup. Learn exactly what we look for and why.",
+		"status": "Preview Available",
+		"tags": ["assessment", "saas", "guide"]
+	},
+	{
+		"id": "actionable-assessments",
+		"title": "How to Make Your Security Assessment Actionable (Instead of Shelf-Worthy)",
+		"category": "Security",
+		"date": "May 2026",
+		"readTime": "4 min read",
+		"summary": "Most security audit reports gather dust. Here's a practical guide on how to turn high-level audit findings into actionable engineering tickets.",
+		"status": "Full Post Coming Soon",
+		"tags": ["security", "audit", "remediation"]
+	},
+	{
+		"id": "blueprint-model",
+		"title": "The Blueprint Model: Why We Deliver Architecture, Not Just Recommendations",
+		"category": "Methodology",
+		"date": "May 2026",
+		"readTime": "5 min read",
+		"summary": "Why traditional consultancy models fail and why we provide production-ready IaC baselines and architecture blueprints instead of just a PDF.",
+		"status": "Full Post Coming Soon",
+		"tags": ["methodology", "iac", "architecture"]
+	},
+	{
+		"id": "transparency-security",
+		"title": "Why We Don't Guarantee Security (And Why That's Honest, Not Lazy)",
+		"category": "Methodology",
+		"date": "May 2026",
+		"readTime": "4 min read",
+		"summary": "Absolute security is a myth. We explain why transparency around residual risks is the only honest way to build a real security posture.",
+		"status": "Full Post Coming Soon",
+		"tags": ["philosophy", "risk", "resilience"]
+	},
+	{
+		"id": "startup-quick-wins",
+		"title": "5 Things Every Startup Should Do This Week for Security (That Cost Nothing)",
+		"category": "Security",
+		"date": "May 2026",
+		"readTime": "5 min read",
+		"summary": "No budget? No dedicated security hire? These 5 essential security hygiene tasks will protect your critical data and cost you nothing but time.",
+		"status": "Full Post Coming Soon",
+		"tags": ["startup", "hygiene", "diy"]
+	}
+]

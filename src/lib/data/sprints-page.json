@@ -1,0 +1,212 @@
+{
+	"hero": {
+		"title": "Security Sprint",
+		"subtitle": "Two weeks. One focus. Senior-level capability, zero scope creep."
+	},
+	"intro": {
+		"body": "A Security Sprint is a highly scoped, time-boxed engagement on one critical area. Not a full assessment. Not a comprehensive blueprint. A focused deep dive that delivers findings, guidance, and a clear path forward — in two weeks."
+	},
+	"sprintFormats": [
+		{
+			"id": "assessment-sprint",
+			"title": "Assessment Sprint",
+			"price": "Starting from $8K",
+			"duration": "2 weeks",
+			"focus": "Deep-dive review of a specific domain — CI/CD pipeline, IAM architecture, cloud configuration, compliance gap, or any single security area that needs attention now.",
+			"deliverables": [
+				"Focused assessment of the target area",
+				"Prioritized findings ranked by business impact",
+				"Remediation guidance with clear next steps",
+				"Implementation recommendations",
+				"Knowledge transfer session"
+			],
+			"whatThisIsNot": "A comprehensive engagement. Sprints are focused and time-boxed. If we discover broader issues during the sprint, we'll flag them — but addressing them requires a separate engagement.",
+			"cta": {
+				"label": "Target Your Sprint",
+				"href": "/?subject=SPRINT_ASSESSMENT#contact"
+			}
+		},
+		{
+			"id": "build-partnership-sprint",
+			"title": "Build Partnership Sprint",
+			"price": "Starting from $12K",
+			"duration": "2 weeks",
+			"focus": "Outcome-driven guidance on a specific implementation — rolling out SSO, hardening a Kubernetes cluster, implementing secrets management, or any focused build where you need senior oversight.",
+			"deliverables": [
+				"Everything in Assessment Sprint, plus:",
+				"Weekly sync calls throughout the sprint",
+				"Async access (Slack/email) for decisions and questions",
+				"Code/architecture review at each milestone",
+				"Pair sessions for complex implementation work",
+				"Decision log (running document of decisions, rationale, alternatives)",
+				"Post-sprint validation and hardening review"
+			],
+			"whatThisIsNot": "We don't write your code. We don't take 24/7 on-call responsibility. We guide your team through the implementation — you own the outcome.",
+			"cta": {
+				"label": "Add Guided Implementation",
+				"href": "/?subject=SPRINT_BUILD#contact"
+			}
+		},
+		{
+			"id": "extended-sprint",
+			"title": "Extended Sprint",
+			"price": "Starting from $15K",
+			"duration": "3 weeks",
+			"focus": "For teams that need both the initial assessment and the follow-through guidance. Combines Assessment and Build Partnership into a single extended engagement.",
+			"deliverables": [
+				"Week 1: Focused assessment of the target area",
+				"Weeks 2-3: Guided implementation with senior oversight",
+				"All deliverables from both Assessment and Build Partnership formats",
+				"Knowledge transfer woven throughout"
+			],
+			"whenToChoose": "You know you need both assessment and implementation guidance, and you want a single engagement that covers both without the overhead of coordinating two separate sprints.",
+			"cta": {
+				"label": "Let's Talk",
+				"href": "/?subject=SPRINT_EXTENDED#contact"
+			}
+		}
+	],
+	"rulesOfEngagement": [
+		{
+			"id": "gate-check",
+			"title": "Before the Clock Starts",
+			"icon": "ShieldCheck",
+			"body": "We don't start until you're ready. Before the sprint begins, we verify that your team is prepared, the scope is defined, and access is in place. If you're not ready, we pause — because starting a sprint without preparation wastes everyone's time.",
+			"requirements": [
+				"A designated technical contact with decision-making authority",
+				"Access to the systems, code, and stakeholders we need",
+				"Clarity on the sprint scope and success criteria",
+				"Your team's availability for the full sprint duration"
+			]
+		},
+		{
+			"id": "real-time-engineering",
+			"title": "Your Team Builds. We Guide.",
+			"icon": "Users",
+			"body": "We require a dedicated, empowered team on your end to work with us in real-time. We are not here to write your code — we are here to guide your execution. The sprint moves fast, and decisions need to be made quickly. If your team isn't available to implement, the sprint can't deliver."
+		},
+		{
+			"id": "check-in-system",
+			"title": "Four Check-ins. No Surprises.",
+			"icon": "CalendarCheck",
+			"checkins": [
+				{
+					"day": 2,
+					"title": "Scope Confirmation",
+					"description": "We confirm the scope is right and access is working. No surprises yet."
+				},
+				{
+					"day": 5,
+					"title": "Mid-Sprint Review",
+					"description": "Findings so far, direction check, course correction if needed."
+				},
+				{
+					"day": 8,
+					"title": "Progress Sync",
+					"description": "Implementation progress, blockers, remaining work."
+				},
+				{
+					"day": 10,
+					"title": "Sprint Close",
+					"description": "Findings delivered, guidance documented, path forward clear."
+				}
+			],
+			"body": "If your team is failing to meet milestones at any check-in, we'll officially pause the sprint to re-align. We'd rather pause and get it right than rush and get it wrong."
+		},
+		{
+			"id": "timebox-guarantee",
+			"title": "The Clock Doesn't Lie",
+			"icon": "Clock",
+			"body": "Sprints are strictly time-boxed. If the clock runs out due to internal delays on your end, the sprint is still marked as a success from our side — provided we delivered our assessment, effort, and guidance. Shared responsibility is required. To continue work beyond the sprint, a new sprint must be scheduled.",
+			"closingNote": "This isn't a penalty — it's how we maintain quality and prevent scope creep."
+		}
+	],
+	"sprintDomains": {
+		"title": "What We Can Sprint On",
+		"subtitle": "Sprints are focused on a single domain. Here are some areas where a sprint delivers the most value:",
+		"domains": [
+			{
+				"name": "CI/CD Pipeline Security",
+				"assessment": true,
+				"buildPartnership": true
+			},
+			{
+				"name": "IAM Architecture Review",
+				"assessment": true,
+				"buildPartnership": true
+			},
+			{
+				"name": "Cloud Configuration Audit",
+				"assessment": true,
+				"buildPartnership": false
+			},
+			{
+				"name": "Kubernetes Hardening",
+				"assessment": false,
+				"buildPartnership": true
+			},
+			{
+				"name": "Secrets Management",
+				"assessment": false,
+				"buildPartnership": true
+			},
+			{
+				"name": "Specific Compliance Gap",
+				"assessment": true,
+				"buildPartnership": true
+			},
+			{
+				"name": "SSO/Rollout Guidance",
+				"assessment": false,
+				"buildPartnership": true
+			},
+			{
+				"name": "Network Segmentation",
+				"assessment": true,
+				"buildPartnership": true
+			},
+			{
+				"name": "Container Security",
+				"assessment": true,
+				"buildPartnership": true
+			},
+			{
+				"name": "Incident Response Plan",
+				"assessment": true,
+				"buildPartnership": false
+			}
+		],
+		"closingNote": "Don't see your domain? Every sprint is scoped individually. If you need something specific, let's talk."
+	},
+	"sprintVsFull": {
+		"title": "When a Sprint vs. When a Full Engagement",
+		"rows": [
+			{
+				"label": "Scope",
+				"sprint": "One domain, tightly scoped",
+				"full": "Multiple domains, comprehensive"
+			},
+			{ "label": "Timeline", "sprint": "2-3 weeks", "full": "5-8 weeks" },
+			{
+				"label": "Deliverables",
+				"sprint": "Findings + guidance for one area",
+				"full": "Architecture + templates + implementation guide"
+			},
+			{
+				"label": "Best for",
+				"sprint": "You know exactly what needs attention",
+				"full": "You need a comprehensive security program"
+			},
+			{ "label": "Starting price", "sprint": "$8K-$15K", "full": "$10K-$22K" }
+		],
+		"closingNote": "Not sure which you need? Start with a Sprint — if we discover broader issues, we'll tell you. And if a full engagement is the right fit, we'll credit the sprint cost toward it."
+	},
+	"crossLinks": {
+		"title": "Ready to take the next step?",
+		"links": [
+			{ "label": "Explore All Solutions", "href": "/solutions" },
+			{ "label": "How We Work", "href": "/how-we-work" },
+			{ "label": "Book a Discovery Call", "href": "/?subject=SPRINT#contact" }
+		]
+	}
+}

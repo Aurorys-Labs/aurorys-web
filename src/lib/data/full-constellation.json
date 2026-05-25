@@ -1,0 +1,178 @@
+{
+	"hero": {
+		"title": "Full Constellation",
+		"subtitle": "The complete security transformation. Every capability. One engagement. Six months."
+	},
+	"pitch": {
+		"title": "For teams ready to transform their security posture end to end.",
+		"body": "Security can feel fragmented — an assessment here, a compliance sprint there, maybe some advisory when the board asks. The result? Gaps between engagements and no unified architecture. We take a different approach: one engagement, one unified blueprint, one team that knows your entire security posture.",
+		"body2": "Full Constellation is different. It's one engagement that covers everything — assessment, architecture, DevSecOps, compliance, sovereignty, and ongoing advisory — delivered as a cohesive security program, not a collection of disconnected projects."
+	},
+	"phases": [
+		{
+			"id": "first-light",
+			"title": "Phase 1 — First Light",
+			"duration": "Weeks 1-4",
+			"body": "Comprehensive security posture assessment. We map your entire landscape — architecture, infrastructure, compliance, risk. This becomes the foundation for everything that follows.",
+			"deliverables": [
+				"Architecture and infrastructure review",
+				"Vulnerability assessment and triage",
+				"Risk prioritization by business impact",
+				"Compliance posture evaluation",
+				"Security roadmap"
+			]
+		},
+		{
+			"id": "foundation",
+			"title": "Phase 2 — Foundation",
+			"duration": "Weeks 5-11",
+			"body": "Security architecture blueprint designed for your specific stack, team, and risk profile. This is the technical backbone of your security program.",
+			"deliverables": [
+				"Threat model and risk assessment",
+				"Security architecture design",
+				"IaC starter templates",
+				"Implementation guide",
+				"Review cycle and validation"
+			]
+		},
+		{
+			"id": "pulse",
+			"title": "Phase 3 — Pulse",
+			"duration": "Weeks 8-14 (overlapping with Foundation)",
+			"body": "DevSecOps pipeline blueprint. Security gates integrated into your CI/CD — not bolted on after the fact.",
+			"deliverables": [
+				"CI/CD security pipeline design",
+				"SAST/DAST integration plan",
+				"Secrets management architecture",
+				"Container security baseline",
+				"Deployment gate configuration"
+			]
+		},
+		{
+			"id": "clearance",
+			"title": "Phase 4 — Clearance",
+			"duration": "Weeks 12-18",
+			"body": "Compliance readiness. We map the gaps, build the remediation plan, and prepare you for audit.",
+			"deliverables": [
+				"Compliance gap analysis",
+				"Policy and control framework",
+				"Control mapping",
+				"Audit preparation",
+				"Remediation roadmap"
+			]
+		},
+		{
+			"id": "escape-velocity",
+			"title": "Phase 5 — Escape Velocity",
+			"duration": "Weeks 14-22 (overlapping with Clearance)",
+			"body": "Infrastructure sovereignty. Cloud audit, migration planning, and architecture for infrastructure you own.",
+			"deliverables": [
+				"Cloud audit and cost analysis",
+				"Migration strategy",
+				"Trust boundary definition",
+				"Infrastructure hardening",
+				"Security architecture (included)"
+			]
+		},
+		{
+			"id": "beacon",
+			"title": "Phase 6 — Beacon",
+			"duration": "Ongoing, Months 4-6+",
+			"body": "Ongoing advisory. Monthly reviews, strategic guidance, and incident availability throughout the engagement and beyond.",
+			"deliverables": [
+				"Monthly security posture review",
+				"Strategic security guidance",
+				"Architecture decision support",
+				"Incident advisory availability",
+				"Compliance updates"
+			]
+		}
+	],
+	"buildPartnershipIncluded": {
+		"title": "Build Partnership — Included",
+		"body": "Full Constellation includes Build Partnership throughout the engagement. Weekly syncs, async access, pair sessions, milestone reviews, decision log, and post-implementation validation. We're not just designing your security — we're guiding your team through building it.",
+		"body2": "That \"if something breaks at 3AM\" disclaimer from the individual offerings? Still applies. We're your architects during the build — not your operations team. But we're there for every critical decision, every milestone, every \"are we doing this right?\" moment."
+	},
+	"walkaway": {
+		"title": "What You Walk Away With",
+		"subtitle": "After six months, your organization has:",
+		"items": [
+			"A complete security architecture designed for your stack",
+			"A DevSecOps pipeline with security gates integrated",
+			"Compliance readiness for your target frameworks",
+			"A sovereignty plan (or completed migration) for your infrastructure",
+			"A security program foundation with policies, incident response, and metrics",
+			"A team that understands how to maintain and extend everything we've built",
+			"Ongoing advisory support for the next challenge"
+		],
+		"closingNote": "Everything is yours from day one. No lock-in. Including ours."
+	},
+	"strictScope": {
+		"title": "Strict Scope & Absolute Ownership",
+		"subtitle": "Full Constellation is a significant investment — and we treat it with the rigor that deserves. Here's how we protect both sides.",
+		"sections": [
+			{
+				"id": "relentlessly-scoped",
+				"title": "Relentlessly Scoped",
+				"body": "The website gives you an overview. The actual engagement is governed by a ruthlessly specific Statement of Work that defines exactly what we'll deliver, when we'll deliver it, and what success looks like. No ambiguity. No scope creep. No surprises. If your needs change during the engagement — and they probably will — we adjust the scope formally. Not informally. Not over Slack. A documented change that both sides agree to before any new work begins."
+			},
+			{
+				"id": "absolute-ownership",
+				"title": "You Own Everything. Including Our Dependency.",
+				"body": "Every architecture design, every IaC template, every implementation guide, every policy document — it's yours from day one. No proprietary tooling you can't access. No dependency on our firm to maintain what we designed. Including ours. We build it. We train your team. You own it. When the engagement ends, you have everything you need to maintain, extend, and evolve your security program without us. That's not idealism — it's the entire point."
+			},
+			{
+				"id": "phase-gated",
+				"title": "Phase-Gated, Not Locked In",
+				"body": "Full Constellation is six months of work — and a lot can change in six months. Your product pivots. Your team grows. Your priorities shift. We plan for that. The engagement is structured in phases, and you can off-ramp or pause after any phase. Billing is milestone-based — tied to deliverables, not time spent. If you need to adjust, we adjust. If you need to pause, we pause. off-ramp after any phase. SOW is a living document.",
+				"points": [
+					"You're never locked into the full engagement — off-ramp after any phase",
+					"Billing is milestone-based — you pay for what's been delivered, not for time spent",
+					"Your app will change — we expect it, and we pivot with you",
+					"The SOW is a living document — if scope changes, we document it formally and adjust"
+				]
+			},
+			{
+				"id": "partnership-guarantee",
+				"title": "The Partnership Guarantee",
+				"body": "Your app will change. Your dependencies will change. Your team will change. We pivot with you. Full Constellation is a living partnership, not a rigid checklist — and the SOW reflects that. If something fundamental shifts — a new product line, a critical hire, a market change — we reassess and adjust the scope together. The goal is a security program that works for your actual organization, not the one we planned for six months ago."
+			}
+		]
+	},
+	"valueComparison": {
+		"title": "Value Comparison",
+		"subtitle": "If sourced separately from multiple vendors:",
+		"items": [
+			"Security assessment: $10K-$15K",
+			"Architecture blueprint: $20K-$30K",
+			"DevSecOps pipeline: $20K-$30K",
+			"Compliance readiness: $22K-$35K",
+			"Sovereignty engagement: $22K-$40K",
+			"Build Partnership: $25K-$40K",
+			"6 months advisory: $48K-$72K",
+			"Managing 4-6 vendors who don't share context: priceless (and not in a good way)"
+		],
+		"totalSeparate": "$167K-$262K+ — and none of them share context.",
+		"constellationPrice": "Starting from $120K — one team, one context, one cohesive security program. 35-40% savings with integration that multiple vendors can't provide."
+	},
+	"isRightForYou": {
+		"title": "Is This Right For You?",
+		"body": "Full Constellation is for organizations that are ready to invest in security as a strategic capability, not a checkbox. They want a cohesive security program, have the engineering capacity to implement, and are committed to a 6-month transformation timeline. This isn't for everyone. If you need one specific thing, our individual offerings are a better fit.",
+		"body2": "We'd rather lose a $120K engagement than sign one that isn't the right fit. If we think you'd be better served by a smaller engagement, we'll tell you."
+	},
+	"cta": {
+		"title": "Ready to transform your security posture?",
+		"body": "Let's have a conversation about whether Full Constellation is right for your organization.",
+		"btn": {
+			"label": "Book a Discovery Call",
+			"href": "/?subject=FULL_CONSTELLATION#contact"
+		}
+	},
+	"crossLinks": {
+		"title": "Explore more",
+		"links": [
+			{ "label": "Explore Individual Solutions", "href": "/solutions" },
+			{ "label": "How We Work", "href": "/how-we-work" }
+		]
+	}
+}

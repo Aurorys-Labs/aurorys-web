@@ -1,0 +1,230 @@
+{
+	"hero": {
+		"title": "Compliance",
+		"subtitle": "Compliance that opens doors, not just checks boxes. Navigate SOC 2, ISO 27001, HIPAA, and GDPR with a clear remediation roadmap — not a pile of PDFs."
+	},
+	"fastTrackOptions": [
+		{
+			"label": "Pass a security audit",
+			"anchorId": "clearance",
+			"icon": "ShieldCheck"
+		},
+		{
+			"label": "Secure my infrastructure fast",
+			"anchorId": "/solutions/surge",
+			"icon": "Flame"
+		},
+		{
+			"label": "Find my current vulnerabilities",
+			"anchorId": "/solutions?view=first-light",
+			"icon": "Sparkles"
+		},
+		{
+			"label": "Write my security policies",
+			"anchorId": "program-foundation",
+			"icon": "FileText"
+		},
+		{
+			"label": "Understand what GRC actually means",
+			"anchorId": "grc-explained",
+			"icon": "BookOpen"
+		},
+		{
+			"label": "Figure out which framework I need",
+			"anchorId": "compliance",
+			"icon": "Route"
+		}
+	],
+	"grcExplained": {
+		"title": "Governance, Risk, and Compliance — Without the Jargon",
+		"subtitle": "GRC gets thrown around like it means one thing. It doesn't. It's three disciplines that work together — and when one is missing, the other two don't hold.",
+		"pillars": [
+			{
+				"id": "governance",
+				"title": "Governance — The Rules You Set For Yourself",
+				"body": "Governance is the operating system for your security program. Policies, standards, procedures — the decisions you've made about how your organization handles information, access, and risk. Without governance, every security decision is ad hoc. With it, your team knows what to do when something goes wrong — because something always does.",
+				"visualType": "pyramid",
+				"items": [
+					"Information security policy — What your organization protects and why",
+					"Acceptable use policy — How your team handles company resources",
+					"Access control policy — Who gets access to what, and how it's reviewed",
+					"Incident response plan — What happens when something goes wrong (not if)",
+					"Risk management methodology — How you decide what matters most"
+				],
+				"closingNote": "Most organizations have some of these written down somewhere. Fewer have them implemented consistently. Almost none have them tested under pressure. We help you build the governance layer that makes everything else work — because compliance without governance is theater."
+			},
+			{
+				"id": "risk",
+				"title": "Risk — What Could Go Wrong, What Probably Will, and What To Do About It",
+				"body": "Risk management isn't about eliminating every threat. It's about understanding which ones matter, which ones are likely, and which ones you can accept. Every organization has risk — the question is whether you've identified it, quantified it, and decided what to do about it.",
+				"visualType": "radar",
+				"items": [
+					"Threat modeling — Understanding who might target you and how",
+					"Vulnerability assessment — Finding the gaps before someone else does",
+					"Risk register — A living document of identified risks, their likelihood, and your response",
+					"Risk acceptance — Explicitly deciding what you're not going to fix (and documenting why)",
+					"Continuous monitoring — Because your risk posture changes when you ship new code, hire new people, or expand into new markets"
+				],
+				"closingNote": "Risk management is where most organizations either over-invest (chasing every theoretical threat) or under-invest (ignoring everything until something breaks). We help you find the middle ground — measured risk reduction, not false promises."
+			},
+			{
+				"id": "compliance",
+				"title": "Compliance — Proving To Others What You've Already Done",
+				"body": "Compliance is the proof layer. It's how you demonstrate to customers, auditors, and regulators that your governance and risk management actually work. It's not the goal — it's the output of doing governance and risk well.",
+				"visualType": "timeline",
+				"frameworks": [
+					{
+						"name": "SOC 2 Type I & Type II",
+						"description": "The gold standard for SaaS companies. Proves your controls exist (Type I) and that they work over time (Type II)."
+					},
+					{
+						"name": "ISO 27001",
+						"description": "International standard for information security management. More rigorous, more comprehensive, more respected globally."
+					},
+					{
+						"name": "HIPAA",
+						"description": "Required if you handle protected health information. Not optional, not negotiable."
+					},
+					{
+						"name": "GDPR",
+						"description": "If you process data from EU residents, you need to comply. Period."
+					},
+					{
+						"name": "NIST CSF",
+						"description": "Not a compliance framework per se, but the best reference architecture for building a security program that satisfies multiple frameworks at once."
+					}
+				],
+				"closingNote": "Compliance: the thing you think about when someone asks about it. We help you think about it before they do — and build the program that makes the audit a formality, not a fire drill."
+			}
+		],
+		"systemNote": "You can't be compliant without governance. You can't govern without understanding risk. And risk management without compliance is academic — it doesn't prove anything to anyone. They're three legs of the same stool."
+	},
+	"roiSection": {
+		"title": "The ROI of Compliance",
+		"items": [
+			{
+				"title": "Lower cyber insurance premiums",
+				"description": "Verifiable, third-party compliance reduces your risk profile. Insurers notice."
+			},
+			{
+				"title": "Enterprise deal acceleration",
+				"description": "SOC 2 Type II is table stakes for B2B SaaS. Having it opens doors that stay closed without it."
+			},
+			{
+				"title": "Investor confidence",
+				"description": "Your board and investors want to see that you take security seriously. Compliance is the proof."
+			},
+			{
+				"title": "Operational efficiency",
+				"description": "A well-built GRC program means fewer fire drills, fewer surprises, and a team that knows what to do when something goes wrong."
+			},
+			{
+				"title": "Competitive differentiation",
+				"description": "In a market where most startups can't pass a basic security questionnaire, being compliant is an advantage — not just a requirement."
+			}
+		]
+	},
+	"offerings": [
+		{
+			"id": "clearance",
+			"title": "Clearance",
+			"subtitle": "Compliance that opens doors, not just checks boxes.",
+			"pills": ["Compliance", "Audit", "Governance"],
+			"price": "Starting from $22K · 6-8 weeks",
+			"whenYouNeedThis": "Your next enterprise customer wants SOC 2. Your investors asked about security posture. You need to get audit-ready — without derailing your engineering team for six months.",
+			"body": "We assess your posture against your target framework, map the gaps, and build a remediation plan that gets you audit-ready. We guide — your team implements. When the auditor comes, you're prepared.",
+			"deliverables": [
+				"Compliance gap analysis",
+				"Policy and control framework",
+				"Control mapping (NIST, CIS, OWASP, MITRE)",
+				"Audit preparation guidance",
+				"Remediation roadmap",
+				"Knowledge transfer session"
+			],
+			"whatThisIsNot": "A compliance automation platform. We don't push a button and make you compliant. We build the roadmap — your team walks it.",
+			"ifSourcedSeparately": "A standalone gap analysis ($5K-$10K) + policy development ($10K-$20K) + audit preparation ($5K-$15K) — and none of these vendors talk to each other about your specific context. We deliver all of it in one engagement, starting from $22K.",
+			"cta": {
+				"label": "Get Audit-Ready",
+				"href": "/?subject=CLEARANCE#contact"
+			}
+		},
+		{
+			"id": "program-foundation",
+			"title": "Program Foundation",
+			"subtitle": "The operational backbone your security program needs before anything else.",
+			"pills": ["Governance", "Risk", "Training"],
+			"price": "Starting from $15K · 4-6 weeks",
+			"whenYouNeedThis": "You have security tools and some controls, but no formal security program. No policies. No incident response plan. No risk management methodology. You need the operational foundation before you can build on top of it.",
+			"body": "The foundational elements every organization needs regardless of their specific focus — security policies, risk methodology, incident response, and security awareness. This is what we often discover is missing during an Assessment.",
+			"deliverables": [
+				"Security policy framework (infosec policy, acceptable use, access control)",
+				"Risk management methodology",
+				"Incident response plan",
+				"Security awareness program",
+				"Asset inventory and classification",
+				"Vulnerability management process",
+				"Access control framework (IAM, least privilege, MFA)",
+				"Security metrics and reporting"
+			],
+			"whatThisIsNot": "A technical architecture blueprint. A compliance audit. This is the operational and governance layer that makes architecture and compliance work.",
+			"oftenDiscoveredDuringAssessment": true,
+			"ifSourcedSeparately": "A standalone policy framework ($5K-$15K) + risk assessment ($5K-$10K) + incident response planning ($5K-$10K) + security awareness program ($3K-$8K) — and none of these vendors share context about your specific organization. We deliver all of it in one engagement, starting from $15K.",
+			"cta": {
+				"label": "Let's Talk",
+				"href": "/?subject=PROGRAM_FOUNDATION#contact"
+			}
+		},
+		{
+			"id": "compliance-sprint",
+			"title": "Compliance Sprint",
+			"subtitle": "Focused 2-week engagement on one compliance area.",
+			"pills": ["Assessment", "Compliance", "Governance"],
+			"price": "Starting from $8K · 2 weeks",
+			"whenYouNeedThis": "You have one specific compliance gap that needs attention now. Not a full engagement — a focused, time-boxed deep dive on one area.",
+			"body": "Two weeks of focused work on a single compliance domain — whether that's a specific control gap, a policy framework, or an audit preparation sprint.",
+			"cta": { "label": "Target Your Sprint", "href": "/solutions/sprints" }
+		}
+	],
+	"timeline": {
+		"title": "What Compliance Actually Looks Like",
+		"subtitle": "Compliance isn't a switch you flip. It's a process with clear stages, and each one builds on the last.",
+		"steps": [
+			{
+				"step": 1,
+				"title": "Gap Assessment",
+				"timeline": "Weeks 1-2",
+				"description": "Where you are now. We map your current posture against your target framework and identify every gap."
+			},
+			{
+				"step": 2,
+				"title": "Remediation",
+				"timeline": "Weeks 3-8+",
+				"description": "Where the work happens. Implementing controls, writing policies, configuring infrastructure. Your team does the heavy lifting — with our guidance and prioritization."
+			},
+			{
+				"step": 3,
+				"title": "Type I Audit",
+				"timeline": "Weeks 8-12",
+				"description": "Proving your controls exist at a point in time. Type I says \"these are the controls we have.\" It's the first milestone — not the finish line."
+			},
+			{
+				"step": 4,
+				"title": "Type II Audit",
+				"timeline": "Months 3-9 after Type I",
+				"description": "Proving your controls work over time. Type II says \"these controls have been operating effectively for X months.\" This is the goal — it's what enterprise customers actually want to see."
+			}
+		],
+		"closingNote": "We guide you through every stage of this lifecycle. We believe in transparency over timelines: a SOC 2 Type II audit requires a minimum observation period of three months. A Type I baseline can be assessed and verified quickly. Let's design a path that aligns with your real business requirements."
+	},
+	"crossLinks": {
+		"title": "Ready to take the next step?",
+		"links": [
+			{ "label": "Explore All Solutions", "href": "/solutions" },
+			{ "label": "How We Work", "href": "/how-we-work" },
+			{
+				"label": "Book a Discovery Call",
+				"href": "/?subject=COMPLIANCE#contact"
+			}
+		]
+	}
+}

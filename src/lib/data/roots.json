@@ -1,10 +1,10 @@
 {
-  "sectionTitle": "Roots",
-  "sectionSubtitle": "Where we come from. What drives us.",
-  "body": [
-    "Aurora — from the Latin for dawn. The first light breaking through darkness. Revelation. Clarity where there was uncertainty.",
-    "That's what we do. We illuminate your security posture, reveal what's hidden, and bring clarity to complexity.",
-    "Aurorys Labs was founded on a simple observation: most cybersecurity consulting creates dependency instead of capability. We do things differently. We deliver blueprints your team can build. We teach the principles behind the controls. We transfer ownership from day one.",
-    "We believe security is a fundamental, not a luxury. Privacy is a right, not a feature. Systems should serve the people who use them. And the people building technology carry a responsibility to the people who'll inherit it."
-  ]
+	"sectionTitle": "Roots",
+	"sectionSubtitle": "Where we come from. What drives us.",
+	"body": [
+		"Aurora — from the Latin for dawn. The first light breaking through darkness. Revelation. Clarity where there was uncertainty.",
+		"That's what we do. We illuminate your security posture, reveal what's hidden, and bring clarity to complexity.",
+		"Aurorys Labs was founded on a simple observation: most cybersecurity consulting creates dependency instead of capability. We do things differently. We deliver blueprints your team can build. We teach the principles behind the controls. We transfer ownership from day one.",
+		"We believe security is a fundamental, not a luxury. Privacy is a right, not a feature. Systems should serve the people who use them. And the people building technology carry a responsibility to the people who'll inherit it."
+	]
 }

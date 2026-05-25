@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+import { BundleAdvantage } from "../components/react/security-paths/BundleAdvantage";
+import { PathsManager } from "../components/react/security-paths/PathsManager";
+import { RoadLessTraveled } from "../components/react/security-paths/RoadLessTraveled";
+import { InteractiveGlowButton } from "../components/ui/interactive-glow-button";
+import { RainbowButton } from "../components/ui/rainbow-button";
+
+import pathsData from "../lib/data/security-paths.json";
+---
+
+<BaseLayout title={`${pathsData.hero.title} | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image6.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width px-6 text-center space-y-6">
+      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora mb-6 leading-tight tracking-tight">
+        {pathsData.hero.title}
+      </h1>
+      <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+        {pathsData.hero.subtitle}
+      </p>
+    </div>
+  </section>
+
+  {/* Section 1 — Paths Selector & Details */}
+  <section class="relative z-10 py-12 px-6">
+    <div class="content-width px-6">
+      <PathsManager pathCards={pathsData.pathCards} paths={pathsData.paths} client:load />
+    </div>
+  </section>
+
+  {/* Section 2 — The Road Less Traveled */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <RoadLessTraveled data={pathsData.roadLessTraveled} client:load />
+    </div>
+  </section>
+
+  {/* Section 3 — Bundle Advantage */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <BundleAdvantage data={pathsData.bundleAdvantage} client:load />
+    </div>
+  </section>
+
+  {/* Section 4 — Not Sure Block */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-slate-900/10">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card p-8 rounded-3xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] text-center space-y-6">
+          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)]">
+            {pathsData.notSure.title}
+          </h2>
+          <p class="text-white/80 text-sm font-sans max-w-2xl mx-auto leading-relaxed">
+            {pathsData.notSure.body}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+            <RainbowButton size="lg" className="rounded-xl justify-center" asChild>
+              <a href={pathsData.notSure.cta.href}>{pathsData.notSure.cta.label}</a>
+            </RainbowButton>
+            <InteractiveGlowButton href={pathsData.notSure.secondaryCta.href}>
+              {pathsData.notSure.secondaryCta.label}
+            </InteractiveGlowButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Cross Links & CTA */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-sans font-bold text-2xl md:text-3xl tracking-tight text-[var(--text-stellar)] mb-8">
+          {pathsData.crossLinks.title}
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-sans font-medium">
+          {pathsData.crossLinks.links.map((link) => (
+            <a
+              href={link.href}
+              class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

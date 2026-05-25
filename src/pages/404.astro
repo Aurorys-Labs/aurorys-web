@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+import { RainbowButton } from "../components/ui/rainbow-button";
+---
+
+<BaseLayout title="Page Not Found | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image15.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 min-h-[80dvh] flex items-center justify-center pt-32 pb-16">
+    <div class="content-width px-6">
+      <div class="max-w-xl mx-auto">
+        <div class="glass-card p-10 text-center space-y-6 overflow-hidden relative rounded-3xl">
+          {/* Ambient Glow */}
+          <div class="absolute -top-24 -left-24 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl" />
+
+          {/* Animated SVG Radar */}
+          <div class="w-36 h-36 mx-auto relative z-10 mb-4">
+            <div class="absolute inset-0 bg-[var(--aurora-green-solid)]/10 blur-2xl rounded-full animate-pulse" />
+            <svg class="w-full h-full text-[var(--aurora-green-solid)]" viewBox="0 0 100 100" fill="none">
+              {/* Concentric rings */}
+              <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-opacity="0.12" stroke-width="1" />
+              <circle cx="50" cy="50" r="28" stroke="currentColor" stroke-opacity="0.2" stroke-width="1" />
+              <circle cx="50" cy="50" r="16" stroke="currentColor" stroke-opacity="0.3" stroke-width="1" />
+              {/* Crosshairs */}
+              <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" stroke-opacity="0.15" stroke-width="0.75" />
+              <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" stroke-opacity="0.15" stroke-width="0.75" />
+              {/* Rotating sweep line */}
+              <line x1="50" y1="50" x2="78" y2="22" stroke="currentColor" stroke-opacity="0.8" stroke-width="1.5">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 50 50"
+                  to="360 50 50"
+                  dur="5s"
+                  repeatCount="indefinite"
+                />
+              </line>
+              {/* Lost signal dots */}
+              <circle cx="28" cy="38" r="2" fill="currentColor">
+                <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="72" cy="64" r="2" fill="currentColor">
+                <animate attributeName="opacity" values="1;0.2;1" dur="3s" repeatCount="indefinite" />
+              </circle>
+            </svg>
+          </div>
+
+          <div class="space-y-3 relative z-10">
+            <span class="inline-block text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[var(--aurora-green-solid)] bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+              Coordinates Unmapped
+            </span>
+            <h1 class="font-heading font-semibold text-4xl md:text-5xl text-gradient-aurora leading-tight tracking-tight">
+              Lost in Orbit
+            </h1>
+            <p class="text-white/70 text-sm font-sans max-w-sm mx-auto leading-relaxed">
+              The sector or node you are trying to reach does not exist in our telemetry logs. Your connection was severed by a boundary fault, or the target node has migrated.
+            </p>
+          </div>
+
+          <div class="flex justify-center pt-4 relative z-10">
+            <RainbowButton size="lg" className="rounded-xl font-semibold" asChild>
+              <a href="/">Return to Base &rarr;</a>
+            </RainbowButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

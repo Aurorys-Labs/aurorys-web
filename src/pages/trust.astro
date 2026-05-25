@@ -1,0 +1,192 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import { Goal } from "lucide-react";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/astro/Footer.astro";
+import { AuroraOverlay } from "../components/react/AuroraOverlay";
+import { MobileNav } from "../components/react/MobileNav";
+import { Navbar } from "../components/react/Navbar";
+import { PreFooterCTA } from "../components/react/PreFooterCTA";
+
+import trustData from "../lib/data/trust-center.json";
+---
+
+<BaseLayout title={`${trustData.hero.title} | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image10.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width mx-auto px-6 text-center space-y-6">
+      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent leading-tight tracking-tight mb-6">
+        {trustData.hero.title}
+      </h1>
+      <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+        {trustData.hero.subtitle}
+      </p>
+    </div>
+  </section>
+
+  {/* Section 1 - Our Security Principles */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-3xl mx-auto mb-12 text-left">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+          {trustData.principles.title}
+        </h2>
+        <p class="text-[var(--text-muted)] text-base font-sans leading-relaxed">
+          {trustData.principles.intro}
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+        {trustData.principles.items.map((item) => (
+          <div class="glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-3 hover:border-white/[0.12] transition-colors group">
+            <h3 class="font-sans font-bold text-base text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors">
+              {item.bold}
+            </h3>
+            <p class="text-white/70 text-sm leading-relaxed font-sans">
+              {item.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Section 2 - How We Handle Your Data */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-3xl mx-auto mb-12 text-left">
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+          {trustData.dataHandling.title}
+        </h2>
+        <p class="text-[var(--text-muted)] text-base font-sans leading-relaxed">
+          {trustData.dataHandling.intro}
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        {trustData.dataHandling.items.map((item) => (
+          <div class="glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-2 hover:border-white/[0.12] transition-colors group">
+            <h3 class="font-sans font-bold text-base text-[var(--text-stellar)] group-hover:text-[var(--aurora-blue-solid)] transition-colors">
+              {item.bold}
+            </h3>
+            <p class="text-white/70 text-sm leading-relaxed font-sans">
+              {item.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Section 3 - Our Infrastructure */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-left space-y-6 relative">
+        <div class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-violet-solid)]/5 rounded-full blur-3xl pointer-events-none" />
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative">
+          {trustData.infrastructure.title}
+        </h2>
+        {trustData.infrastructure.paragraphs.map((p) => (
+          <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative">
+            {p}
+          </p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Section 4 - Responsible Disclosure */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-left space-y-6 relative">
+        <div class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-blue-solid)]/5 rounded-full blur-3xl pointer-events-none" />
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative">
+          {trustData.disclosure.title}
+        </h2>
+        <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative">
+          {trustData.disclosure.intro}
+        </p>
+
+        <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.15)] space-y-6 z-10 relative">
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">
+              How to Report:
+            </h4>
+            <p class="text-sm text-white/90 font-sans leading-relaxed">
+              Email <a href="mailto:security@auroryslabs.com" class="font-bold underline text-[var(--aurora-blue-solid)] hover:text-[var(--aurora-green-solid)] transition-colors">security@auroryslabs.com</a> with details of the vulnerability. Include enough information for us to reproduce and verify the finding.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            <div>
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
+                What we commit to:
+              </h4>
+              <ul class="space-y-3 text-xs text-white/70 font-sans leading-relaxed">
+                {trustData.disclosure.commitments.map((c) => (
+                  <li class="flex items-start gap-2">
+                    <Goal className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-0.5" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
+                What we ask:
+              </h4>
+              <ul class="space-y-3 text-xs text-white/70 font-sans leading-relaxed">
+                {trustData.disclosure.asks.map((a) => (
+                  <li class="flex items-start gap-2">
+                    <Goal className="w-4 h-4 text-[var(--aurora-blue-solid)] shrink-0 mt-0.5" />
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm text-[var(--text-muted)] italic font-sans z-10 relative">
+          {trustData.disclosure.conclusion}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Section 5 - Compliance Alignment */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-left space-y-6 relative">
+        <div class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-green-solid)]/5 rounded-full blur-3xl pointer-events-none" />
+        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative">
+          {trustData.compliance.title}
+        </h2>
+        {trustData.compliance.paragraphs.map((p) => (
+          <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative">
+            {p}
+          </p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PreFooterCTA client:load />
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

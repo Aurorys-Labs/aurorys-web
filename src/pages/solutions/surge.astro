@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/astro/Footer.astro";
+import { AuroraOverlay } from "../../components/react/AuroraOverlay";
+import { MobileNav } from "../../components/react/MobileNav";
+import { Navbar } from "../../components/react/Navbar";
+import { DeliveryTimeline } from "../../components/react/surge/DeliveryTimeline";
+import { SurgeStackCard } from "../../components/react/surge/SurgeStackCard";
+import { SurgeVsFullTable } from "../../components/react/surge/SurgeVsFullTable";
+import { TerminalHero } from "../../components/react/surge/TerminalHero";
+import { RainbowButton } from "../../components/ui/rainbow-button";
+
+import surgeData from "../../lib/data/surge-page.json";
+---
+
+<BaseLayout title={`${surgeData.hero.title} | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image12.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-16 md:pt-40 md:pb-24">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-10">
+        <div class="space-y-6">
+          <h1 class="font-heading font-semibold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora leading-tight tracking-tight">
+            {surgeData.hero.title}
+          </h1>
+          <p class="font-heading font-medium text-lg md:text-xl text-[var(--text-stellar)] max-w-2xl mx-auto">
+            {surgeData.hero.subtitle}
+          </p>
+        </div>
+
+        <TerminalHero sequence={surgeData.hero.terminalSequence} client:load />
+      </div>
+    </div>
+  </section>
+
+  {/* The Problem Section & Prestige Statement */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-12">
+        <div class="space-y-4 max-w-2xl mx-auto text-left md:text-center">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+            {surgeData.problem.title}
+          </h2>
+          <p class="text-white/80 text-base leading-relaxed font-sans">
+            {surgeData.problem.body}
+          </p>
+        </div>
+
+        {/* Display Scale Prestige Statement */}
+        <div class="py-16 my-8 relative overflow-hidden liquid-glass-card px-6">
+          <div class="absolute inset-0 bg-[var(--aurora-blue-solid)]/5 blur-3xl opacity-30 rounded-full" />
+          <blockquote class="font-serif italic text-2xl md:text-3xl lg:text-4xl text-[var(--text-stellar)] max-w-3xl mx-auto relative z-10 leading-relaxed">
+            "{surgeData.problem.corePrinciple}"
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Section 1 — Surge Stacks */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mb-12">
+        <h2 class="font-heading font-semibold text-[var(--text-h2)] leading-[var(--leading-subheading)] tracking-[var(--tracking-subheading)] text-[var(--text-stellar)] mb-4">
+          Choose Your Configuration
+        </h2>
+        <p class="text-[var(--text-muted)] text-[var(--text-body)] font-sans">
+          Deploy production-ready infrastructure stacks in days. Fully configured, hardened, and documented.
+        </p>
+      </div>
+      <SurgeStackCard stacks={surgeData.stacks} client:load />
+    </div>
+  </section>
+
+  {/* Section 2 — Delivery Process */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] mb-4 tracking-tight">
+            {surgeData.deliveryProcess.title}
+          </h2>
+          <p class="text-[var(--text-muted)] text-[var(--text-body)] font-sans">
+            {surgeData.deliveryProcess.subtitle}
+          </p>
+        </div>
+        <DeliveryTimeline process={surgeData.deliveryProcess} client:load />
+      </div>
+    </div>
+  </section>
+
+  {/* Section 3 — Liability Boundary */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto text-center space-y-6">
+        <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+          {surgeData.liabilityBoundary.title}
+        </h2>
+        <p class="text-white/80 text-base leading-relaxed font-sans text-left md:text-center">
+          {surgeData.liabilityBoundary.body}
+        </p>
+
+        {/* Liability Boundary H3 Prestige statement */}
+        <blockquote class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] py-6 max-w-xl mx-auto border-t border-b border-white/[0.08]">
+          "We treat you like engineering adults."
+        </blockquote>
+
+        <p class="text-white/60 text-sm leading-relaxed font-sans text-left md:text-center italic">
+          {surgeData.liabilityBoundary.opinionatedNote}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Section 4 — Comparison Table */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/5">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] mb-4 tracking-tight">
+            {surgeData.surgeVsFull.title}
+          </h2>
+        </div>
+        <SurgeVsFullTable comparisonData={surgeData.surgeVsFull} client:load />
+      </div>
+    </div>
+  </section>
+
+  {/* Compliance Cross Link Banner */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-gradient-to-r from-[rgba(16,185,129,0.05)] to-transparent">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card p-8 rounded-3xl border border-[rgba(16,185,129,0.15)] bg-slate-900/30 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-left">
+            <h3 class="font-heading font-semibold text-xl text-[var(--text-stellar)]">
+              {surgeData.complianceCrossLink.title}
+            </h3>
+            <p class="text-white/70 text-sm font-sans max-w-2xl leading-relaxed">
+              {surgeData.complianceCrossLink.body}
+            </p>
+          </div>
+          <RainbowButton
+            variant="glass"
+            size="lg"
+            className="rounded-xl shrink-0"
+            asChild
+          >
+            <a href={surgeData.complianceCrossLink.cta.href}>{surgeData.complianceCrossLink.cta.label}</a>
+          </RainbowButton>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Cross Links & CTA */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto">
+        <h3 class="font-heading font-medium text-xl text-[var(--text-stellar)] mb-8">
+          {surgeData.crossLinks.title}
+        </h3>
+        <div class="flex flex-wrap justify-center gap-4 text-sm font-sans font-medium">
+          {surgeData.crossLinks.links.map((link) => (
+            <a
+              href={link.href}
+              class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

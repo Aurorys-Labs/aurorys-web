@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import Footer from "../../components/astro/Footer.astro";
+import { AuroraOverlay } from "../../components/react/AuroraOverlay";
+import { MobileNav } from "../../components/react/MobileNav";
+import { Navbar } from "../../components/react/Navbar";
+---
+
+<BaseLayout title="Privacy Policy | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image13.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-8 md:pt-40 md:pb-12">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-4">
+        <h1 class="font-heading font-semibold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora leading-tight tracking-tight">
+          Privacy Policy
+        </h1>
+        <p class="text-sm font-mono text-[var(--text-muted)]">
+          Last Updated: May 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Legal Content */}
+  <section class="relative z-10 py-12 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/[0.06] backdrop-blur-xl bg-[rgba(13,17,23,0.35)] space-y-8 text-left font-sans text-white/80 leading-relaxed">
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">1. Introduction</h2>
+            <p>
+              At Aurorys Labs, we are committed to protecting the privacy and security of our clients, visitors, and partners.
+              This Privacy Policy explains how we collect, store, share, and protect your information when you visit our website,
+              use our services, or engage with our consulting team.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">2. Information We Collect</h2>
+            <p>
+              We collect information in the following categories:
+            </p>
+            <ul class="list-disc list-inside space-y-2 pl-4">
+              <li><strong>Contact Information:</strong> Names, email addresses, phone numbers, and company details provided when you submit forms or reach out to us.</li>
+              <li><strong>Engagement Data:</strong> Project details, infrastructure descriptions, and vulnerability reports provided securely during our consulting work.</li>
+              <li><strong>Technical Metadata:</strong> IP addresses, browser types, and usage data analyzed locally or via privacy-preserving tools to improve our website experience.</li>
+            </ul>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">3. How We Use Information</h2>
+            <p>
+              We use your data strictly to deliver consulting services, manage client relationships, address security inquiries,
+              and keep our website operational. We do not sell client data, use client details for unauthorized marketing campaigns,
+              or publish findings without explicit permission.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">4. Data Sovereignty & Security</h2>
+            <p>
+              True to our security principles, client engagement data is stored on encrypted, self-hosted infrastructure.
+              We minimize reliance on third-party cloud hosts, enforce least-privilege controls, and utilize end-to-end
+              encrypted communications for all sensitive documents.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">5. Your Rights</h2>
+            <p>
+              Under relevant regulations (such as GDPR), you have the right to request access to your stored data, demand corrections,
+              or ask for permanent deletion. We retain project documentation for the duration of the engagement plus 12 months,
+              after which we will safely purge it upon request.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="font-heading font-semibold text-xl text-[var(--text-stellar)] border-b border-white/[0.06] pb-2">6. Contact Information</h2>
+            <p>
+              If you have questions about this policy or our data practices, please email our security team at:
+              <a href="mailto:security@auroryslabs.com" class="text-[var(--aurora-green-solid)] hover:text-white transition-colors duration-200 underline underline-offset-4 font-semibold">security@auroryslabs.com</a>.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

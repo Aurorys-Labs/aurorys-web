@@ -1,0 +1,321 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/astro/Footer.astro";
+import { AuroraOverlay } from "../../components/react/AuroraOverlay";
+import { MobileNav } from "../../components/react/MobileNav";
+import { Navbar } from "../../components/react/Navbar";
+import { RainbowButton } from "../../components/ui/rainbow-button";
+
+import constellationData from "../../lib/data/full-constellation.json";
+---
+
+<BaseLayout title={`${constellationData.hero.title} | Aurorys Labs`}>
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image8.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Page Hero */}
+  <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="font-heading font-semibold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora mb-6 leading-tight tracking-tight">
+          {constellationData.hero.title}
+        </h1>
+        <p class="font-heading font-medium text-lg md:text-xl text-[var(--text-stellar)] max-w-2xl mx-auto leading-relaxed">
+          {constellationData.hero.subtitle}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* The Pitch */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] max-w-2xl mx-auto tracking-tight">
+          {constellationData.pitch.title}
+        </h2>
+        <p class="text-white/80 text-base leading-relaxed font-sans text-left md:text-center">
+          {constellationData.pitch.body}
+        </p>
+        <p class="text-white/80 text-base leading-relaxed font-sans text-left md:text-center">
+          {constellationData.pitch.body2}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* What's Included — Phases */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-12 text-left">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] mb-4 tracking-tight">
+            What's Included
+          </h2>
+          <p class="text-[var(--text-muted)] text-[var(--text-body)] font-sans">
+            Every capability we offer, integrated into one comprehensive engagement.
+          </p>
+        </div>
+
+        <div class="relative border-l border-white/[0.08] pl-8 ml-4 md:ml-12 space-y-12 py-4">
+          {constellationData.phases.map((phase) => (
+            <div class="relative group text-left">
+              <div class="absolute -left-[53px] top-0.5 w-10 h-10 rounded-full bg-[rgba(8,12,16,0.9)] border border-white/[0.08] flex items-center justify-center font-heading font-semibold text-sm text-[var(--text-stellar)] group-hover:border-[var(--aurora-blue-solid)] group-hover:text-[var(--aurora-blue-solid)] transition-colors">
+                {phase.id.split("-").map(p => p[0].toUpperCase()).join("")}
+              </div>
+
+              <div class="space-y-4 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-3">
+                  <h3 class="font-heading font-medium text-xl text-[var(--text-stellar)]">
+                    {phase.title}
+                  </h3>
+                  <span class="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-[var(--aurora-blue-solid)]/10 border border-[var(--aurora-blue-solid)]/20 text-blue-300">
+                    {phase.duration}
+                  </span>
+                </div>
+
+                <p class="text-white/80 text-sm leading-relaxed font-sans">
+                  {phase.body}
+                </p>
+
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-white/70 font-sans">
+                  {phase.deliverables.map((item) => (
+                    <li class="flex items-center gap-2">
+                      <span class="text-[var(--aurora-blue-solid)] shrink-0">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Build Partnership Included */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto text-center space-y-6">
+        <h3 class="font-heading font-semibold text-2xl text-[var(--text-stellar)]">
+          {constellationData.buildPartnershipIncluded.title}
+        </h3>
+        <p class="text-white/80 text-sm leading-relaxed font-sans text-left md:text-center">
+          {constellationData.buildPartnershipIncluded.body}
+        </p>
+        <p class="text-white/60 text-xs leading-relaxed font-sans text-left md:text-center italic">
+          {constellationData.buildPartnershipIncluded.body2}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* What you walk away with */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-left space-y-6">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+            {constellationData.walkaway.title}
+          </h2>
+          <p class="text-[var(--text-muted)] text-base font-sans">
+            {constellationData.walkaway.subtitle}
+          </p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)]">
+          <ul class="space-y-4 text-sm text-white/90 font-sans">
+            {constellationData.walkaway.items.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="inline-flex items-center justify-center p-0.5 rounded bg-[var(--aurora-green-solid)]/10 text-[var(--aurora-green-solid)] shrink-0 mt-0.5">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <span class="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="text-center pt-4">
+          <p class="font-serif italic text-lg text-[var(--text-stellar)]">
+            "{constellationData.walkaway.closingNote}"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Strict Scope & Absolute Ownership (NEW Extended) */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-left space-y-12">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+            {constellationData.strictScope.title}
+          </h2>
+          <p class="text-[var(--text-muted)] text-base font-sans">
+            {constellationData.strictScope.subtitle}
+          </p>
+        </div>
+
+        {/* Display Scale Prestige Statement */}
+        <div class="py-16 my-8 relative overflow-hidden liquid-glass-card px-6 text-center">
+          <div class="absolute inset-0 bg-[var(--aurum-gold-subtle)]/5 blur-3xl opacity-30 rounded-full" />
+          <blockquote class="font-serif italic text-2xl md:text-3xl lg:text-4xl text-[var(--text-stellar)] max-w-2xl mx-auto relative z-10 leading-relaxed">
+            "We build it. We train you. You own it."
+          </blockquote>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {constellationData.strictScope.sections.map((sec) => {
+            const isPhaseGated = sec.id === "phase-gated";
+            return (
+              <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] space-y-4">
+                <h3 class="font-heading font-medium text-lg text-[var(--text-stellar)]">
+                  {sec.title}
+                </h3>
+                <p class="text-white/70 text-sm leading-relaxed font-sans">
+                  {sec.body}
+                </p>
+
+                {isPhaseGated && sec.points && (
+                  <ul class="space-y-2.5 pt-2 text-xs text-white/60 font-sans">
+                    {sec.points.map((pt) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-[var(--aurum-gold-light)] shrink-0">•</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Value Comparison */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto text-left space-y-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+            {constellationData.valueComparison.title}
+          </h2>
+          <p class="text-[var(--text-muted)] text-base font-sans">
+            {constellationData.valueComparison.subtitle}
+          </p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          {/* Separated costs */}
+          <div class="md:col-span-6 space-y-4 border-b md:border-b-0 md:border-r border-white/[0.06] pb-6 md:pb-0 md:pr-8">
+            <ul class="space-y-2 text-xs text-white/50 font-sans">
+              {constellationData.valueComparison.items.map((item, i) => (
+                <li class={`leading-relaxed ${i === constellationData.valueComparison.items.length - 1 ? 'italic text-white/40' : ''}`}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div class="text-sm font-sans text-white/40">
+              Total Separate: <span class="line-through">{constellationData.valueComparison.totalSeparate}</span>
+            </div>
+          </div>
+
+          {/* Bundle Cost */}
+          <div class="md:col-span-6 space-y-4 text-center md:text-left">
+            <div className="font-heading font-semibold text-2xl bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
+              {constellationData.valueComparison.constellationPrice.split(" — ")[0]}
+            </div>
+            <p class="text-white/80 text-sm font-sans leading-relaxed">
+              {constellationData.valueComparison.constellationPrice.split(" — ")[1]}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Is This Right For You? */}
+  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto text-center space-y-8">
+        <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+          {constellationData.isRightForYou.title}
+        </h2>
+        <p class="text-white/80 text-base leading-relaxed font-sans text-left md:text-center">
+          {constellationData.isRightForYou.body}
+        </p>
+
+        {/* H3 Prestige statement */}
+        <blockquote class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] py-6 max-w-xl mx-auto border-t border-b border-white/[0.08] leading-relaxed">
+          "We'd rather lose a $120K engagement than sign one that isn't the right fit."
+        </blockquote>
+
+        <p class="text-white/70 text-sm leading-relaxed font-sans text-left md:text-center italic">
+          {constellationData.isRightForYou.body2}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA & Cross Links */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-gradient-to-b from-transparent to-slate-900/10">
+    <div class="content-width px-6">
+      <div class="max-w-3xl mx-auto space-y-10">
+        <div class="space-y-4">
+          <h2 class="font-heading font-semibold text-2xl text-[var(--text-stellar)]">
+            {constellationData.cta.title}
+          </h2>
+          <p class="text-white/80 text-sm font-sans max-w-2xl mx-auto leading-relaxed">
+            {constellationData.cta.body}
+          </p>
+        </div>
+
+        <RainbowButton
+          variant="glass"
+          size="lg"
+          className="rounded-xl inline-flex justify-center"
+          asChild
+        >
+          <a href={constellationData.cta.btn.href}>{constellationData.cta.btn.label}</a>
+        </RainbowButton>
+
+        <div class="border-t border-white/[0.06] pt-10">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-4">
+            {constellationData.crossLinks.title}
+          </h4>
+          <div class="flex flex-wrap justify-center gap-4 text-sm font-sans font-medium">
+            {constellationData.crossLinks.links.map((link) => (
+              <a
+                href={link.href}
+                class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

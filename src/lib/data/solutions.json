@@ -1,149 +1,176 @@
 {
-  "sectionTitle": "Solutions We Offer",
-  "sectionSubtitle": "Capabilities across security architecture, DevSecOps, compliance, and infrastructure sovereignty. Every engagement delivers blueprints your team can build — not just recommendations they'll forget.",
-  "cards": [
-    {
-      "id": "first-light",
-      "icon": "Sparkles",
-      "title": "First Light",
-      "description": "Understand where you stand and what to fix first.",
-      "detail": "You don't know what you don't know. Your security is whatever your team has had time for — which isn't much. Start here.",
-      "bullets": [
-        "Architecture and infrastructure review",
-        "Vulnerability assessment and triage",
-        "Risk prioritization by business impact",
-        "Security roadmap and remediation guidance"
-      ],
-      "domains": ["Assessment", "Risk", "Compliance"],
-      "cta": { "label": "Reveal Your Posture", "href": "/?subject=REQ_AUDIT#contact" },
-      "defaultExpanded": true,
-      "price": "Starting from $10K"
-    },
-    {
-      "id": "foundation",
-      "icon": "Compass",
-      "title": "Foundation",
-      "description": "Build security into your foundation from the start.",
-      "detail": "You're building something new — a product, a platform, a company. Security decisions made now compound. Get them right.",
-      "bullets": [
-        "Threat model and risk assessment",
-        "Security architecture design",
-        "IaC starter templates (Terraform/Pulumi)",
-        "Implementation guide + review cycle"
-      ],
-      "domains": ["Architecture", "Hardening"],
-      "cta": { "label": "Design Your Foundation", "href": "/?subject=START_BUILD#contact" },
-      "defaultExpanded": false,
-      "price": "Starting from $20K"
-    },
-    {
-      "id": "pulse",
-      "icon": "GitBranch",
-      "title": "Pulse",
-      "description": "Ship fast. Ship secure. Ship with confidence.",
-      "detail": "Your CI/CD pipeline moves fast — but security gates are missing, manual, or bolted on after the fact. Time to fix that.",
-      "bullets": [
-        "CI/CD security pipeline design",
-        "SAST/DAST/SCA integration plan",
-        "Secrets management architecture",
-        "Container security baseline"
-      ],
-      "domains": ["DevSecOps", "Supply Chain", "Secrets"],
-      "cta": { "label": "Secure Your Pipeline", "href": "/?subject=START_BUILD#contact" },
-      "defaultExpanded": false,
-      "price": "Starting from $20K"
-    },
-    {
-      "id": "clearance",
-      "icon": "ShieldCheck",
-      "title": "Clearance",
-      "description": "Compliance that opens doors, not just checks boxes.",
-      "detail": "Your next enterprise customer wants SOC 2. Your investors asked about security posture. You need to get audit-ready — without derailing your engineering team for six months.",
-      "bullets": [
-        "Compliance gap analysis",
-        "Policy and control framework",
-        "Control mapping (NIST, CIS, OWASP, MITRE)",
-        "Remediation roadmap"
-      ],
-      "domains": ["Compliance", "Audit", "Governance"],
-      "cta": { "label": "Get Audit-Ready", "href": "/?subject=REQ_AUDIT#contact" },
-      "defaultExpanded": false,
-      "price": "Starting from $22K"
-    },
-    {
-      "id": "escape-velocity",
-      "icon": "Rocket",
-      "title": "Escape Velocity",
-      "description": "Own your infrastructure. Control your costs. Keep your data where you decide.",
-      "detail": "Your cloud bill keeps climbing. Your data lives in someone else's data center. You're paying for compute you don't fully control. Time to explore alternatives.",
-      "bullets": [
-        "Cloud audit and cost analysis",
-        "Migration strategy and planning",
-        "Trust boundary definition",
-        "Infrastructure hardening baseline"
-      ],
-      "domains": ["Infrastructure", "Migration", "Cost Optimization"],
-      "cta": { "label": "Chart Your Path", "href": "/?subject=INIT_MIGRATION#contact" },
-      "defaultExpanded": false,
-      "price": "Starting from $22K"
-    },
-    {
-      "id": "beacon",
-      "icon": "Orbit",
-      "title": "Beacon",
-      "description": "Security leadership without the full-time hire.",
-      "detail": "You need a security architect on the team — but not full-time, and not at $150K+/year. You need someone who knows your stack, reviews your decisions, and picks up the phone when something happens.",
-      "bullets": [
-        "Monthly security posture review",
-        "Strategic security guidance",
-        "Architecture decision support",
-        "Incident advisory availability"
-      ],
-      "domains": ["Advisory", "Architecture", "Training"],
-      "cta": { "label": "Let's Talk About Advisory", "href": "/?subject=PING_HELLO#contact" },
-      "defaultExpanded": false,
-      "price": "Starting from $8K/month"
-    },
-    {
-      "id": "sprint",
-      "icon": "Zap",
-      "title": "Security Sprint",
-      "description": "Focused 2-week engagement on one critical area.",
-      "detail": "For teams that need rapid progress on a specific security concern without a full engagement.",
-      "bullets": [
-        "Focused scope, rapid delivery",
-        "Specific vulnerability remediation",
-        "Quick-win security improvements",
-        "Knowledge transfer included"
-      ],
-      "domains": ["Engineering", "Security", "Automation"],
-      "cta": { "label": "Target Your Sprint", "href": "/?subject=PING_HELLO#contact" },
-      "defaultExpanded": false,
-      "price": "Starting from $8K"
-    },
-    {
-      "id": "surge",
-      "icon": "Rocket",
-      "title": "Surge",
-      "description": "One-time infrastructure deployment on your hardware. We deploy, you own.",
-      "detail": "Coming soon. Rapid deployment with security built in from the first commit.",
-      "bullets": [],
-      "domains": ["Infrastructure", "Migration"],
-      "cta": { "label": "Learn More", "href": "/?subject=START_BUILD#contact" },
-      "defaultExpanded": false,
-      "price": "Coming soon"
-    },
-    {
-      "id": "custom",
-      "icon": "MessageSquare",
-      "title": "Something else on your mind?",
-      "description": "Every engagement is scoped individually. Let's talk about what you need.",
-      "detail": "If you need something specific that doesn't fit the packages above — or something more comprehensive — we'll figure out the right approach together.",
-      "bullets": [],
-      "domains": ["Advisory", "Strategy"],
-      "cta": { "label": "Let's Talk", "href": "/?subject=REQ_AUDIT#contact" },
-      "defaultExpanded": false,
-      "price": ""
-    }
-  ]
+	"sectionTitle": "Solutions We Offer",
+	"sectionSubtitle": "Capabilities across security architecture, DevSecOps, compliance, and infrastructure sovereignty. Every engagement delivers blueprints your team can build — not just recommendations they'll forget.",
+	"cards": [
+		{
+			"id": "first-light",
+			"icon": "Sparkles",
+			"title": "First Light",
+			"description": "Understand where you stand and what to fix first.",
+			"detail": "You don't know what you don't know. Your security is whatever your team has had time for — which isn't much. Start here.",
+			"bullets": [
+				"Architecture and infrastructure review",
+				"Vulnerability assessment and triage",
+				"Risk prioritization by business impact",
+				"Security roadmap and remediation guidance"
+			],
+			"domains": ["Assessment", "Risk", "Compliance"],
+			"cta": {
+				"label": "Reveal Your Posture",
+				"href": "/compliance"
+			},
+			"defaultExpanded": true,
+			"price": "Starting from $10K"
+		},
+		{
+			"id": "foundation",
+			"icon": "Compass",
+			"title": "Foundation",
+			"description": "Build security into your foundation from the start.",
+			"detail": "You're building something new — a product, a platform, a company. Security decisions made now compound. Get them right.",
+			"bullets": [
+				"Threat model and risk assessment",
+				"Security architecture design",
+				"IaC starter templates (Terraform/Pulumi)",
+				"Implementation guide + review cycle"
+			],
+			"domains": ["Architecture", "Hardening"],
+			"cta": {
+				"label": "Design Your Foundation",
+				"href": "/security-paths"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $20K"
+		},
+		{
+			"id": "pulse",
+			"icon": "GitBranch",
+			"title": "Pulse",
+			"description": "Ship fast. Ship secure. Ship with confidence.",
+			"detail": "Your CI/CD pipeline moves fast — but security gates are missing, manual, or bolted on after the fact. Time to fix that.",
+			"bullets": [
+				"CI/CD security pipeline design",
+				"SAST/DAST/SCA integration plan",
+				"Secrets management architecture",
+				"Container security baseline"
+			],
+			"domains": ["DevSecOps", "Supply Chain", "Secrets"],
+			"cta": {
+				"label": "Secure Your Pipeline",
+				"href": "/contact?subject=PULSE_PIPELINE#contact"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $20K",
+			"ifSourcedSeparately": "Sourced separately: CI/CD security audit ($5K-$10K) + secrets architecture ($5K-$10K) + container hardening ($5K-$10K) — totaling $15K-$30K."
+		},
+		{
+			"id": "clearance",
+			"icon": "ShieldCheck",
+			"title": "Clearance",
+			"description": "Compliance that opens doors, not just checks boxes.",
+			"detail": "Your next enterprise customer wants SOC 2. Your investors asked about security posture. You need to get audit-ready — without derailing your engineering team for six months.",
+			"bullets": [
+				"Compliance gap analysis",
+				"Policy and control framework",
+				"Control mapping (NIST, CIS, OWASP, MITRE)",
+				"Remediation roadmap"
+			],
+			"domains": ["Compliance", "Audit", "Governance"],
+			"cta": {
+				"label": "Get Audit-Ready",
+				"href": "/compliance"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $22K",
+			"ifSourcedSeparately": "Sourced separately: Standalone gap analysis ($5K-$10K) + policy development ($10K-$20K) + audit prep ($5K-$15K) — totaling $20K-$45K."
+		},
+		{
+			"id": "escape-velocity",
+			"icon": "Rocket",
+			"title": "Escape Velocity",
+			"description": "Own your infrastructure. Control your costs. Keep your data where you decide.",
+			"detail": "Your cloud bill keeps climbing. Your data lives in someone else's data center. You're paying for compute you don't fully control. Time to explore alternatives.",
+			"bullets": [
+				"Cloud audit and cost analysis",
+				"Migration strategy and planning",
+				"Trust boundary definition",
+				"Infrastructure hardening baseline"
+			],
+			"domains": ["Infrastructure", "Migration", "Cost Optimization"],
+			"cta": {
+				"label": "Chart Your Path",
+				"href": "/security-paths"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $22K",
+			"ifSourcedSeparately": "Sourced separately: Cloud audit ($5K-$10K) + migration planning ($10K-$20K) + security architecture ($10K-$20K) — totaling $25K-$50K."
+		},
+		{
+			"id": "beacon",
+			"icon": "Orbit",
+			"title": "Beacon",
+			"description": "Security leadership without the full-time hire.",
+			"detail": "You need a security architect on the team — but not full-time, and not at $150K+/year. You need someone who knows your stack, reviews your decisions, and picks up the phone when something happens.",
+			"bullets": [
+				"Monthly security posture review",
+				"Strategic security guidance",
+				"Architecture decision support",
+				"Incident advisory availability"
+			],
+			"domains": ["Advisory", "Architecture", "Training"],
+			"cta": {
+				"label": "Let's Talk About Advisory",
+				"href": "/contact?subject=BEACON_ADVISORY#contact"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $8K/month"
+		},
+		{
+			"id": "sprint",
+			"icon": "Zap",
+			"title": "Security Sprint",
+			"description": "Focused 2-week engagement on one critical area.",
+			"detail": "For teams that need rapid progress on a specific security concern without a full engagement.",
+			"bullets": [
+				"Focused scope, rapid delivery",
+				"Specific vulnerability remediation",
+				"Quick-win security improvements",
+				"Knowledge transfer included"
+			],
+			"domains": ["Engineering", "Security", "Automation"],
+			"cta": {
+				"label": "Target Your Sprint",
+				"href": "/solutions/sprints"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $8K"
+		},
+		{
+			"id": "surge",
+			"icon": "Rocket",
+			"title": "Surge",
+			"description": "One-time infrastructure deployment on your hardware. We deploy, you own.",
+			"detail": "Coming soon. Rapid deployment with security built in from the first commit.",
+			"bullets": [],
+			"domains": ["Infrastructure", "Migration"],
+			"cta": { "label": "Learn More", "href": "/solutions/surge" },
+			"defaultExpanded": false,
+			"price": "Coming soon"
+		},
+		{
+			"id": "custom",
+			"icon": "MessageSquare",
+			"title": "Something else on your mind?",
+			"description": "Every engagement is scoped individually. Let's talk about what you need.",
+			"detail": "If you need something specific that doesn't fit the packages above — or something more comprehensive — we'll figure out the right approach together.",
+			"bullets": [],
+			"domains": ["Advisory", "Strategy"],
+			"cta": {
+				"label": "Let's Talk",
+				"href": "/contact?subject=CUSTOM_ENGAGEMENT#contact"
+			},
+			"defaultExpanded": false,
+			"price": ""
+		}
+	]
 }

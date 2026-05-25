@@ -1,0 +1,192 @@
+{
+	"hero": {
+		"title": "Surge",
+		"subtitle": "Production-ready infrastructure. Deployed in days. Owned by you from day one.",
+		"terminalSequence": [
+			"> initializing aurorys_core.tf...",
+			"> deploying Sovereign_VPS_Base...",
+			"> establishing secure_tunnels...",
+			"> creating Day-0_Golden_Snapshot...",
+			"> [SUCCESS] Keys handed over. Root access granted."
+		]
+	},
+	"problem": {
+		"title": "Your Cloud Bill Is a Subscription You Forgot to Cancel",
+		"body": "Except you can't cancel it, and it keeps growing. Every month, you're paying for compute you don't fully control, data paths you can't fully trace, and vendor relationships you can't fully exit. Security decisions made now compound. So do infrastructure costs.",
+		"corePrinciple": "We don't touch your code. You hold the keys. We deploy the capability — and then we leave."
+	},
+	"stacks": [
+		{
+			"id": "sovereign-base",
+			"title": "Sovereign Base",
+			"subtitle": "The foundation. Everything starts here.",
+			"pills": ["Infrastructure", "Hardening", "VPN"],
+			"price": "Starting from $8K",
+			"body": "Hardened bare-metal or cloud VPS base. Default-deny UFW/iptables, Fail2Ban, SSH key-only access, secure WireGuard/Tailscale VPN tunnel for admin access. Docker/Podman ready. This is the foundation every other stack builds on — and it's solid enough to stand alone.",
+			"deliverables": [
+				"Hardened OS configuration (default-deny firewall, Fail2Ban, SSH hardening)",
+				"WireGuard/Tailscale VPN tunnel for secure admin access",
+				"Docker/Podman runtime environment",
+				"Basic monitoring and alerting hooks",
+				"Documentation and Day-0 snapshot"
+			],
+			"status": "active",
+			"cta": {
+				"label": "Deploy Your Base",
+				"href": "#contact?subject=SURGE_BASE"
+			}
+		},
+		{
+			"id": "observability-engine",
+			"title": "Observability Engine",
+			"subtitle": "See everything. Miss nothing.",
+			"pills": ["Monitoring", "Alerting", "Metrics"],
+			"price": "Starting from $12K",
+			"body": "Comprehensive logging, metrics, and tracing. Grafana dashboards, Prometheus metrics, Loki/ELK log aggregation. Automated alerting hooks to Slack and Teams. You see what's happening across your infrastructure — in real time.",
+			"deliverables": [
+				"Grafana dashboards (pre-built for common services)",
+				"Prometheus metrics collection",
+				"Loki log aggregation (or ELK stack)",
+				"Automated alerting hooks (Slack, Teams, PagerDuty)",
+				"Custom alert rules for your stack",
+				"Documentation and Day-0 snapshot"
+			],
+			"status": "active",
+			"cta": {
+				"label": "See Everything",
+				"href": "#contact?subject=SURGE_BASE"
+			}
+		},
+		{
+			"id": "zero-trust-identity",
+			"title": "Zero-Trust Identity Stack",
+			"subtitle": "Identity is the new perimeter.",
+			"pills": ["Identity", "SSO", "MFA"],
+			"price": "Starting from $15K",
+			"body": "Keycloak or Authelia SSO integration. Role-Based Access Control (RBAC) foundation. Enforced MFA for internal applications. Identity is the new perimeter — and this stack locks it down.",
+			"status": "coming-soon",
+			"cta": {
+				"label": "Join the Waitlist",
+				"href": "#contact?subject=PING_HELLO"
+			}
+		},
+		{
+			"id": "compliance-bastion",
+			"title": "Compliance Bastion",
+			"subtitle": "SOC 2/ISO 27001 ready infrastructure.",
+			"pills": ["Compliance", "Audit", "SOC 2", "ISO 27001"],
+			"price": "Starting from $20K",
+			"body": "Foundational infrastructure explicitly mapped to SOC 2 and ISO 27001 controls. Automated evidence collection, immutable audit logging, encrypted volumes, disaster recovery backups. Compliance-ready from the first deployment.",
+			"status": "coming-soon",
+			"cta": {
+				"label": "Join the Waitlist",
+				"href": "#contact?subject=PING_HELLO"
+			}
+		},
+		{
+			"id": "aurorys-core",
+			"title": "Aurorys Core",
+			"subtitle": "Our exact internal stack. Months of R&D, deployed in days.",
+			"pills": [
+				"Infrastructure",
+				"Security",
+				"Observability",
+				"Business Tools"
+			],
+			"price": "Starting from $30K+",
+			"body": "Security + Networking + Observability + Internal Business Tools. Fully integrated. This is the stack we run on — the same hardened configurations, monitoring, and tooling that powers our own infrastructure. We eat our own cooking, and now you can too.",
+			"deliverables": [
+				"Everything from Sovereign Base",
+				"Everything from Observability Engine",
+				"Internal business tooling (project management, communication, documentation)",
+				"Fully integrated security stack",
+				"Complete documentation and Day-0 snapshot",
+				"Deep-dive knowledge transfer session"
+			],
+			"status": "active",
+			"cta": { "label": "Let's Talk", "href": "#contact?subject=SURGE_CORE" }
+		}
+	],
+	"deliveryProcess": {
+		"title": "How Surge Gets Deployed",
+		"subtitle": "Four steps. You provision. We deploy. We snapshot. You own.",
+		"steps": [
+			{
+				"step": 1,
+				"title": "You Provision",
+				"body": "You spin up the bare-metal or cloud VPS. You hold the keys from the start — we never have root access to your production environment after deployment. You choose the provider, the region, and the specs."
+			},
+			{
+				"step": 2,
+				"title": "We Deploy",
+				"body": "We run our pre-built IaC to build the architecture on your hardware. This isn't consulting hours — it's months of R&D compressed into a deployment. The same configurations we've tested, hardened, and run internally."
+			},
+			{
+				"step": 3,
+				"title": "Day-0 Golden Snapshot",
+				"body": "Once deployed, we create an immutable Day-0 snapshot of the perfect, working architecture. This is your golden backup — the pristine state you can always revert to if something goes wrong. Break the routing rules three months from now? Revert to Day-0. You hold the keys to your own safety net."
+			},
+			{
+				"step": 4,
+				"title": "Handoff & Training",
+				"body": "We conduct a deep-dive knowledge transfer session. Specifically, we train your team on:",
+				"trainingItems": [
+					"The 3-2-1 backup rule and how to maintain it",
+					"How to revert to the Day-0 Golden State if anything breaks",
+					"How the architecture is structured and why each decision was made",
+					"How to extend and modify the stack on your own"
+				],
+				"closingNote": "Then we leave. You own everything. No managed services. No support retainers. No lock-in. Including ours."
+			}
+		]
+	},
+	"liabilityBoundary": {
+		"title": "No MSSP Lock-In. No Support Retainers.",
+		"body": "We do not act as your outsourced IT, and we do not offer support retainers. We deploy the capability, provide the Day-0 Golden Backup, and train you to own it. If you break the routing rules three months from now, you hold the keys to revert to the Day-0 snapshot. We treat you like engineering adults.",
+		"opinionatedNote": "Our stacks are highly opinionated. They are built on the open-source tools we trust and use ourselves. If you want to customize the stack or add your own tools — you have root access, go for it. If you need us to integrate custom hybrid setups, we can scope that as a separate engagement."
+	},
+	"surgeVsFull": {
+		"title": "When Surge vs. When a Full Engagement",
+		"rows": [
+			{
+				"label": "What you get",
+				"surge": "Pre-built infrastructure stack deployed to your hardware",
+				"full": "Custom architecture designed for your specific stack"
+			},
+			{ "label": "Timeline", "surge": "Days", "full": "5-8 weeks" },
+			{
+				"label": "Customization",
+				"surge": "Opinionated defaults, configurable by you",
+				"full": "Tailored to your exact requirements"
+			},
+			{
+				"label": "Best for",
+				"surge": "You need production-ready infrastructure fast",
+				"full": "You need a security architecture designed for your specific environment"
+			},
+			{
+				"label": "Ownership",
+				"surge": "You own everything from deployment",
+				"full": "You own everything from day one"
+			},
+			{ "label": "Starting price", "surge": "$8K-$30K+", "full": "$20K-$22K" }
+		],
+		"closingNote": "Not sure which you need? If you need infrastructure deployed fast and you're comfortable with opinionated defaults, Surge is the right call. If you need a custom security architecture designed for your specific environment, start with Foundation."
+	},
+	"complianceCrossLink": {
+		"title": "Surge + Clearance: Compliance-Ready Infrastructure",
+		"body": "Need infrastructure that's ready for your SOC 2 audit? The Compliance Bastion (coming soon) combines a hardened Surge deployment with our Clearance compliance readiness engagement. Infrastructure that's audit-ready from day one — not after months of retrofitting.",
+		"cta": { "label": "Learn About Clearance", "href": "/compliance" }
+	},
+	"crossLinks": {
+		"title": "Ready to take the next step?",
+		"links": [
+			{ "label": "Explore All Solutions", "href": "/solutions" },
+			{ "label": "How We Work", "href": "/how-we-work" },
+			{
+				"label": "Book a Discovery Call",
+				"href": "#contact?subject=SURGE_CORE"
+			}
+		]
+	}
+}

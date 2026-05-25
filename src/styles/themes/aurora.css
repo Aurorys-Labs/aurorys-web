@@ -1,41 +1,41 @@
 /* Aurorys Labs — Aurora Theme (Dark) */
 
 @layer theme {
-  :root {
-    /* shadcn overrides — all themed to Night Sky + Aurora */
-    --background: #080c10;
-    --foreground: #E8EDF2;
-    --card: #0d1117;
-    --card-foreground: #E8EDF2;
-    --popover: #0d1117;
-    --popover-foreground: #E8EDF2;
-    --primary: #00e8a0;
-    --primary-foreground: #080c10;
-    --secondary: #1a2330;
-    --secondary-foreground: #E8EDF2;
-    --muted: #1a2330;
-    --muted-foreground: #8B95A1;
-    --accent: #1a2330;
-    --accent-foreground: #E8EDF2;
-    --destructive: #e879a8;
-    --border: rgba(255, 255, 255, 0.08);
-    --input: rgba(255, 255, 255, 0.10);
-    --ring: #00e8a0;
-    --radius: 1rem;
+	:root {
+		/* shadcn overrides — all themed to Night Sky + Aurora */
+		--background: #080c10;
+		--foreground: #e8edf2;
+		--card: #0d1117;
+		--card-foreground: #e8edf2;
+		--popover: #0d1117;
+		--popover-foreground: #e8edf2;
+		--primary: #00e8a0;
+		--primary-foreground: #080c10;
+		--secondary: #1a2330;
+		--secondary-foreground: #e8edf2;
+		--muted: #1a2330;
+		--muted-foreground: #8b95a1;
+		--accent: #1a2330;
+		--accent-foreground: #e8edf2;
+		--destructive: #e879a8;
+		--border: rgba(255, 255, 255, 0.08);
+		--input: rgba(255, 255, 255, 0.1);
+		--ring: #00e8a0;
+		--radius: 1rem;
 
-    --chart-1: #00e8a0;
-    --chart-2: #a78bfa;
-    --chart-3: #f472b6;
-    --chart-4: #c9a84c;
-    --chart-5: #3b82f6;
+		--chart-1: #00e8a0;
+		--chart-2: #a78bfa;
+		--chart-3: #f472b6;
+		--chart-4: #c9a84c;
+		--chart-5: #3b82f6;
 
-    --sidebar: #080c10;
-    --sidebar-foreground: #E8EDF2;
-    --sidebar-primary: #00e8a0;
-    --sidebar-primary-foreground: #080c10;
-    --sidebar-accent: #1a2330;
-    --sidebar-accent-foreground: #E8EDF2;
-    --sidebar-border: rgba(255, 255, 255, 0.08);
-    --sidebar-ring: #00e8a0;
-  }
+		--sidebar: #080c10;
+		--sidebar-foreground: #e8edf2;
+		--sidebar-primary: #00e8a0;
+		--sidebar-primary-foreground: #080c10;
+		--sidebar-accent: #1a2330;
+		--sidebar-accent-foreground: #e8edf2;
+		--sidebar-border: rgba(255, 255, 255, 0.08);
+		--sidebar-ring: #00e8a0;
+	}
 }

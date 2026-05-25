@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+import ContactSection from "../../components/ContactSection.astro";
+import Footer from "../../components/astro/Footer.astro";
+import { AuroraOverlay } from "../../components/react/AuroraOverlay";
+import { MobileNav } from "../../components/react/MobileNav";
+import { Navbar } from "../../components/react/Navbar";
+import { SolutionsHub } from "../../components/react/solutions/SolutionsHub";
+---
+
+<BaseLayout title="Our Solutions | Aurorys Labs">
+  <div class="fixed inset-0 -z-20">
+    <div
+      class="w-full h-full"
+      style="background-image: url('/images/astrophotography/astro-image4.webp'); background-size: cover; background-position: center;"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+  </div>
+
+  <AuroraOverlay client:load />
+  <Navbar client:load />
+  <MobileNav client:load />
+
+  {/* Solutions Page Hero */}
+  <section class="relative z-10 pt-32 pb-8 md:pt-40 md:pb-12">
+    <div class="content-width px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora tracking-tight mb-6">
+          Our Solutions
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] leading-relaxed">
+          Every engagement delivers blueprints your team can build — not just recommendations they'll forget.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <SolutionsHub client:load />
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

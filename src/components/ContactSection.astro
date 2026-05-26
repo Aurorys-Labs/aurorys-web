@@ -212,7 +212,7 @@ const { hideHeader = false } = Astro.props;
 								<div
 									id="cf-turnstile"
 									class="cf-turnstile"
-									data-sitekey="1x00000000000000000000AA"
+									data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
 									data-theme="dark"
 								>
 								</div>

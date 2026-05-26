@@ -217,8 +217,7 @@
 @layer components {
 	.glass-card {
 		background: var(--glass-bg);
-		backdrop-filter: var(--glass-blur) var(--glass-saturate);
-		-webkit-backdrop-filter: var(--glass-blur) var(--glass-saturate);
+		@apply backdrop-blur-xl backdrop-saturate-160;
 		border-radius: var(--glass-radius);
 		border: var(--glass-border);
 		border-top: var(--glass-border-top);
@@ -252,8 +251,7 @@
 		inset: 0;
 		z-index: -1;
 		border-radius: inherit;
-		backdrop-filter: blur(24px) saturate(150%);
-		-webkit-backdrop-filter: blur(24px) saturate(150%);
+		@apply backdrop-blur-xl backdrop-saturate-150;
 		filter: url(#glass-distortion);
 		-webkit-filter: url(#glass-distortion);
 		isolation: isolate;
@@ -379,8 +377,7 @@
 	}
 
 	.tag {
-		backdrop-filter: blur(4px);
-		-webkit-backdrop-filter: blur(4px);
+		@apply backdrop-blur-sm;
 		font-size: 0.625rem;
 		padding: 0.125rem 0.625rem;
 		border-radius: 9999px;

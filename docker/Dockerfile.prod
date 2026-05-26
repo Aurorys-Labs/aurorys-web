@@ -1,15 +1,23 @@
-FROM oven/bun:1.1.10-alpine AS builder
+# Build stage — Node.js 22 (Astro requires >=22.12.0) + pnpm
+FROM node:22-alpine AS builder
+
+# Build-time args for PUBLIC_ env vars that Astro bakes into client bundles
+ARG PUBLIC_TURNSTILE_SITE_KEY
+ENV PUBLIC_TURNSTILE_SITE_KEY=${PUBLIC_TURNSTILE_SITE_KEY}
+
+# Enable pnpm via corepack
+RUN corepack enable pnpm
 
 WORKDIR /app
 
-COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 COPY . .
-RUN bun run build
+RUN pnpm run build
 
-# Production serve stage
-FROM oven/bun:1.1.10-alpine AS production
+# Production serve stage — Node.js 22 for the Astro SSR server
+FROM node:22-alpine AS production
 
 WORKDIR /app
 
@@ -18,11 +26,14 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 
+# Runtime env vars — set these in Coolify/Docker, NOT here
+# RESEND_API_KEY, TURNSTILE_SECRET_KEY, PUBLIC_TURNSTILE_SITE_KEY
+
 ENV HOST=0.0.0.0
 ENV PORT=4321
 ENV NODE_ENV=production
 
 EXPOSE 4321
 
-# Run the Astro node server using bun
-CMD ["bun", "run", "./dist/server/entry.mjs"]
+# Run the Astro SSR server with Node.js
+CMD ["node", "./dist/server/entry.mjs"]

@@ -1,0 +1,11 @@
+allowBuilds:
+  esbuild: true
+  msw: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - '@astrojs/sitemap@3.7.3'
+  - resend@6.12.4
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - msw

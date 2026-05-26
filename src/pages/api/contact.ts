@@ -42,11 +42,9 @@ const contactSchema = z.object({
 		.string()
 		.email({ message: "Coordinates must represent a valid email format." }),
 	subject: z.string().optional(),
-	message: z
-		.string()
-		.min(10, {
-			message: "Payload description must contain at least 10 characters.",
-		}),
+	message: z.string().min(10, {
+		message: "Payload description must contain at least 10 characters.",
+	}),
 });
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {

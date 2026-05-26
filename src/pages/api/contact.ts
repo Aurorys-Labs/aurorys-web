@@ -55,6 +55,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 		const allowedOrigins = [
 			"https://auroryslabs.com",
 			"https://www.auroryslabs.com",
+			"https://astro.auroryslabs.com",
 			"http://localhost:3000",
 			"http://localhost:4321", // Astro dev server
 			"http://localhost:3078",

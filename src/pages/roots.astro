@@ -266,7 +266,7 @@ import rootsData from "../lib/data/roots-page.json";
     buttons={rootsData.crossLinks.links.map((link, idx) => ({
       label: link.label,
       href: link.href,
-      variant: idx === 0 ? "primary" : (idx === 1 ? "tertiary" : "quaternary")
+      variant: idx === 0 ? "primary" : "tertiary"
     }))}
   />
 

@@ -255,7 +255,7 @@
 			{
 				"label": "Book a Discovery Call",
 				"href": "/?subject=COMPLIANCE#contact",
-				"variant": "quaternary"
+				"variant": "tertiary"
 			}
 		]
 	}

@@ -87,14 +87,17 @@ const {
                     </RainbowButton>
                   );
                 } else {
-                  // Quaternary (or default/secondary): Outline glass-card style button
+                  // Secondary/Quaternary (default fallback): glass_alt style button
                   return (
-                    <a
+                    <RainbowButton
+                      client:load
+                      variant="glass_alt"
+                      size="lg"
+                      className="rounded-xl justify-center"
                       href={btn.href}
-                      class="inline-flex items-center justify-center h-11 px-8 rounded-xl border border-white/20 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/30 transition-all duration-200 text-sm font-medium"
                     >
                       {btn.label}
-                    </a>
+                    </RainbowButton>
                   );
                 }
               })}

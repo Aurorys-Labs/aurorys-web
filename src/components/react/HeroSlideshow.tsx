@@ -67,8 +67,8 @@ export function HeroSlideshow() {
 
 	return (
 		<div className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
-			<div className="relative z-10 content-width text-center pt-24 pb-32">
-				<AnimatePresence mode="wait" custom={direction} initial={false}>
+			<div className="relative z-10 content-width text-center pt-24 pb-32 grid">
+				<AnimatePresence custom={direction} initial={false}>
 					<motion.div
 						key={currentIndex}
 						custom={direction}
@@ -77,7 +77,7 @@ export function HeroSlideshow() {
 						animate="center"
 						exit="exit"
 						transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-						className="flex flex-col items-center"
+						className="flex flex-col items-center [grid-area:1/1]"
 					>
 						<motion.h1
 							custom={0}
@@ -206,10 +206,12 @@ export function HeroSlideshow() {
 								<a href={slide.ctaPrimary.href}>{slide.ctaPrimary.label}</a>
 							</RainbowButton>
 							{slide.ctaSecondary && (
-								<RainbowButton variant="glass_alt"
-								 size="lg"
-								 className="rounded-xl"
-								 href={slide.ctaSecondary.href}>
+								<RainbowButton
+									variant="glass_alt"
+									size="lg"
+									className="rounded-xl"
+									href={slide.ctaSecondary.href}
+								>
 									{slide.ctaSecondary.label}
 								</RainbowButton>
 							)}

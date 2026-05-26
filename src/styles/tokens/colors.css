@@ -47,7 +47,9 @@
 		#c9a84c
 	);
 	--aurum-gold-subtle: linear-gradient(135deg, #a0782a, #c9a84c);
+	--aurum-gold-subtle-solid: #a0782a;
 	--aurum-gold-light: linear-gradient(135deg, #c9a84c, #e8c97a);
+	--aurum-gold-light-solid: #e8c97a;
 	--aurum-gold-solid: #c9a84c;
 
 	/* Text Hierarchy */

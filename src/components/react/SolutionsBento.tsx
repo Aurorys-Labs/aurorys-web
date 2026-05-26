@@ -3,9 +3,10 @@
 import { domainPill, domainPillSmall } from "@/lib/domain-colors";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+	ArrowRight,
+	ArrowUpRight,
 	Asterisk,
 	CheckCircle,
-	ChevronRight,
 	Compass,
 	GitBranch,
 	Globe,
@@ -233,9 +234,9 @@ function MagicBentoCard({
 			onMouseMove={handleMouseMove}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			className={`relative p-[1px] rounded-2xl overflow-hidden cursor-pointer h-auto md:min-h-[480px] flex flex-col transition-all duration-500 ${
+			className={`group relative p-[1px] rounded-2xl overflow-hidden cursor-pointer h-auto md:min-h-[480px] flex flex-col transition-all duration-500 ${
 				effectivelyExpanded ? "w-full md:flex-[2]" : "w-full md:flex-[1]"
-			} ${isDimmed ? "opacity-20 pointer-events-none scale-[0.98] blur-[0.5px]" : "opacity-100"}`}
+			} ${isDimmed ? "opacity-20 pointer-events-none scale-[0.98] blur-[0.5px]" : "opacity-100"} ${isHovered ? "ring-1 ring-white/20" : ""}`}
 			onClick={onToggle}
 		>
 			<div
@@ -245,9 +246,10 @@ function MagicBentoCard({
 					background: `radial-gradient(350px circle at ${isMobile ? "80% 80%" : `${mousePosition.x}px ${mousePosition.y}px`}, rgba(${config.radialColor}, 0.3), transparent 85%)`,
 				}}
 			/>
-			<div className="absolute inset-0 rounded-2xl border border-white/[0.08] pointer-events-none -z-10" />
+			<div className="absolute inset-0 rounded-2xl border border-white/[0.08] pointer-events-none -z-10 group-hover:border-white/[0.15] transition-colors duration-300" />
 
 			<div className="relative rounded-[15px] bg-[rgba(13,17,23,0.35)] backdrop-blur-md p-6 h-full flex flex-col">
+				<ArrowUpRight className="absolute top-4 right-4 w-5 h-5 text-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0" />
 				<div
 					className="absolute inset-0 pointer-events-none transition-opacity duration-300 -z-10"
 					style={{
@@ -260,7 +262,7 @@ function MagicBentoCard({
 				/>
 
 				<div className="flex flex-col h-full relative z-10">
-					<motion.div layout className="flex flex-col flex-1 justify-center">
+					<motion.div layout className="flex flex-col flex-1 h-full">
 						<motion.div layout="position">
 							{/* Icon + Title + Price row */}
 							<div className="flex items-center gap-3 mb-2">
@@ -335,21 +337,6 @@ function MagicBentoCard({
 												{ifSourcedSeparately}
 											</div>
 										)}
-										{cta && (
-											<div
-												className="pt-4 border-t border-white/[0.04] mt-4 flex justify-end"
-												onClick={(e) => e.stopPropagation()}
-											>
-												<RainbowButton
-													variant="glass"
-													size="sm"
-													className="rounded-xl font-semibold w-full md:w-auto text-center"
-													asChild
-												>
-													<a href={cta.href}>{cta.label} &rarr;</a>
-												</RainbowButton>
-											</div>
-										)}
 									</div>
 								</motion.div>
 							)}
@@ -357,13 +344,33 @@ function MagicBentoCard({
 
 						<motion.div
 							layout="position"
-							className={`flex flex-wrap gap-1.5 ${effectivelyExpanded ? "pt-4" : "mt-0"}`}
+							className={`flex flex-wrap items-center justify-between gap-2 w-full mt-auto ${effectivelyExpanded ? "pt-4" : "mt-0"}`}
 						>
-							{domains.map((domain) => (
-								<span key={domain} className={domainPill(domain)}>
-									{domain}
-								</span>
-							))}
+							<div className="flex flex-wrap gap-1.5 flex-1">
+								{domains.map((domain) => (
+									<span key={domain} className={domainPill(domain)}>
+										{domain}
+									</span>
+								))}
+							</div>
+							{effectivelyExpanded && cta && (
+								<div
+									onClick={(e) => e.stopPropagation()}
+									className="shrink-0 w-full md:w-auto mt-4 md:mt-0"
+								>
+									<RainbowButton
+										variant="glass"
+										size="sm"
+										className="rounded-xl font-semibold w-full md:w-auto text-center"
+										asChild
+									>
+										<a href={cta.href}>
+											{cta.label}{" "}
+											<ArrowRight className="inline-block w-4 h-4 ml-1.5" />
+										</a>
+									</RainbowButton>
+								</div>
+							)}
 						</motion.div>
 					</motion.div>
 				</div>
@@ -406,7 +413,7 @@ function SkinnyBentoCard({
 			onMouseMove={handleMouseMove}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			className={`relative w-full overflow-hidden cursor-pointer group py-5 px-6 transition-all duration-500 hover:bg-white/[0.02] ${
+			className={`relative w-full overflow-hidden cursor-pointer group py-5 px-6 transition-all duration-500 hover:bg-white/[0.04] ${
 				isDimmed
 					? "opacity-20 pointer-events-none scale-[0.99] blur-[0.5px]"
 					: "opacity-100"
@@ -423,7 +430,7 @@ function SkinnyBentoCard({
 			<div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
 				<div className="flex items-center gap-4 shrink-0 md:w-64">
 					<div
-						className={`rounded-xl flex items-center justify-center w-10 h-10 border ${config.iconContainerBorder} transition-all duration-300`}
+						className={`rounded-xl flex items-center justify-center w-10 h-10 border ${config.iconContainerBorder} transition-all duration-300 group-hover:shadow-[0_0_15px_-3px_rgba(${config.radialColor},0.3)]`}
 						style={{ background: config.iconBg }}
 					>
 						<IconComponent
@@ -458,7 +465,7 @@ function SkinnyBentoCard({
 					</div>
 					<div className="flex items-center gap-1 text-xs font-semibold text-[var(--aurora-green-solid)] transition-all group-hover:translate-x-0.5">
 						<span>{cta?.label || "Learn More"}</span>
-						<ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+						<ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
 					</div>
 				</div>
 			</div>

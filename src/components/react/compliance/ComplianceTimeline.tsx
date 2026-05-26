@@ -27,12 +27,12 @@ export function ComplianceTimeline({ timelineData }: ComplianceTimelineProps) {
 						initial={{ opacity: 0, y: 15 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.4, delay: idx * 0.08 }}
-						className="glass-card p-6 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] hover:border-white/[0.12] transition-colors relative overflow-hidden text-left space-y-4 group"
+						className="glass-card p-6 rounded-2xl border border-white/[0.06] bg-[var(--aurora-green-solid)]/5 backdrop-blur-md hover:border-emerald-500/30 hover:bg-[var(--aurora-green-solid)]/10 transition-all duration-300 relative overflow-hidden text-left space-y-4 group"
 					>
-						<div className="absolute -top-24 -left-24 w-48 h-48 bg-[var(--aurora-blue-solid)]/5 rounded-full blur-3xl opacity-50 pointer-events-none" />
+						<div className="absolute -top-24 -left-24 w-48 h-48 bg-[var(--aurora-green-solid)]/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
 						<div className="flex justify-between items-center relative z-10">
-							<span className="text-[10px] font-mono font-semibold uppercase tracking-[0.15em] px-2.5 py-1 rounded bg-[var(--aurora-blue-solid)]/10 border border-[var(--aurora-blue-solid)]/20 text-blue-300">
+							<span className="text-[10px] font-mono rounded-xl font-semibold uppercase tracking-[0.15em] px-2.5 py-1 rounded bg-[var(--aurora-green-solid)]/10 border border-[var(--aurora-green-solid)]/20 text-emerald-300">
 								Step {step.step} · {step.timeline}
 							</span>
 							<div className="w-8 h-8 rounded-lg bg-white/[0.03] border border-white/[0.08] flex items-center justify-center font-bold text-sm text-[var(--text-stellar)]">

@@ -11,7 +11,7 @@ interface FAQAccordionProps {
 }
 
 export function FAQAccordion({ faqs }: FAQAccordionProps) {
-	const [activeIndex, setActiveIndex] = useState<number | null>(null);
+	const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
 	const toggleIndex = (index: number) => {
 		setActiveIndex(activeIndex === index ? null : index);

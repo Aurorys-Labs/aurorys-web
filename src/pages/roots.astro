@@ -1,7 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
+import {
+	BookOpen,
+	Compass,
+	Handshake,
+	ShieldCheck,
+	Sparkles,
+} from "lucide-react";
 import ContactSection from "../components/ContactSection.astro";
+import PreContact from "../components/PreContact.astro";
 import Footer from "../components/astro/Footer.astro";
 import { AuroraOverlay } from "../components/react/AuroraOverlay";
 import { MobileNav } from "../components/react/MobileNav";
@@ -18,6 +26,26 @@ import rootsData from "../lib/data/roots-page.json";
     ></div>
     <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
   </div>
+
+  {/* SVG Gradient Defs */}
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+    <linearGradient id="grad-roots-aurora" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurora-cyan-solid)" />
+      <stop offset="100%" stop-color="var(--aurora-blue-solid)" />
+    </linearGradient>
+    <linearGradient id="grad-roots-exist" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurum-gold-subtle-solid)" />
+      <stop offset="100%" stop-color="var(--aurora-rose-solid)" />
+    </linearGradient>
+    <linearGradient id="grad-roots-founder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurora-violet-solid)" />
+      <stop offset="100%" stop-color="var(--aurora-rose-solid)" />
+    </linearGradient>
+    <linearGradient id="grad-roots-commit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurora-green-solid)" />
+      <stop offset="100%" stop-color="var(--aurora-blue-solid)" />
+    </linearGradient>
+  </svg>
 
   <AuroraOverlay client:load />
   <Navbar client:load />
@@ -36,63 +64,115 @@ import rootsData from "../lib/data/roots-page.json";
   </section>
 
   {/* Metaphor and Mission */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
-    <div class="content-width mx-auto px-6 space-y-12 text-left">
-      <div class="max-w-3xl mx-auto space-y-12">
-        <div class="space-y-6">
-          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
-            {rootsData.aurora.title}
-          </h2>
-          {rootsData.aurora.paragraphs.map((p) => (
-            <p class="text-white/80 text-base leading-relaxed font-sans">
-              {p}
-            </p>
-          ))}
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+        {/* Card 1: The Aurora */}
+        <div class="glass-card glass-card-tinted-blue p-8 md:p-12 rounded-3xl border border-blue-500/15 relative overflow-hidden flex flex-col justify-between group">
+          {/* Behind-the-content Background Icon Container */}
+          <div class="absolute inset-0 overflow-hidden rounded-3xl z-0 pointer-events-none">
+            <div class="absolute top-1/2 -translate-y-1/2 right-0 md:right-8 flex items-center justify-center h-[80%] w-auto aspect-square opacity-[0.03] group-hover:opacity-[0.09] scale-100 group-hover:scale-110 group-hover:rotate-[2deg] transition-all duration-700 ease-out">
+              <Sparkles className="w-full h-full stroke-[url(#grad-roots-aurora)] text-transparent" strokeWidth={0.5} />
+            </div>
+          </div>
+          <div class="space-y-6 relative z-10 text-left">
+            <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)]">
+              {rootsData.aurora.title}
+            </h2>
+            <div class="space-y-4">
+              {rootsData.aurora.paragraphs.map((p) => (
+                <p class="text-white/85 text-base leading-relaxed font-sans font-medium">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div class="space-y-6 pt-6">
-          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
-            {rootsData.whyWeExist.title}
-          </h2>
-          {rootsData.whyWeExist.paragraphs.map((p) => (
-            <p class="text-white/80 text-base leading-relaxed font-sans">
-              {p}
-            </p>
-          ))}
+        {/* Card 2: Why We Exist */}
+        <div class="glass-card glass-card-tinted-gold p-8 md:p-12 rounded-3xl border border-amber-500/15 relative overflow-hidden flex flex-col justify-between group">
+          {/* Behind-the-content Background Icon Container */}
+          <div class="absolute inset-0 overflow-hidden rounded-3xl z-0 pointer-events-none">
+            <div class="absolute top-1/2 -translate-y-1/2 right-0 md:right-8 flex items-center justify-center h-[80%] w-auto aspect-square opacity-[0.03] group-hover:opacity-[0.09] scale-100 group-hover:scale-110 group-hover:rotate-[-2deg] transition-all duration-700 ease-out">
+              <Compass className="w-full h-full stroke-[url(#grad-roots-exist)] text-transparent" strokeWidth={0.5} />
+            </div>
+          </div>
+          <div class="space-y-6 relative z-10 text-left">
+            <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)]">
+              {rootsData.whyWeExist.title}
+            </h2>
+            <div class="space-y-4">
+              {rootsData.whyWeExist.paragraphs.map((p) => (
+                <p class="text-white/85 text-base leading-relaxed font-sans font-medium">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   {/* Beliefs Section */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
     <div class="content-width mx-auto px-6">
-      <div class="max-w-3xl mb-12 text-left">
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+      <div class="max-w-3xl mx-auto mb-16 text-center">
+        <h2 class="font-sans font-bold text-4xl md:text-5xl tracking-tight text-[var(--text-stellar)] mb-6">
           {rootsData.beliefs.title}
         </h2>
-        <p class="text-[var(--text-muted)] text-base font-sans">
+        <p class="text-[var(--text-muted)] text-lg font-sans">
           The core principles that guide every design, implementation, and engagement we deliver.
         </p>
       </div>
 
-      <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 [column-fill:balance] text-left">
+      <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-6 text-left">
         {rootsData.beliefs.items.map((item, idx) => {
           const tints = [
-            "glass-card-tinted-sky",
+            "glass-card-tinted-sky border-sky-500/10",
             "",
-            "glass-card-tinted-violet",
+            "glass-card-tinted-violet border-violet-500/10",
             "",
-            "glass-card-tinted-green",
+            "glass-card-tinted-green border-emerald-500/10",
             "",
-            "glass-card-tinted-fuchsia",
+            "glass-card-tinted-fuchsia border-pink-500/10",
           ];
           const tint = tints[idx % tints.length];
+
+          let spanClass = "lg:col-span-2 md:col-span-3 col-span-6";
+          if (idx === 2) {
+            spanClass = "lg:col-span-2 lg:row-span-2 md:col-span-6 col-span-6";
+          } else if (idx === 3) {
+            spanClass = "lg:col-span-4 md:col-span-6 col-span-6";
+          } else if (idx === 4) {
+            spanClass = "lg:col-span-6 md:col-span-6 col-span-6";
+          } else if (idx === 5 || idx === 6) {
+            spanClass = "lg:col-span-3 md:col-span-3 col-span-6";
+          }
+
+          const gradients = [
+            "from-sky-500/20 to-blue-500/10 text-sky-300",
+            "from-purple-500/20 to-pink-500/10 text-purple-300",
+            "from-indigo-500/20 to-violet-500/10 text-indigo-300",
+            "from-emerald-500/20 to-teal-500/10 text-emerald-300",
+            "from-amber-500/20 to-orange-500/10 text-amber-300",
+            "from-rose-500/20 to-pink-500/10 text-rose-300",
+            "from-cyan-500/20 to-blue-500/10 text-cyan-300",
+          ];
+          const grad = gradients[idx % gradients.length];
+
           return (
-            <div class={`break-inside-avoid inline-block w-full mb-6 glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-3 hover:border-white/[0.12] transition-all duration-300 group ${tint}`}>
-              <h3 class="font-sans font-bold text-base text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors">
-                {item.bold}
-              </h3>
+            <div class={`${spanClass} glass-card p-6 rounded-2xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-4 hover:border-white/[0.12] hover:-translate-y-1 transition-all duration-300 group ${tint}`}>
+              <div class="flex justify-between items-start gap-4">
+                <h3 class="font-sans font-bold text-lg text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors">
+                  {item.bold}
+                </h3>
+                <span class={`px-2.5 py-0.5 rounded-xl text-xs font-semibold bg-gradient-to-br border border-white/5 ${grad} shrink-0`}>
+                  {(idx + 1).toString().padStart(2, "0")}
+                </span>
+              </div>
               <p class="text-white/70 text-sm leading-relaxed font-sans">
                 {item.body}
               </p>
@@ -104,66 +184,91 @@ import rootsData from "../lib/data/roots-page.json";
   </section>
 
   {/* Metaphor / Quote Display Scale */}
-  <section class="relative z-10 py-8">
+  <section class="relative z-10 py-12">
     <div class="content-width mx-auto px-6">
       <div class="max-w-4xl mx-auto">
-        <div class="glass-card glass-card-tinted-violet p-16 relative overflow-hidden rounded-3xl text-center">
-          <div class="absolute inset-0 bg-[var(--aurum-gold-subtle)]/5 blur-3xl opacity-30 rounded-full pointer-events-none" />
+        <div class="glass-card glass-card-tinted-violet p-16 relative overflow-hidden rounded-3xl text-center border border-violet-500/15">
+          <div class="absolute inset-0 bg-[var(--aurum-gold-subtle-solid)]/5 blur-3xl opacity-30 rounded-full pointer-events-none" />
           <blockquote class="font-serif italic text-3xl md:text-4xl text-[var(--text-stellar)] max-w-2xl mx-auto relative z-10 leading-relaxed" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);">
-            "We're here to build <span class="text-gradient-aurora">capability</span>, not dependency."
+            "We're here to build <span class="text-gradient-gold-moving">capability</span>, not dependency."
           </blockquote>
         </div>
       </div>
     </div>
   </section>
 
-  {/* Founder and Commitment */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
-    <div class="content-width mx-auto px-6 space-y-12 text-left">
-      <div class="max-w-3xl mx-auto space-y-12">
-        <div class="space-y-6">
-          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
-            {rootsData.founder.title}
-          </h2>
-          {rootsData.founder.paragraphs.map((p) => (
-            <p class="text-white/80 text-base leading-relaxed font-sans">
-              {p}
-            </p>
-          ))}
-        </div>
+  {/* Founder Section */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card glass-card-tinted-violet p-8 md:p-16 rounded-3xl border border-violet-500/15 relative overflow-hidden group">
 
-        <div class="space-y-6 pt-6">
-          <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3">
-            {rootsData.commitment.title}
-          </h2>
-          {rootsData.commitment.paragraphs.map((p) => (
-            <p class="text-white/80 text-base leading-relaxed font-sans">
-              {p}
-            </p>
-          ))}
+          {/* Behind-the-content Background Icon Container */}
+          <div class="absolute inset-0 overflow-hidden rounded-3xl z-0 pointer-events-none">
+            <div class="absolute top-1/2 -translate-y-1/2 right-0 md:right-12 flex items-center justify-center h-[80%] w-auto aspect-square opacity-[0.03] group-hover:opacity-[0.09] scale-100 group-hover:scale-110 group-hover:rotate-[2deg] transition-all duration-700 ease-out">
+              <BookOpen className="w-full h-full stroke-[url(#grad-roots-founder)] text-transparent" strokeWidth={0.5} />
+            </div>
+          </div>
+
+          <div class="space-y-6 relative z-10 text-left">
+            <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] text-center md:text-left mb-6">
+              {rootsData.founder.title}
+            </h2>
+            <div class="space-y-4">
+              {rootsData.founder.paragraphs.map((p) => (
+                <p class="text-white/80 text-base leading-relaxed font-sans font-medium">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Commitment Section */}
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card glass-card-tinted-green p-8 md:p-16 rounded-3xl border border-emerald-500/15 relative overflow-hidden group">
+
+          {/* Behind-the-content Background Icon Container */}
+          <div class="absolute inset-0 overflow-hidden rounded-3xl z-0 pointer-events-none">
+            <div class="absolute top-1/2 -translate-y-1/2 right-0 md:right-12 flex items-center justify-center h-[80%] w-auto aspect-square opacity-[0.03] group-hover:opacity-[0.09] scale-100 group-hover:scale-110 group-hover:rotate-[-2deg] transition-all duration-700 ease-out">
+              <Handshake className="w-full h-full stroke-[url(#grad-roots-commit)] text-transparent" strokeWidth={0.5} />
+            </div>
+          </div>
+
+          <div class="space-y-6 relative z-10 text-left">
+            <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] text-center md:text-left mb-6">
+              {rootsData.commitment.title}
+            </h2>
+            <div class="space-y-4">
+              {rootsData.commitment.paragraphs.map((p) => (
+                <p class="text-white/80 text-base leading-relaxed font-sans font-medium">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
   {/* Cross Links & CTA */}
-  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-black/10">
-    <div class="content-width mx-auto px-6">
-      <h3 class="font-sans font-bold text-xl text-[var(--text-stellar)] mb-8">
-        {rootsData.crossLinks.title}
-      </h3>
-      <div class="flex flex-wrap justify-center gap-4">
-        {rootsData.crossLinks.links.map((link) => (
-          <a
-            href={link.href}
-            class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+  <PreContact
+    title={rootsData.crossLinks.title}
+    subtitle="Connect with our security architects to align on a tailored strategy."
+    buttons={rootsData.crossLinks.links.map((link, idx) => ({
+      label: link.label,
+      href: link.href,
+      variant: idx === 0 ? "primary" : (idx === 1 ? "tertiary" : "quaternary")
+    }))}
+  />
 
   <ContactSection />
   <Footer />

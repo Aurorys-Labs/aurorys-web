@@ -1,0 +1,107 @@
+---
+import { InteractiveGlowButton } from "./ui/interactive-glow-button";
+import { RainbowButton } from "./ui/rainbow-button";
+
+export interface PreContactButton {
+	label: string;
+	href: string;
+	variant?: "primary" | "secondary" | "tertiary" | "quaternary";
+}
+
+export interface Props {
+	title?: string;
+	subtitle?: string;
+	buttons?: PreContactButton[];
+}
+
+const {
+	title = "Ready to take the next step?",
+	subtitle = "Establish a secure connection and let's discuss your project.",
+	buttons = [
+		{
+			label: "Start a Conversation",
+			href: "#contact?subject=PING_HELLO",
+			variant: "primary",
+		},
+	],
+} = Astro.props;
+---
+
+<section class="py-24 border-t border-white/[0.04] relative z-10">
+  <div class="content-width px-6">
+    <div class="max-w-4xl mx-auto relative group">
+      {/* Dynamic ambient background glow */}
+      <div
+        class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-[var(--color-1)]/10 via-[var(--color-3)]/10 to-[var(--color-5)]/10 opacity-30 blur-2xl transition-all duration-700 group-hover:opacity-50 pointer-events-none"
+      >
+      </div>
+
+      <div
+        class="relative glass-card p-10 md:p-16 rounded-3xl border border-white/[0.06] bg-[rgba(13,17,23,0.35)] text-center space-y-6 overflow-hidden"
+      >
+        {/* Subtle top-down radial light highlight */}
+        <div
+          class="absolute inset-0 bg-radial-at-t from-white/[0.02] to-transparent pointer-events-none"
+        >
+        </div>
+
+        <h2
+          class="font-sans font-bold text-3xl md:text-5xl tracking-tight leading-tight text-[var(--text-stellar)] relative z-10"
+        >
+          {title}
+        </h2>
+        {
+          subtitle && (
+            <p class="text-white/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed relative z-10">
+              {subtitle}
+            </p>
+          )
+        }
+
+        {
+          buttons && buttons.length > 0 && (
+            <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4 relative z-10">
+              {buttons.map((btn) => {
+                if (btn.variant === "primary") {
+                  return (
+                    <RainbowButton
+                      client:load
+                      size="lg"
+                      variant="glass"
+                      className="rounded-xl justify-center"
+                      href={btn.href}
+                    >
+                      {btn.label}
+                    </RainbowButton>
+                  );
+                } else if (btn.variant === "tertiary") {
+                  return (
+                    <RainbowButton
+                      client:load
+                      variant="glass_alt"
+                      size="lg"
+                      className="rounded-xl justify-center"
+                      href={btn.href}
+                    >
+                      {btn.label}
+                    </RainbowButton>
+                  );
+                } else {
+                  // Quaternary (or default/secondary): Outline glass-card style button
+                  return (
+                    <a
+                      href={btn.href}
+                      class="inline-flex items-center justify-center h-11 px-8 rounded-xl border border-white/20 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/30 transition-all duration-200 text-sm font-medium"
+                    >
+                      {btn.label}
+                    </a>
+                  );
+                }
+              })}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

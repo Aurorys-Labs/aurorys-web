@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Zap } from "lucide-react";
 import type React from "react";
 
 interface Checkin {
@@ -113,9 +114,9 @@ export function RulesOfEngagement({ rules }: RulesOfEngagementProps) {
 							{isTimebox ? (
 								<div className="space-y-4">
 									{/* H2 Prestige line */}
-									<blockquote className="font-serif italic text-[var(--text-h2)] leading-[var(--leading-subheading)] tracking-[var(--tracking-subheading)] text-[var(--text-stellar)] py-4 my-2 border-l border-[var(--aurum-gold-subtle)] pl-4">
+									{/* <blockquote className="font-serif italic text-2xl leading-[var(--leading-subheading)] tracking-[var(--tracking-subheading)] text-[var(--text-stellar)] py-4 my-2 border-l border-[var(--aurum-gold-subtle)] pl-4">
 										"The clock doesn't lie."
-									</blockquote>
+									</blockquote> */}
 									<p className="text-white/70 text-sm leading-relaxed font-sans">
 										{rule.body}
 									</p>
@@ -138,19 +139,7 @@ export function RulesOfEngagement({ rules }: RulesOfEngagementProps) {
 												key={i}
 												className="flex items-center gap-2 text-sm text-white/80"
 											>
-												<svg
-													className="w-4 h-4 text-[var(--aurora-blue-solid)] shrink-0"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke="currentColor"
-													strokeWidth="3"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d="M9 5l7 7-7 7"
-													/>
-												</svg>
+												<Zap className="w-4 h-4 text-[var(--aurora-blue-solid)] shrink-0 mt-0.5" />
 												<span className="font-sans">{req}</span>
 											</li>
 										))}

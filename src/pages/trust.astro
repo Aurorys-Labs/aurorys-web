@@ -1,13 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
-import { Goal } from "lucide-react";
+import {
+	Activity,
+	BadgeCheck,
+	Clock,
+	Cpu,
+	Database,
+	EyeOff,
+	FileText,
+	Fingerprint,
+	Globe,
+	Goal,
+	Heart,
+	Key,
+	Layers,
+	Lock,
+	MessageSquare,
+	Server,
+	ShieldAlert,
+	Terminal,
+	Users,
+} from "lucide-react";
 import ContactSection from "../components/ContactSection.astro";
+import PreContact from "../components/PreContact.astro";
 import Footer from "../components/astro/Footer.astro";
 import { AuroraOverlay } from "../components/react/AuroraOverlay";
 import { MobileNav } from "../components/react/MobileNav";
 import { Navbar } from "../components/react/Navbar";
-import { PreFooterCTA } from "../components/react/PreFooterCTA";
 
 import trustData from "../lib/data/trust-center.json";
 ---
@@ -17,31 +37,65 @@ import trustData from "../lib/data/trust-center.json";
     <div
       class="w-full h-full"
       style="background-image: url('/images/astrophotography/astro-image10.webp'); background-size: cover; background-position: center;"
-    ></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"></div>
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/40 via-[var(--bg-primary)]/35 to-[var(--bg-primary)]/75"
+    >
+    </div>
   </div>
 
   <AuroraOverlay client:load />
   <Navbar client:load />
   <MobileNav client:load />
 
+  {/* SVG Gradient Defs for Trust Page */}
+  <svg
+    style="width:0;height:0;position:absolute;"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <linearGradient id="grad-trust-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurora-blue-solid)"></stop>
+      <stop offset="100%" stop-color="var(--aurora-violet-solid)"></stop>
+    </linearGradient>
+    <linearGradient id="grad-trust-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurora-green-solid)"></stop>
+      <stop offset="100%" stop-color="var(--aurora-cyan-solid)"></stop>
+    </linearGradient>
+    <linearGradient id="grad-trust-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurora-purple-solid)"></stop>
+      <stop offset="100%" stop-color="var(--aurora-rose-solid)"></stop>
+    </linearGradient>
+    <linearGradient id="grad-trust-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--aurum-gold-subtle-solid)"></stop>
+      <stop offset="100%" stop-color="var(--aurum-gold-light-solid)"></stop>
+    </linearGradient>
+  </svg>
+
   {/* Page Hero */}
   <section class="relative z-10 pt-32 pb-12 md:pt-40 md:pb-16">
     <div class="content-width mx-auto px-6 text-center space-y-6">
-      <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent leading-tight tracking-tight mb-6">
+      <h1
+        class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent leading-tight tracking-tight mb-6 animate-rainbow bg-[length:200%]"
+      >
         {trustData.hero.title}
       </h1>
-      <p class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed">
+      <p
+        class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] max-w-3xl mx-auto leading-relaxed"
+      >
         {trustData.hero.subtitle}
       </p>
     </div>
   </section>
 
   {/* Section 1 - Our Security Principles */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
     <div class="content-width mx-auto px-6">
       <div class="max-w-3xl mx-auto mb-12 text-left">
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+        <h2
+          class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4"
+        >
           {trustData.principles.title}
         </h2>
         <p class="text-[var(--text-muted)] text-base font-sans leading-relaxed">
@@ -49,26 +103,87 @@ import trustData from "../lib/data/trust-center.json";
         </p>
       </div>
 
-      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-        {trustData.principles.items.map((item) => (
-          <div class="glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-3 hover:border-white/[0.12] transition-colors group">
-            <h3 class="font-sans font-bold text-base text-[var(--text-stellar)] group-hover:text-[var(--aurora-green-solid)] transition-colors">
-              {item.bold}
-            </h3>
-            <p class="text-white/70 text-sm leading-relaxed font-sans">
-              {item.body}
-            </p>
-          </div>
-        ))}
+      <div
+        class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left"
+      >
+        {
+          trustData.principles.items.map((item, idx) => {
+            const icons = [Server, EyeOff, Lock, Fingerprint, Layers, Activity];
+            const PrincipleIcon = icons[idx] || Server;
+
+            const themes = [
+              {
+                tint: "glass-card-tinted-blue border-blue-500/10",
+                stroke: "stroke-[url(#grad-trust-blue)]",
+                highlight: "group-hover:text-[var(--aurora-blue-solid)]",
+              },
+              {
+                tint: "glass-card-tinted-violet border-violet-500/10",
+                stroke: "stroke-[url(#grad-trust-purple)]",
+                highlight: "group-hover:text-[var(--aurora-violet-solid)]",
+              },
+              {
+                tint: "glass-card-tinted-green border-emerald-500/10",
+                stroke: "stroke-[url(#grad-trust-green)]",
+                highlight: "group-hover:text-[var(--aurora-green-solid)]",
+              },
+              {
+                tint: "glass-card-tinted-gold border-amber-500/10",
+                stroke: "stroke-[url(#grad-trust-gold)]",
+                highlight: "group-hover:text-[var(--aurum-gold-solid)]",
+              },
+              {
+                tint: "glass-card-tinted-cyan border-cyan-500/10",
+                stroke: "stroke-[url(#grad-trust-blue)]",
+                highlight: "group-hover:text-[var(--aurora-cyan-solid)]",
+              },
+              {
+                tint: "glass-card-tinted-fuchsia border-pink-500/10",
+                stroke: "stroke-[url(#grad-trust-purple)]",
+                highlight: "group-hover:text-[var(--aurora-rose-solid)]",
+              },
+            ];
+            const theme = themes[idx % themes.length];
+
+            return (
+              <div
+                class={`glass-card p-6 rounded-xl border backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-3 hover:border-white/[0.12] transition-all duration-300 relative overflow-hidden group ${theme.tint}`}
+              >
+                {/* Behind-the-content Background Icon Container */}
+                <div class="absolute inset-0 overflow-hidden rounded-xl z-0 pointer-events-none">
+                  <div class="absolute top-1/2 -translate-y-1/2 right-0 md:right-4 flex items-center justify-center h-[80%] w-auto aspect-square opacity-[0.14] group-hover:opacity-[0.2] scale-100 group-hover:scale-110 group-hover:rotate-[2deg] transition-all duration-700 ease-out">
+                    <PrincipleIcon
+                      className={`w-full h-full ${theme.stroke} text-transparent`}
+                      strokeWidth={0.7}
+                    />
+                  </div>
+                </div>
+
+                <div class="relative z-10 space-y-2">
+                  <h3
+                    class={`font-sans font-bold text-base text-[var(--text-stellar)] ${theme.highlight} transition-colors`}
+                  >
+                    {item.bold}
+                  </h3>
+                  <p class="text-white/70 text-sm leading-relaxed font-sans">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   </section>
 
   {/* Section 2 - How We Handle Your Data */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
     <div class="content-width mx-auto px-6">
       <div class="max-w-3xl mx-auto mb-12 text-left">
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+        <h2
+          class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4"
+        >
           {trustData.dataHandling.title}
         </h2>
         <p class="text-[var(--text-muted)] text-base font-sans leading-relaxed">
@@ -76,92 +191,367 @@ import trustData from "../lib/data/trust-center.json";
         </p>
       </div>
 
-      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-        {trustData.dataHandling.items.map((item) => (
-          <div class="glass-card p-6 rounded-xl border border-white/[0.06] backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-2 hover:border-white/[0.12] transition-colors group">
-            <h3 class="font-sans font-bold text-base text-[var(--text-stellar)] group-hover:text-[var(--aurora-blue-solid)] transition-colors">
-              {item.bold}
-            </h3>
-            <p class="text-white/70 text-sm leading-relaxed font-sans">
-              {item.body}
-            </p>
-          </div>
-        ))}
+      <div
+        class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left"
+      >
+        {
+          trustData.dataHandling.items.map((item, idx) => {
+            const icons = [FileText, Database, Clock, Users, ShieldAlert];
+            const DataIcon = icons[idx] || FileText;
+
+            const themes = [
+              {
+                tint: "glass-card-tinted-blue border-blue-500/10",
+                iconBox:
+                  "bg-blue-500/10 text-[var(--aurora-blue-solid)] border-blue-500/20",
+              },
+              {
+                tint: "glass-card-tinted-violet border-violet-500/10",
+                iconBox:
+                  "bg-violet-500/10 text-[var(--aurora-violet-solid)] border-violet-500/20",
+              },
+              {
+                tint: "glass-card-tinted-gold border-amber-500/10",
+                iconBox:
+                  "bg-amber-500/10 text-[var(--aurum-gold-solid)] border-amber-500/20",
+              },
+              {
+                tint: "glass-card-tinted-green border-emerald-500/10",
+                iconBox:
+                  "bg-emerald-500/10 text-[var(--aurora-green-solid)] border-emerald-500/20",
+              },
+              {
+                tint: "glass-card-tinted-fuchsia border-pink-500/10",
+                iconBox:
+                  "bg-pink-500/10 text-[var(--aurora-rose-solid)] border-pink-500/20",
+              },
+            ];
+            const theme = themes[idx % themes.length];
+
+            let spanClass = "col-span-1";
+            if (idx === 4) {
+              spanClass = "md:col-span-2";
+            }
+
+            return (
+              <div
+                class={`${spanClass} glass-card p-6 rounded-xl border backdrop-blur-md bg-[rgba(13,17,23,0.25)] space-y-4 hover:border-white/[0.12] transition-colors group ${theme.tint}`}
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class={`w-10 h-10 rounded-lg flex items-center justify-center border ${theme.iconBox} group-hover:scale-105 transition-transform duration-300`}
+                  >
+                    <DataIcon class="w-5 h-5" />
+                  </div>
+                  <h3 class="font-sans font-bold text-base text-[var(--text-stellar)]">
+                    {item.bold}
+                  </h3>
+                </div>
+                <p class="text-white/70 text-sm leading-relaxed font-sans pl-0 md:pl-14">
+                  {item.body}
+                </p>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   </section>
 
   {/* Section 3 - Our Infrastructure */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
-    <div class="content-width mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-left space-y-6 relative">
-        <div class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-violet-solid)]/5 rounded-full blur-3xl pointer-events-none" />
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative">
-          {trustData.infrastructure.title}
-        </h2>
-        {trustData.infrastructure.paragraphs.map((p) => (
-          <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative">
-            {p}
-          </p>
-        ))}
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        {/* Left Column: text content & bullets */}
+        <div class="lg:col-span-7 text-left space-y-6 relative">
+          <div
+            class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-violet-solid)]/5 rounded-full blur-3xl pointer-events-none"
+          >
+          </div>
+          <h2
+            class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative"
+          >
+            {trustData.infrastructure.title}
+          </h2>
+          {
+            trustData.infrastructure.paragraphs.map((p) => (
+              <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative font-medium">
+                {p}
+              </p>
+            ))
+          }
+
+          <ul
+            class="space-y-3 font-sans text-sm text-white/70 pt-2 z-10 relative pl-2"
+          >
+            <li class="flex items-center gap-2.5">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[var(--aurora-violet-solid)]"
+              ></span>
+              <span
+                >Full information sovereignty over repositories and backups</span
+              >
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[var(--aurora-violet-solid)]"
+              ></span>
+              <span>No third-party SaaS dependency for client deliverables</span
+              >
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[var(--aurora-violet-solid)]"
+              ></span>
+              <span
+                >Continuous threat logging and automated configuration audits</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        {/* Right Column: Visual Sovereign Stack Widget */}
+        <div class="lg:col-span-5 space-y-4">
+          <div
+            class="text-xs uppercase tracking-wider font-mono font-bold text-[var(--text-muted)] mb-2 pl-2"
+          >
+            Sovereign Stack:
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Card 1: Access Boundary */}
+            <div
+              class="glass-card glass-card-tinted-cyan p-4 rounded-xl border border-cyan-500/10 flex items-center gap-4 bg-white/[0.01] hover:border-cyan-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-cyan-500/10 text-[var(--aurora-cyan-solid)] flex items-center justify-center border border-cyan-500/20 group-hover:scale-105 transition-transform shrink-0"
+              >
+                <Key class="w-5 h-5" />
+              </div>
+              <div class="text-left">
+                <div
+                  class="text-sm font-semibold text-[var(--text-stellar)] leading-snug"
+                >
+                  Access Boundary
+                </div>
+                <div class="text-xs text-white/60 leading-tight">
+                  Hardened Gateway & VPN
+                </div>
+              </div>
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-[var(--aurora-green-solid)] animate-pulse shrink-0"
+                title="Active control"></span>
+            </div>
+
+            {/* Card 2: Repositories */}
+            <div
+              class="glass-card glass-card-tinted-violet p-4 rounded-xl border border-violet-500/10 flex items-center gap-4 bg-white/[0.01] hover:border-violet-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-violet-500/10 text-[var(--aurora-violet-solid)] flex items-center justify-center border border-violet-500/20 group-hover:scale-105 transition-transform shrink-0"
+              >
+                <Terminal class="w-5 h-5" />
+              </div>
+              <div class="text-left">
+                <div
+                  class="text-sm font-semibold text-[var(--text-stellar)] leading-snug"
+                >
+                  Repositories
+                </div>
+                <div class="text-xs text-white/60 leading-tight">
+                  Sovereign Version Control
+                </div>
+              </div>
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-[var(--aurora-green-solid)] animate-pulse shrink-0"
+                title="Active control"></span>
+            </div>
+
+            {/* Card 3: Secure Compute */}
+            <div
+              class="glass-card glass-card-tinted-blue p-4 rounded-xl border border-blue-500/10 flex items-center gap-4 bg-white/[0.01] hover:border-blue-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-blue-500/10 text-[var(--aurora-blue-solid)] flex items-center justify-center border border-blue-500/20 group-hover:scale-105 transition-transform shrink-0"
+              >
+                <Cpu class="w-5 h-5" />
+              </div>
+              <div class="text-left">
+                <div
+                  class="text-sm font-semibold text-[var(--text-stellar)] leading-snug"
+                >
+                  Secure Compute
+                </div>
+                <div class="text-xs text-white/60 leading-tight">
+                  Hardened Virtualization
+                </div>
+              </div>
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-[var(--aurora-green-solid)] animate-pulse shrink-0"
+                title="Active control"></span>
+            </div>
+
+            {/* Card 4: Encrypted Chat */}
+            <div
+              class="glass-card glass-card-tinted-green p-4 rounded-xl border border-emerald-500/10 flex items-center gap-4 bg-white/[0.01] hover:border-emerald-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-emerald-500/10 text-[var(--aurora-green-solid)] flex items-center justify-center border border-emerald-500/20 group-hover:scale-105 transition-transform shrink-0"
+              >
+                <MessageSquare class="w-5 h-5" />
+              </div>
+              <div class="text-left">
+                <div
+                  class="text-sm font-semibold text-[var(--text-stellar)] leading-snug"
+                >
+                  Communications
+                </div>
+                <div class="text-xs text-white/60 leading-tight">
+                  Encrypted Communications
+                </div>
+              </div>
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-[var(--aurora-green-solid)] animate-pulse shrink-0"
+                title="Active control"></span>
+            </div>
+
+            {/* Card 5: Sovereign Backups */}
+            <div
+              class="glass-card glass-card-tinted-gold p-4 rounded-xl border border-amber-500/10 flex items-center gap-4 bg-white/[0.01] hover:border-amber-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-amber-500/10 text-[var(--aurum-gold-solid)] flex items-center justify-center border border-amber-500/20 group-hover:scale-105 transition-transform shrink-0"
+              >
+                <Database class="w-5 h-5" />
+              </div>
+              <div class="text-left">
+                <div
+                  class="text-sm font-semibold text-[var(--text-stellar)] leading-snug"
+                >
+                  Sovereign Backups
+                </div>
+                <div class="text-xs text-white/60 leading-tight">
+                  Immutable Offsite Backups
+                </div>
+              </div>
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-[var(--aurora-green-solid)] animate-pulse shrink-0"
+                title="Active control"></span>
+            </div>
+
+            {/* Card 6: Secrets & Identity */}
+            <div
+              class="glass-card glass-card-tinted-rose p-4 rounded-xl border border-pink-500/10 flex items-center gap-4 bg-white/[0.01] hover:border-pink-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-pink-500/10 text-[var(--aurora-rose-solid)] flex items-center justify-center border border-pink-500/20 group-hover:scale-105 transition-transform shrink-0"
+              >
+                <Lock class="w-5 h-5" />
+              </div>
+              <div class="text-left">
+                <div
+                  class="text-sm font-semibold text-[var(--text-stellar)] leading-snug"
+                >
+                  Secrets & Identity
+                </div>
+                <div class="text-xs text-white/60 leading-tight">
+                  Hardware Identity Keys
+                </div>
+              </div>
+              <span
+                class="ml-auto w-2 h-2 rounded-full bg-[var(--aurora-green-solid)] animate-pulse shrink-0"
+                title="Active control"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   {/* Section 4 - Responsible Disclosure */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
     <div class="content-width mx-auto px-6">
       <div class="max-w-3xl mx-auto text-left space-y-6 relative">
-        <div class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-blue-solid)]/5 rounded-full blur-3xl pointer-events-none" />
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative">
+        <div
+          class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-blue-solid)]/5 rounded-full blur-3xl pointer-events-none"
+        >
+        </div>
+        <h2
+          class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative"
+        >
           {trustData.disclosure.title}
         </h2>
-        <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative">
+        <p
+          class="text-white/80 text-base leading-relaxed font-sans z-10 relative"
+        >
           {trustData.disclosure.intro}
         </p>
 
-        <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.15)] space-y-6 z-10 relative">
+        <div
+          class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.15)] space-y-6 z-10 relative"
+        >
           <div>
-            <h4 class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">
+            <h4
+              class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2"
+            >
               How to Report:
             </h4>
             <p class="text-sm text-white/90 font-sans leading-relaxed">
-              Email <a href="mailto:security@auroryslabs.com" class="font-bold underline text-[var(--aurora-blue-solid)] hover:text-[var(--aurora-green-solid)] transition-colors">security@auroryslabs.com</a> with details of the vulnerability. Include enough information for us to reproduce and verify the finding.
+              Email <a
+                href="mailto:security@auroryslabs.com"
+                class="font-bold underline text-[var(--aurora-green-solid)] hover:text-white transition-colors"
+                >security@auroryslabs.com</a
+              > with details of the vulnerability. Include enough information for
+              us to reproduce and verify the finding.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <div>
-              <h4 class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
+              <h4
+                class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3"
+              >
                 What we commit to:
               </h4>
-              <ul class="space-y-3 text-xs text-white/70 font-sans leading-relaxed">
-                {trustData.disclosure.commitments.map((c) => (
-                  <li class="flex items-start gap-2">
-                    <Goal className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-0.5" />
-                    <span>{c}</span>
-                  </li>
-                ))}
+              <ul
+                class="space-y-3 text-xs text-white/70 font-sans leading-relaxed"
+              >
+                {
+                  trustData.disclosure.commitments.map((c) => (
+                    <li class="flex items-start gap-2">
+                      <Goal className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-0.5" />
+                      <span>{c}</span>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
 
             <div>
-              <h4 class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3">
+              <h4
+                class="text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-3"
+              >
                 What we ask:
               </h4>
-              <ul class="space-y-3 text-xs text-white/70 font-sans leading-relaxed">
-                {trustData.disclosure.asks.map((a) => (
-                  <li class="flex items-start gap-2">
-                    <Goal className="w-4 h-4 text-[var(--aurora-blue-solid)] shrink-0 mt-0.5" />
-                    <span>{a}</span>
-                  </li>
-                ))}
+              <ul
+                class="space-y-3 text-xs text-white/70 font-sans leading-relaxed"
+              >
+                {
+                  trustData.disclosure.asks.map((a) => (
+                    <li class="flex items-start gap-2">
+                      <Goal className="w-4 h-4 text-[var(--aurora-blue-solid)] shrink-0 mt-0.5" />
+                      <span>{a}</span>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
         </div>
 
-        <p class="text-sm text-[var(--text-muted)] italic font-sans z-10 relative">
+        <p
+          class="text-sm text-[var(--text-muted)] italic font-sans z-10 relative"
+        >
           {trustData.disclosure.conclusion}
         </p>
       </div>
@@ -169,23 +559,148 @@ import trustData from "../lib/data/trust-center.json";
   </section>
 
   {/* Section 5 - Compliance Alignment */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
     <div class="content-width mx-auto px-6">
-      <div class="max-w-3xl mx-auto text-left space-y-6 relative">
-        <div class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-green-solid)]/5 rounded-full blur-3xl pointer-events-none" />
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative">
+      <div class="max-w-4xl mx-auto text-left space-y-6 relative">
+        <div
+          class="absolute -top-24 -left-24 w-64 h-64 bg-[var(--aurora-green-solid)]/5 rounded-full blur-3xl pointer-events-none"
+        >
+        </div>
+        <h2
+          class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.06] pb-3 z-10 relative"
+        >
           {trustData.compliance.title}
         </h2>
-        {trustData.compliance.paragraphs.map((p) => (
-          <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative">
-            {p}
-          </p>
-        ))}
+        {
+          trustData.compliance.paragraphs.map((p) => (
+            <p class="text-white/80 text-base leading-relaxed font-sans z-10 relative font-medium">
+              {p}
+            </p>
+          ))
+        }
+
+        {/* Compliance Alignment Framework Cards */}
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-8 z-10 relative"
+        >
+          {/* Framework 1: SOC 2 */}
+          <div
+            class="glass-card glass-card-tinted-blue p-5 rounded-2xl border border-blue-500/10 text-center space-y-3 bg-white/[0.01] hover:border-blue-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-blue-500/10 text-[var(--aurora-blue-solid)] border border-blue-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform"
+            >
+              <BadgeCheck class="w-6 h-6" />
+            </div>
+            <div class="space-y-1">
+              <div class="text-sm font-bold text-[var(--text-stellar)]">
+                SOC 2
+              </div>
+              <div
+                class="text-[10px] text-white/50 uppercase tracking-wider font-mono"
+              >
+                Type II Focus
+              </div>
+            </div>
+          </div>
+
+          {/* Framework 2: ISO 27001 */}
+          <div
+            class="glass-card glass-card-tinted-violet p-5 rounded-2xl border border-violet-500/10 text-center space-y-3 bg-white/[0.01] hover:border-violet-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-violet-500/10 text-[var(--aurora-violet-solid)] border border-violet-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform"
+            >
+              <Globe class="w-6 h-6" />
+            </div>
+            <div class="space-y-1">
+              <div class="text-sm font-bold text-[var(--text-stellar)]">
+                ISO 27001
+              </div>
+              <div
+                class="text-[10px] text-white/50 uppercase tracking-wider font-mono"
+              >
+                ISMS Standard
+              </div>
+            </div>
+          </div>
+
+          {/* Framework 3: HIPAA */}
+          <div
+            class="glass-card glass-card-tinted-rose p-5 rounded-2xl border border-pink-500/10 text-center space-y-3 bg-white/[0.01] hover:border-pink-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-pink-500/10 text-[var(--aurora-rose-solid)] border border-pink-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform"
+            >
+              <Heart class="w-6 h-6" />
+            </div>
+            <div class="space-y-1">
+              <div class="text-sm font-bold text-[var(--text-stellar)]">
+                HIPAA
+              </div>
+              <div
+                class="text-[10px] text-white/50 uppercase tracking-wider font-mono"
+              >
+                Health Privacy
+              </div>
+            </div>
+          </div>
+
+          {/* Framework 4: GDPR */}
+          <div
+            class="glass-card glass-card-tinted-green p-5 rounded-2xl border border-emerald-500/10 text-center space-y-3 bg-white/[0.01] hover:border-emerald-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-emerald-500/10 text-[var(--aurora-green-solid)] border border-emerald-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform"
+            >
+              <Lock class="w-6 h-6" />
+            </div>
+            <div class="space-y-1">
+              <div class="text-sm font-bold text-[var(--text-stellar)]">
+                GDPR
+              </div>
+              <div
+                class="text-[10px] text-white/50 uppercase tracking-wider font-mono"
+              >
+                Data Sovereignty
+              </div>
+            </div>
+          </div>
+
+          {/* Framework 5: NIST CSF */}
+          <div
+            class="glass-card glass-card-tinted-gold p-5 rounded-2xl border border-amber-500/10 text-center space-y-3 bg-white/[0.01] hover:border-amber-500/25 hover:bg-white/[0.03] transition-all duration-300 group"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-amber-500/10 text-[var(--aurum-gold-solid)] border border-amber-500/20 flex items-center justify-center mx-auto group-hover:scale-105 transition-transform"
+            >
+              <Cpu class="w-6 h-6" />
+            </div>
+            <div class="space-y-1">
+              <div class="text-sm font-bold text-[var(--text-stellar)]">
+                NIST CSF
+              </div>
+              <div
+                class="text-[10px] text-white/50 uppercase tracking-wider font-mono"
+              >
+                Cyber Resilience
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <PreFooterCTA client:load />
+  <PreContact
+    title={trustData.crossLinks.title}
+    subtitle="Connect with our security architects to learn more about our trust practices."
+    buttons={trustData.crossLinks.links.map((link, idx) => ({
+      label: link.label,
+      href: link.href,
+      variant: idx === 0 ? "primary" : "tertiary",
+    }))}
+  />
 
   <ContactSection />
   <Footer />

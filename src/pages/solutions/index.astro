@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import ContactSection from "../../components/ContactSection.astro";
+import PreContact from "../../components/PreContact.astro";
 import Footer from "../../components/astro/Footer.astro";
 import { AuroraOverlay } from "../../components/react/AuroraOverlay";
 import { MobileNav } from "../../components/react/MobileNav";
@@ -23,7 +24,7 @@ import { SolutionsHub } from "../../components/react/solutions/SolutionsHub";
   <MobileNav client:load />
 
   {/* Solutions Page Hero */}
-  <section class="relative z-10 pt-32 pb-8 md:pt-40 md:pb-12">
+  <section class="relative z-10 pt-32 pb-2 md:pt-40 md:pb-4">
     <div class="content-width px-6 text-center">
       <div class="max-w-3xl mx-auto space-y-6">
         <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-6xl text-gradient-aurora tracking-tight mb-6">
@@ -37,6 +38,16 @@ import { SolutionsHub } from "../../components/react/solutions/SolutionsHub";
   </section>
 
   <SolutionsHub client:load />
+
+  <PreContact
+    title="Ready to build your blueprint?"
+    subtitle="Connect with our security architects to plan your engagement."
+    buttons={[
+      { label: "See Pricing Options", href: "/security-paths", variant: "primary" },
+      { label: "Full Constellation", href: "/solutions/full-constellation", variant: "tertiary" },
+      { label: "Explore Surge", href: "/solutions/surge", variant: "quaternary" }
+    ]}
+  />
 
   <ContactSection />
   <Footer />

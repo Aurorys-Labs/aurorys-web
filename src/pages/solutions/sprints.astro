@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import ContactSection from "../../components/ContactSection.astro";
+import PreContact from "../../components/PreContact.astro";
 import Footer from "../../components/astro/Footer.astro";
 import { AuroraOverlay } from "../../components/react/AuroraOverlay";
 import { MobileNav } from "../../components/react/MobileNav";
@@ -109,26 +110,15 @@ import sprintsData from "../../lib/data/sprints-page.json";
     </div>
   </section>
 
-  {/* Cross Links & CTA */}
-  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-black/10">
-    <div class="content-width px-6">
-      <div class="max-w-3xl mx-auto">
-        <h3 class="font-heading font-medium text-xl text-[var(--text-stellar)] mb-8">
-          {sprintsData.crossLinks.title}
-        </h3>
-        <div class="flex flex-wrap justify-center gap-4 text-sm font-sans font-medium">
-          {sprintsData.crossLinks.links.map((link) => (
-            <a
-              href={link.href}
-              class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  <PreContact
+    title={sprintsData.crossLinks.title}
+    subtitle="Establish a secure connection and let's discuss your next sprint."
+    buttons={[
+      { label: "Book a Discovery Call", href: "#contact?subject=SPRINT_CORE", variant: "primary" },
+      { label: "How We Work", href: "/how-we-work", variant: "tertiary" },
+      { label: "Explore All Solutions", href: "/solutions", variant: "quaternary" }
+    ]}
+  />
 
   <ContactSection />
   <Footer />

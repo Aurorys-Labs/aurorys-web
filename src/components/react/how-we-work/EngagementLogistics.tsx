@@ -42,16 +42,42 @@ export function EngagementLogistics({ data }: EngagementLogisticsProps) {
 							checkpoints are tied strictly to delivery — not to time spent.
 						</p>
 
-						<div className="space-y-4">
+						{/* Segmented Milestone Graph */}
+						<div className="space-y-2 pt-1 pb-2">
+							<div className="flex justify-between text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
+								<span>Start (40%)</span>
+								<span>Midpoint (30%)</span>
+								<span>Handoff (30%)</span>
+							</div>
+							<div className="h-2.5 w-full rounded-full bg-white/[0.04] p-0.5 flex gap-1 border border-white/[0.06] overflow-hidden">
+								<div
+									className="h-full rounded-full bg-gradient-to-r from-[#a0782a] to-[#c9a84c] opacity-85 hover:opacity-100 transition-opacity duration-300"
+									style={{ width: "40%" }}
+									title="Engagement Start: 40%"
+								/>
+								<div
+									className="h-full rounded-full bg-gradient-to-r from-[#c9a84c] to-[#e8c97a] opacity-85 hover:opacity-100 transition-opacity duration-300"
+									style={{ width: "30%" }}
+									title="Midpoint Milestone: 30%"
+								/>
+								<div
+									className="h-full rounded-full bg-gradient-to-r from-[#e8c97a] to-white/50 opacity-85 hover:opacity-100 transition-opacity duration-300"
+									style={{ width: "30%" }}
+									title="Final Handoff: 30%"
+								/>
+							</div>
+						</div>
+
+						<div className="space-y-4 pt-2">
 							{data.milestones.map((milestone, idx) => (
 								<motion.div
 									key={milestone.title}
 									initial={{ opacity: 0, x: -10 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ duration: 0.4, delay: idx * 0.08 }}
-									className="flex gap-2.5 items-start border-l-2 border-[var(--aurum-gold-subtle)] pl-4 py-1"
+									className="flex gap-2.5 items-center border-l-2 border-[var(--aurum-gold-subtle-solid)] pl-4 py-1.5"
 								>
-									<div className="font-sans font-bold text-xl bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent w-12 shrink-0">
+									<div className="font-sans font-bold text-xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent w-12 shrink-0">
 										{milestone.percentage}
 									</div>
 									<div className="space-y-1 font-sans">
@@ -83,21 +109,19 @@ export function EngagementLogistics({ data }: EngagementLogisticsProps) {
 						<ul className="space-y-3 font-sans text-sm text-white/90">
 							{data.gateChecks.map((check, i) => (
 								<li key={i} className="flex items-start gap-2.5">
-									<span className="inline-flex items-center justify-center p-0.5 rounded bg-[var(--aurora-green-solid)]/10 text-[var(--aurora-green-solid)] shrink-0 mt-0.5">
-										<svg
-											className="w-3.5 h-3.5"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke="currentColor"
-											strokeWidth="3"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M5 13l4 4L19 7"
-											/>
-										</svg>
-									</span>
+									<svg
+										className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-1"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										strokeWidth="3"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M5 13l4 4L19 7"
+										/>
+									</svg>
 									<span className="leading-snug">{check}</span>
 								</li>
 							))}

@@ -143,13 +143,22 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 									<Icon className="w-5 h-5 opacity-80 shrink-0" />
 									<span>{card.path}</span>
 								</div>
-								<ArrowRight
-									className={`w-4 h-4 transition-transform duration-300 ${
-										isSelected
-											? "translate-x-1 text-inherit"
-											: "text-white/40 group-hover:translate-x-1"
-									}`}
-								/>
+								<div className="flex items-center gap-3">
+									<span className="text-xs text-[var(--aurora-green-solid)] font-mono font-medium hidden sm:inline-block">
+										{
+											paths
+												.find((p) => p.id === card.pathId)
+												?.price.split(" · ")[0]
+										}
+									</span>
+									<ArrowRight
+										className={`w-4 h-4 transition-transform duration-300 ${
+											isSelected
+												? "translate-x-1 text-inherit"
+												: "text-white/40 group-hover:translate-x-1"
+										}`}
+									/>
+								</div>
 							</div>
 						</motion.button>
 					);
@@ -189,26 +198,33 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 								))}
 							</div>
 
-							{/* Title */}
-							<h3 className="font-heading font-medium text-2xl text-[var(--text-stellar)]">
-								{currentPath.title}
-							</h3>
-
-							{/* Price (Aurum Gold) */}
-							<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
-								{currentPath.price}
+							{/* Title & Price */}
+							<div className="flex justify-between items-start gap-4">
+								<h3 className="font-heading font-medium text-2xl text-[var(--text-stellar)]">
+									{currentPath.title}
+								</h3>
+								<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent text-right shrink-0">
+									{currentPath.price}
+								</div>
 							</div>
 
 							{/* When you need this */}
-							<div className="text-sm font-sans italic text-[var(--text-muted)] border-l-2 border-white/10 pl-4 py-1 leading-relaxed">
-								<span className="font-semibold text-white/70 not-italic block mb-1">
-									When to choose:
-								</span>
-								{currentPath.whenYouNeedThis}
+							<div
+								className={`glass-card rounded-xl p-5 relative z-10 shadow-lg border border-white/10`}
+								style={{
+									background: `linear-gradient(135deg, ${radialGlowColors[currentPath.id] || "rgba(255,255,255,0.05)"}, rgba(255,255,255,0.01))`,
+								}}
+							>
+								<div className="text-xs uppercase tracking-wider font-mono font-bold mb-2 flex items-center gap-2 text-[var(--text-stellar)]">
+									<Sparkles className="w-4 h-4" /> When to choose:
+								</div>
+								<div className="text-sm font-sans text-white/90 leading-relaxed font-medium">
+									{currentPath.whenYouNeedThis}
+								</div>
 							</div>
 
 							{/* Body Description */}
-							<p className="text-white/80 text-sm leading-relaxed font-sans">
+							<p className="text-white/90 text-sm leading-relaxed font-sans">
 								{currentPath.body}
 							</p>
 
@@ -248,8 +264,13 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 							{/* Value comparison or sourcing differences */}
 							{currentPath.ifSourcedSeparately && (
 								<div className="border-t border-white/[0.06] pt-6 space-y-3 font-sans">
-									<div className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-										If sourced separately
+									<div className="flex justify-between items-center gap-4">
+										<div className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+											A la carte
+										</div>
+										<div className="text-xs font-semibold bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
+											{currentPath.price}
+										</div>
 									</div>
 									{typeof currentPath.ifSourcedSeparately === "string" ? (
 										<p className="text-xs text-white/60 leading-relaxed italic">
@@ -270,7 +291,7 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 												)}
 											</ul>
 											<div className="text-xs border-t border-white/[0.04] pt-3 space-y-1">
-												<div className="text-white/40 italic">
+												<div className="text-white/50 italic">
 													Sourced separately:{" "}
 													<span className="line-through">
 														{currentPath.ifSourcedSeparately.totalSeparate}
@@ -350,6 +371,12 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 							>
 								<a href={currentPath.cta.href}>{currentPath.cta.label}</a>
 							</RainbowButton>
+							<div className="text-center mt-4">
+								<p className="text-[10px] text-white/40 italic font-sans">
+									* All prices are starting estimates. Final pricing is
+									evaluated based on scope after discovery.
+								</p>
+							</div>
 						</div>
 					</motion.div>
 				</AnimatePresence>

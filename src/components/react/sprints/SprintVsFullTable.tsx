@@ -30,11 +30,13 @@ export function SprintVsFullTable({ comparisonData }: SprintVsFullTableProps) {
 							<th className="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] w-1/4">
 								Aspect
 							</th>
-							<th className="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] w-3/8">
+							<th className="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] w-3/8 border-x border-[var(--aurora-purple-solid)]/20 bg-[var(--aurora-purple-solid)]/10 text-center relative overflow-hidden">
+								<div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--aurora-purple-solid)] to-transparent" />
 								Security Sprint
 							</th>
-							<th className="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] w-3/8">
-								Full Constellation
+							<th className="py-4 px-6 text-sm font-semibold text-[var(--text-stellar)] w-3/8 text-center relative overflow-hidden">
+								<div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--aurora-cyan-solid)] to-transparent" />
+								Foundation Blueprint
 							</th>
 						</tr>
 					</thead>
@@ -42,15 +44,15 @@ export function SprintVsFullTable({ comparisonData }: SprintVsFullTableProps) {
 						{comparisonData.rows.map((row) => (
 							<tr
 								key={row.label}
-								className="hover:bg-white/[0.01] transition-colors"
+								className="hover:bg-white/[0.02] transition-colors"
 							>
 								<td className="py-4 px-6 text-sm text-[var(--text-stellar)] font-semibold font-sans">
 									{row.label}
 								</td>
-								<td className="py-4 px-6 text-sm text-white/80 font-sans leading-relaxed">
+								<td className="py-4 px-6 text-sm text-white/90 font-sans leading-relaxed border-x border-[var(--aurora-purple-solid)]/10 bg-[var(--aurora-purple-solid)]/[0.02] text-center">
 									{row.sprint}
 								</td>
-								<td className="py-4 px-6 text-sm text-white/80 font-sans leading-relaxed">
+								<td className="py-4 px-6 text-sm text-white/60 font-sans leading-relaxed text-center">
 									{row.full}
 								</td>
 							</tr>

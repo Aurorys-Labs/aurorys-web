@@ -22,29 +22,39 @@ import {
 } from "lucide-react";
 
 interface EntityMeta {
-	icon: React.ElementType;
+	icon?: React.ElementType;
+	image?: string;
 	slug?: string;
 	url: string;
 }
 
 const frameworkMeta: Record<string, EntityMeta> = {
+	SOC2: { icon: ShieldCheck, url: "https://www.aicpa.org/soc4so" },
 	OWASP: { icon: Shield, slug: "owasp", url: "https://owasp.org" },
-	"NIST CSF": { icon: FileCheck, url: "https://www.nist.gov/cyberframework" },
+	"NIST CSF": {
+		image: "/images/logos_external/nist-csf-hero.svg",
+		url: "https://www.nist.gov/cyberframework",
+	},
 	"MITRE ATT&CK": {
-		icon: Target,
-		slug: "mitre",
+		image: "/images/logos_external/mitre-new.svg",
 		url: "https://attack.mitre.org/",
 	},
 	"CIS Benchmarks": {
-		icon: ShieldCheck,
+		image: "/images/logos_external/cis-new.svg",
 		url: "https://www.cisecurity.org/cis-benchmarks",
 	},
-	GDPR: { icon: Lock, url: "https://gdpr.eu/" },
+	GDPR: {
+		image: "/images/logos_external/gdpr-new.svg",
+		url: "https://gdpr.eu/",
+	},
 	DPDP: {
 		icon: Scale,
 		url: "https://www.meity.gov.in/data-protection-framework",
 	},
-	HIPAA: { icon: Shield, url: "https://www.hhs.gov/hipaa/index.html" },
+	HIPAA: {
+		image: "/images/logos_external/hipaa-logo.png",
+		url: "https://www.hhs.gov/hipaa/index.html",
+	},
 	"ISO 27001": {
 		icon: BookOpen,
 		url: "https://www.iso.org/isoiec-27001-information-security.html",
@@ -54,7 +64,10 @@ const frameworkMeta: Record<string, EntityMeta> = {
 		slug: "owasp",
 		url: "https://genai.owasp.org/",
 	},
-	"PCI-DSS": { icon: Database, url: "https://www.pcisecuritystandards.org/" },
+	"PCI-DSS": {
+		image: "/images/logos_external/PCI-Logo.webp",
+		url: "https://www.pcisecuritystandards.org/",
+	},
 };
 
 const toolMeta: Record<string, EntityMeta> = {
@@ -66,8 +79,7 @@ const toolMeta: Record<string, EntityMeta> = {
 	},
 	Ansible: { icon: Terminal, slug: "ansible", url: "https://www.ansible.com/" },
 	Trivy: {
-		icon: Shield,
-		slug: "aquasecurity",
+		image: "/images/logos_external/trivy-logo.png",
 		url: "https://aquasecurity.github.io/trivy/",
 	},
 	Grafana: { icon: Activity, slug: "grafana", url: "https://grafana.com/" },
@@ -89,10 +101,16 @@ const toolMeta: Record<string, EntityMeta> = {
 	Tailscale: { icon: Lock, slug: "tailscale", url: "https://tailscale.com/" },
 	Authentik: { icon: Lock, slug: "authentik", url: "https://goauthentik.io/" },
 	Jenkins: { icon: Wrench, slug: "jenkins", url: "https://www.jenkins.io/" },
-	Woodpecker: { icon: Code, url: "https://woodpecker-ci.org/" },
+	Woodpecker: {
+		image: "/images/logos_external/woodpecker-ci.webp",
+		url: "https://woodpecker-ci.org/",
+	},
 	Snyk: { icon: Shield, slug: "snyk", url: "https://snyk.io/" },
 	Gitleaks: { icon: Search, url: "https://gitleaks.io/" },
-	Wazuh: { icon: Shield, slug: "wazuh", url: "https://wazuh.com/" },
+	Wazuh: {
+		image: "/images/logos_external/wazuh-logo.svg",
+		url: "https://wazuh.com/",
+	},
 };
 
 function FrameworkCard({ name, meta }: { name: string; meta?: EntityMeta }) {
@@ -104,17 +122,26 @@ function FrameworkCard({ name, meta }: { name: string; meta?: EntityMeta }) {
 			href={href}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="flex flex-col items-center justify-center p-4 hover:scale-105 transition-all duration-300 gap-3 group min-w-[100px]"
+			className="flex flex-col items-center justify-center p-4 hover:scale-105 transition-all duration-300 gap-3 group min-w-[100px] w-full"
 		>
-			<div className="w-8 h-8 flex items-center justify-center opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-				{meta?.slug ? (
+			<div className="w-10 h-10 flex items-center justify-center opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+				{meta?.image ? (
+					<img
+						src={meta.image}
+						alt={name}
+						className="w-full h-full object-contain drop-shadow-md brightness-[5] contrast-200 group-hover:brightness-100 group-hover:contrast-100"
+					/>
+				) : meta?.slug ? (
 					<img
 						src={`https://cdn.simpleicons.org/${meta.slug}/white`}
 						alt={name}
-						className="w-full h-full object-contain"
+						className="w-full h-full object-contain drop-shadow-md"
 					/>
 				) : (
-					<IconComp className="w-full h-full text-white" />
+					<IconComp
+						className="w-full h-full text-white/80 drop-shadow-md"
+						strokeWidth={1.5}
+					/>
 				)}
 			</div>
 			<span className="text-xs font-semibold text-[var(--text-stellar)] group-hover:text-white transition-colors duration-300 text-center">
@@ -135,15 +162,21 @@ function ToolItem({ name, meta }: { name: string; meta?: EntityMeta }) {
 			rel="noopener noreferrer"
 			className="flex flex-col items-center justify-center gap-2 mx-6 group transition-all duration-300"
 		>
-			<div className="w-7 h-7 flex items-center justify-center opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
-				{meta?.slug ? (
+			<div className="w-8 h-8 flex items-center justify-center opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
+				{meta?.image ? (
+					<img
+						src={meta.image}
+						alt={name}
+						className="w-full h-full object-contain brightness-[5] contrast-200 group-hover:brightness-100 group-hover:contrast-100"
+					/>
+				) : meta?.slug ? (
 					<img
 						src={`https://cdn.simpleicons.org/${meta.slug}/white`}
 						alt={name}
 						className="w-full h-full object-contain"
 					/>
 				) : (
-					<IconComp className="w-full h-full text-white" />
+					<IconComp className="w-full h-full text-white/80" strokeWidth={1.5} />
 				)}
 			</div>
 			<span className="text-[10px] font-medium text-[var(--text-faint)] group-hover:text-white/80 transition-colors duration-300 whitespace-nowrap">
@@ -175,10 +208,29 @@ export function TrustStrip() {
 					<p className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-[0.15em] mb-6 text-center">
 						{frameworksLabel}
 					</p>
-					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-6 gap-x-4 max-w-4xl mx-auto justify-items-center">
-						{frameworks.map((fw: string) => (
-							<FrameworkCard key={fw} name={fw} meta={frameworkMeta[fw]} />
-						))}
+
+					{/* 6 top, 5 bottom layout */}
+					<div className="flex flex-col gap-4 md:gap-6 max-w-5xl mx-auto md:items-center">
+						<div className="flex md:flex-wrap md:justify-center w-full max-w-4xl mx-auto gap-3 md:gap-4 md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible hide-scrollbar snap-x px-6 md:px-0 scroll-pl-6">
+							{frameworks.slice(0, 6).map((fw: string) => (
+								<div
+									key={fw}
+									className="snap-start shrink-0 min-w-[110px] md:min-w-0"
+								>
+									<FrameworkCard name={fw} meta={frameworkMeta[fw]} />
+								</div>
+							))}
+						</div>
+						<div className="flex md:flex-wrap md:justify-center w-full max-w-3xl mx-auto gap-3 md:gap-4 md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible hide-scrollbar snap-x px-6 md:px-0 scroll-pl-6">
+							{frameworks.slice(6).map((fw: string) => (
+								<div
+									key={fw}
+									className="snap-start shrink-0 min-w-[110px] md:min-w-0"
+								>
+									<FrameworkCard name={fw} meta={frameworkMeta[fw]} />
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 
@@ -204,7 +256,11 @@ export function TrustStrip() {
 				</div>
 
 				<p className="text-sm text-center text-[var(--text-stellar)] max-w-lg mx-auto leading-relaxed mt-10">
-					{methodologyText}
+					We don't reinvent the wheel. We leverage a{" "}
+					<span className="font-bold text-white">
+						19k+ documented security playbook
+					</span>{" "}
+					to secure your infrastructure according to proven global standards.
 				</p>
 			</div>
 		</section>

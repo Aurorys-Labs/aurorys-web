@@ -28,7 +28,7 @@ export function RoadLessTraveled({ data }: RoadLessTraveledProps) {
 			{/* Two-Column Intro & Quote */}
 			<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 				<div className="lg:col-span-6 space-y-6 text-left">
-					<h2 className="font-heading font-semibold text-[var(--text-h2)] leading-[var(--leading-subheading)] tracking-[var(--tracking-subheading)] text-[var(--text-stellar)]">
+					<h2 className="font-heading font-bold text-4xl md:text-5xl text-[var(--text-stellar)] tracking-tight">
 						{data.title}
 					</h2>
 					<p className="text-white/80 text-sm leading-relaxed font-sans">

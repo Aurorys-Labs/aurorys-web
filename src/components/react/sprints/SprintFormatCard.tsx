@@ -1,5 +1,6 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { motion } from "framer-motion";
+import { Zap } from "lucide-react";
 import React from "react";
 
 interface Format {
@@ -79,19 +80,7 @@ export function SprintFormatCard({ formats }: SprintFormatCardProps) {
 											key={i}
 											className="flex items-start gap-2.5 text-sm text-white/80"
 										>
-											<svg
-												className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-0.5"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke="currentColor"
-												strokeWidth="3"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													d="M5 13l4 4L19 7"
-												/>
-											</svg>
+											<Zap className="w-4 h-4 text-[var(--aurora-green-solid)] shrink-0 mt-0.5" />
 											<span className="font-sans leading-snug">{item}</span>
 										</li>
 									))}

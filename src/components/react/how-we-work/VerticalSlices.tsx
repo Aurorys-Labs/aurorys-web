@@ -99,10 +99,21 @@ export function VerticalSlices({ data }: VerticalSlicesProps) {
 									{section.title}
 								</h3>
 
+								{/* Vertical slices gets the prestige statement */}
+								{isSlices && (
+									<blockquote
+										className="font-serif italic text-[1.125rem] leading-relaxed text-[var(--text-stellar)] py-2 border-l border-[var(--aurum-gold-subtle-solid)] pl-3"
+										style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.9)" }}
+									>
+										"Working security capabilities every week, not a pile of
+										PDFs on the final day."
+									</blockquote>
+								)}
+
 								{/* Grilling phase gets the H3 prestige statement */}
 								{isGrilling && (
 									<blockquote
-										className="font-serif italic text-[1.125rem] leading-relaxed text-[var(--text-stellar)] py-2 border-l border-[var(--aurum-gold-subtle)] pl-3"
+										className="font-serif italic text-[1.125rem] leading-relaxed text-[var(--text-stellar)] py-2 border-l border-[var(--aurum-gold-subtle-solid)] pl-3"
 										style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.9)" }}
 									>
 										"We'd rather lose an engagement than sign one that isn't the
@@ -113,7 +124,7 @@ export function VerticalSlices({ data }: VerticalSlicesProps) {
 								{/* Knowledge transfer gets the H2 prestige statement */}
 								{isKnowledge && (
 									<blockquote
-										className="font-serif italic text-[1.125rem] leading-relaxed text-[var(--text-stellar)] py-2 border-l border-[var(--aurum-gold-subtle)] pl-3"
+										className="font-serif italic text-[1.125rem] leading-relaxed text-[var(--text-stellar)] py-2 border-l border-[var(--aurum-gold-subtle-solid)] pl-3"
 										style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.9)" }}
 									>
 										"Knowledge transfer isn't a separate session — it's woven

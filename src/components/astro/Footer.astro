@@ -1,23 +1,24 @@
 ---
 const footerLinks = {
-  product: [
-    { label: "Our Solutions", href: "/solutions" },
-    { label: "Your Path", href: "/security-paths" },
-    { label: "The Aurorys Way", href: "/#aurorys-way" },
-    { label: "Trust Center", href: "/trust" },
-  ],
-  company: [
-    { label: "Roots", href: "/roots" },
-    { label: "How We Work", href: "/how-we-work" },
-    { label: "Contact", href: "/contact" },
-    { label: "Blog", href: "/blog" },
-    { label: "Security Checklist", href: "/security-checklist" },
-  ],
-  legal: [
-    { label: "Privacy Policy", href: "/legal/privacy" },
-    { label: "Terms of Service", href: "/legal/terms" },
-    { label: "Cookie Policy", href: "/legal/cookies" },
-  ],
+	product: [
+		{ label: "Our Solutions", href: "/solutions" },
+		{ label: "Your Path", href: "/security-paths" },
+		{ label: "Compliance Programs", href: "/compliance" },
+		{ label: "The Aurorys Way", href: "/#aurorys-way" },
+		{ label: "Trust Center", href: "/trust" },
+	],
+	company: [
+		{ label: "Roots", href: "/roots" },
+		{ label: "How We Work", href: "/how-we-work" },
+		{ label: "Contact", href: "/contact" },
+		{ label: "Blog", href: "/blog" },
+		{ label: "Security Checklist", href: "/security-checklist" },
+	],
+	legal: [
+		{ label: "Privacy Policy", href: "/legal/privacy" },
+		{ label: "Terms of Service", href: "/legal/terms" },
+		{ label: "Cookie Policy", href: "/legal/cookies" },
+	],
 };
 ---
 
@@ -36,14 +37,14 @@ const footerLinks = {
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
       <!-- Brand column — spans 5 cols -->
       <div class="md:col-span-5">
-        <div class="flex items-center gap-3 mb-4">
+        <a href="/" class="flex items-center gap-3 mb-4 inline-flex hover:opacity-80 transition-opacity">
           <img
             src="/images/logos/normal updated colors.svg"
             alt="Aurorys Labs"
             class="h-8 w-auto"
           />
           <span class="font-semibold text-lg tracking-tight">Aurorys Labs</span>
-        </div>
+        </a>
         <p class="text-sm text-[var(--text-stellar)] max-w-sm leading-relaxed">
           Cybersecurity consulting and solutions.
         </p>

@@ -74,8 +74,13 @@ import { RainbowButton } from "../components/ui/rainbow-button";
           </div>
 
           <div class="flex justify-center pt-4 relative z-10">
-            <RainbowButton size="lg" className="rounded-xl font-semibold" asChild>
-              <a href="/">Return to Base &rarr;</a>
+            <RainbowButton
+              client:load
+              size="lg"
+              className="rounded-xl font-semibold justify-center"
+              href="/"
+            >
+              Return to Base &rarr;
             </RainbowButton>
           </div>
         </div>

@@ -84,23 +84,23 @@
 		"nistTable": [
 			{
 				"function": "Identify",
-				"coverage": "First Light assessment, threat modeling, risk register"
+				"coverage": "First Light Assessment, Threat Modeling, Risk Register"
 			},
 			{
 				"function": "Protect",
-				"coverage": "Foundation architecture, Pulse pipeline, access controls"
+				"coverage": "Foundation Architecture, Pulse Pipeline, Access Controls"
 			},
 			{
 				"function": "Detect",
-				"coverage": "Observability pack, monitoring hooks, alerting"
+				"coverage": "Observability Pack, Monitoring Hooks, Alerting"
 			},
 			{
 				"function": "Respond",
-				"coverage": "Incident response planning, Beacon advisory"
+				"coverage": "Incident Response Planning, Beacon Advisory"
 			},
 			{
 				"function": "Recover",
-				"coverage": "Day-0 snapshots (Surge), disaster recovery planning, resilience architecture"
+				"coverage": "Day-0 Snapshots (Surge), Disaster Recovery Planning, Resilience Architecture"
 			}
 		],
 		"cisBody": "CIS Controls give us the prioritized implementation groups — basic, foundational, organizational — that tell us what to do first. When we say \"start here,\" it's because CIS has already ranked the most impactful controls.",
@@ -227,8 +227,16 @@
 	"crossLinks": {
 		"title": "Ready to take the next step?",
 		"links": [
-			{ "label": "Explore Our Solutions", "href": "/solutions" },
-			{ "label": "Book a Discovery Call", "href": "/contact" }
+			{
+				"label": "Explore Our Solutions",
+				"href": "/solutions",
+				"variant": "primary"
+			},
+			{
+				"label": "Book a Discovery Call",
+				"href": "/?subject=METHODOLOGY#contact",
+				"variant": "secondary"
+			}
 		]
 	}
 }

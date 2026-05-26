@@ -65,7 +65,15 @@
 				"Compliance posture evaluation",
 				"Security roadmap and remediation guidance"
 			],
-			"ifSourcedSeparately": "A standalone architecture review from one firm ($5K-$15K) + a vulnerability assessment from another ($5K-$10K) + a compliance evaluation from a third ($5K-$15K) — and none of them share context. We deliver all of it in one engagement, starting from $10K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Architecture review: $5K-$15K",
+					"Vulnerability assessment: $5K-$10K",
+					"Compliance evaluation: $5K-$15K"
+				],
+				"totalSeparate": "$15K-$40K",
+				"constellationPrice": "Starting from $10K"
+			},
 			"cta": {
 				"label": "Reveal Your Posture",
 				"href": "/?subject=FIRST_LIGHT#contact"
@@ -86,7 +94,15 @@
 				"Review cycle and validation",
 				"Knowledge transfer session"
 			],
-			"ifSourcedSeparately": "A standalone threat model from one firm ($5K-$15K) + architecture design from another ($10K-$30K) + IaC templates from a third ($5K-$15K) — and none of them share context. We deliver all of it in one engagement, starting from $20K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Threat model: $5K-$15K",
+					"Architecture design: $10K-$30K",
+					"IaC templates: $5K-$15K"
+				],
+				"totalSeparate": "$20K-$60K",
+				"constellationPrice": "Starting from $20K"
+			},
 			"cta": {
 				"label": "Design Your Foundation",
 				"href": "/?subject=FOUNDATION#contact"
@@ -107,7 +123,16 @@
 				"Deployment gate configuration",
 				"Implementation guide + review cycle"
 			],
-			"ifSourcedSeparately": "A standalone pipeline assessment ($5K-$10K) + tool selection and integration plan ($10K-$20K) + secrets management design ($5K-$10K) + container security baseline ($5K-$10K) — managing 3-4 vendors and $25K-$50K in invoices. We deliver all of it in one engagement, starting from $20K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Pipeline assessment: $5K-$10K",
+					"Tool selection & integration: $10K-$20K",
+					"Secrets management design: $5K-$10K",
+					"Container security baseline: $5K-$10K"
+				],
+				"totalSeparate": "$25K-$50K",
+				"constellationPrice": "Starting from $20K"
+			},
 			"cta": {
 				"label": "Secure Your Pipeline",
 				"href": "/?subject=PULSE#contact"
@@ -128,7 +153,15 @@
 				"Remediation roadmap",
 				"Knowledge transfer session"
 			],
-			"ifSourcedSeparately": "A standalone gap analysis ($5K-$10K) + policy development ($10K-$20K) + audit preparation ($5K-$15K) — and none of these vendors talk to each other about your specific context. We deliver all of it in one engagement, starting from $22K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Gap analysis: $5K-$10K",
+					"Policy development: $10K-$20K",
+					"Audit preparation: $5K-$15K"
+				],
+				"totalSeparate": "$20K-$45K",
+				"constellationPrice": "Starting from $22K"
+			},
 			"cta": {
 				"label": "Get Audit-Ready",
 				"href": "/?subject=CLEARANCE#contact"
@@ -149,7 +182,16 @@
 				"Security architecture (included)",
 				"Implementation guide"
 			],
-			"ifSourcedSeparately": "A cloud cost audit ($5K-$10K) + migration planning ($10K-$20K) + security architecture ($10K-$20K) + infrastructure hardening ($5K-$15K) — four separate vendors, four separate invoices, zero shared context. We deliver all of it in one engagement, starting from $22K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Cloud cost audit: $5K-$10K",
+					"Migration planning: $10K-$20K",
+					"Security architecture: $10K-$20K",
+					"Infrastructure hardening: $5K-$15K"
+				],
+				"totalSeparate": "$30K-$65K",
+				"constellationPrice": "Starting from $22K"
+			},
 			"multiplePaths": true,
 			"pathsLink": "/compliance",
 			"cta": {

@@ -52,6 +52,7 @@ export const InteractiveGlowButton = React.forwardRef<
 	};
 
 	// Multi-hue radial gradient
+	// const gradient = useMotionTemplate`radial-gradient(90px circle at ${springX}px ${springY}px, rgba(252, 195, 24, 0.85) 0%, rgba(234, 200, 6, 0.65) 70%, rgba(237, 234, 34, 0.81) 90%, transparent 100%)`;
 	const gradient = useMotionTemplate`radial-gradient(90px circle at ${springX}px ${springY}px, rgba(19, 209, 2, 0.57) 0%, rgba(34, 211, 238, 0.2) 70%, rgba(167, 139, 250, 0.1) 90%, transparent 100%)`;
 
 	const commonClasses = cn(
@@ -105,6 +106,7 @@ function GlowEffect({ gradient }: any) {
 					WebkitMaskImage: gradient,
 					WebkitMaskComposite: "source-in",
 					maskImage: gradient,
+					// background: "linear-gradient(120deg,rgba(252, 195, 24, 0.85), rgba(234, 200, 6, 0.65), rgba(237, 234, 34, 0.81))",
 					background: "linear-gradient(120deg, #00E8A0, #22D3EE, #A78BFA)",
 					padding: "1px",
 					WebkitMaskClip: "content-box, border-box",

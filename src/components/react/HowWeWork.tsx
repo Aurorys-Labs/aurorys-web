@@ -32,7 +32,7 @@ export function HowWeWork() {
 								return (
 									<div
 										key={step.title}
-										className="flex items-start gap-5 py-6 first:pt-0 last:pb-0"
+										className="flex items-start gap-6 py-6 first:pt-0 last:pb-0"
 									>
 										<div className="flex flex-col items-center shrink-0">
 											<div
@@ -46,11 +46,11 @@ export function HowWeWork() {
 												<IconComponent className="w-5 h-5" />
 											</div>
 											{i < steps.length - 1 && (
-												<div className="w-px flex-1 min-h-[100px] my-1 bg-gradient-to-b from-[var(--aurora-green-solid)]/40 via-[var(--aurora-violet-solid)]/25 to-transparent" />
+												<div className="w-px flex-1 min-h-[50px] my-1 bg-gradient-to-b from-[var(--aurora-green-solid)]/40 via-[var(--aurora-violet-solid)]/25 to-transparent" />
 											)}
 										</div>
 										<div className="pt-1">
-											<h3 className="text-lg font-bold mb-1">{step.title}</h3>
+											<h3 className="text-lg font-bold mb-3">{step.title}</h3>
 											<p className="text-sm text-[var(--text-muted)] leading-relaxed">
 												{step.body}
 											</p>

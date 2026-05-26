@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="white">
+  <rect x="0" y="5" width="50" height="50" fill="none" stroke="white" stroke-width="6"/>
+  <line x1="25" y1="5" x2="25" y2="55" stroke="white" stroke-width="6" />
+  <line x1="0" y1="30" x2="50" y2="30" stroke="white" stroke-width="6" />
+  <text x="125" y="42" font-family="Arial, sans-serif" font-size="36" font-weight="900" text-anchor="middle" fill="white" letter-spacing="2">MITRE</text>
+</svg>

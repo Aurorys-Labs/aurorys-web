@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 import ContactSection from "../components/ContactSection.astro";
+import PreContact from "../components/PreContact.astro";
 import Footer from "../components/astro/Footer.astro";
 import { AuroraOverlay } from "../components/react/AuroraOverlay";
 import { MobileNav } from "../components/react/MobileNav";
@@ -57,13 +58,13 @@ const iconMap = {
   </section>
 
   {/* 1. The 5-Step Method */}
-  <section class="relative z-10 py-16 px-6">
-    <div class="content-width px-6">
-      <div class="max-w-3xl mx-auto mb-12 text-center">
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+  <section class="relative z-10 py-20 px-6">
+    <div class="content-width">
+      <div class="max-w-3xl mx-auto mb-16 text-center">
+        <h2 class="font-sans font-bold text-4xl md:text-5xl tracking-tight text-[var(--text-stellar)] mb-6">
           Our Five-Step Method
         </h2>
-        <p class="text-white/60 text-base font-sans leading-relaxed">
+        <p class="text-white/60 text-lg md:text-xl font-sans leading-relaxed">
           How we take your organization from initial assessment to ongoing security maturity.
         </p>
       </div>
@@ -111,20 +112,20 @@ const iconMap = {
   </section>
 
   {/* 2. How We Actually Work */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+  <section class="relative z-10 py-20 border-t border-white/[0.04] bg-black/10">
     <div class="content-width px-6">
       <VerticalSlices data={howData.howWeActuallyWork} client:load />
     </div>
   </section>
 
   {/* 3. Shared Responsibility Model */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
-    <div class="content-width px-6 text-left space-y-8">
-      <div class="max-w-3xl mb-12 text-left">
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width">
+      <div class="max-w-3xl mx-auto mb-16 text-center">
+        <h2 class="font-sans font-bold text-4xl md:text-5xl tracking-tight text-[var(--text-stellar)] mb-6">
           {howData.sharedResponsibility.title}
         </h2>
-        <p class="text-white/60 text-base font-sans leading-relaxed">
+        <p class="text-white/60 text-lg md:text-xl font-sans leading-relaxed">
           {howData.sharedResponsibility.subtitle}
         </p>
       </div>
@@ -162,7 +163,7 @@ const iconMap = {
       </div>
 
       {/* What neither guarantees */}
-      <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.2)] space-y-4">
+      <div class="glass-card p-6 rounded-xl border border-white/[0.06] bg-[rgba(13,17,23,0.2)] space-y-4 mt-8">
         <h3 class="text-sm font-bold text-white/50 uppercase tracking-wider">
           What Neither Of Us Can Guarantee
         </h3>
@@ -181,29 +182,29 @@ const iconMap = {
         </ul>
       </div>
 
-      <div class="text-center pt-4">
-        <p class="font-serif italic text-xl text-[var(--text-stellar)]">
-          "You own the outcome — because that's the only way it stays strong after we leave."
+      <div class="text-center pt-12 pb-6">
+        <p class="font-serif italic text-3xl md:text-4xl lg:text-5xl text-[var(--text-stellar)] leading-normal tracking-wide max-w-4xl mx-auto">
+          "<span class="text-gradient-gold-moving font-bold">You own the outcome</span> — because that's the only way it stays strong after we leave."
         </p>
       </div>
     </div>
   </section>
 
   {/* 4. Built on Recognized Frameworks */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+  <section class="relative z-10 py-20 border-t border-white/[0.04] bg-black/10">
     <div class="content-width px-6">
       <FrameworkAlignment data={howData.frameworkAlignment} client:load />
     </div>
   </section>
 
   {/* 5. Blueprint vs. Build Partnership */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
-    <div class="content-width px-6 text-left space-y-8">
-      <div class="max-w-3xl mb-12 text-left">
-        <h2 class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)] mb-4">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
+    <div class="content-width">
+      <div class="max-w-3xl mx-auto mb-16 text-center">
+        <h2 class="font-sans font-bold text-4xl md:text-5xl tracking-tight text-[var(--text-stellar)] mb-6">
           {howData.blueprintVsBuild.title}
         </h2>
-        <p class="text-white/60 text-base font-sans leading-relaxed">
+        <p class="text-white/60 text-lg md:text-xl font-sans leading-relaxed">
           {howData.blueprintVsBuild.subtitle}
         </p>
       </div>
@@ -239,37 +240,29 @@ const iconMap = {
   </section>
 
   {/* 6. How Engagements Actually Work */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
+  <section class="relative z-10 py-20 border-t border-white/[0.04] bg-black/10">
     <div class="content-width px-6">
       <EngagementLogistics data={howData.logistics} client:load />
     </div>
   </section>
 
   {/* 7. FAQ */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
+  <section class="relative z-10 py-20 border-t border-white/[0.04]">
     <div class="content-width px-6">
       <FAQAccordion faqs={howData.faqs} client:load />
     </div>
   </section>
 
   {/* Cross Links & CTA */}
-  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center">
-    <div class="content-width px-6">
-      <h3 class="font-sans font-bold text-2xl text-[var(--text-stellar)] mb-8">
-        {howData.crossLinks.title}
-      </h3>
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-sans font-medium">
-        {howData.crossLinks.links.map((link) => (
-          <a
-            href={link.href}
-            class="text-[var(--aurora-blue-solid)] hover:text-white transition-colors underline underline-offset-4"
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+  <PreContact
+    title={howData.crossLinks.title}
+    subtitle="Connect with our security architects to plan your engagement."
+    buttons={[
+      { label: "Book a Discovery Call", href: "/?subject=METHODOLOGY#contact", variant: "primary" },
+      { label: "Explore Our Solutions", href: "/solutions", variant: "tertiary" },
+      { label: "Our Story (Roots)", href: "/roots", variant: "quaternary" }
+    ]}
+  />
 
   <ContactSection />
   <Footer />

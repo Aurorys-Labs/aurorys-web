@@ -48,5 +48,35 @@
 		"summary": "No budget? No dedicated security hire? These 5 essential security hygiene tasks will protect your critical data and cost you nothing but time.",
 		"status": "Full Post Coming Soon",
 		"tags": ["startup", "hygiene", "diy"]
+	},
+	{
+		"id": "zero-trust-guide",
+		"title": "Zero-Trust Architecture for Startups: A Practical Guide",
+		"category": "Security",
+		"date": "May 2026",
+		"readTime": "5 min read",
+		"summary": "How to implement zero-trust access controls, network boundaries, and credential hygiene without complicating your developer experience.",
+		"status": "Preview Available",
+		"tags": ["security", "zerotrust", "startup"]
+	},
+	{
+		"id": "wireguard-tunnels",
+		"title": "Hardening Admin Portals with WireGuard VPN Tunnels",
+		"category": "Technology",
+		"date": "May 2026",
+		"readTime": "6 min read",
+		"summary": "A step-by-step engineering walkthrough for isolating databases and administration dashboards behind secure, private WireGuard tunnels.",
+		"status": "Preview Available",
+		"tags": ["technology", "vpn", "infrastructure"]
+	},
+	{
+		"id": "podman-docker-hardening",
+		"title": "Rootless Podman vs Hardened Docker: Container Security Tradeoffs",
+		"category": "Technology",
+		"date": "May 2026",
+		"readTime": "5 min read",
+		"summary": "An objective security analysis comparing rootless Podman runtimes with hardened Docker configurations for production deployments.",
+		"status": "Preview Available",
+		"tags": ["technology", "hardening", "container"]
 	}
 ]

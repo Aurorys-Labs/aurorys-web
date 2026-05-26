@@ -1,7 +1,7 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { domainPill } from "@/lib/domain-colors";
 import { motion } from "framer-motion";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, Compass, ShieldCheck, Sparkles, Zap } from "lucide-react";
 import React from "react";
 
 interface Offering {
@@ -14,7 +14,13 @@ interface Offering {
 	body: string;
 	deliverables?: string[];
 	whatThisIsNot?: string;
-	ifSourcedSeparately?: string;
+	ifSourcedSeparately?:
+		| string
+		| {
+				items: string[];
+				totalSeparate: string;
+				constellationPrice: string;
+		  };
 	oftenDiscoveredDuringAssessment?: boolean;
 	cta: { label: string; href: string };
 }
@@ -25,7 +31,39 @@ interface ComplianceOfferingsProps {
 
 export function ComplianceOfferings({ offerings }: ComplianceOfferingsProps) {
 	return (
-		<div className="space-y-8 text-left">
+		<div className="space-y-8 text-left relative">
+			{/* Global SVG Gradients for background icons */}
+			<svg
+				style={{ width: 0, height: 0, position: "absolute" }}
+				aria-hidden="true"
+			>
+				<defs>
+					<linearGradient
+						id="grad-clearance"
+						x1="0%"
+						y1="0%"
+						x2="100%"
+						y2="100%"
+					>
+						<stop offset="0%" stopColor="#ebb64bff" />
+						<stop offset="100%" stopColor="#ffc60dff" />
+					</linearGradient>
+					<linearGradient
+						id="grad-foundation"
+						x1="0%"
+						y1="0%"
+						x2="100%"
+						y2="100%"
+					>
+						<stop offset="0%" stopColor="var(--aurora-blue-solid)" />
+						<stop offset="100%" stopColor="var(--aurora-violet-solid)" />
+					</linearGradient>
+					<linearGradient id="grad-sprint" x1="0%" y1="0%" x2="100%" y2="100%">
+						<stop offset="0%" stopColor="#297b2eff" />
+						<stop offset="100%" stopColor="#086c0eff" />
+					</linearGradient>
+				</defs>
+			</svg>
 			{offerings.map((offering, idx) => {
 				const isClearance = offering.id === "clearance";
 				const isSprint = offering.id === "compliance-sprint";
@@ -53,11 +91,35 @@ export function ComplianceOfferings({ offerings }: ComplianceOfferingsProps) {
 							}`}
 						/>
 
+						{/* Background Icon Container - Restricted to left 1/3 on desktop */}
+						<div className="absolute inset-y-0 left-0 w-full lg:w-[33.333%] overflow-hidden rounded-l-2xl z-0 pointer-events-none">
+							<div className="absolute top-1/2 -translate-y-1/2 right-4 lg:-right-[15%] opacity-[0.03] group-hover:opacity-[0.09] scale-100 group-hover:scale-105 group-hover:rotate-[2deg] transition-all duration-700 ease-out flex items-center justify-center h-48 w-48 lg:h-[120%] lg:w-auto lg:aspect-square">
+								{offering.id === "clearance" && (
+									<ShieldCheck
+										className="w-full h-full stroke-[url(#grad-clearance)] text-transparent"
+										strokeWidth={0.5}
+									/>
+								)}
+								{offering.id === "program-foundation" && (
+									<Compass
+										className="w-full h-full stroke-[url(#grad-foundation)] text-transparent"
+										strokeWidth={0.5}
+									/>
+								)}
+								{offering.id === "compliance-sprint" && (
+									<Zap
+										className="w-full h-full stroke-[url(#grad-sprint)] text-transparent"
+										strokeWidth={0.5}
+									/>
+								)}
+							</div>
+						</div>
+
 						{/* Desktop Horizontal Grid */}
-						<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+						<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-10">
 							{/* Column 1: Metadata & Identity (Grid cols 1-4) */}
-							<div className="lg:col-span-4 space-y-4">
-								<div className="flex flex-wrap gap-1.5">
+							<div className="lg:col-span-4 space-y-4 relative flex flex-col justify-center h-full py-2">
+								<div className="flex flex-wrap gap-1.5 relative z-10">
 									{offering.pills.map((pill) => (
 										<span key={pill} className={domainPill(pill)}>
 											{pill}
@@ -65,8 +127,8 @@ export function ComplianceOfferings({ offerings }: ComplianceOfferingsProps) {
 									))}
 								</div>
 
-								<div>
-									<h3 className="font-heading font-medium text-2xl md:text-3xl text-[var(--text-stellar)]">
+								<div className="relative z-10">
+									<h3 className="font-heading font-medium text-2xl md:text-3xl text-[var(--text-stellar)] drop-shadow-sm">
 										{offering.title}
 									</h3>
 									<p className="text-[var(--text-muted)] text-sm italic font-sans mt-1">
@@ -74,27 +136,29 @@ export function ComplianceOfferings({ offerings }: ComplianceOfferingsProps) {
 									</p>
 								</div>
 
-								<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent pt-1">
+								<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent pt-1 relative z-10 drop-shadow-sm">
 									{offering.price}
 								</div>
 							</div>
 
 							{/* Column 2: Context & Descriptions (Grid cols 5-8) */}
-							<div className="lg:col-span-5 space-y-4 border-t lg:border-t-0 lg:border-l border-white/[0.06] pt-6 lg:pt-0 lg:pl-8">
-								<div className="text-xs text-[var(--text-muted)] font-sans italic border-l-2 border-[var(--aurum-gold-subtle)] pl-4 py-0.5 leading-relaxed">
-									<span className="font-semibold text-white/70 not-italic block mb-1">
-										When to choose:
-									</span>
-									{offering.whenYouNeedThis}
+							<div className="lg:col-span-5 space-y-5 border-t lg:border-t-0 lg:border-l border-white/[0.06] pt-6 lg:pt-0 lg:pl-8">
+								<div className="glass-card rounded-xl p-5 relative z-10 shadow-lg border border-white/10 bg-white/[0.02]">
+									<div className="text-xs uppercase tracking-wider font-mono font-bold mb-2 flex items-center gap-2 text-[var(--text-stellar)]">
+										<Sparkles className="w-4 h-4" /> When to choose:
+									</div>
+									<div className="text-sm font-sans text-white/90 leading-relaxed font-medium">
+										{offering.whenYouNeedThis}
+									</div>
 								</div>
 
-								<p className="text-white/80 text-sm leading-relaxed font-sans">
+								<p className="text-white/90 text-base leading-relaxed font-sans font-medium">
 									{offering.body}
 								</p>
 
 								{offering.whatThisIsNot && (
-									<div className="text-xs text-white/50 border-t border-white/[0.04] pt-3 font-sans italic">
-										<span className="font-semibold text-white/60 not-italic">
+									<div className="text-sm text-white/70 border-t border-white/[0.04] pt-4 font-sans italic">
+										<span className="font-semibold text-white/80 not-italic">
 											What this is not:{" "}
 										</span>
 										{offering.whatThisIsNot}
@@ -102,11 +166,40 @@ export function ComplianceOfferings({ offerings }: ComplianceOfferingsProps) {
 								)}
 
 								{offering.ifSourcedSeparately && (
-									<div className="text-xs text-white/40 border-t border-white/[0.04] pt-3 font-sans italic">
-										<span className="font-semibold text-white/50 not-italic">
-											Sourced separately:{" "}
-										</span>
-										{offering.ifSourcedSeparately}
+									<div className="border-t border-white/[0.06] pt-5 mt-5">
+										<div className="text-sm font-semibold text-[var(--text-stellar)] mb-2">
+											A la carte comparison:
+										</div>
+										{typeof offering.ifSourcedSeparately === "string" ? (
+											<p className="text-sm text-white/60 leading-relaxed italic">
+												{offering.ifSourcedSeparately}
+											</p>
+										) : (
+											<div className="space-y-4">
+												<ul className="space-y-1.5 text-sm text-white/70">
+													{offering.ifSourcedSeparately.items.map((item, i) => (
+														<li
+															key={i}
+															className="list-disc list-inside leading-snug"
+														>
+															{item}
+														</li>
+													))}
+												</ul>
+												<div className="text-sm border-t border-white/[0.04] pt-3 space-y-1">
+													<div className="text-white/60 italic">
+														Sourced separately:{" "}
+														<span className="line-through">
+															{offering.ifSourcedSeparately.totalSeparate}
+														</span>
+													</div>
+													<div className="font-semibold bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
+														Integrated bundle:{" "}
+														{offering.ifSourcedSeparately.constellationPrice}
+													</div>
+												</div>
+											</div>
+										)}
 									</div>
 								)}
 							</div>

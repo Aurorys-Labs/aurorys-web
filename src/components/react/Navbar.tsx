@@ -3,13 +3,132 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { useEffect, useState } from "react";
 
-const navItems = [
-	{ name: "Solutions", href: "/solutions" },
-	{ name: "Compliance", href: "/compliance" },
-	{ name: "Your Path", href: "/security-paths" },
-	{ name: "How We Work", href: "/how-we-work" },
-	{ name: "Roots", href: "/roots" },
-	{ name: "Trust Center", href: "/trust" },
+import {
+	BadgeCheck,
+	Compass,
+	FileBadge,
+	GitBranch,
+	Mountain,
+	PenTool,
+	Radio,
+	Search,
+	Sparkles,
+	Star,
+	Target,
+	Zap,
+} from "lucide-react";
+import { DropdownNavigation, type NavItem } from "./DropdownNavigation";
+
+const navItems: NavItem[] = [
+	{
+		id: 1,
+		label: "Solutions",
+		href: "/solutions",
+		subMenus: [
+			{
+				title: "Offerings",
+				items: [
+					{
+						label: "First light",
+						description: "Understand your posture",
+						icon: Sparkles,
+						href: "/solutions?view=first-light",
+					},
+					{
+						label: "Foundation",
+						description: "Build security into your foundation",
+						icon: Compass,
+						href: "/solutions?view=foundation",
+					},
+					{
+						label: "Pulse",
+						description: "Shipping secure with confidence",
+						icon: GitBranch,
+						href: "/solutions?view=pulse",
+					},
+					{
+						label: "Program Foundation",
+						description: "Backbone security program",
+						icon: FileBadge,
+						href: "/solutions?view=program-foundation",
+					},
+				],
+			},
+			{
+				title: "Add On Engagements",
+				items: [
+					{
+						label: "Surge",
+						description: "High-impact tactical sprints",
+						icon: Zap,
+						href: "/solutions/surge",
+					},
+					{
+						label: "Sprints",
+						description: "Focused engineering pushes",
+						icon: Target,
+						href: "/solutions/sprints",
+					},
+					{
+						label: "Full Constellation",
+						description: "End-to-end security partnership",
+						icon: Star,
+						href: "/solutions/full-constellation",
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 2,
+		label: "Security Paths",
+		href: "/security-paths",
+		subMenus: [
+			{
+				title: "Core Packages",
+				items: [
+					{
+						label: "Clarity",
+						description: "See where you stand. Know what to fix first.",
+						icon: Search,
+						href: "/security-paths#clarity",
+					},
+					{
+						label: "Blueprint",
+						description: "Security designed into your foundation.",
+						icon: PenTool,
+						href: "/security-paths#blueprint",
+					},
+					{
+						label: "Independence",
+						description: "Break free from cloud dependency.",
+						icon: Mountain,
+						href: "/security-paths#independence",
+					},
+				],
+			},
+			{
+				title: "Specialized & Ongoing",
+				items: [
+					{
+						label: "Clearance",
+						description: "Audit-ready. Enterprise-deal-ready.",
+						icon: BadgeCheck,
+						href: "/security-paths#clearance",
+					},
+					{
+						label: "Beacon",
+						description: "Your long-term security architect.",
+						icon: Radio,
+						href: "/security-paths#beacon",
+					},
+				],
+			},
+		],
+	},
+	{ id: 3, label: "Compliance", href: "/compliance" },
+	{ id: 4, label: "How We Work", href: "/how-we-work" },
+	{ id: 5, label: "Roots", href: "/roots" },
 ];
 
 export function Navbar() {
@@ -30,7 +149,7 @@ export function Navbar() {
 			<div
 				className={`pointer-events-auto transition-all duration-500 flex items-center gap-8 ${
 					scrolled
-						? "mx-4 mt-4 px-6 py-3 rounded-2xl backdrop-blur-xl bg-[rgba(13,17,23,0.55)] border border-white/[0.06] border-t-white/[0.10]"
+						? "mx-4 mt-4 px-6 py-2 rounded-2xl backdrop-blur-xl bg-[rgba(13,17,23,0.55)] border border-white/[0.06] border-t-white/[0.10]"
 						: "w-full px-6 md:px-12 py-4 bg-transparent"
 				}`}
 			>
@@ -49,17 +168,8 @@ export function Navbar() {
 					</span>
 				</a>
 
-				<div className="hidden md:flex items-center gap-6 ml-auto mr-6">
-					{navItems.map((item) => (
-						<a
-							key={item.name}
-							href={item.href}
-							className="relative text-sm text-white/60 hover:text-white transition-colors duration-150 group"
-						>
-							{item.name}
-							<span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[var(--aurora-green-solid)] group-hover:w-full transition-all duration-200" />
-						</a>
-					))}
+				<div className="hidden md:flex items-center ml-auto mr-4">
+					<DropdownNavigation navItems={navItems} />
 				</div>
 
 				<RainbowButton

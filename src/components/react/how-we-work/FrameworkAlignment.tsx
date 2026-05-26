@@ -18,6 +18,14 @@ interface FrameworkAlignmentProps {
 }
 
 export function FrameworkAlignment({ data }: FrameworkAlignmentProps) {
+	const functionColors: Record<string, string> = {
+		Identify: "text-[var(--aurora-purple-solid)]",
+		Protect: "text-[var(--aurora-blue-solid)]",
+		Detect: "text-[var(--aurora-cyan-solid)]",
+		Respond: "text-teal-400",
+		Recover: "text-[var(--aurora-green-solid)]",
+	};
+
 	return (
 		<div className="space-y-12 text-left">
 			{/* Header */}
@@ -30,7 +38,7 @@ export function FrameworkAlignment({ data }: FrameworkAlignmentProps) {
 				</p>
 			</div>
 
-			<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+			<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-center items-start">
 				{/* NIST CSF Table (Grid columns 1-7) */}
 				<div className="lg:col-span-7">
 					<div className="glass-card rounded-2xl border border-white/[0.06] backdrop-blur-xl bg-[rgba(13,17,23,0.25)] overflow-hidden">
@@ -52,7 +60,9 @@ export function FrameworkAlignment({ data }: FrameworkAlignmentProps) {
 											key={row.function}
 											className="hover:bg-white/[0.01] transition-colors"
 										>
-											<td className="py-4 px-6 text-sm text-[var(--text-stellar)] font-semibold">
+											<td
+												className={`py-4 px-6 text-sm font-semibold ${functionColors[row.function] || "text-[var(--text-stellar)]"}`}
+											>
 												{row.function}
 											</td>
 											<td className="py-4 px-6 text-sm text-white/80 leading-relaxed">

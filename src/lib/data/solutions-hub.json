@@ -562,7 +562,7 @@
 				"Observability stack integration",
 				"Day-0 Golden Snapshot immutable backup"
 			],
-			"whatThisIsNot": "Managed services. We deploy once and hand off. We are NOT responsible for updates or maintenance after keys transfer.",
+			"whatThisIsNot": "These are opinionated, pre-built stacks deployed to your infrastructure — not fully customized DevSecOps pipelines from scratch. (See Pulse for custom pipelines).",
 			"valueComparison": {
 				"rows": [
 					{

@@ -236,10 +236,27 @@ export function GRCPillar({ pillars }: GRCPillarProps) {
 
 						{/* Left / Top visual block (Grid columns 1-4) */}
 						<div className="lg:col-span-4 text-center">
-							{renderVisual(pillar.visualType)}
-							<div className="text-xs font-mono text-[var(--text-muted)] tracking-wider mt-4">
-								[visual_schema_{pillar.visualType}.svg]
-							</div>
+							{pillar.id === "governance" && (
+								<img
+									src="/images/grc/governance_grc.png"
+									alt="Governance"
+									className="w-full max-w-[280px] mx-auto h-auto rounded-lg opacity-90 mb-4 drop-shadow-xl"
+								/>
+							)}
+							{pillar.id === "risk" && (
+								<img
+									src="/images/grc/risk_grc.png"
+									alt="Risk"
+									className="w-full max-w-[280px] mx-auto h-auto rounded-lg opacity-90 mb-4 drop-shadow-xl"
+								/>
+							)}
+							{pillar.id === "compliance" && (
+								<img
+									src="/images/grc/compliance_grc.png"
+									alt="Compliance"
+									className="w-full max-w-[280px] mx-auto h-auto rounded-lg opacity-90 mb-4 drop-shadow-xl"
+								/>
+							)}
 						</div>
 
 						{/* Right Content Block (Grid columns 5-12) */}

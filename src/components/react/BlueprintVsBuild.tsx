@@ -63,9 +63,9 @@ export function BlueprintVsBuild() {
 			return <X className="w-5 h-5 text-[var(--text-faint)] mx-auto" />;
 		if (val.startsWith("✓ "))
 			return (
-				<div className="flex items-start justify-center gap-2 text-left md:text-center w-full">
-					<Check className="w-4 h-4 mt-0.5 text-[var(--aurora-green-solid)] shrink-0" />
-					<span className="flex-1">{val.substring(2)}</span>
+				<div className="flex flex-col items-center justify-center gap-1 text-center w-full">
+					<Check className="w-5 h-5 text-[var(--aurora-green-solid)] shrink-0" />
+					<span className="w-full leading-snug">{val.substring(2)}</span>
 				</div>
 			);
 		return <span className="text-white/80">{val}</span>;
@@ -127,11 +127,16 @@ export function BlueprintVsBuild() {
 							</h3>
 							<div className="space-y-4 divide-y divide-white/[0.04]">
 								{features.map((f, i) => (
-									<div key={i} className="pt-4 first:pt-0">
-										<p className="text-xs text-[var(--text-faint)] mb-1 uppercase tracking-wider">
+									<div
+										key={i}
+										className="pt-4 first:pt-0 flex flex-col items-center justify-center text-center"
+									>
+										<p className="text-xs text-[var(--text-faint)] mb-1 uppercase tracking-wider text-center">
 											{f.label}
 										</p>
-										<div className="text-sm">{renderValue(f.blueprint)}</div>
+										<div className="text-sm flex flex-col items-center text-center w-full">
+											{renderValue(f.blueprint)}
+										</div>
 									</div>
 								))}
 							</div>
@@ -143,11 +148,16 @@ export function BlueprintVsBuild() {
 							</h3>
 							<div className="space-y-4 divide-y divide-white/[0.04]">
 								{features.map((f, i) => (
-									<div key={i} className="pt-4 first:pt-0">
-										<p className="text-xs text-[var(--text-faint)] mb-1 uppercase tracking-wider">
+									<div
+										key={i}
+										className="pt-4 first:pt-0 flex flex-col items-center justify-center text-center"
+									>
+										<p className="text-xs text-[var(--text-faint)] mb-1 uppercase tracking-wider text-center">
 											{f.label}
 										</p>
-										<div className="text-sm">{renderValue(f.build)}</div>
+										<div className="text-sm flex flex-col items-center text-center w-full">
+											{renderValue(f.build)}
+										</div>
 									</div>
 								))}
 							</div>

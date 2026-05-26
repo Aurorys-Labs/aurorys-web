@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import ContactSection from "../../components/ContactSection.astro";
+import PreContact from "../../components/PreContact.astro";
 import Footer from "../../components/astro/Footer.astro";
 import { AuroraOverlay } from "../../components/react/AuroraOverlay";
 import { MobileNav } from "../../components/react/MobileNav";
@@ -174,7 +175,7 @@ import constellationData from "../../lib/data/full-constellation.json";
 
         {/* Display Scale Prestige Statement */}
         <div class="py-16 my-8 relative overflow-hidden liquid-glass-card px-6 text-center">
-          <div class="absolute inset-0 bg-[var(--aurum-gold-subtle)]/5 blur-3xl opacity-30 rounded-full" />
+          <div class="absolute inset-0 bg-[var(--aurum-gold-subtle-solid)]/5 blur-3xl opacity-30 rounded-full pointer-events-none" />
           <blockquote class="font-serif italic text-2xl md:text-3xl lg:text-4xl text-[var(--text-stellar)] max-w-2xl mx-auto relative z-10 leading-relaxed">
             "We build it. We train you. You own it."
           </blockquote>
@@ -240,7 +241,7 @@ import constellationData from "../../lib/data/full-constellation.json";
 
           {/* Bundle Cost */}
           <div class="md:col-span-6 space-y-4 text-center md:text-left">
-            <div className="font-heading font-semibold text-2xl bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
+            <div class="font-heading font-semibold text-2xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
               {constellationData.valueComparison.constellationPrice.split(" — ")[0]}
             </div>
             <p class="text-white/80 text-sm font-sans leading-relaxed">
@@ -275,46 +276,15 @@ import constellationData from "../../lib/data/full-constellation.json";
     </div>
   </section>
 
-  {/* CTA & Cross Links */}
-  <section class="relative z-10 py-20 border-t border-white/[0.04] text-center bg-gradient-to-b from-transparent to-slate-900/10">
-    <div class="content-width px-6">
-      <div class="max-w-3xl mx-auto space-y-10">
-        <div class="space-y-4">
-          <h2 class="font-heading font-semibold text-2xl text-[var(--text-stellar)]">
-            {constellationData.cta.title}
-          </h2>
-          <p class="text-white/80 text-sm font-sans max-w-2xl mx-auto leading-relaxed">
-            {constellationData.cta.body}
-          </p>
-        </div>
-
-        <RainbowButton
-          variant="glass"
-          size="lg"
-          className="rounded-xl inline-flex justify-center"
-          asChild
-        >
-          <a href={constellationData.cta.btn.href}>{constellationData.cta.btn.label}</a>
-        </RainbowButton>
-
-        <div class="border-t border-white/[0.06] pt-10">
-          <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-4">
-            {constellationData.crossLinks.title}
-          </h4>
-          <div class="flex flex-wrap justify-center gap-4 text-sm font-sans font-medium">
-            {constellationData.crossLinks.links.map((link) => (
-              <a
-                href={link.href}
-                class="inline-flex items-center justify-center h-10 px-6 rounded-full border border-white/10 bg-white/[0.03] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 text-xs font-semibold"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <PreContact
+    title={constellationData.cta.title}
+    subtitle={constellationData.cta.body}
+    buttons={[
+      { label: constellationData.cta.btn.label, href: constellationData.cta.btn.href, variant: "primary" },
+      { label: "How We Work", href: "/how-we-work", variant: "tertiary" },
+      { label: "Explore Individual Solutions", href: "/solutions", variant: "quaternary" }
+    ]}
+  />
 
   <ContactSection />
   <Footer />

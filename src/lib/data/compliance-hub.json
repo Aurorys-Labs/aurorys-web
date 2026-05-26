@@ -142,7 +142,15 @@
 				"Knowledge transfer session"
 			],
 			"whatThisIsNot": "A compliance automation platform. We don't push a button and make you compliant. We build the roadmap — your team walks it.",
-			"ifSourcedSeparately": "A standalone gap analysis ($5K-$10K) + policy development ($10K-$20K) + audit preparation ($5K-$15K) — and none of these vendors talk to each other about your specific context. We deliver all of it in one engagement, starting from $22K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Standalone gap analysis: $5K-$10K",
+					"Policy development: $10K-$20K",
+					"Audit preparation: $5K-$15K"
+				],
+				"totalSeparate": "$20K-$45K (unintegrated)",
+				"constellationPrice": "Starting from $22K (one engagement)"
+			},
 			"cta": {
 				"label": "Get Audit-Ready",
 				"href": "/?subject=CLEARANCE#contact"
@@ -168,7 +176,16 @@
 			],
 			"whatThisIsNot": "A technical architecture blueprint. A compliance audit. This is the operational and governance layer that makes architecture and compliance work.",
 			"oftenDiscoveredDuringAssessment": true,
-			"ifSourcedSeparately": "A standalone policy framework ($5K-$15K) + risk assessment ($5K-$10K) + incident response planning ($5K-$10K) + security awareness program ($3K-$8K) — and none of these vendors share context about your specific organization. We deliver all of it in one engagement, starting from $15K.",
+			"ifSourcedSeparately": {
+				"items": [
+					"Standalone policy framework: $5K-$15K",
+					"Risk assessment: $5K-$10K",
+					"Incident response planning: $5K-$10K",
+					"Security awareness program: $3K-$8K"
+				],
+				"totalSeparate": "$18K-$43K (unintegrated)",
+				"constellationPrice": "Starting from $15K (one engagement)"
+			},
 			"cta": {
 				"label": "Let's Talk",
 				"href": "/?subject=PROGRAM_FOUNDATION#contact"
@@ -182,6 +199,12 @@
 			"price": "Starting from $8K · 2 weeks",
 			"whenYouNeedThis": "You have one specific compliance gap that needs attention now. Not a full engagement — a focused, time-boxed deep dive on one area.",
 			"body": "Two weeks of focused work on a single compliance domain — whether that's a specific control gap, a policy framework, or an audit preparation sprint.",
+			"deliverables": [
+				"Targeted gap analysis for specific controls",
+				"Remediation guidance for identified gaps",
+				"Focused policy drafting (e.g. Access Control only)"
+			],
+			"whatThisIsNot": "A full audit preparation program. This is a targeted intervention.",
 			"cta": { "label": "Target Your Sprint", "href": "/solutions/sprints" }
 		}
 	],
@@ -219,11 +242,20 @@
 	"crossLinks": {
 		"title": "Ready to take the next step?",
 		"links": [
-			{ "label": "Explore All Solutions", "href": "/solutions" },
-			{ "label": "How We Work", "href": "/how-we-work" },
+			{
+				"label": "Explore Compliance Path",
+				"href": "/security-paths#clearance",
+				"variant": "primary"
+			},
+			{
+				"label": "Target a Compliance Sprint",
+				"href": "#compliance-sprint",
+				"variant": "tertiary"
+			},
 			{
 				"label": "Book a Discovery Call",
-				"href": "/?subject=COMPLIANCE#contact"
+				"href": "/?subject=COMPLIANCE#contact",
+				"variant": "quaternary"
 			}
 		]
 	}

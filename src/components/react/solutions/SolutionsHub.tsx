@@ -213,21 +213,21 @@ export function SolutionsHub() {
 			<div className="content-width px-6">
 				{/* "I Need To..." Filter Section - only visible in Grid overview state */}
 				{!activeViewId && (
-					<div className="flex flex-col items-center gap-3 mb-12">
-						<div className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold font-mono">
+					<div className="flex flex-col items-center gap-4 mb-12 mt-4">
+						<h2 className="text-xl md:text-2xl font-bold font-sans tracking-tight text-[var(--text-stellar)] text-center">
 							I Need To...
-						</div>
-						<div className="flex flex-wrap justify-center gap-2.5 max-w-3xl mx-auto">
+						</h2>
+						<div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
 							{solutionsData.problemPills.map((pill) => {
 								const isActive = activeFilter === pill.id;
 								return (
 									<button
 										key={pill.id}
 										onClick={() => setActiveFilter(pill.id)}
-										className={`px-4 py-2 rounded-full text-xs font-semibold font-sans transition-all duration-300 border cursor-pointer ${
+										className={`px-5 py-2.5 rounded-full text-sm font-semibold font-sans transition-all duration-300 border cursor-pointer ${
 											isActive
-												? "bg-[rgba(0,232,160,0.08)] border-[rgba(0,232,160,0.3)] text-[var(--aurora-green-solid)] shadow-[0_0_15px_-3px_rgba(0,232,160,0.2)]"
-												: "bg-white/[0.03] hover:bg-white/[0.08] border-white/[0.08] text-white/70 hover:text-white"
+												? "glass-card glass-card-tinted-emerald border-[rgba(0,232,160,0.4)] text-[var(--aurora-green-solid)] shadow-[0_0_20px_-5px_rgba(0,232,160,0.3)]"
+												: "glass-card hover:bg-white/[0.08] border-white/10 text-white/70 hover:text-white hover:shadow-[0_0_20px_-5px_rgba(255,255,255,0.1)]"
 										}`}
 									>
 										{pill.label}
@@ -249,62 +249,96 @@ export function SolutionsHub() {
 							transition={{ duration: 0.3, ease: "easeInOut" }}
 							className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
 						>
-							{solutionsData.cards.map((card) => {
-								const config =
-									styleConfig[card.id] || styleConfig["first-light"];
-								const IconComp = iconMap[card.icon] || Sparkles;
-								const isFilteredMatch =
-									activeFilter === "all" ||
-									currentFilterTargets.includes(card.id);
+							{[...solutionsData.cards]
+								.sort((a, b) => {
+									if (activeFilter === "all") return 0;
+									const aMatch = currentFilterTargets.includes(a.id);
+									const bMatch = currentFilterTargets.includes(b.id);
+									if (aMatch && !bMatch) return -1;
+									if (!aMatch && bMatch) return 1;
+									return 0;
+								})
+								.map((card) => {
+									const config =
+										styleConfig[card.id] || styleConfig["first-light"];
+									const IconComp = iconMap[card.icon] || Sparkles;
+									const isFilteredMatch =
+										activeFilter === "all" ||
+										currentFilterTargets.includes(card.id);
 
-								return (
-									<div
-										key={card.id}
-										onClick={() => isFilteredMatch && handleSelectView(card.id)}
-										className={`glass-card p-6 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.35)] flex flex-col justify-between min-h-[220px] transition-all duration-500 group relative ${
-											isFilteredMatch
-												? "cursor-pointer hover:border-white/[0.15] hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
-												: "opacity-20 pointer-events-none blur-[0.5px] scale-[0.98]"
-										}`}
-									>
-										{/* Subtle internal light effect */}
-										<div
-											className="absolute -top-12 -left-12 w-24 h-24 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
-											style={{
-												background: `radial-gradient(circle, rgba(${config.radialColor}, 0.4) 0%, transparent 70%)`,
-											}}
-										/>
+									let spanClass = "";
+									if (card.id === "full-constellation") {
+										spanClass =
+											"md:col-span-2 lg:col-span-2 md:row-span-2 lg:row-span-2 lg:min-h-[260px]";
+									} else if (card.id === "surge") {
+										spanClass = "md:row-span-2 lg:row-span-2";
+									} else if (card.id === "custom") {
+										spanClass =
+											"col-span-1 md:col-span-2 lg:col-span-3 lg:min-h-[260px]";
+									} else if (
+										[
+											"escape-velocity",
+											"first-light",
+											"pulse",
+											"build-partnership",
+										].includes(card.id)
+									) {
+										spanClass = "md:col-span-2 lg:col-span-2 lg:min-h-[260px]";
+									}
 
-										<div className="space-y-4">
-											<div className="flex items-center gap-3">
-												<div
-													className={`rounded-xl flex items-center justify-center w-10 h-10 border ${config.iconContainerBorder}`}
-													style={{ background: config.iconBg }}
-												>
-													<IconComp className="w-5 h-5 text-[var(--text-stellar)]" />
+									return (
+										<motion.div
+											layout
+											key={card.id}
+											onClick={() =>
+												isFilteredMatch && handleSelectView(card.id)
+											}
+											className={`glass-card p-6 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.35)] flex flex-col justify-between min-h-[220px] transition-all duration-500 group relative ${
+												spanClass
+											} ${
+												isFilteredMatch
+													? "cursor-pointer hover:border-white/[0.15] hover:scale-[1.02] shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+													: "opacity-20 pointer-events-none blur-[0.5px] scale-[0.98]"
+											}`}
+										>
+											{/* Subtle internal light effect */}
+											<div
+												className="absolute -top-12 -left-12 w-24 h-24 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
+												style={{
+													background: `radial-gradient(circle, rgba(${config.radialColor}, 0.4) 0%, transparent 70%)`,
+												}}
+											/>
+
+											<div className="space-y-4">
+												<div className="flex items-center gap-3">
+													<div
+														className={`rounded-xl flex items-center justify-center w-10 h-10 border ${config.iconContainerBorder}`}
+														style={{ background: config.iconBg }}
+													>
+														<IconComp className="w-5 h-5 text-[var(--text-stellar)]" />
+													</div>
+													<h3 className="text-base font-bold text-[var(--text-stellar)] font-sans">
+														{card.title}
+													</h3>
 												</div>
-												<h3 className="text-base font-bold text-[var(--text-stellar)] font-sans">
-													{card.title}
-												</h3>
+
+												<p className="text-sm text-[var(--text-muted)] leading-relaxed font-sans">
+													{card.subtitle}
+												</p>
 											</div>
 
-											<p className="text-sm text-[var(--text-muted)] leading-relaxed font-sans">
-												{card.subtitle}
-											</p>
-										</div>
-
-										<div className="pt-4 border-t border-white/[0.04] mt-5 flex items-center justify-between">
-											<span className="text-xs text-[var(--aurora-green-solid)] font-mono font-medium">
-												{card.price.split(" · ")[0]}
-											</span>
-											<span className="text-xs font-semibold font-sans text-white/50 group-hover:text-white flex items-center gap-1 transition-colors">
-												Explore Details
-												<ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-											</span>
-										</div>
-									</div>
-								);
-							})}
+											<div className="pt-4 border-t border-white/[0.04] mt-5 flex items-center justify-between">
+												<span className="text-xs text-[var(--aurora-green-solid)] font-mono font-medium">
+													{card.price.split(" · ")[0]}
+												</span>
+												<span className="text-xs font-semibold font-sans text-white/50 group-hover:text-white flex items-center gap-1 transition-colors">
+													Explore Details
+													<ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+												</span>
+											</div>
+										</motion.div>
+									);
+								})}
 						</motion.div>
 					) : (
 						/* --- STATE 2: Tabbed Sidebar + Main Detail Pane View --- */
@@ -321,7 +355,7 @@ export function SolutionsHub() {
 							<div className="lg:col-span-4 space-y-4 lg:sticky lg:top-28">
 								<button
 									onClick={() => handleSelectView(null)}
-									className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-sm font-semibold text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 cursor-pointer w-full justify-center"
+									className="glass-card inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/[0.03] text-sm font-semibold text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/20 transition-all duration-200 cursor-pointer w-full justify-center shadow-lg"
 								>
 									<ArrowLeft className="w-4 h-4" />
 									Back to Overview Grid
@@ -335,6 +369,8 @@ export function SolutionsHub() {
 										{solutionsData.cards.map((card) => {
 											const isSelected = card.id === activeViewId;
 											const IconComp = iconMap[card.icon] || Sparkles;
+											const cardConfig =
+												styleConfig[card.id] || styleConfig["first-light"];
 
 											return (
 												<button
@@ -342,24 +378,34 @@ export function SolutionsHub() {
 													onClick={() => handleSelectView(card.id)}
 													className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center gap-3 transition-all duration-200 cursor-pointer font-sans ${
 														isSelected
-															? "bg-[rgba(0,232,160,0.06)] border border-[rgba(0,232,160,0.25)] text-[var(--text-stellar)]"
+															? "border border-white/10 text-[var(--text-stellar)]"
 															: "border border-transparent text-white/70 hover:text-white hover:bg-white/[0.03]"
 													}`}
+													style={{
+														background: isSelected
+															? `linear-gradient(90deg, rgba(${cardConfig.radialColor}, 0.1), rgba(${cardConfig.radialColor}, 0.02))`
+															: "transparent",
+													}}
 												>
 													<div
 														className={`rounded-lg flex items-center justify-center w-8 h-8 border ${
 															isSelected
-																? "border-[rgba(0,232,160,0.3)]"
+																? `border-[rgba(${cardConfig.radialColor},0.4)]`
 																: "border-white/10"
 														} shrink-0`}
 														style={{
 															background: isSelected
-																? "rgba(0,232,160,0.1)"
+																? `rgba(${cardConfig.radialColor},0.15)`
 																: "rgba(255,255,255,0.02)",
 														}}
 													>
 														<IconComp
-															className={`w-4 h-4 ${isSelected ? "text-[var(--aurora-green-solid)]" : "text-white/60"}`}
+															className="w-4 h-4 transition-colors"
+															style={{
+																color: isSelected
+																	? `rgb(${cardConfig.radialColor})`
+																	: "rgba(255,255,255,0.6)",
+															}}
 														/>
 													</div>
 													<span className="text-sm font-medium truncate">
@@ -410,11 +456,19 @@ export function SolutionsHub() {
 												</div>
 
 												{/* When you need this */}
-												<div className="border-l-2 border-[var(--aurora-green-solid)]/30 pl-5 py-1 space-y-1 relative z-10">
-													<div className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-mono font-bold">
-														When to choose:
+												<div
+													className={`glass-card rounded-xl p-5 relative z-10 shadow-lg border border-[rgba(${config.radialColor},0.3)]`}
+													style={{
+														background: `linear-gradient(135deg, rgba(${config.radialColor}, 0.1), rgba(${config.radialColor}, 0.02))`,
+													}}
+												>
+													<div
+														className="text-xs uppercase tracking-wider font-mono font-bold mb-2 flex items-center gap-2"
+														style={{ color: `rgb(${config.radialColor})` }}
+													>
+														<Sparkles className="w-4 h-4" /> When to choose:
 													</div>
-													<p className="text-sm italic font-sans text-white/80 leading-relaxed">
+													<p className="text-sm font-sans text-white/90 leading-relaxed font-medium">
 														{selectedSolution.whenYouNeedThis}
 													</p>
 												</div>
@@ -440,8 +494,8 @@ export function SolutionsHub() {
 																			key={i}
 																			className="flex items-start gap-2.5"
 																		>
-																			<span className="inline-flex items-center justify-center p-0.5 rounded bg-[var(--aurora-green-solid)]/10 text-[var(--aurora-green-solid)] shrink-0 mt-0.5">
-																				<Boxes className="w-3.5 h-3.5" />
+																			<span className="inline-flex items-center justify-center p-0.5 text-white/70 shrink-0 mt-0.5">
+																				<Boxes className="w-4 h-4" />
 																			</span>
 																			<span className="leading-snug">
 																				{item}
@@ -468,22 +522,33 @@ export function SolutionsHub() {
 												{/* Comparative value table */}
 												{selectedSolution.valueComparison && (
 													<div className="border-t border-white/[0.06] pt-8 space-y-4 relative z-10">
-														<h4 className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold font-mono">
-															Value Context
-														</h4>
+														<div className="space-y-1">
+															<h4 className="text-sm uppercase tracking-wider text-[var(--text-stellar)] font-bold font-sans">
+																Value Context
+															</h4>
+															<p className="text-xs text-[var(--text-muted)] font-sans">
+																We don't compare ourselves to competitors. We're
+																showing you what it costs to procure these
+																capabilities <em>A La Carte</em> from disjointed
+																vendors vs our unified team approach.
+															</p>
+														</div>
 														<div className="glass-card overflow-hidden border border-white/[0.06] bg-white/[0.01] rounded-xl">
 															<div className="overflow-x-auto">
 																<table className="w-full text-left border-collapse text-xs font-sans">
 																	<thead>
 																		<tr className="border-b border-white/[0.08] bg-white/[0.02] text-[var(--text-stellar)]">
 																			<th className="py-3 px-4 font-semibold w-1/2">
-																				If Sourced Separately
+																				If sourced separately
 																			</th>
 																			<th className="py-3 px-4 font-semibold text-center w-1/4">
 																				Typical Vendor
 																			</th>
 																			<th className="py-3 px-4 font-semibold text-center w-1/4">
-																				Aurorys Labs
+																				Aurorys Labs{" "}
+																				<span className="text-[10px] text-[var(--text-muted)] block font-normal mt-0.5">
+																					(Starting at)
+																				</span>
 																			</th>
 																		</tr>
 																	</thead>

@@ -65,7 +65,7 @@ export function TerminalHero({ sequence }: TerminalHeroProps) {
 			</div>
 
 			{/* Terminal body */}
-			<div className="p-6 space-y-2.5 min-h-[180px] text-emerald-400/90 leading-relaxed max-h-72 overflow-y-auto">
+			<div className="p-6 space-y-2.5 h-[240px] text-emerald-400/90 leading-relaxed overflow-y-auto">
 				{visibleLines.map((line, i) => (
 					<div
 						key={i}

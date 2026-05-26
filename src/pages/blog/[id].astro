@@ -53,6 +53,7 @@ const blogContentMap: Record<
 				paragraphs: [
 					"Most startup security audits are a checkboxes game. An external auditor sends a spreadsheet, your team checks 'Yes' to password complexities, and a certificate is minted. Meanwhile, your production database has a wildcard admin role accessible from any network endpoint, and your developers are committing API keys directly to git.",
 					"We do things differently. Here is exactly how we would run a first-principles security posture assessment for a hypothetical SaaS startup.",
+					"> Compliance does not equal security. You can pass a SOC 2 audit with flying colors while hosting an entirely exposed network boundary. Real security begins at the infrastructure design layer.",
 				],
 			},
 			{
@@ -60,6 +61,10 @@ const blogContentMap: Record<
 				title: "1. Probe the Identity Perimeter",
 				paragraphs: [
 					"Our first stop is identity controls. We don't just ask if you have MFA enabled; we verify if your single sign-on (SSO) provider covers your third-party deployment tools and cloud consoles. Wildcard permissions on administrative roles represent a massive attack surface. We audit access boundaries to ensure least-privilege configurations.",
+					"Here is an example of a secure, least-privilege IAM policy baseline for a developer role that restricts direct database modifications:",
+					'```json\n{\n  "Version": "2012-10-17",\n  "Statement": [\n    {\n      "Effect": "Allow",\n      "Action": [\n        "ec2:Describe*",\n        "rds:Describe*"\n      ],\n      "Resource": "*"\n    },\n    {\n      "Effect": "Deny",\n      "Action": [\n        "rds:DeleteDBInstance",\n        "rds:ModifyDBInstance"\n      ],\n      "Resource": "arn:aws:rds:*:*:db:prod-*"\n    }\n  ]\n}\n```',
+					"During our identity review, we audit the following critical nodes:",
+					"- Admin dashboard wildcard roles in SSO providers\n- Static access keys committed to developer machines\n- Inactive contractor accounts with active API privileges\n- Multi-factor authentication enforcement exceptions",
 				],
 			},
 			{
@@ -67,6 +72,8 @@ const blogContentMap: Record<
 				title: "2. Verify Network Isolation boundaries",
 				paragraphs: [
 					"Next, we map the network topology. Production database nodes, Redis caches, and admin tooling endpoints should never live on public networks. We check for public access configurations and ensure that database interfaces are securely situated inside private subnets, behind zero-trust access proxies or private VPN gates.",
+					'```hcl\n# Terraform network snippet isolating production database\nresource "aws_db_subnet_group" "db_private" {\n  name       = "prod-db-private-subnet-group"\n  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]\n\n  tags = {\n    Name = "Isolated DB Subnets"\n  }\n}\n```',
+					"> Security Warning: If your database's security group allows 0.0.0.0/0 (even with a secure password), you are one zero-day vulnerability away from total data extraction. Always isolate resources behind private subnets.",
 				],
 			},
 			{
@@ -74,6 +81,7 @@ const blogContentMap: Record<
 				title: "3. Check Pipeline & Code Integration",
 				paragraphs: [
 					"Security isn't a check at release; it is woven into every commit. We audit your CI/CD pipelines to ensure secrets scanning tools are actively configured. Leaving hardcoded API keys in repository branches is the single most common trigger for modern data exposures.",
+					"We review how keys and credentials flow from developers to production servers, ensuring that environments rely on short-lived tokens instead of static credentials.",
 				],
 			},
 			{
@@ -112,6 +120,8 @@ const blogContentMap: Record<
 				title: "Translating Findings to Engineering Tasks",
 				paragraphs: [
 					"Every security finding should read like an engineering task. Instead of writing 'Database access is insecure,' write a clear specification: 'Restrict PostgreSQL instance security group to allow ingress only from private subnet (10.0.1.0/24).' Provide the exact code snippets or configurations required so developers don't have to guess.",
+					"Here is a markdown template we use for creating remediation tickets in client backlogs:",
+					'```markdown\n## Title: HARDEN-04: Isolate Production Database Endpoint\n\n### Description\nCurrently, the database accepts direct connections from the public gateway. Restrict access strictly to the web application tier.\n\n### Remediation Steps\n1. Modify `main.tf` under infrastructure repo to remove public accessibility.\n2. Bind security group to web security group only.\n\n### Expected Configuration\n```hcl\nresource "aws_security_group_rule" "db_ingress" {\n  type                     = "ingress"\n  from_port                = 5432\n  to_port                  = 5432\n  protocol                 = "tcp"\n  security_group_id        = aws_security_group.db.id\n  source_security_group_id = aws_security_group.web.id\n}\n```\n```',
 				],
 			},
 			{
@@ -119,6 +129,7 @@ const blogContentMap: Record<
 				title: "Run Remediation Sprints",
 				paragraphs: [
 					"Don't try to fix everything at once. Focus on remediation sprints: group tickets by context (e.g., identity first, network boundary second) and resolve them in 2-week sprints. Bounding the effort keeps engineering teams focused.",
+					"- Sprint 1: Identity & SSO Cleanup\n- Sprint 2: Network zoning and database isolation\n- Sprint 3: CI/CD Pipeline secrets detection & automated tests",
 				],
 			},
 		],
@@ -143,6 +154,7 @@ const blogContentMap: Record<
 				paragraphs: [
 					"Standard consultancies operate on recommendations: they analyze, find problems, write down suggestions, and hand them off. But writing 'use infrastructure-as-code' isn't helpful unless you also supply the baseline repository templates to start from.",
 					"We believe security is built through design and blueprints.",
+					"> Recommendations without code are just chores. Blueprints are deliverables that add capacity to your team from day one.",
 				],
 			},
 			{
@@ -150,6 +162,9 @@ const blogContentMap: Record<
 				title: "What is a Security Blueprint?",
 				paragraphs: [
 					"A security blueprint is production-ready architecture. It includes detailed system designs, threat models, hardened templates (e.g., Terraform, Pulumi, or Docker configs), and step-by-step guides. We deliver configurations your engineers can clone and deploy immediately.",
+					"Here is an example of a reusable, hardened baseline Dockerfile blueprint we deliver for Node.js microservices:",
+					'```dockerfile\n# Hardened Node.js runtime blueprint\nFROM node:20-alpine AS builder\nWORKDIR /usr/src/app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\n\nFROM gcr.io/distroless/nodejs20-debian12\nWORKDIR /usr/src/app\nCOPY --from=builder /usr/src/app .\nUSER 10001\nEXPOSE 8080\nCMD ["server.js"]\n```',
+					"This configuration eliminates root privileges and removes standard shell binaries, dramatically reducing the potential attack surface.",
 				],
 			},
 			{
@@ -157,6 +172,7 @@ const blogContentMap: Record<
 				title: "You Own the Baseline",
 				paragraphs: [
 					"Blueprints ensure you retain sovereignty over your infrastructure. We don't manage your servers. We deploy the blueprints, train your team on how they work, and transfer full ownership.",
+					"- Production-ready Terraform architectures\n- Zero-trust remote access controls\n- Automated backup and recovery scripts\n- Hardened service configurations",
 				],
 			},
 		],
@@ -179,6 +195,7 @@ const blogContentMap: Record<
 				paragraphs: [
 					"If a security consultant guarantees that your systems will never be breached, they are lying or selling you insurance. Absolute protection does not exist in network security. Adversaries change, new software vulnerabilities emerge, and human configurations can drift.",
 					"An honest approach focuses on residual risk and operational resilience.",
+					"> There are two types of organizations: those who have been compromised, and those who do not yet know they are compromised. Focus on minimizing the impact of an compromise rather than assuming it will never happen.",
 				],
 			},
 			{
@@ -186,6 +203,8 @@ const blogContentMap: Record<
 				title: "Resilience Over Guarantees",
 				paragraphs: [
 					"Resilience means your systems can withstand failures, restrict lateral movement, and recover immediately. If an endpoint is compromised, network zoning restricts access to other zones. If a server is corrupted, an immutable snapshot allows Day-0 recovery in minutes.",
+					"A key element of resilience is automated snapshot synchronization. Here is an example of an rsync cron script blueprint for data synchronization:",
+					'```bash\n#!/bin/bash\n# Hardened snapshot sync script\nset -euo pipefail\n\nSRC_DIR="/var/lib/prod-data"\nDEST_DIR="admin@backup-node.internal:/backup/snapshots/"\n\nrsync -avz --delete --bwlimit=10000 \\\n  -e "ssh -i /etc/ssh/backup_key -o StrictHostKeyChecking=yes" \\\n  "$SRC_DIR" "$DEST_DIR"\n```',
 				],
 			},
 			{
@@ -193,6 +212,7 @@ const blogContentMap: Record<
 				title: "True Ownership of Risks",
 				paragraphs: [
 					"We help you understand residual risks so you can make informed decisions. We don't hide findings behind compliance jargon; we outline them directly so your engineers can actively monitor and maintain control.",
+					"- Map the potential impact of vulnerabilities\n- Establish clear isolation points\n- Enable fast recovery protocols\n- Train team members on response procedures",
 				],
 			},
 		],
@@ -221,11 +241,10 @@ const blogContentMap: Record<
 				id: "five-wins",
 				title: "The 5 Essential Free Wins",
 				paragraphs: [
-					"1. Enforce Multi-Factor Authentication (MFA) across your team on SSO and admin portals.",
-					"2. Integrate a secrets scanning tool in git pipelines to catch hardcoded secrets before commits reach remote branches.",
-					"3. Remove public access endpoints from databases and Redis layers, keeping them strictly inside private subnets.",
-					"4. Enforce encrypted, automatic backups of production databases stored securely in a separate region.",
-					"5. Write down a basic recovery plan detailing who handles communications and what gets shut down during an incident.",
+					"Here are 5 security hygiene improvements that cost nothing but time to set up:",
+					"- 1. Enforce Multi-Factor Authentication (MFA) across your team on SSO and admin portals.\n- 2. Integrate a secrets scanning tool in git pipelines to catch hardcoded secrets before commits reach remote branches.\n- 3. Remove public access endpoints from databases and Redis layers, keeping them strictly inside private subnets.\n- 4. Enforce encrypted, automatic backups of production databases stored securely in a separate region.\n- 5. Write down a basic recovery plan detailing who handles communications and what gets shut down during an incident.",
+					"For Win #2, here is a GitHub Actions workflow snippet that integrates GitLeaks to detect hardcoded API keys on every pull request:",
+					"```yaml\nname: Security Scan\non: [pull_request]\njobs:\n  gitleaks:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n      - name: Run Gitleaks\n        uses: gitleaks/gitleaks-action@v2\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n```",
 				],
 			},
 			{
@@ -233,6 +252,128 @@ const blogContentMap: Record<
 				title: "Build Habits Early",
 				paragraphs: [
 					"Securing a system with 5 employees is simple. Securing a system after you scale to 50 employees is a massive refactoring project. Set the habits early, starting with your first infrastructure code configurations.",
+				],
+			},
+		],
+	},
+	"zero-trust-guide": {
+		title: "Zero-Trust Architecture for Startups: A Practical Guide",
+		category: "Security",
+		date: "May 2026",
+		readTime: "5 min read",
+		prestigeQuote: "Never trust. Always verify. The perimeter is dead.",
+		prestigeCite: "Zero-Trust Doctrine",
+		graphicTitle: "Zero-Trust Isolation Path",
+		graphicColors:
+			"from-cyan-500/20 via-emerald-500/10 to-transparent border-cyan-500/20",
+		ctaSubject: "SOLUTIONS_BEACON",
+		sections: [
+			{
+				id: "perimeter-dead",
+				title: "The Perimeter is Dead",
+				paragraphs: [
+					"Startups traditionally built a network perimeter: a firewall around the office or a VPN around the cloud, assuming anyone inside was safe. But in a remote-first world utilizing third-party SaaS tools, this perimeter does not exist. Trusting connections based solely on network location is a recipe for disaster.",
+					"Zero-trust requires that every access request be authenticated, authorized, and continuously validated.",
+				],
+			},
+			{
+				id: "implementing-zt",
+				title: "Implementing Zero-Trust Access controls",
+				paragraphs: [
+					"To implement zero-trust, start by routing administrative services behind an identity-aware proxy (like Authelia, Pomerium, or Cloudflare Access). This ensures that database consoles and admin portals are not accessible without SSO authentication.",
+					"Here is an example Nginx proxy configuration that enforces authorization checks against an authentication daemon:",
+					'```nginx\n# Nginx routing with zero-trust validation header\nserver {\n    listen 443 ssl;\n    server_name admin.internal.company.com;\n\n    location / {\n        auth_request /auth-check;\n        proxy_pass http://internal-admin-dashboard:8080;\n    }\n\n    location = /auth-check {\n        internal;\n        proxy_pass http://auth-service.internal:9090/verify;\n        proxy_pass_request_body off;\n        proxy_set_header Content-Length "";\n    }\n}\n```',
+				],
+			},
+			{
+				id: "key-benefits",
+				title: "Key Implementation Milestones",
+				paragraphs: [
+					"An effective zero-trust architecture can be deployed incrementally. Focus on these milestones first:",
+					"- SSO integration for all internal development tools\n- Context-aware access rules (limiting logins to verified developer IPs)\n- Eliminating static SSH keys in favor of ephemeral certificate authorities\n- Isolating build runners and staging environments",
+				],
+			},
+		],
+	},
+	"wireguard-tunnels": {
+		title: "Hardening Admin Portals with WireGuard VPN Tunnels",
+		category: "Technology",
+		date: "May 2026",
+		readTime: "6 min read",
+		prestigeQuote:
+			"If your administrative interface is accessible from the internet, it is already compromised.",
+		prestigeCite: "Infrastructure Hardening Protocol",
+		graphicTitle: "WireGuard Tunnel Scheme",
+		graphicColors:
+			"from-blue-500/20 via-indigo-500/10 to-transparent border-blue-500/20",
+		ctaSubject: "SOLUTIONS_SURGE",
+		sections: [
+			{
+				id: "isolation-why",
+				title: "Why Public Admin Portals are a Liability",
+				paragraphs: [
+					"Hosting your internal administrative dashboard or database console on a public IP exposes you to brute-force attacks, port scans, and zero-day web vulnerability exploits. Standard password authentication or IP whitelisting is not sufficient.",
+					"The safest configuration is complete network isolation: bind admin ports to local interfaces and route connections through a private WireGuard VPN tunnel.",
+				],
+			},
+			{
+				id: "wireguard-config",
+				title: "WireGuard Server Configuration",
+				paragraphs: [
+					"WireGuard is a fast, lightweight, and modern VPN protocol. Here is a secure server configuration file (`/etc/wireguard/wg0.conf`) blueprint that routes only admin traffic:",
+					"```ini\n[Interface]\nPrivateKey = SERVER_PRIVATE_KEY\nAddress = 10.8.0.1/24\nListenPort = 51820\n\n# PostUp and PostDown commands for packet forwarding rules\nPostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE\nPostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE\n\n[Peer]\nPublicKey = DEVELOPER_PUBLIC_KEY\nAllowedIPs = 10.8.0.2/32\n```",
+					"This configuration creates an isolated VPN subnet (`10.8.0.0/24`) where developer machines connect securely over UDP port 51820.",
+				],
+			},
+			{
+				id: "routing-rules",
+				title: "Enforcing Routing Isolation",
+				paragraphs: [
+					"Once the tunnel is active, configure your admin applications to listen strictly on the VPN interface IP, preventing any external queries from reaching the daemon.",
+					"```bash\n# Bind node dashboard service to VPN IP only\nnode server.js --host 10.8.0.1 --port 8080\n```",
+					"> Security Tip: Regularly rotate WireGuard peer configurations and automate host updates to ensure the tunnel endpoints remain secure.",
+				],
+			},
+		],
+	},
+	"podman-docker-hardening": {
+		title: "Rootless Podman vs Hardened Docker: Container Security Tradeoffs",
+		category: "Technology",
+		date: "May 2026",
+		readTime: "5 min read",
+		prestigeQuote:
+			"Root privileges inside a container represent root privileges on the host server.",
+		prestigeCite: "Container Isolation Doctrine",
+		graphicTitle: "Container Privilege Map",
+		graphicColors:
+			"from-purple-500/20 via-pink-500/10 to-transparent border-purple-500/20",
+		ctaSubject: "SOLUTIONS_SURGE",
+		sections: [
+			{
+				id: "container-risks",
+				title: "The Container Privilege Problem",
+				paragraphs: [
+					"By default, the Docker daemon runs with root privileges. If a containerized application is compromised and has root privileges inside the container, an attacker can exploit namespace configuration errors or kernel vulnerabilities to escape to the host server.",
+					"Hardening container environments is critical to maintaining tenant isolation.",
+				],
+			},
+			{
+				id: "rootless-podman",
+				title: "Option A: Rootless Podman Runtimes",
+				paragraphs: [
+					"Podman provides a rootless daemon configuration that uses user namespaces to map container root permissions to a non-privileged user on the host. If a container is breached, the attacker remains sandboxed with no privileges on the host.",
+					"Here is an example command showing how to run a rootless container using Podman, mapping host user ports and dropping core privileges:",
+					"```bash\n# Running rootless container dropping capability privileges\npodman run -d --name secure-web \\\n  --cap-drop=ALL --cap-add=NET_BIND_SERVICE \\\n  -p 8080:8080 \\\n  docker.io/library/nginx:alpine\n```",
+				],
+			},
+			{
+				id: "hardened-docker",
+				title: "Option B: Hardened Docker configurations",
+				paragraphs: [
+					"If you must use Docker for pipeline compatibility, you can configure daemon-level rules to deny root access and restrict runtime policies.",
+					"Apply these default hardening configurations to `/etc/docker/daemon.json`:",
+					'```json\n{\n  "no-new-privileges": true,\n  "userns-remap": "default",\n  "live-restore": true,\n  "icc": false\n}\n```',
+					"This locks down Docker containers, separating container user namespaces, denying privilege escalation (`no-new-privileges`), and disabling inter-container communication (`icc: false`) by default.",
 				],
 			},
 		],
@@ -285,7 +426,7 @@ const postTags = postMeta?.tags || [];
   </section>
 
   {/* Article Content Layout */}
-  <section class="relative z-10 py-8 border-t border-white/[0.04] bg-black/10">
+  <section class="relative z-10 py-8 border-t border-white/[0.04]">
     <div class="content-width px-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
@@ -324,14 +465,42 @@ const postTags = postMeta?.tags || [];
 
             {post.sections.map((section) => (
               <div id={section.id} class="scroll-mt-28 space-y-4">
-                <h2 class="font-sans font-bold text-2xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.04] pb-2">
+                <h2 class="font-sans font-bold text-2xl tracking-tight text-[var(--text-stellar)] border-b border-white/[0.04] pb-2 mt-8">
                   {section.title}
                 </h2>
-                {section.paragraphs.map((p) => (
-                  <p class="text-white/80 text-sm md:text-base leading-relaxed">
-                    {p}
-                  </p>
-                ))}
+                {section.paragraphs.map((p) => {
+                  if (p.startsWith("```")) {
+                    const lines = p.split("\n");
+                    const lang = lines[0].replace("```", "").trim();
+                    const code = lines.slice(1, lines.length - 1).join("\n");
+                    return (
+                      <pre class="bg-black/40 p-4 md:p-6 rounded-2xl border border-white/10 font-mono text-xs overflow-x-auto text-[var(--aurora-green-solid)] my-6 relative leading-relaxed max-w-full">
+                        {lang && <span class="absolute top-2.5 right-3 text-[9px] uppercase text-white/35 tracking-widest font-sans font-bold">{lang}</span>}
+                        <code class="block whitespace-pre select-all">{code}</code>
+                      </pre>
+                    );
+                  }
+                  if (p.startsWith("> ")) {
+                    return (
+                      <div class="my-6 p-5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 text-sm md:text-base leading-relaxed text-white/90 border-l-4 border-l-[var(--aurora-green-solid)]">
+                        {p.substring(2)}
+                      </div>
+                    );
+                  }
+                  if (p.startsWith("- ")) {
+                    const items = p.split("\n").map(item => item.replace(/^- /, "").trim());
+                    return (
+                      <ul class="list-disc pl-6 my-6 space-y-2.5 text-white/80 text-sm md:text-base">
+                        {items.map(item => <li>{item}</li>)}
+                      </ul>
+                    );
+                  }
+                  return (
+                    <p class="text-white/80 text-sm md:text-base leading-relaxed my-4">
+                      {p}
+                    </p>
+                  );
+                })}
               </div>
             ))}
 

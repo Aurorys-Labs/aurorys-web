@@ -1,5 +1,6 @@
 {
 	"frameworks": [
+		"SOC2",
 		"OWASP",
 		"NIST CSF",
 		"MITRE ATT&CK",

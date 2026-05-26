@@ -139,6 +139,70 @@
 		font-display: swap;
 	}
 
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-55Roman-Trial.otf")
+			format("opentype");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-56Italic-Trial.otf")
+			format("opentype");
+		font-weight: 400;
+		font-style: italic;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-65Medium-Trial.otf")
+			format("opentype");
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-66MediumItalic-Trial.otf")
+			format("opentype");
+		font-weight: 500;
+		font-style: italic;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-75Bold-Trial.otf") format("opentype");
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-76BoldItalic-Trial.otf")
+			format("opentype");
+		font-weight: 700;
+		font-style: italic;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-95Black-Trial.otf")
+			format("opentype");
+		font-weight: 900;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: "Neue Haas Grot Disp Round";
+		src: url("/fonts/NeueHaasGrotDispRound-96BlackItalic-Trial.otf")
+			format("opentype");
+		font-weight: 900;
+		font-style: italic;
+		font-display: swap;
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		*,
 		*::before,
@@ -366,6 +430,21 @@
 		padding-bottom: clamp(4rem, 8vw, 8rem);
 	}
 
+	.section-header {
+		font-family: "Neue Haas Grot Disp Round", var(--font-sans);
+		text-align: center;
+		font-weight: 700;
+		font-size: var(--text-h2);
+		line-height: var(--leading-heading);
+		letter-spacing: var(--tracking-heading);
+		color: var(--text-stellar);
+		margin-bottom: 1rem;
+	}
+
+	.prestige-text {
+		letter-spacing: normal !important;
+	}
+
 	.content-width {
 		max-width: 1280px;
 		margin-left: auto;
@@ -402,6 +481,15 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
+	}
+
+	.text-gradient-gold-moving {
+		background: var(--aurum-gold);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		background-size: 200% auto;
+		animation: aurora 8s ease-in-out infinite alternate;
 	}
 
 	.text-gradient-blue {

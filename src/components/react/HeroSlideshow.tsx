@@ -79,7 +79,7 @@ export function HeroSlideshow() {
 						transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 						className="flex flex-col items-center [grid-area:1/1]"
 					>
-						<motion.h1
+						<motion.h2
 							custom={0}
 							variants={staggerItem}
 							initial="hidden"
@@ -152,7 +152,7 @@ export function HeroSlideshow() {
 									{slide.headline}
 								</span>
 							)}
-						</motion.h1>
+						</motion.h2>
 
 						<motion.p
 							custom={1}

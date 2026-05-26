@@ -459,9 +459,18 @@ const { hideHeader = false } = Astro.props;
 			try {
 				const formData = new FormData(form);
 				const data = Object.fromEntries(formData.entries());
+				data.turnstileToken = turnstileResponse;
 
-				// Simulate network delay
-				await new Promise((r) => setTimeout(r, 1000));
+				const res = await fetch('/api/contact', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data),
+				});
+
+				const result = await res.json();
+				if (!res.ok) {
+					throw new Error(result.error || 'Failed to transmit securely.');
+				}
 
 				// Show Success UI
 				overlay?.classList.remove('hidden');

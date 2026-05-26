@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  website:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "4321:4321"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

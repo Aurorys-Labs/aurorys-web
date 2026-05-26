@@ -12,7 +12,18 @@ export default defineConfig({
 	adapter: node({
 		mode: "standalone",
 	}),
-	integrations: [react(), sitemap()],
+	integrations: [
+		react(),
+		sitemap({
+			changefreq: "weekly",
+			priority: 0.7,
+			filter: (page) => !page.includes("/api/"),
+			i18n: {
+				defaultLocale: "en",
+				locales: { en: "en-US" },
+			},
+		}),
+	],
 	vite: {
 		plugins: [tailwindcss()],
 		resolve: {

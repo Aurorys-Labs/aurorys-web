@@ -51,11 +51,11 @@ Built for high-performance, security, and exceptional aesthetics. This platform 
 
 The project is fully containerized with separate stages for development and production.
 
-- **Development Container**: 
+- **Development Container**:
   ```bash
   docker-compose -f docker-compose.dev.yml up
   ```
-- **Production Container**: 
+- **Production Container**:
   ```bash
   docker-compose -f docker-compose.prod.yml up --build
   ```

@@ -1,16 +1,16 @@
 import path from "path";
-import react from "@astrojs/react";
-import tailwindcss from "@tailwindcss/vite";
 import node from "@astrojs/node";
+import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 // @ts-check
 import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://auroryslabs.com",
 	adapter: node({
-		mode: "standalone"
+		mode: "standalone",
 	}),
 	integrations: [react(), sitemap()],
 	vite: {

@@ -1,17 +1,20 @@
-import { defineMiddleware } from 'astro:middleware';
+import { defineMiddleware } from "astro:middleware";
 
 export const onRequest = defineMiddleware(async (context, next) => {
-    const response = await next();
+	const response = await next();
 
-    // Clone the response to ensure we can append headers (some adapters return immutable responses)
-    const secureResponse = new Response(response.body, response);
+	// Clone the response to ensure we can append headers (some adapters return immutable responses)
+	const secureResponse = new Response(response.body, response);
 
-    // HSTS: Enforce HTTPS for 1 year, including subdomains
-    secureResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+	// HSTS: Enforce HTTPS for 1 year, including subdomains
+	secureResponse.headers.set(
+		"Strict-Transport-Security",
+		"max-age=31536000; includeSubDomains; preload",
+	);
 
-    // CSP: Content Security Policy
-    // Designed for Aurorys Labs: Allows Turnstile, local assets, and standard external fonts.
-    const csp = `
+	// CSP: Content Security Policy
+	// Designed for Aurorys Labs: Allows Turnstile, local assets, and standard external fonts.
+	const csp = `
         default-src 'self';
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
@@ -24,15 +27,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
         form-action 'self';
         frame-ancestors 'none';
         upgrade-insecure-requests;
-    `.replace(/\s+/g, ' ').trim();
+    `
+		.replace(/\s+/g, " ")
+		.trim();
 
-    secureResponse.headers.set('Content-Security-Policy', csp);
+	secureResponse.headers.set("Content-Security-Policy", csp);
 
-    // Anti-Clickjacking and MIME sniffing protections
-    secureResponse.headers.set('X-Content-Type-Options', 'nosniff');
-    secureResponse.headers.set('X-Frame-Options', 'DENY');
-    secureResponse.headers.set('X-XSS-Protection', '1; mode=block');
-    secureResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+	// Anti-Clickjacking and MIME sniffing protections
+	secureResponse.headers.set("X-Content-Type-Options", "nosniff");
+	secureResponse.headers.set("X-Frame-Options", "DENY");
+	secureResponse.headers.set("X-XSS-Protection", "1; mode=block");
+	secureResponse.headers.set(
+		"Referrer-Policy",
+		"strict-origin-when-cross-origin",
+	);
 
-    return secureResponse;
+	return secureResponse;
 });

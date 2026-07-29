@@ -153,7 +153,7 @@
 			},
 			"cta": {
 				"label": "Get Audit-Ready",
-				"href": "/?subject=CLEARANCE#contact"
+				"href": "#contact?subject=CLEARANCE"
 			}
 		},
 		{
@@ -187,8 +187,8 @@
 				"constellationPrice": "Starting from $15K (one engagement)"
 			},
 			"cta": {
-				"label": "Let's Talk",
-				"href": "/?subject=PROGRAM_FOUNDATION#contact"
+				"label": "Build Program Foundation",
+				"href": "#contact?subject=FOUNDATION"
 			}
 		},
 		{
@@ -243,19 +243,19 @@
 		"title": "Ready to take the next step?",
 		"links": [
 			{
-				"label": "Explore Compliance Path",
+				"label": "Explore Clearance Path",
 				"href": "/security-paths#clearance",
+				"variant": "tertiary"
+			},
+			{
+				"label": "How We Work",
+				"href": "/how-we-work",
+				"variant": "tertiary"
+			},
+			{
+				"label": "Get Audit-Ready",
+				"href": "#contact?subject=CLEARANCE",
 				"variant": "primary"
-			},
-			{
-				"label": "Target a Compliance Sprint",
-				"href": "#compliance-sprint",
-				"variant": "tertiary"
-			},
-			{
-				"label": "Book a Discovery Call",
-				"href": "/?subject=COMPLIANCE#contact",
-				"variant": "tertiary"
 			}
 		]
 	}

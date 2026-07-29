@@ -1,5 +1,7 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { domainPill } from "@/lib/domain-colors";
+import type { Region } from "@/lib/region";
+import { formatPrice } from "@/lib/region";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -17,9 +19,15 @@ interface Stack {
 
 interface SurgeStackCardProps {
 	stacks: Stack[];
+	region?: Region;
+	currencySymbol?: string;
 }
 
-export function SurgeStackCard({ stacks }: SurgeStackCardProps) {
+export function SurgeStackCard({
+	stacks,
+	region = "GLOBAL",
+	currencySymbol = "$",
+}: SurgeStackCardProps) {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
 			{stacks.map((stack, idx) => {
@@ -84,9 +92,11 @@ export function SurgeStackCard({ stacks }: SurgeStackCardProps) {
 							</div>
 
 							{/* Price (Aurum Gold Gradient) */}
-							<div className="font-heading font-semibold text-xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent inline-block">
-								{stack.price}
-							</div>
+							{region !== "IN" && (
+								<div className="font-heading font-semibold text-xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent inline-block">
+									{formatPrice(stack.price, region)}
+								</div>
+							)}
 
 							{/* Description */}
 							<p className="text-white/80 text-sm md:text-base leading-relaxed font-sans">

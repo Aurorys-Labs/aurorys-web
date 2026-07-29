@@ -99,7 +99,7 @@ export function DropdownNavigation({ navItems }: Props) {
 										animate={{ opacity: 1, y: 0 }}
 										exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
 									>
-										<div className="flex gap-12 backdrop-blur-2xl bg-[#02020288]overflow-hidden">
+										<div className="flex gap-12 backdrop-blur-2xl bg-[#02020288] overflow-hidden">
 											{navItem.subMenus.map((sub) => (
 												<motion.div
 													layout

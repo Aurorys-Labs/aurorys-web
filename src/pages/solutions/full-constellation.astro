@@ -10,6 +10,9 @@ import { Navbar } from "../../components/react/Navbar";
 import { RainbowButton } from "../../components/ui/rainbow-button";
 
 import constellationData from "../../lib/data/full-constellation.json";
+
+const region = Astro.locals.region;
+const currencySymbol = Astro.locals.currencySymbol || "$";
 ---
 
 <BaseLayout title={`${constellationData.hero.title} | Aurorys Labs`}>
@@ -81,7 +84,7 @@ import constellationData from "../../lib/data/full-constellation.json";
                   <h3 class="font-heading font-medium text-xl text-[var(--text-stellar)]">
                     {phase.title}
                   </h3>
-                  <span class="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-[var(--aurora-blue-solid)]/10 border border-[var(--aurora-blue-solid)]/20 text-blue-300">
+                  <span class="text-xs font-semibold tracking-wider uppercase px-2 py-0.5 rounded bg-[var(--aurora-blue-solid)]/10 border border-[var(--aurora-blue-solid)]/20 text-blue-300">
                     {phase.duration}
                   </span>
                 </div>
@@ -116,7 +119,7 @@ import constellationData from "../../lib/data/full-constellation.json";
         <p class="text-white/80 text-sm leading-relaxed font-sans text-left md:text-center">
           {constellationData.buildPartnershipIncluded.body}
         </p>
-        <p class="text-white/60 text-xs leading-relaxed font-sans text-left md:text-center italic">
+        <p class="text-white/60 text-sm leading-relaxed font-sans text-left md:text-center italic">
           {constellationData.buildPartnershipIncluded.body2}
         </p>
       </div>
@@ -174,10 +177,10 @@ import constellationData from "../../lib/data/full-constellation.json";
         </div>
 
         {/* Display Scale Prestige Statement */}
-        <div class="py-16 my-8 relative overflow-hidden liquid-glass-card px-6 text-center">
+        <div class="glass-card glass-card-tinted-gold py-16 p-8 md:p-16 rounded-3xl border border-amber-500/15 relative overflow-hidden my-8 text-center">
           <div class="absolute inset-0 bg-[var(--aurum-gold-subtle-solid)]/5 blur-3xl opacity-30 rounded-full pointer-events-none" />
-          <blockquote class="font-serif italic text-2xl md:text-3xl lg:text-4xl text-[var(--text-stellar)] max-w-2xl mx-auto relative z-10 leading-relaxed">
-            "We build it. We train you. You own it."
+          <blockquote class="font-serif text-2xl md:text-3xl lg:text-4xl text-white/95 max-w-2xl mx-auto relative z-10 leading-relaxed">
+            "We build it. We train you. <span class="text-gradient-gold-moving italic pr-1">You own it.</span>"
           </blockquote>
         </div>
 
@@ -211,47 +214,86 @@ import constellationData from "../../lib/data/full-constellation.json";
     </div>
   </section>
 
-  {/* Value Comparison */}
-  <section class="relative z-10 py-16 border-t border-white/[0.04]">
-    <div class="content-width px-6">
-      <div class="max-w-4xl mx-auto text-left space-y-8">
-        <div class="space-y-2 text-center md:text-left">
-          <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
-            {constellationData.valueComparison.title}
-          </h2>
-          <p class="text-[var(--text-muted)] text-base font-sans">
-            {constellationData.valueComparison.subtitle}
-          </p>
-        </div>
-
-        <div class="glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          {/* Separated costs */}
-          <div class="md:col-span-6 space-y-4 border-b md:border-b-0 md:border-r border-white/[0.06] pb-6 md:pb-0 md:pr-8">
-            <ul class="space-y-2 text-xs text-white/50 font-sans">
-              {constellationData.valueComparison.items.map((item, i) => (
-                <li class={`leading-relaxed ${i === constellationData.valueComparison.items.length - 1 ? 'italic text-white/40' : ''}`}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div class="text-sm font-sans text-white/40">
-              Total Separate: <span class="line-through">{constellationData.valueComparison.totalSeparate}</span>
-            </div>
+  {/* Value Section (Conditional based on Region) */}
+  {region === "IN" ? (
+    <section class="relative z-10 py-16 border-t border-white/[0.04]">
+      <div class="content-width px-6">
+        <div class="max-w-4xl mx-auto text-left space-y-8">
+          <div class="space-y-2 text-center md:text-left">
+            <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+              Holistic Transformation & Unified Context
+            </h2>
+            <p class="text-[var(--text-muted)] text-base font-sans">
+              Instead of fighting misaligned vendor agendas and fractured data silos, we deliver a unified ecosystem where every component is architected to work securely and frictionlessly.
+            </p>
           </div>
 
-          {/* Bundle Cost */}
-          <div class="md:col-span-6 space-y-4 text-center md:text-left">
-            <div class="font-heading font-semibold text-2xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
-              {constellationData.valueComparison.constellationPrice.split(" — ")[0]}
+          <div class="glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* The fragmented approach */}
+            <div class="md:col-span-6 space-y-4 border-b md:border-b-0 md:border-r border-white/[0.06] pb-6 md:pb-0 md:pr-8">
+              <ul class="space-y-3 text-sm text-white/60 font-sans">
+                <li class="flex gap-3"><span class="text-rose-500/80">✗</span> Disconnected agency engagements</li>
+                <li class="flex gap-3"><span class="text-rose-500/80">✗</span> Security tacked on as an afterthought</li>
+                <li class="flex gap-3"><span class="text-rose-500/80">✗</span> Cloud infrastructure built without compliance in mind</li>
+                <li class="flex gap-3 italic text-white/40 border-t border-white/[0.06] pt-3 mt-3">The Traditional Path: Fragmented context and endless friction.</li>
+              </ul>
             </div>
-            <p class="text-white/80 text-sm font-sans leading-relaxed">
-              {constellationData.valueComparison.constellationPrice.split(" — ")[1]}
-            </p>
+
+            {/* The Aurorys approach */}
+            <div class="md:col-span-6 space-y-4 text-center md:text-left">
+              <div class="font-heading font-semibold text-xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
+                One Partner. Complete Sovereignty.
+              </div>
+              <p class="text-white/80 text-sm font-sans leading-relaxed">
+                We handle the end-to-end orchestration: from foundational cloud architecture and deep cyber resilience to compliance readiness and bespoke engineering. You get a single, cohesive engine designed purely for your organizational speed and security.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  ) : (
+    <section class="relative z-10 py-16 border-t border-white/[0.04]">
+      <div class="content-width px-6">
+        <div class="max-w-4xl mx-auto text-left space-y-8">
+          <div class="space-y-2 text-center md:text-left">
+            <h2 class="font-heading font-semibold text-3xl md:text-4xl text-[var(--text-stellar)] tracking-tight">
+              {constellationData.valueComparison.title}
+            </h2>
+            <p class="text-[var(--text-muted)] text-base font-sans">
+              {constellationData.valueComparison.subtitle}
+            </p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.3)] grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Separated costs */}
+            <div class="md:col-span-6 space-y-4 border-b md:border-b-0 md:border-r border-white/[0.06] pb-6 md:pb-0 md:pr-8">
+              <ul class="space-y-2 text-sm text-white/50 font-sans">
+                {constellationData.valueComparison.items.map((item, i) => (
+                  <li class={`leading-relaxed ${i === constellationData.valueComparison.items.length - 1 ? 'italic text-white/40' : ''}`}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div class="text-base font-sans text-white/40 mt-4">
+                Total Separate: <span class="line-through">{constellationData.valueComparison.totalSeparate}</span>
+              </div>
+            </div>
+
+            {/* Bundle Cost */}
+            <div class="md:col-span-6 space-y-4 text-center md:text-left">
+              <div class="font-heading font-semibold text-2xl bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
+                {constellationData.valueComparison.constellationPrice.split(" — ")[0].replace("$", currencySymbol)}
+              </div>
+              <p class="text-white/80 text-sm font-sans leading-relaxed">
+                {constellationData.valueComparison.constellationPrice.split(" — ")[1]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   {/* Is This Right For You? */}
   <section class="relative z-10 py-16 border-t border-white/[0.04] bg-black/10">
@@ -265,7 +307,7 @@ import constellationData from "../../lib/data/full-constellation.json";
         </p>
 
         {/* H3 Prestige statement */}
-        <blockquote class="font-serif italic text-xl md:text-2xl text-[var(--text-stellar)] py-6 max-w-xl mx-auto border-t border-b border-white/[0.08] leading-relaxed">
+        <blockquote class="font-serif italic text-2xl md:text-3xl lg:text-4xl text-[var(--text-stellar)] py-6 max-w-3xl mx-auto border-t border-b border-white/[0.08] leading-relaxed relative z-10">
           "We'd rather lose a $120K engagement than sign one that isn't the right fit."
         </blockquote>
 

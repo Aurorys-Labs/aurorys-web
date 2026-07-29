@@ -17,7 +17,7 @@
 			"domains": ["Assessment", "Risk", "Compliance"],
 			"cta": {
 				"label": "Reveal Your Posture",
-				"href": "/compliance"
+				"href": "/solutions?view=first-light"
 			},
 			"defaultExpanded": true,
 			"price": "Starting from $10K"
@@ -37,7 +37,7 @@
 			"domains": ["Architecture", "Hardening"],
 			"cta": {
 				"label": "Design Your Foundation",
-				"href": "/security-paths"
+				"href": "/solutions?view=foundation"
 			},
 			"defaultExpanded": false,
 			"price": "Starting from $20K"
@@ -57,7 +57,7 @@
 			"domains": ["DevSecOps", "Supply Chain", "Secrets"],
 			"cta": {
 				"label": "Secure Your Pipeline",
-				"href": "/contact?subject=PULSE_PIPELINE#contact"
+				"href": "/solutions?view=pulse"
 			},
 			"defaultExpanded": false,
 			"price": "Starting from $20K",
@@ -85,6 +85,26 @@
 			"ifSourcedSeparately": "Sourced separately: Standalone gap analysis ($5K-$10K) + policy development ($10K-$20K) + audit prep ($5K-$15K) — totaling $20K-$45K."
 		},
 		{
+			"id": "program-foundation",
+			"icon": "FileBadge",
+			"title": "Program Foundation",
+			"description": "Establish your organization's backbone security program & governance controls.",
+			"detail": "For organizations scaling up enterprise sales or investor diligence that need formal security governance, policy frameworks, and risk management.",
+			"bullets": [
+				"Policy and control framework (NIST/CIS)",
+				"Organizational security governance",
+				"Risk management procedure & asset matrix",
+				"Vendor & third-party risk management"
+			],
+			"domains": ["Governance", "Compliance", "Risk"],
+			"cta": {
+				"label": "Build Program Foundation",
+				"href": "/solutions?view=program-foundation"
+			},
+			"defaultExpanded": false,
+			"price": "Starting from $15K"
+		},
+		{
 			"id": "escape-velocity",
 			"icon": "Rocket",
 			"title": "Escape Velocity",
@@ -99,7 +119,7 @@
 			"domains": ["Infrastructure", "Migration", "Cost Optimization"],
 			"cta": {
 				"label": "Chart Your Path",
-				"href": "/security-paths"
+				"href": "/solutions?view=escape-velocity"
 			},
 			"defaultExpanded": false,
 			"price": "Starting from $22K",
@@ -120,7 +140,7 @@
 			"domains": ["Advisory", "Architecture", "Training"],
 			"cta": {
 				"label": "Let's Talk About Advisory",
-				"href": "/contact?subject=BEACON_ADVISORY#contact"
+				"href": "/security-paths#beacon"
 			},
 			"defaultExpanded": false,
 			"price": "Starting from $8K/month"

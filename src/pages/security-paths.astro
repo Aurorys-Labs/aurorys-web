@@ -14,6 +14,10 @@ import { InteractiveGlowButton } from "../components/ui/interactive-glow-button"
 import { RainbowButton } from "../components/ui/rainbow-button";
 
 import pathsData from "../lib/data/security-paths.json";
+import type { Region } from "../lib/region";
+
+const region = Astro.locals.region as Region;
+const currencySymbol = Astro.locals.currencySymbol;
 ---
 
 <BaseLayout title={`${pathsData.hero.title} | Aurorys Labs`}>
@@ -44,7 +48,7 @@ import pathsData from "../lib/data/security-paths.json";
   {/* Section 1 — Paths Selector & Details */}
   <section class="relative z-10 py-12 px-6">
     <div class="content-width px-6">
-      <PathsManager pathCards={pathsData.pathCards} paths={pathsData.paths} client:load />
+      <PathsManager pathCards={pathsData.pathCards} paths={pathsData.paths} client:load region={region} currencySymbol={currencySymbol} />
     </div>
   </section>
 

@@ -13,6 +13,10 @@ import { SprintFormatCard } from "../../components/react/sprints/SprintFormatCar
 import { SprintVsFullTable } from "../../components/react/sprints/SprintVsFullTable";
 
 import sprintsData from "../../lib/data/sprints-page.json";
+import type { Region } from "../../lib/region";
+
+const region = Astro.locals.region as Region;
+const currencySymbol = Astro.locals.currencySymbol;
 ---
 
 <BaseLayout title={`${sprintsData.hero.title} | Aurorys Labs`}>
@@ -58,7 +62,7 @@ import sprintsData from "../../lib/data/sprints-page.json";
           Every sprint starts with the same foundation: a focused scope, a dedicated timeline, and clear deliverables. What differs is the level of guidance during implementation.
         </p>
       </div>
-      <SprintFormatCard formats={sprintsData.sprintFormats} client:load />
+      <SprintFormatCard formats={sprintsData.sprintFormats} client:load region={region} currencySymbol={currencySymbol} />
     </div>
   </section>
 
@@ -105,7 +109,7 @@ import sprintsData from "../../lib/data/sprints-page.json";
             {sprintsData.sprintVsFull.title}
           </h2>
         </div>
-        <SprintVsFullTable comparisonData={sprintsData.sprintVsFull} client:load />
+        <SprintVsFullTable comparisonData={sprintsData.sprintVsFull} client:load region={region} currencySymbol={currencySymbol} />
       </div>
     </div>
   </section>

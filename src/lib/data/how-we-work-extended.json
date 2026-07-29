@@ -234,7 +234,7 @@
 			},
 			{
 				"label": "Book a Discovery Call",
-				"href": "/?subject=METHODOLOGY#contact",
+				"href": "#contact?subject=METHODOLOGY",
 				"variant": "secondary"
 			}
 		]

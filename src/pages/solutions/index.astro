@@ -8,6 +8,10 @@ import { AuroraOverlay } from "../../components/react/AuroraOverlay";
 import { MobileNav } from "../../components/react/MobileNav";
 import { Navbar } from "../../components/react/Navbar";
 import { SolutionsHub } from "../../components/react/solutions/SolutionsHub";
+import type { Region } from "../../lib/region";
+
+const region = Astro.locals.region as Region;
+const currencySymbol = Astro.locals.currencySymbol;
 ---
 
 <BaseLayout title="Our Solutions | Aurorys Labs">
@@ -37,7 +41,7 @@ import { SolutionsHub } from "../../components/react/solutions/SolutionsHub";
     </div>
   </section>
 
-  <SolutionsHub client:load />
+  <SolutionsHub client:load region={region} currencySymbol={currencySymbol} />
 
   <PreContact
     title="Ready to build your blueprint?"

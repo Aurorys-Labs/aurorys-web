@@ -1,4 +1,6 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
+import type { Region } from "@/lib/region";
+import { formatPrice } from "@/lib/region";
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import React from "react";
@@ -17,9 +19,15 @@ interface Format {
 
 interface SprintFormatCardProps {
 	formats: Format[];
+	region?: Region;
+	currencySymbol?: string;
 }
 
-export function SprintFormatCard({ formats }: SprintFormatCardProps) {
+export function SprintFormatCard({
+	formats,
+	region = "GLOBAL",
+	currencySymbol = "$",
+}: SprintFormatCardProps) {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 			{formats.map((format, idx) => (
@@ -58,9 +66,11 @@ export function SprintFormatCard({ formats }: SprintFormatCardProps) {
 						</h3>
 
 						{/* Price (Aurum Gold Gradient) */}
-						<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent mb-6">
-							{format.price}
-						</div>
+						{region !== "IN" && (
+							<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent mb-6">
+								{formatPrice(format.price, region)}
+							</div>
+						)}
 
 						{/* Focus Description */}
 						<p className="text-white/70 text-sm leading-relaxed mb-6 font-sans">

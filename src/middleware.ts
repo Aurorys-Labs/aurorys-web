@@ -1,6 +1,92 @@
 import { defineMiddleware } from "astro:middleware";
+import { EU_COUNTRIES, type Region } from "./lib/region";
 
 export const onRequest = defineMiddleware(async (context, next) => {
+	const host = context.request.headers.get("host") || "";
+	const isDev =
+		import.meta.env.DEV ||
+		host.includes("localhost") ||
+		host.includes("127.0.0.1");
+	const country = (
+		context.request.headers.get("cf-ipcountry") || "US"
+	).toUpperCase();
+
+	// Check URL query parameters or cookie for region testing
+	let queryRegion = isDev
+		? context.url.searchParams.get("region")?.toUpperCase()
+		: undefined;
+	const queryCountry = isDev
+		? context.url.searchParams.get("country")?.toUpperCase()
+		: undefined;
+
+	if (queryCountry) {
+		queryRegion =
+			queryCountry === "IN"
+				? "IN"
+				: EU_COUNTRIES.has(queryCountry)
+					? "EU"
+					: "GLOBAL";
+	}
+
+	if (queryRegion === "RESET" || queryRegion === "AUTO") {
+		context.cookies.delete("region_override", { path: "/" });
+		queryRegion = undefined;
+	} else if (
+		queryRegion === "IN" ||
+		queryRegion === "EU" ||
+		queryRegion === "GLOBAL"
+	) {
+		context.cookies.set("region_override", queryRegion, {
+			path: "/",
+			maxAge: 60 * 60 * 24,
+		});
+	}
+
+	const savedRegion = context.cookies
+		.get("region_override")
+		?.value?.toUpperCase();
+	const activeTestRegion = queryRegion || savedRegion;
+
+	// 1. Determine Region
+	let region: Region = "GLOBAL";
+	let currencySymbol = "$";
+
+	if (activeTestRegion === "IN") {
+		region = "IN";
+		currencySymbol = "";
+	} else if (activeTestRegion === "EU") {
+		region = "EU";
+		currencySymbol = "€";
+	} else if (activeTestRegion === "GLOBAL") {
+		region = "GLOBAL";
+		currencySymbol = "$";
+	} else {
+		if (host.startsWith("in.") || country === "IN") {
+			region = "IN";
+			currencySymbol = "";
+		} else if (EU_COUNTRIES.has(country)) {
+			region = "EU";
+			currencySymbol = "€";
+		}
+	}
+
+	// 2. Redirect India to subdomain if they are on main domain (skip in dev or query testing)
+	if (
+		country === "IN" &&
+		!host.startsWith("in.") &&
+		!context.url.pathname.startsWith("/api/") &&
+		!isDev
+	) {
+		return context.redirect(
+			`https://in.auroryslabs.com${context.url.pathname}${context.url.search}`,
+			307,
+		);
+	}
+
+	// 3. Inject locals
+	context.locals.region = region;
+	context.locals.currencySymbol = currencySymbol;
+
 	const response = await next();
 
 	// Clone the response to ensure we can append headers (some adapters return immutable responses)

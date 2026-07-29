@@ -19,7 +19,7 @@
 			"price": "$10K",
 			"timeline": "3-4 weeks",
 			"cta": "Reveal Your Posture",
-			"href": "/?subject=REQ_AUDIT#contact",
+			"href": "#contact?subject=FIRST_LIGHT",
 			"variant": "primary"
 		},
 		{
@@ -38,7 +38,7 @@
 			"price": "$20K",
 			"timeline": "5-7 weeks",
 			"cta": "Design Your Foundation",
-			"href": "/?subject=START_BUILD#contact",
+			"href": "#contact?subject=FOUNDATION",
 			"variant": "secondary"
 		},
 		{
@@ -58,7 +58,7 @@
 			"price": "$22K",
 			"timeline": "5-8 weeks",
 			"cta": "Chart Your Path",
-			"href": "/?subject=INIT_MIGRATION#contact",
+			"href": "#contact?subject=ESCAPE_VELOCITY",
 			"variant": "flagship"
 		},
 		{
@@ -77,7 +77,7 @@
 			"price": "$22K",
 			"timeline": "6-8 weeks",
 			"cta": "Get Audit-Ready",
-			"href": "/?subject=PING_HELLO#contact",
+			"href": "#contact?subject=CLEARANCE",
 			"variant": "secondary"
 		},
 		{
@@ -97,7 +97,7 @@
 			"price": "$8K/mo",
 			"timeline": "Ongoing",
 			"cta": "Let's Talk About Advisory",
-			"href": "/?subject=START_BUILD#contact",
+			"href": "#contact?subject=BEACON",
 			"variant": "secondary"
 		}
 	],
@@ -109,7 +109,7 @@
 			"body": "Your team builds it. We make sure they build it right. Weekly syncs, async access, training, milestone reviews, decision log, and post-implementation validation.",
 			"price": "Starting from +$25K",
 			"cta": "Add Guided Implementation",
-			"href": "/?subject=START_BUILD#contact"
+			"href": "#contact?subject=BUILD_PARTNERSHIP"
 		},
 		{
 			"name": "Observability",
@@ -118,7 +118,7 @@
 			"body": "Proactive monitoring and scheduled reports. Automated critical alerts, bi-weekly reports, and engineer review. Not a 24/7 SOC — but critical findings reach you fast.",
 			"price": "$2K+/mo + $3K setup",
 			"cta": "Add Monitoring",
-			"href": "/?subject=REQ_AUDIT#contact"
+			"href": "#contact?subject=OBSERVABILITY"
 		}
 	],
 	"fullConstellation": {
@@ -153,5 +153,5 @@
 			"desc": "Your team learns to maintain what we design. That's the point."
 		}
 	],
-	"footer": "Starting from pricing. Exact cost determined after a free discovery call. What influences final pricing: scope complexity, infrastructure size, number of environments, compliance frameworks required, team size. We scope every engagement individually — and we're transparent about what drives cost."
+	"footer": "Starting from pricing. Exact cost estimate determined after a free discovery call. What influences final pricing: scope complexity, infrastructure size, number of environments, compliance frameworks required, team size. We scope every engagement individually — and we're transparent about what drives cost."
 }

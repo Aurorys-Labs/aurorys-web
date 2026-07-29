@@ -1,3 +1,5 @@
+import type { Region } from "@/lib/region";
+import { formatPrice } from "@/lib/region";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -13,9 +15,23 @@ interface SprintVsFullTableProps {
 		rows: ComparisonRow[];
 		closingNote: string;
 	};
+	region?: Region;
+	currencySymbol?: string;
 }
 
-export function SprintVsFullTable({ comparisonData }: SprintVsFullTableProps) {
+export function SprintVsFullTable({
+	comparisonData,
+	region = "GLOBAL",
+	currencySymbol = "$",
+}: SprintVsFullTableProps) {
+	// Filter rows based on region
+	const displayRows = comparisonData.rows.filter((row) => {
+		if (region === "IN" && row.label === "Starting price") {
+			return false;
+		}
+		return true;
+	});
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 15 }}
@@ -41,22 +57,25 @@ export function SprintVsFullTable({ comparisonData }: SprintVsFullTableProps) {
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-white/[0.04]">
-						{comparisonData.rows.map((row) => (
-							<tr
-								key={row.label}
-								className="hover:bg-white/[0.02] transition-colors"
-							>
-								<td className="py-4 px-6 text-sm text-[var(--text-stellar)] font-semibold font-sans">
-									{row.label}
-								</td>
-								<td className="py-4 px-6 text-sm text-white/90 font-sans leading-relaxed border-x border-[var(--aurora-purple-solid)]/10 bg-[var(--aurora-purple-solid)]/[0.02] text-center">
-									{row.sprint}
-								</td>
-								<td className="py-4 px-6 text-sm text-white/60 font-sans leading-relaxed text-center">
-									{row.full}
-								</td>
-							</tr>
-						))}
+						{displayRows.map((row) => {
+							const isPriceRow = row.label === "Starting price";
+							return (
+								<tr
+									key={row.label}
+									className="hover:bg-white/[0.02] transition-colors"
+								>
+									<td className="py-4 px-6 text-sm text-[var(--text-stellar)] font-semibold font-sans">
+										{row.label}
+									</td>
+									<td className="py-4 px-6 text-sm text-white/90 font-sans leading-relaxed border-x border-[var(--aurora-purple-solid)]/10 bg-[var(--aurora-purple-solid)]/[0.02] text-center">
+										{isPriceRow ? formatPrice(row.sprint, region) : row.sprint}
+									</td>
+									<td className="py-4 px-6 text-sm text-white/60 font-sans leading-relaxed text-center">
+										{isPriceRow ? formatPrice(row.full, region) : row.full}
+									</td>
+								</tr>
+							);
+						})}
 					</tbody>
 				</table>
 			</div>

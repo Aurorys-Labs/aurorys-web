@@ -3,6 +3,8 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import solutionsData from "@/lib/data/solutions-hub.json";
 import { domainPill } from "@/lib/domain-colors";
+import type { Region } from "@/lib/region";
+import { formatPrice } from "@/lib/region";
 import { AnimatePresence, motion } from "framer-motion";
 import {
 	ArrowLeft,
@@ -158,10 +160,14 @@ const styleConfig: Record<
 	},
 };
 
-export function SolutionsHub() {
+export function SolutionsHub({
+	region = "GLOBAL",
+	currencySymbol = "$",
+}: { region?: Region; currencySymbol?: string }) {
 	const [activeViewId, setActiveViewId] = useState<string | null>(null);
 	const [activeFilter, setActiveFilter] = useState<string>("all");
 	const detailPaneRef = useRef<HTMLDivElement>(null);
+	const rightPaneRef = useRef<HTMLDivElement>(null);
 
 	// Sync state with URL view parameter
 	useEffect(() => {
@@ -182,18 +188,33 @@ export function SolutionsHub() {
 
 	const handleSelectView = (id: string | null) => {
 		setActiveViewId(id);
-		const newUrl = id
-			? `${window.location.pathname}?view=${id}`
+		const params = new URLSearchParams(window.location.search);
+		if (id) {
+			params.set("view", id);
+		} else {
+			params.delete("view");
+		}
+		const searchStr = params.toString();
+		const newUrl = searchStr
+			? `${window.location.pathname}?${searchStr}`
 			: window.location.pathname;
 		window.history.pushState({ view: id }, "", newUrl);
 
 		if (id) {
 			setTimeout(() => {
-				detailPaneRef.current?.scrollIntoView({
-					behavior: "smooth",
-					block: "start",
-				});
-			}, 50);
+				if (window.innerWidth < 1024 && rightPaneRef.current) {
+					const y =
+						rightPaneRef.current.getBoundingClientRect().top +
+						window.scrollY -
+						80;
+					window.scrollTo({ top: y, behavior: "smooth" });
+				} else {
+					detailPaneRef.current?.scrollIntoView({
+						behavior: "smooth",
+						block: "start",
+					});
+				}
+			}, 100);
 		}
 	};
 
@@ -329,7 +350,8 @@ export function SolutionsHub() {
 
 											<div className="pt-4 border-t border-white/[0.04] mt-5 flex items-center justify-between">
 												<span className="text-xs text-[var(--aurora-green-solid)] font-mono font-medium">
-													{card.price.split(" · ")[0]}
+													{region !== "IN" &&
+														formatPrice(card.price.split(" · ")[0], region)}
 												</span>
 												<span className="text-xs font-semibold font-sans text-white/50 group-hover:text-white flex items-center gap-1 transition-colors">
 													Explore Details
@@ -419,7 +441,7 @@ export function SolutionsHub() {
 							</div>
 
 							{/* Right Detail Pane */}
-							<div className="lg:col-span-8">
+							<div ref={rightPaneRef} className="lg:col-span-8 pt-4 lg:pt-0">
 								{selectedSolution &&
 									(() => {
 										const config =
@@ -449,11 +471,44 @@ export function SolutionsHub() {
 													<h2 className="font-sans font-bold text-3xl md:text-4xl tracking-tight text-[var(--text-stellar)]">
 														{selectedSolution.title}
 													</h2>
-
-													<div className="text-lg font-semibold bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
-														{selectedSolution.price}
-													</div>
 												</div>
+
+												{/* Absolute positioned pricing for Global/EU on top right */}
+												{region !== "IN" && (
+													<div className="hidden md:flex absolute top-8 right-10 flex-col items-end text-right space-y-1">
+														<div className="text-[10px] uppercase font-bold tracking-wider text-[var(--text-muted)] font-mono">
+															Starting from
+														</div>
+														<div className="text-lg font-bold bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
+															{formatPrice(
+																selectedSolution.price
+																	.split(" · ")[0]
+																	.replace("Starting from ", ""),
+																region,
+															)}
+														</div>
+														<div className="text-xs text-[var(--text-muted)] font-medium">
+															{selectedSolution.price.split(" · ")[1]}
+														</div>
+													</div>
+												)}
+
+												{/* Mobile pricing (inline below title) */}
+												{region !== "IN" && (
+													<div className="md:hidden mt-4 space-y-1">
+														<div className="text-lg font-bold bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
+															{formatPrice(
+																selectedSolution.price.split(" · ")[0],
+																region,
+															)}
+														</div>
+														{selectedSolution.price.includes(" · ") && (
+															<div className="text-xs text-[var(--text-muted)] font-medium mt-0.5">
+																{selectedSolution.price.split(" · ")[1]}
+															</div>
+														)}
+													</div>
+												)}
 
 												{/* When you need this */}
 												<div
@@ -573,24 +628,29 @@ export function SolutionsHub() {
 																				</tr>
 																			),
 																		)}
-																		<tr className="bg-white/[0.02] font-semibold text-[var(--text-stellar)] border-t border-white/[0.08]">
-																			<td className="py-3 px-4">
-																				Total Financial Cost
-																			</td>
-																			<td className="py-3 px-4 text-center text-white/50 line-through">
-																				{
-																					selectedSolution.valueComparison
-																						.vendorTotal
-																				}
-																			</td>
-																			<td className="py-3 px-4 text-center text-[var(--aurum-gold-light)] font-bold">
-																				{
-																					selectedSolution.valueComparison
-																						.ourPrice
-																				}
-																			</td>
-																		</tr>
 																	</tbody>
+																	{region !== "IN" && (
+																		<tfoot className="text-white/80">
+																			<tr className="bg-white/[0.02] font-semibold text-[var(--text-stellar)] border-t border-white/[0.08]">
+																				<td className="py-3 px-4">
+																					Total Financial Cost
+																				</td>
+																				<td className="py-3 px-4 text-center text-white/50 line-through">
+																					{
+																						selectedSolution.valueComparison
+																							.vendorTotal
+																					}
+																				</td>
+																				<td className="py-3 px-4 text-center text-[var(--aurum-gold-light)] font-bold">
+																					{formatPrice(
+																						selectedSolution.valueComparison
+																							.ourPrice,
+																						region,
+																					)}
+																				</td>
+																			</tr>
+																		</tfoot>
+																	)}
 																</table>
 															</div>
 															<div className="py-3 px-4 bg-white/[0.01] border-t border-white/[0.06] text-[10px] text-[var(--text-muted)] text-center leading-relaxed">

@@ -10,7 +10,7 @@
 				"tags": ["Architecture", "Blueprints", "Ship Secure"],
 				"ctaPrimary": {
 					"label": "Design Your Foundation",
-					"href": "/?subject=START_BUILD#contact"
+					"href": "/solutions?view=foundation"
 				},
 				"ctaSecondary": { "label": "Explore Solutions", "href": "/solutions" }
 			},
@@ -21,7 +21,7 @@
 				"tags": ["Assessment", "Risk Priority", "Clear Roadmap"],
 				"ctaPrimary": {
 					"label": "Reveal Your Posture",
-					"href": "/?subject=REQ_AUDIT#contact"
+					"href": "/solutions?view=first-light"
 				},
 				"ctaSecondary": { "label": "See How We Assess", "href": "/how-we-work" }
 			},
@@ -32,11 +32,11 @@
 				"tags": ["Sovereignty", "Self-Hosted", "Independence"],
 				"ctaPrimary": {
 					"label": "Chart Your Path",
-					"href": "/security-paths"
+					"href": "/solutions?view=escape-velocity"
 				},
 				"ctaSecondary": {
 					"label": "Book a Discovery Call",
-					"href": "/contact?subject=DISCOVERY_CALL#contact"
+					"href": "#contact?subject=ESCAPE_VELOCITY"
 				}
 			},
 			{
@@ -46,7 +46,7 @@
 				"tags": ["Advisory", "vCISO", "Strategic"],
 				"ctaPrimary": {
 					"label": "Start a Conversation",
-					"href": "/?subject=PING_HELLO#contact"
+					"href": "/security-paths#beacon"
 				},
 				"ctaSecondary": { "label": "See What's Included", "href": "/solutions" }
 			},
@@ -57,7 +57,7 @@
 				"tags": ["Compliance", "SOC 2", "GDPR Ready"],
 				"ctaPrimary": {
 					"label": "Get Audit-Ready",
-					"href": "/?subject=REQ_AUDIT#contact"
+					"href": "/compliance"
 				},
 				"ctaSecondary": {
 					"label": "See How We Prepare You",

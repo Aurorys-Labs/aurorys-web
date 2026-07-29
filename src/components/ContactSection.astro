@@ -46,7 +46,7 @@ const { hideHeader = false } = Astro.props;
 
 		{/* MacOS Window Card */}
 		<div
-			class="glass-card rounded-2xl border border-white/10 bg-[rgba(13,17,23,0.7)] backdrop-blur-2xl shadow-2xl overflow-hidden relative"
+			class="glass-card rounded-2xl border border-white/[0.06] bg-[rgba(13,17,23,0.35)] backdrop-blur-xl shadow-2xl overflow-hidden relative"
 		>
 			{/* Window Header */}
 			<div
@@ -113,7 +113,7 @@ const { hideHeader = false } = Astro.props;
 								id="name"
 								name="name"
 								class="w-full my-2 px-4 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-mono text-sm placeholder:text-white/30"
-								placeholder="John Doe (CEO)"
+								placeholder="James Moriarty"
 							/>
 							<p id="name-error" class="text-xs text-red-400 font-mono hidden mt-1"></p>
 						</div>
@@ -129,7 +129,7 @@ const { hideHeader = false } = Astro.props;
 								name="email"
 								type="email"
 								class="w-full my-2 px-4 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-mono text-sm placeholder:text-white/30"
-								placeholder="john.doe@company.com"
+								placeholder="james.m@doyle.edu"
 							/>
 							<p id="email-error" class="text-xs text-red-400 font-mono hidden mt-1"></p>
 						</div>
@@ -158,6 +158,9 @@ const { hideHeader = false } = Astro.props;
 								<option value="SPRINT_CORE">SPRINT_CORE</option>
 								<option value="SURGE_BASE">SURGE_BASE</option>
 								<option value="FULL_CONSTELLATION">FULL_CONSTELLATION</option>
+								<option value="METHODOLOGY">METHODOLOGY</option>
+								<option value="BUILD_PARTNERSHIP">BUILD_PARTNERSHIP</option>
+								<option value="OBSERVABILITY">OBSERVABILITY</option>
 							</select>
 							<div
 								class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-50 text-white"
@@ -191,7 +194,7 @@ const { hideHeader = false } = Astro.props;
 							id="message"
 							name="message"
 							rows="5"
-							class="w-full my-2 px-4 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all resize-none font-mono text-sm placeholder:text-white/30"
+							class="w-full my-2 px-4 py-2 rounded-md bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all resize-y font-mono text-sm placeholder:text-white/30"
 							placeholder="Brief us on your mission parameters..."></textarea>
 						<p id="message-error" class="text-xs text-red-400 font-mono hidden mt-1"></p>
 					</div>
@@ -265,10 +268,16 @@ const { hideHeader = false } = Astro.props;
 			"Hi Aurorys,\n\nWe want to deploy a hardened, production-ready infrastructure stack in days using Surge.\n\nOur infrastructure will run on _______ hardware/compute environment.",
 		FULL_CONSTELLATION:
 			"Hi Aurorys,\n\nWe want to establish a complete security constellation. We want the full 6-month security transformation program (assessment, architecture, pipeline, compliance, and advisory).",
+		METHODOLOGY:
+			"Hi Aurorys,\n\nI would like to discuss your engineering methodology and engagement model for our team.\n\nOur primary stack consists of _______, and we want to align on process and delivery timelines.",
+		BUILD_PARTNERSHIP:
+			"Hi Aurorys,\n\nWe want guided implementation oversight to ensure our team builds security into our architecture correctly.",
+		OBSERVABILITY:
+			"Hi Aurorys,\n\nWe want proactive monitoring, log aggregation, and critical alert routing for our infrastructure.",
 	};
 
 	const placeholders: Record<string, string> = {
-		PING_HELLO: 'Brief us on your mission parameters...',
+		PING_HELLO: 'Hey, help me mess with Sherlock...',
 		FIRST_LIGHT: 'Tell us about your team size, tech stack, and assessment goals...',
 		FOUNDATION: 'What platform are you building? Share your stack and architecture goals...',
 		PULSE: 'What CI/CD tools do you use and what are your automation priorities...',
@@ -278,6 +287,9 @@ const { hideHeader = false } = Astro.props;
 		SPRINT_CORE: 'Describe the specific problem or scope you want to address in a Sprint...',
 		SURGE_BASE: 'What hardware or compute environment will host your Surge infrastructure stack...',
 		FULL_CONSTELLATION: 'Tell us about your team size, product scope, and transformation timeline...',
+		METHODOLOGY: 'Tell us about your team size and delivery process questions...',
+		BUILD_PARTNERSHIP: 'Tell us about the implementation stack you want guided oversight for...',
+		OBSERVABILITY: 'What monitoring tools and alert targets do you currently use...',
 	};
 
 	const contactSchema = z.object({
@@ -358,21 +370,66 @@ const { hideHeader = false } = Astro.props;
 			if (messageError && !messageError.classList.contains('hidden')) {
 				validateField('message', messageTextarea.value);
 			}
+			if (messageTextarea) {
+				messageTextarea.style.height = 'auto';
+				messageTextarea.style.height = messageTextarea.scrollHeight + 'px';
+			}
 		});
 
-		function parseParams(queryStr: string) {
-			const params = new URLSearchParams(queryStr);
-			const subjectParam = params.get('subject');
-			const messageParam = params.get('message');
+	const SUBJECT_ALIASES: Record<string, string> = {
+		START_BUILD: 'FOUNDATION',
+		REQ_AUDIT: 'FIRST_LIGHT',
+		INIT_MIGRATION: 'ESCAPE_VELOCITY',
+		DISCOVERY_CALL: 'PING_HELLO',
+		PATH_FINDER: 'FIRST_LIGHT',
+		SOLUTIONS_FIRST_LIGHT: 'FIRST_LIGHT',
+		SOLUTIONS_FOUNDATION: 'FOUNDATION',
+		SOLUTIONS_PULSE: 'PULSE',
+		SOLUTIONS_CLEARANCE: 'CLEARANCE',
+		SOLUTIONS_ESCAPE_VELOCITY: 'ESCAPE_VELOCITY',
+		SOLUTIONS_BEACON: 'BEACON',
+		SOLUTIONS_PROGRAM_FOUNDATION: 'FOUNDATION',
+		SOLUTIONS_BUILD_PARTNERSHIP: 'FOUNDATION',
+		SOLUTIONS_OBSERVABILITY: 'FOUNDATION',
+		SOLUTIONS_CUSTOM: 'PING_HELLO',
+		SPRINT: 'SPRINT_CORE',
+		SPRINT_ASSESSMENT: 'SPRINT_CORE',
+		SPRINT_BUILD: 'SPRINT_CORE',
+		SPRINT_EXTENDED: 'SPRINT_CORE',
+		SURGE: 'SURGE_BASE',
+		SURGE_CORE: 'SURGE_BASE',
+		PROGRAM_FOUNDATION: 'FOUNDATION',
+		BUILD_PARTNERSHIP: 'FOUNDATION',
+		OBSERVABILITY: 'FOUNDATION',
+		CUSTOM: 'PING_HELLO',
+	};
 
-			if (subjectSelect && subjectParam && Object.keys(TEMPLATES).includes(subjectParam)) {
-				subjectSelect.value = subjectParam;
-				if (messageTextarea) {
-					messageTextarea.placeholder = placeholders[subjectParam] || placeholders['PING_HELLO'];
-					messageTextarea.value = messageParam || TEMPLATES[subjectParam];
+	function parseParams(queryStr: string) {
+		const params = new URLSearchParams(queryStr);
+		const rawSubject = params.get('subject');
+		const messageParam = params.get('message');
+
+		if (rawSubject) {
+			const targetSubject = SUBJECT_ALIASES[rawSubject] || rawSubject;
+			if (subjectSelect) {
+				const matchingOption = Array.from(subjectSelect.options).find(
+					(opt) => opt.value === targetSubject || opt.value === rawSubject
+				);
+
+				if (matchingOption) {
+					subjectSelect.value = matchingOption.value;
+					matchingOption.selected = true;
+					subjectSelect.dispatchEvent(new Event('change', { bubbles: true }));
+				}
+
+				const templateKey = matchingOption?.value || targetSubject;
+				if (messageTextarea && TEMPLATES[templateKey]) {
+					messageTextarea.placeholder = placeholders[templateKey] || placeholders['PING_HELLO'];
+					messageTextarea.value = messageParam || TEMPLATES[templateKey];
 				}
 			}
 		}
+	}
 
 		// Initial query param parse
 		if (window.location.search) {
@@ -382,14 +439,40 @@ const { hideHeader = false } = Astro.props;
 		// Handle hash params for local single page anchors (e.g. #contact?subject=SURGE_BASE)
 		const checkHash = () => {
 			const hash = window.location.hash;
-			if (hash.startsWith('#contact') && hash.includes('?')) {
-				const queryPart = hash.slice(hash.indexOf('?'));
-				parseParams(queryPart);
+			if (hash.startsWith('#contact')) {
+				const contactEl = document.getElementById('contact');
+				if (contactEl) {
+					contactEl.scrollIntoView({ behavior: 'smooth' });
+				}
+				if (hash.includes('?')) {
+					const queryPart = hash.slice(hash.indexOf('?'));
+					parseParams(queryPart);
+				}
 			}
 		};
 
 		checkHash();
 		window.addEventListener('hashchange', checkHash);
+
+		// Intercept clicks on #contact anchors to prevent native browser jump and ensure smooth scroll + pre-fill
+		document.addEventListener('click', (e) => {
+			const target = (e.target as HTMLElement).closest('a');
+			if (target) {
+				const href = target.getAttribute('href');
+				if (href && href.startsWith('#contact')) {
+					e.preventDefault();
+					const queryPart = href.includes('?') ? href.slice(href.indexOf('?')) : '';
+					window.history.pushState(null, '', href);
+					const contactEl = document.getElementById('contact');
+					if (contactEl) {
+						contactEl.scrollIntoView({ behavior: 'smooth' });
+					}
+					if (queryPart) {
+						parseParams(queryPart);
+					}
+				}
+			}
+		});
 
 		subjectSelect?.addEventListener('change', (e) => {
 			const val = (e.target as HTMLSelectElement).value;
@@ -402,6 +485,10 @@ const { hideHeader = false } = Astro.props;
 				if (!currentVal || isDefaultTemplate) {
 					messageTextarea.value = TEMPLATES[val];
 				}
+				setTimeout(() => {
+					messageTextarea.style.height = 'auto';
+					messageTextarea.style.height = messageTextarea.scrollHeight + 'px';
+				}, 10);
 			}
 		});
 

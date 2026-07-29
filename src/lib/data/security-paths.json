@@ -76,7 +76,7 @@
 			},
 			"cta": {
 				"label": "Reveal Your Posture",
-				"href": "/?subject=FIRST_LIGHT#contact"
+				"href": "#contact?subject=FIRST_LIGHT"
 			}
 		},
 		{
@@ -105,7 +105,7 @@
 			},
 			"cta": {
 				"label": "Design Your Foundation",
-				"href": "/?subject=FOUNDATION#contact"
+				"href": "#contact?subject=FOUNDATION"
 			}
 		},
 		{
@@ -135,7 +135,7 @@
 			},
 			"cta": {
 				"label": "Secure Your Pipeline",
-				"href": "/?subject=PULSE#contact"
+				"href": "#contact?subject=PULSE"
 			}
 		},
 		{
@@ -164,7 +164,7 @@
 			},
 			"cta": {
 				"label": "Get Audit-Ready",
-				"href": "/?subject=CLEARANCE#contact"
+				"href": "#contact?subject=CLEARANCE"
 			}
 		},
 		{
@@ -193,10 +193,10 @@
 				"constellationPrice": "Starting from $22K"
 			},
 			"multiplePaths": true,
-			"pathsLink": "/compliance",
+			"pathsLink": "/solutions?view=escape-velocity",
 			"cta": {
 				"label": "Chart Your Path",
-				"href": "/?subject=ESCAPE_VELOCITY#contact"
+				"href": "#contact?subject=ESCAPE_VELOCITY"
 			}
 		},
 		{
@@ -273,7 +273,7 @@
 			"detailPageLink": "/solutions/full-constellation",
 			"cta": {
 				"label": "Book a Discovery Call",
-				"href": "/?subject=FULL_CONSTELLATION#contact"
+				"href": "#contact?subject=FULL_CONSTELLATION"
 			}
 		}
 	],
@@ -286,7 +286,7 @@
 			{
 				"title": "Escape Velocity",
 				"description": "The strategic path. Cloud audit, migration planning, and architecture for infrastructure you own. Starting from $22K.",
-				"link": "/compliance",
+				"link": "/solutions?view=escape-velocity",
 				"cta": "Explore sovereignty paths"
 			},
 			{
@@ -317,11 +317,11 @@
 		"body": "That's exactly what the First Light assessment is for. We map your entire landscape — architecture, infrastructure, compliance, risk — and give you a prioritized roadmap that tells you exactly what to address, in what order, and why. No guessing. No assumptions. Just clarity.",
 		"cta": {
 			"label": "Start With First Light",
-			"href": "/?subject=FIRST_LIGHT#contact"
+			"href": "#contact?subject=FIRST_LIGHT"
 		},
 		"secondaryCta": {
 			"label": "Book a Discovery Call",
-			"href": "/?subject=PATH_FINDER#contact"
+			"href": "#contact?subject=PATH_FINDER"
 		}
 	},
 	"crossLinks": {

@@ -4,6 +4,8 @@ import { InteractiveGlowButton } from "@/components/ui/interactive-glow-button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import data from "@/lib/data/pricing.json";
 import { domainPill } from "@/lib/domain-colors";
+import type { Region } from "@/lib/region";
+import { formatPrice } from "@/lib/region";
 import {
 	Asterisk,
 	BadgeCheck,
@@ -39,7 +41,8 @@ const flagStyles: Record<string, string> = {
 function PackageCard({
 	pkg,
 	wide,
-}: { pkg: (typeof data.packages)[0]; wide?: boolean }) {
+	region = "GLOBAL",
+}: { pkg: (typeof data.packages)[0]; wide?: boolean; region?: Region }) {
 	const IconComponent = iconMap[pkg.icon] || Search;
 	const isFlagship = pkg.variant === "flagship";
 
@@ -73,15 +76,28 @@ function PackageCard({
 					</p>
 				</div>
 				<div className="text-right shrink-0 ml-2">
-					<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 leading-none">
-						Starting from
-					</p>
-					<p className="text-lg font-bold text-[var(--text-stellar)] leading-tight">
-						{pkg.price}
-					</p>
-					<p className="text-xs text-[var(--text-muted)] mt-1.5 leading-none">
-						{pkg.timeline}
-					</p>
+					{region !== "IN" ? (
+						<>
+							<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 leading-none">
+								Starting from
+							</p>
+							<p className="text-lg font-bold text-[var(--text-stellar)] leading-tight">
+								{formatPrice(pkg.price, region)}
+							</p>
+							<p className="text-xs text-[var(--text-muted)] mt-1.5 leading-none">
+								{pkg.timeline}
+							</p>
+						</>
+					) : (
+						<>
+							<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 leading-none">
+								Timeline
+							</p>
+							<p className="text-sm font-semibold text-[var(--aurora-green-solid)] leading-tight">
+								{pkg.timeline}
+							</p>
+						</>
+					)}
 				</div>
 			</div>
 
@@ -132,7 +148,10 @@ function PackageCard({
 	);
 }
 
-export function PricingPath() {
+export function PricingPath({
+	region = "GLOBAL",
+	currencySymbol = "$",
+}: { region?: Region; currencySymbol?: string }) {
 	const {
 		sectionTitle,
 		sectionSubtitle,
@@ -163,13 +182,13 @@ export function PricingPath() {
 
 				<div className="max-w-6xl mx-auto space-y-4">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-						<PackageCard pkg={packages[0]} />
-						<PackageCard pkg={packages[1]} />
+						<PackageCard pkg={packages[0]} region={region} />
+						<PackageCard pkg={packages[1]} region={region} />
 					</div>
-					<PackageCard pkg={packages[2]} wide />
+					<PackageCard pkg={packages[2]} wide region={region} />
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-						<PackageCard pkg={packages[3]} />
-						<PackageCard pkg={packages[4]} />
+						<PackageCard pkg={packages[3]} region={region} />
+						<PackageCard pkg={packages[4]} region={region} />
 					</div>
 				</div>
 
@@ -202,14 +221,21 @@ export function PricingPath() {
 										</p>
 									</div>
 									<div className="text-right shrink-0 ml-2">
-										<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 leading-none">
-											Starting from
-										</p>
-										<p className="text-lg font-bold text-[var(--text-stellar)] leading-tight max-w-[120px] whitespace-pre-wrap">
-											{addon.price
-												.replace("Starting from ", "")
-												.replace(" + ", "\n+ ")}
-										</p>
+										{region !== "IN" && (
+											<>
+												<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 leading-none">
+													Starting from
+												</p>
+												<p className="text-lg font-bold text-[var(--text-stellar)] leading-tight max-w-[120px] whitespace-pre-wrap">
+													{formatPrice(
+														addon.price
+															.replace("Starting from ", "")
+															.replace(" + ", "\n+ "),
+														region,
+													)}
+												</p>
+											</>
+										)}
 									</div>
 								</div>
 								<p className="text-sm text-[var(--text-muted)] mb-5 leading-relaxed flex-1">
@@ -260,12 +286,16 @@ export function PricingPath() {
 							</div>
 							<div className="text-center md:text-right shrink-0 md:min-w-[240px] flex flex-col justify-between">
 								<div>
-									<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
-										Starting from
-									</p>
-									<p className="text-4xl font-bold text-[var(--text-stellar)]">
-										{fullConstellation.price}
-									</p>
+									{region !== "IN" && (
+										<>
+											<p className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
+												Starting from
+											</p>
+											<p className="text-4xl font-bold text-[var(--text-stellar)]">
+												{formatPrice(fullConstellation.price, region)}
+											</p>
+										</>
+									)}
 									<p className="text-sm font-medium text-[var(--text-muted)] mt-2">
 										Engagement: {fullConstellation.timeline}
 									</p>

@@ -1,5 +1,7 @@
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { domainPill } from "@/lib/domain-colors";
+import type { Region } from "@/lib/region";
+import { formatPrice } from "@/lib/region";
 import { AnimatePresence, motion } from "framer-motion";
 import {
 	Activity,
@@ -49,6 +51,8 @@ interface PathDetailData {
 interface PathsManagerProps {
 	pathCards: PathCardData[];
 	paths: PathDetailData[];
+	region?: Region;
+	currencySymbol?: string;
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -87,7 +91,12 @@ const radialGlowColors: Record<string, string> = {
 	"full-constellation": "rgba(139, 92, 246, 0.15)",
 };
 
-export function PathsManager({ pathCards, paths }: PathsManagerProps) {
+export function PathsManager({
+	pathCards,
+	paths,
+	region = "GLOBAL",
+	currencySymbol = "$",
+}: PathsManagerProps) {
 	const [selectedPathId, setSelectedPathId] = useState<string>("first-light");
 
 	// Sync with URL query parameter on mount and when query changes
@@ -107,9 +116,24 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 
 	const handleSelectPath = (id: string) => {
 		setSelectedPathId(id);
-		// Update URL state without page reload
-		const newUrl = `${window.location.pathname}?path=${id}`;
+		const params = new URLSearchParams(window.location.search);
+		params.set("path", id);
+		const newUrl = `${window.location.pathname}?${params.toString()}`;
 		window.history.pushState({ path: id }, "", newUrl);
+
+		if (window.innerWidth < 1024) {
+			setTimeout(() => {
+				const detailContainer = document.getElementById(
+					"path-detail-container",
+				);
+				if (detailContainer) {
+					// scroll with a slight offset for header
+					const y =
+						detailContainer.getBoundingClientRect().top + window.scrollY - 80;
+					window.scrollTo({ top: y, behavior: "smooth" });
+				}
+			}, 100);
+		}
 	};
 
 	const currentPath = paths.find((p) => p.id === selectedPathId) || paths[0];
@@ -144,13 +168,6 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 									<span>{card.path}</span>
 								</div>
 								<div className="flex items-center gap-3">
-									<span className="text-xs text-[var(--aurora-green-solid)] font-mono font-medium hidden sm:inline-block">
-										{
-											paths
-												.find((p) => p.id === card.pathId)
-												?.price.split(" · ")[0]
-										}
-									</span>
 									<ArrowRight
 										className={`w-4 h-4 transition-transform duration-300 ${
 											isSelected
@@ -166,7 +183,10 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 			</div>
 
 			{/* Right Column: Path Detail Sidebar (sticky on desktop) */}
-			<div className="lg:col-span-7 lg:sticky lg:top-28">
+			<div
+				id="path-detail-container"
+				className="lg:col-span-7 lg:sticky lg:top-28 pt-4 lg:pt-0"
+			>
 				<AnimatePresence mode="wait">
 					<motion.div
 						key={currentPath.id}
@@ -199,13 +219,22 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 							</div>
 
 							{/* Title & Price */}
-							<div className="flex justify-between items-start gap-4">
+							<div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 md:gap-4">
 								<h3 className="font-heading font-medium text-2xl text-[var(--text-stellar)]">
 									{currentPath.title}
 								</h3>
-								<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent text-right shrink-0">
-									{currentPath.price}
-								</div>
+								{region !== "IN" && (
+									<div className="text-left md:text-right shrink-0">
+										<div className="font-heading font-semibold text-lg bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent">
+											{formatPrice(currentPath.price.split(" · ")[0], region)}
+										</div>
+										{currentPath.price.includes(" · ") && (
+											<div className="text-xs text-[var(--text-muted)] font-medium mt-0.5">
+												{currentPath.price.split(" · ")[1]}
+											</div>
+										)}
+									</div>
+								)}
 							</div>
 
 							{/* When you need this */}
@@ -262,15 +291,10 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 								)}
 
 							{/* Value comparison or sourcing differences */}
-							{currentPath.ifSourcedSeparately && (
+							{region !== "IN" && currentPath.ifSourcedSeparately && (
 								<div className="border-t border-white/[0.06] pt-6 space-y-3 font-sans">
-									<div className="flex justify-between items-center gap-4">
-										<div className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
-											A la carte
-										</div>
-										<div className="text-xs font-semibold bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
-											{currentPath.price}
-										</div>
+									<div className="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+										If sourced separately
 									</div>
 									{typeof currentPath.ifSourcedSeparately === "string" ? (
 										<p className="text-xs text-white/60 leading-relaxed italic">
@@ -292,14 +316,23 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 											</ul>
 											<div className="text-xs border-t border-white/[0.04] pt-3 space-y-1">
 												<div className="text-white/50 italic">
-													Sourced separately:{" "}
+													Vendor total:{" "}
 													<span className="line-through">
-														{currentPath.ifSourcedSeparately.totalSeparate}
+														{formatPrice(
+															currentPath.ifSourcedSeparately.totalSeparate,
+															region,
+														)}
 													</span>
 												</div>
-												<div className="font-semibold bg-gradient-to-r from-[var(--aurum-gold-subtle)] to-[var(--aurum-gold-light)] bg-clip-text text-transparent">
-													Full Constellation bundle:{" "}
-													{currentPath.ifSourcedSeparately.constellationPrice}
+												<div className="text-xs font-medium text-white/80">
+													Aurorys Engagement:{" "}
+													<span className="text-emerald-400/80 font-semibold">
+														{formatPrice(
+															currentPath.ifSourcedSeparately
+																.constellationPrice,
+															region,
+														)}
+													</span>
 												</div>
 											</div>
 										</div>
@@ -371,12 +404,14 @@ export function PathsManager({ pathCards, paths }: PathsManagerProps) {
 							>
 								<a href={currentPath.cta.href}>{currentPath.cta.label}</a>
 							</RainbowButton>
-							<div className="text-center mt-4">
-								<p className="text-[10px] text-white/40 italic font-sans">
-									* All prices are starting estimates. Final pricing is
-									evaluated based on scope after discovery.
-								</p>
-							</div>
+							{region !== "IN" && (
+								<div className="text-center mt-4">
+									<p className="text-[10px] text-white/40 italic font-sans">
+										* All prices are starting estimates. Final pricing is
+										evaluated based on scope after discovery.
+									</p>
+								</div>
+							)}
 						</div>
 					</motion.div>
 				</AnimatePresence>

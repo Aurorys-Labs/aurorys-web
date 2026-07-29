@@ -23,7 +23,7 @@
 			"whatThisIsNot": "A comprehensive engagement. Sprints are focused and time-boxed. If we discover broader issues during the sprint, we'll flag them — but addressing them requires a separate engagement.",
 			"cta": {
 				"label": "Target Your Sprint",
-				"href": "/?subject=SPRINT_ASSESSMENT#contact"
+				"href": "#contact?subject=SPRINT_ASSESSMENT"
 			}
 		},
 		{
@@ -44,7 +44,7 @@
 			"whatThisIsNot": "We don't write your code. We don't take 24/7 on-call responsibility. We guide your team through the implementation — you own the outcome.",
 			"cta": {
 				"label": "Add Guided Implementation",
-				"href": "/?subject=SPRINT_BUILD#contact"
+				"href": "#contact?subject=SPRINT_BUILD"
 			}
 		},
 		{
@@ -62,7 +62,7 @@
 			"whenToChoose": "You know you need both assessment and implementation guidance, and you want a single engagement that covers both without the overhead of coordinating two separate sprints.",
 			"cta": {
 				"label": "Let's Talk",
-				"href": "/?subject=SPRINT_EXTENDED#contact"
+				"href": "#contact?subject=SPRINT_EXTENDED"
 			}
 		}
 	],
@@ -206,7 +206,10 @@
 		"links": [
 			{ "label": "Explore All Solutions", "href": "/solutions" },
 			{ "label": "How We Work", "href": "/how-we-work" },
-			{ "label": "Book a Discovery Call", "href": "/?subject=SPRINT#contact" }
+			{
+				"label": "Book a Discovery Call",
+				"href": "#contact?subject=SPRINT_CORE"
+			}
 		]
 	}
 }

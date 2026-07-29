@@ -107,9 +107,9 @@ const domainMap: Record<string, DomainStyle> = {
 		text: "text-violet-300 font-semibold",
 	},
 	assessment: {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-sky-500/25 to-sky-500/10",
+		border: "border-sky-500/40",
+		text: "text-sky-300 font-semibold",
 	},
 	"supply chain": {
 		bg: "bg-gradient-to-r from-emerald-500/25 to-emerald-500/10",
@@ -122,9 +122,9 @@ const domainMap: Record<string, DomainStyle> = {
 		text: "text-rose-300 font-semibold",
 	},
 	risk: {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-amber-500/25 to-amber-500/10",
+		border: "border-amber-500/40",
+		text: "text-amber-300 font-semibold",
 	},
 	governance: {
 		bg: "bg-gradient-to-r from-amber-500/25 to-amber-500/10",
@@ -229,14 +229,14 @@ const domainMap: Record<string, DomainStyle> = {
 		text: "text-emerald-300 font-semibold",
 	},
 	"risk priority": {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-amber-500/25 to-amber-500/10",
+		border: "border-amber-500/40",
+		text: "text-amber-300 font-semibold",
 	},
 	"clear roadmap": {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-emerald-500/25 to-emerald-500/10",
+		border: "border-emerald-500/40",
+		text: "text-emerald-300 font-semibold",
 	},
 	policy: {
 		bg: "bg-gradient-to-r from-amber-500/25 to-amber-500/10",
@@ -363,9 +363,9 @@ const domainMap: Record<string, DomainStyle> = {
 		text: "text-rose-300 font-semibold",
 	},
 	"risk management": {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-amber-500/25 to-amber-500/10",
+		border: "border-amber-500/40",
+		text: "text-amber-300 font-semibold",
 	},
 	"security awareness": {
 		bg: "bg-gradient-to-r from-violet-500/25 to-violet-500/10",
@@ -373,14 +373,14 @@ const domainMap: Record<string, DomainStyle> = {
 		text: "text-violet-300 font-semibold",
 	},
 	"asset management": {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-teal-500/25 to-teal-500/10",
+		border: "border-teal-500/40",
+		text: "text-teal-300 font-semibold",
 	},
 	"vulnerability management": {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-sky-500/25 to-sky-500/10",
+		border: "border-sky-500/40",
+		text: "text-sky-300 font-semibold",
 	},
 	"access control": {
 		bg: "bg-gradient-to-r from-violet-500/25 to-violet-500/10",
@@ -393,9 +393,9 @@ const domainMap: Record<string, DomainStyle> = {
 		text: "text-emerald-300 font-semibold",
 	},
 	"threat modeling": {
-		bg: "bg-gradient-to-r from-white/15 to-white/5",
-		border: "border-white/20",
-		text: "text-white/80 font-semibold",
+		bg: "bg-gradient-to-r from-violet-500/25 to-violet-500/10",
+		border: "border-violet-500/40",
+		text: "text-violet-300 font-semibold",
 	},
 	"container security": {
 		bg: "bg-gradient-to-r from-emerald-500/25 to-emerald-500/10",
@@ -436,9 +436,9 @@ const domainMap: Record<string, DomainStyle> = {
 export function getDomainStyle(domain: string): DomainStyle {
 	return (
 		domainMap[domain.toLowerCase()] ?? {
-			bg: "bg-gradient-to-r from-white/8 to-white/3",
-			border: "border-white/20",
-			text: "text-white/60 font-semibold",
+			bg: "bg-gradient-to-r from-emerald-500/20 to-emerald-500/10",
+			border: "border-emerald-500/30",
+			text: "text-emerald-300 font-semibold",
 		}
 	);
 }

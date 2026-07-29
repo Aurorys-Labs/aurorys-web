@@ -8,7 +8,19 @@ import { MobileNav } from "../components/react/MobileNav";
 import { Navbar } from "../components/react/Navbar";
 import { BlogHub } from "../components/react/blog/BlogHub";
 
-import blogPosts from "../lib/data/blog-posts.json";
+import { getCollection } from "astro:content";
+
+const blogEntries = await getCollection("blog");
+const blogPosts = blogEntries.map((entry) => ({
+	id: entry.id,
+	title: entry.data.title,
+	category: entry.data.category,
+	date: entry.data.date,
+	readTime: entry.data.readTime,
+	summary: entry.data.summary,
+	status: entry.data.status,
+	tags: entry.data.tags,
+}));
 ---
 
 <BaseLayout title="Blog | Insights & Methodology | Aurorys Labs">

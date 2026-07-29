@@ -18,6 +18,8 @@ import {
 	Zap,
 } from "lucide-react";
 import { DropdownNavigation, type NavItem } from "./DropdownNavigation";
+import { MegaMenu } from "./MegaMenu";
+import { SearchModal } from "./SearchModal";
 
 const navItems: NavItem[] = [
 	{
@@ -157,10 +159,10 @@ export function Navbar() {
 					<img
 						src="/images/logos/normal updated colors.svg"
 						alt="Aurorys Labs"
-						className="h-6 w-auto"
+						className="h-8 md:h-9 w-auto"
 					/>
 					<span
-						className={`font-semibold text-sm tracking-tight transition-colors ${
+						className={`font-semibold text-base md:text-lg tracking-tight transition-colors ${
 							scrolled ? "text-[var(--text-stellar)]" : "text-white/90"
 						}`}
 					>
@@ -169,17 +171,20 @@ export function Navbar() {
 				</a>
 
 				<div className="hidden md:flex items-center ml-auto mr-4">
-					<DropdownNavigation navItems={navItems} />
+					<MegaMenu />
 				</div>
 
-				<RainbowButton
-					variant="glass"
-					size="sm"
-					className="rounded-xl shrink-0"
-					asChild
-				>
-					<a href="/contact">Start a Conversation</a>
-				</RainbowButton>
+				<div className="flex items-center gap-3 shrink-0">
+					<SearchModal />
+					<RainbowButton
+						variant="glass"
+						size="sm"
+						className="rounded-xl shrink-0"
+						asChild
+					>
+						<a href="/contact">Start a Conversation</a>
+					</RainbowButton>
+				</div>
 			</div>
 		</nav>
 	);

@@ -31,7 +31,7 @@ export const InteractiveGlowButton = React.forwardRef<
 
 	useEffect(() => {
 		if (divRef.current) {
-			mouseX.set(divRef.current.offsetWidth * 0.85);
+			mouseX.set(divRef.current.offsetWidth * 0.82);
 			mouseY.set(divRef.current.offsetHeight / 2);
 		}
 	}, [mouseX, mouseY]);
@@ -46,14 +46,13 @@ export const InteractiveGlowButton = React.forwardRef<
 
 	const handleMouseLeave = () => {
 		if (divRef.current) {
-			mouseX.set(divRef.current.offsetWidth * 0.85);
+			mouseX.set(divRef.current.offsetWidth * 0.82);
 			mouseY.set(divRef.current.offsetHeight / 2);
 		}
 	};
 
-	// Multi-hue radial gradient
-	// const gradient = useMotionTemplate`radial-gradient(90px circle at ${springX}px ${springY}px, rgba(252, 195, 24, 0.85) 0%, rgba(234, 200, 6, 0.65) 70%, rgba(237, 234, 34, 0.81) 90%, transparent 100%)`;
-	const gradient = useMotionTemplate`radial-gradient(90px circle at ${springX}px ${springY}px, rgba(19, 209, 2, 0.57) 0%, rgba(34, 211, 238, 0.2) 70%, rgba(167, 139, 250, 0.1) 90%, transparent 100%)`;
+	// Multi-hue radial gradient with cohesive emerald green aura
+	const gradient = useMotionTemplate`radial-gradient(130px circle at ${springX}px ${springY}px, rgba(0, 232, 160, 0.65) 0%, rgba(16, 185, 129, 0.35) 60%, rgba(5, 150, 105, 0.18) 85%, transparent 100%)`;
 
 	const commonClasses = cn(
 		"relative w-full inline-flex items-center justify-center h-12 px-8 rounded-xl font-semibold text-sm transition-all duration-300",
@@ -107,7 +106,7 @@ function GlowEffect({ gradient }: any) {
 					WebkitMaskComposite: "source-in",
 					maskImage: gradient,
 					// background: "linear-gradient(120deg,rgba(252, 195, 24, 0.85), rgba(234, 200, 6, 0.65), rgba(237, 234, 34, 0.81))",
-					background: "linear-gradient(120deg, #00E8A0, #22D3EE, #A78BFA)",
+					background: "linear-gradient(120deg, #00E8A0, #10B981, #059669)",
 					padding: "1px",
 					WebkitMaskClip: "content-box, border-box",
 					opacity: 1, // Always visible

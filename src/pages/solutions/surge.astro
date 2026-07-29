@@ -14,6 +14,10 @@ import { TerminalHero } from "../../components/react/surge/TerminalHero";
 import { RainbowButton } from "../../components/ui/rainbow-button";
 
 import surgeData from "../../lib/data/surge-page.json";
+import type { Region } from "../../lib/region";
+
+const region = Astro.locals.region as Region;
+const currencySymbol = Astro.locals.currencySymbol;
 ---
 
 <BaseLayout title={`${surgeData.hero.title} | Aurorys Labs`}>
@@ -62,7 +66,7 @@ import surgeData from "../../lib/data/surge-page.json";
 
         <div class="my-8 relative overflow-hidden glass-card p-8 md:p-12 rounded-3xl border border-white/[0.06] bg-[rgba(13,17,23,0.25)]">
           <blockquote class="font-serif italic text-2xl md:text-3xl lg:text-4xl text-[var(--text-stellar)] max-w-3xl mx-auto relative z-10 leading-relaxed">
-            "We don't touch your code. <span class="bg-gradient-to-r from-[var(--aurum-gold-subtle-solid)] to-[var(--aurum-gold-light-solid)] bg-clip-text text-transparent animate-rainbow bg-[length:200%]" style="animation-duration: 8s;">You hold the keys. We deploy the capability</span> — and then we leave."
+            "We don't touch your code. <span class="text-gradient-gold-moving">You hold the keys. We deploy the capability</span> — and then we leave."
           </blockquote>
         </div>
       </div>
@@ -80,7 +84,7 @@ import surgeData from "../../lib/data/surge-page.json";
           Deploy production-ready infrastructure stacks in days. Fully configured, hardened, and documented.
         </p>
       </div>
-      <SurgeStackCard stacks={surgeData.stacks} client:load />
+      <SurgeStackCard stacks={surgeData.stacks} client:load region={region} currencySymbol={currencySymbol} />
     </div>
   </section>
 
@@ -135,7 +139,7 @@ import surgeData from "../../lib/data/surge-page.json";
             {surgeData.surgeVsFull.title}
           </h2>
         </div>
-        <SurgeVsFullTable comparisonData={surgeData.surgeVsFull} client:load />
+        <SurgeVsFullTable comparisonData={surgeData.surgeVsFull} client:load region={region} currencySymbol={currencySymbol} />
       </div>
     </div>
   </section>

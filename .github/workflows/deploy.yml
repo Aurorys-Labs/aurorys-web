@@ -61,8 +61,8 @@ jobs:
       - name: Purge Cloudflare Cache
         if: success()
         run: |
-          echo "Waiting 44 seconds for Coolify to finish pulling and restarting..."
-          sleep 44
+          echo "Waiting 60 seconds for Coolify to finish pulling and restarting..."
+          sleep 60
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
                -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
                -H "Content-Type: application/json" \

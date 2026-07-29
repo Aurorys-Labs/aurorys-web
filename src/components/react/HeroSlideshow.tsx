@@ -93,9 +93,10 @@ export function HeroSlideshow() {
 						>
 							{slide.id === "architecture" && (
 								<>
-									<span className="bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent">
-										Security that scales with you —
-									</span>{" "}
+									<span className="text-gradient-aurora">
+										Security that scales with you
+									</span>
+									<br />
 									<span className="font-serif italic font-normal text-white">
 										not after you.
 									</span>
@@ -103,9 +104,10 @@ export function HeroSlideshow() {
 							)}
 							{slide.id === "assessment" && (
 								<>
-									<span className="bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent">
+									<span className="text-gradient-aurora">
 										You don't know what you don't know.
-									</span>{" "}
+									</span>
+									<br />
 									<span className="font-serif italic font-normal text-white">
 										Start here.
 									</span>
@@ -113,9 +115,7 @@ export function HeroSlideshow() {
 							)}
 							{slide.id === "compliance" && (
 								<>
-									<span className="bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent">
-										Compliance,
-									</span>{" "}
+									<span className="text-gradient-aurora">Compliance,</span>{" "}
 									<span className="font-serif italic font-normal text-white">
 										without the chaos.
 									</span>
@@ -123,7 +123,7 @@ export function HeroSlideshow() {
 							)}
 							{slide.id === "advisory" && (
 								<>
-									<span className="bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent">
+									<span className="text-gradient-aurora">
 										Security leadership
 									</span>{" "}
 									<span className="font-serif italic font-normal text-white">
@@ -133,7 +133,7 @@ export function HeroSlideshow() {
 							)}
 							{slide.id === "sovereignty" && (
 								<>
-									<span className="bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent">
+									<span className="text-gradient-aurora">
 										From cloud dependency to
 									</span>{" "}
 									<span className="font-serif italic font-normal text-white">
@@ -148,9 +148,7 @@ export function HeroSlideshow() {
 								"advisory",
 								"sovereignty",
 							].includes(slide.id) && (
-								<span className="bg-gradient-to-r from-[var(--aurora-green-solid)] via-[var(--aurora-blue-solid)] to-[var(--aurora-violet-solid)] bg-clip-text text-transparent">
-									{slide.headline}
-								</span>
+								<span className="text-gradient-aurora">{slide.headline}</span>
 							)}
 						</motion.h2>
 

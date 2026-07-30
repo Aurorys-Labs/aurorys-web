@@ -42,9 +42,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		});
 	}
 
-	const savedRegion = context.cookies
-		.get("region_override")
-		?.value?.toUpperCase();
+	const savedRegion = isDev
+		? context.cookies.get("region_override")?.value?.toUpperCase()
+		: undefined;
 	const activeTestRegion = queryRegion || savedRegion;
 
 	// 1. Determine Region

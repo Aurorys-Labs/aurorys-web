@@ -102,7 +102,6 @@
 		outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
 	}
 	html {
-		font-size: 112.5%; /* 18px base (18/16 = 1.125) */
 		font-family: var(--font-sans);
 		color-scheme: dark;
 		scroll-behavior: smooth;

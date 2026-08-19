@@ -3,7 +3,7 @@
 import { domainPill, domainPillSmall } from "@/lib/domain-colors";
 import type { Region } from "@/lib/region";
 import { formatPrice } from "@/lib/region";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
 	ArrowRight,
 	ArrowUpRight,
@@ -23,8 +23,7 @@ import {
 	Workflow,
 	Zap,
 } from "lucide-react";
-import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import solutionsData from "../../lib/data/solutions.json";
 import { RainbowButton } from "../ui/rainbow-button";
 
@@ -194,7 +193,6 @@ function MagicBentoCard({
 	cta,
 	isDimmed = false,
 	region = "GLOBAL",
-	forceGlow = false,
 }: {
 	id: string;
 	title: string;
@@ -211,7 +209,6 @@ function MagicBentoCard({
 	cta?: { label: string; href: string };
 	isDimmed?: boolean;
 	region?: Region;
-	forceGlow?: boolean;
 }) {
 	const IconComponent = iconMap[icon] || Shield;
 	const config = cardStyleConfig[id] || cardStyleConfig["first-light"];
@@ -241,26 +238,26 @@ function MagicBentoCard({
 			onMouseMove={handleMouseMove}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			className={`group relative p-[1px] rounded-2xl overflow-hidden cursor-pointer h-auto md:h-[520px] flex flex-col transition-all duration-500 ${
+			className={`group relative p-[1px] rounded-2xl overflow-hidden cursor-pointer h-auto md:min-h-[480px] flex flex-col transition-all duration-500 ${
 				effectivelyExpanded ? "w-full md:flex-[2]" : "w-full md:flex-[1]"
 			} ${isDimmed ? "opacity-20 pointer-events-none scale-[0.98] blur-[0.5px]" : "opacity-100"} ${isHovered ? "ring-1 ring-white/20" : ""}`}
 			onClick={onToggle}
 		>
 			<div
-				className="absolute inset-0 transition-opacity duration-[1500ms] pointer-events-none -z-10"
+				className="absolute inset-0 transition-opacity duration-300 pointer-events-none -z-10"
 				style={{
-					opacity: !isDimmed && (isMobile || isHovered || forceGlow) ? 1 : 0,
-					background: `radial-gradient(350px circle at ${isMobile || !isHovered ? "50% 50%" : `${mousePosition.x}px ${mousePosition.y}px`}, rgba(${config.radialColor}, 0.25), transparent 85%)`,
+					opacity: !isDimmed && (isMobile || isHovered) ? 1 : 0,
+					background: `radial-gradient(350px circle at ${isMobile ? "80% 80%" : `${mousePosition.x}px ${mousePosition.y}px`}, rgba(${config.radialColor}, 0.3), transparent 85%)`,
 				}}
 			/>
 			<div className="absolute inset-0 rounded-2xl border border-white/[0.08] pointer-events-none -z-10 group-hover:border-white/[0.15] transition-colors duration-300" />
 
 			<div className="relative rounded-[15px] bg-[rgba(13,17,23,0.35)] backdrop-blur-md p-6 h-full flex flex-col">
 				<div
-					className="absolute inset-0 pointer-events-none transition-opacity duration-[1500ms] -z-10"
+					className="absolute inset-0 pointer-events-none transition-opacity duration-300 -z-10"
 					style={{
-						opacity: !isDimmed && (isMobile || isHovered || forceGlow) ? 1 : 0,
-						background: `radial-gradient(300px circle at ${isMobile || !isHovered ? "50% 50%" : `${mousePosition.x}px ${mousePosition.y}px`}, rgba(${config.radialColor}, 0.1), transparent 80%)`,
+						opacity: !isDimmed && (isMobile || isHovered) ? 1 : 0,
+						background: `radial-gradient(300px circle at ${isMobile ? "80% 80%" : `${mousePosition.x}px ${mousePosition.y}px`}, rgba(${config.radialColor}, 0.1), transparent 80%)`,
 					}}
 				/>
 				<div
@@ -286,14 +283,7 @@ function MagicBentoCard({
 									{title}
 								</h3>
 								{price && effectivelyExpanded && region !== "IN" && (
-									<span
-										style={{
-											color: `rgb(${config.radialColor})`,
-											backgroundColor: `rgba(${config.radialColor}, 0.1)`,
-											borderColor: `rgba(${config.radialColor}, 0.2)`,
-										}}
-										className="text-[11px] font-semibold border px-2.5 py-1 rounded-md shrink-0 ml-auto whitespace-nowrap overflow-hidden text-ellipsis"
-									>
+									<span className="text-[11px] font-semibold text-[var(--text-stellar)] bg-white/10 border border-white/20 px-2.5 py-1 rounded-md shrink-0 ml-auto whitespace-nowrap overflow-hidden text-ellipsis">
 										{formatPrice(price, region)}
 									</span>
 								)}
@@ -325,7 +315,7 @@ function MagicBentoCard({
 									}}
 									className="overflow-hidden"
 								>
-									<div className="mb-24 pt-1">
+									<div className="mb-4 pt-1">
 										<p className="text-sm text-[var(--text-muted)]/90 leading-relaxed border-t border-white/[0.04] pt-3 mb-3">
 											{detail}
 										</p>
@@ -356,48 +346,34 @@ function MagicBentoCard({
 						</AnimatePresence>
 
 						<motion.div
-							layout
-							className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-2"
+							layout="position"
+							className={`flex flex-wrap items-center justify-between gap-2 w-full mt-auto ${effectivelyExpanded ? "pt-4" : "mt-0"}`}
 						>
-							<motion.div layout className="flex flex-wrap gap-1.5 flex-1">
+							<div className="flex flex-wrap gap-1.5 flex-1">
 								{domains.map((domain) => (
-									<motion.span
-										layout
-										key={domain}
-										className={domainPill(domain)}
-									>
+									<span key={domain} className={domainPill(domain)}>
 										{domain}
-									</motion.span>
+									</span>
 								))}
-							</motion.div>
-							<AnimatePresence mode="popLayout">
-								{effectivelyExpanded && cta && (
-									<motion.div
-										layout
-										initial={{ opacity: 0, scale: 0.95 }}
-										animate={{ opacity: 1, scale: 1 }}
-										exit={{
-											opacity: 0,
-											scale: 0.95,
-											transition: { duration: 0.15 },
-										}}
-										onClick={(e) => e.stopPropagation()}
-										className="shrink-0 w-full md:w-auto mt-2 md:mt-0"
+							</div>
+							{effectivelyExpanded && cta && (
+								<div
+									onClick={(e) => e.stopPropagation()}
+									className="shrink-0 w-full md:w-auto mt-4 md:mt-0"
+								>
+									<RainbowButton
+										variant="glass"
+										size="sm"
+										className="rounded-xl font-semibold w-full md:w-auto text-center"
+										asChild
 									>
-										<RainbowButton
-											variant="glass"
-											size="sm"
-											className="rounded-xl font-semibold w-full md:w-auto text-center"
-											asChild
-										>
-											<a href={cta.href}>
-												{cta.label}{" "}
-												<ArrowRight className="inline-block w-4 h-4 ml-1.5" />
-											</a>
-										</RainbowButton>
-									</motion.div>
-								)}
-							</AnimatePresence>
+										<a href={cta.href}>
+											{cta.label}{" "}
+											<ArrowRight className="inline-block w-4 h-4 ml-1.5" />
+										</a>
+									</RainbowButton>
+								</div>
+							)}
 						</motion.div>
 					</motion.div>
 				</div>
@@ -524,8 +500,6 @@ function ServiceRow({
 	showSourcedSeparately,
 	activeFilter,
 	region = "GLOBAL",
-	glowingCardIndex,
-	startIndex = 0,
 }: {
 	services: typeof solutionsData.cards;
 	expandedIndex: number;
@@ -533,14 +507,13 @@ function ServiceRow({
 	showSourcedSeparately?: boolean;
 	activeFilter?: string;
 	region?: Region;
-	glowingCardIndex?: number | null;
-	startIndex?: number;
 }) {
 	return (
-		<motion.div layout className="flex flex-col md:flex-row gap-4 w-full">
+		<div className="flex flex-col md:flex-row gap-4 w-full">
 			{services.map((card, index) => {
 				const isHighlighted =
-					activeFilter === "all" || FILTER_MAP[activeFilter]?.includes(card.id);
+					activeFilter === "all" ||
+					(activeFilter && FILTER_MAP[activeFilter]?.includes(card.id));
 				return (
 					<MagicBentoCard
 						key={card.id}
@@ -559,11 +532,10 @@ function ServiceRow({
 						onToggle={() => setExpandedIndex(index)}
 						isDimmed={!isHighlighted}
 						region={region}
-						forceGlow={glowingCardIndex === startIndex + index}
 					/>
 				);
 			})}
-		</motion.div>
+		</div>
 	);
 }
 
@@ -601,39 +573,6 @@ export function SolutionsBento({
 	const [row1ExpandedIndex, setRow1ExpandedIndex] = useState(0);
 	const [row2ExpandedIndex, setRow2ExpandedIndex] = useState(1);
 	const [activeFilter, setActiveFilter] = useState("all");
-	const [glowingCardIndex, setGlowingCardIndex] = useState<number | null>(null);
-
-	const sectionRef = useRef<HTMLDivElement>(null);
-	const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
-	useEffect(() => {
-		if (isInView && window.innerWidth >= 768) {
-			// Sequence accordion priming
-			setRow1ExpandedIndex(1);
-			setTimeout(() => setRow1ExpandedIndex(0), 1500);
-
-			// Sequence progressive glow after accordion settles, skipping already-expanded cards (0 and 4)
-			let glowCount = 0;
-			coreCards.forEach((_, idx) => {
-				if (idx !== 0 && idx !== 4) {
-					setTimeout(
-						() => {
-							setGlowingCardIndex(idx);
-						},
-						1500 + glowCount * 1200,
-					);
-					glowCount++;
-				}
-			});
-
-			setTimeout(
-				() => {
-					setGlowingCardIndex(null);
-				},
-				1500 + glowCount * 1200,
-			);
-		}
-	}, [isInView]);
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
@@ -665,11 +604,7 @@ export function SolutionsBento({
 	}, [row1, coreCardsRow2]);
 
 	return (
-		<section
-			ref={sectionRef}
-			id="solutions-bento"
-			className="section-padding relative"
-		>
+		<section id="solutions-bento" className="section-padding relative">
 			<IconGradients />
 			<div className="content-width">
 				<div className="text-center mb-16">
@@ -732,7 +667,7 @@ export function SolutionsBento({
 					</div>
 				)}
 
-				<motion.div layout className="flex flex-col gap-4">
+				<div className="flex flex-col gap-4">
 					<ServiceRow
 						services={row1}
 						expandedIndex={row1ExpandedIndex}
@@ -740,8 +675,6 @@ export function SolutionsBento({
 						showSourcedSeparately={showSourcedSeparately}
 						activeFilter={activeFilter}
 						region={region}
-						glowingCardIndex={glowingCardIndex}
-						startIndex={0}
 					/>
 					<ServiceRow
 						services={coreCardsRow2}
@@ -750,16 +683,9 @@ export function SolutionsBento({
 						showSourcedSeparately={showSourcedSeparately}
 						activeFilter={activeFilter}
 						region={region}
-						glowingCardIndex={glowingCardIndex}
-						startIndex={3}
 					/>
-					<motion.div
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						viewport={{ once: true, margin: "-50px" }}
-						transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-						className="relative p-[1px] rounded-3xl overflow-hidden mt-6"
-					>
+
+					<div className="relative p-[1px] rounded-3xl overflow-hidden mt-6">
 						<div className="absolute inset-0 rounded-3xl border border-white/[0.08] pointer-events-none -z-10" />
 						<div className="relative rounded-[23px] bg-[rgba(13,17,23,0.35)] backdrop-blur-md overflow-hidden">
 							<div className="px-6 pt-6 pb-4 border-b border-white/[0.06] bg-white/[0.01]">
@@ -790,8 +716,8 @@ export function SolutionsBento({
 								})}
 							</div>
 						</div>
-					</motion.div>
-				</motion.div>
+					</div>
+				</div>
 
 				<div className="mt-12 text-center">
 					<RainbowButton
@@ -818,14 +744,14 @@ export function SolutionsBentoSkeleton() {
 				</div>
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col md:flex-row gap-4 w-full">
-						<div className="h-[520px] w-full md:flex-[2] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
-						<div className="h-[520px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
-						<div className="h-[520px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
+						<div className="h-[480px] w-full md:flex-[2] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
+						<div className="h-[480px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
+						<div className="h-[480px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
 					</div>
 					<div className="flex flex-col md:flex-row gap-4 w-full">
-						<div className="h-[520px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
-						<div className="h-[520px] w-full md:flex-[2] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
-						<div className="h-[520px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
+						<div className="h-[480px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
+						<div className="h-[480px] w-full md:flex-[2] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
+						<div className="h-[480px] w-full md:flex-[1] rounded-2xl bg-white/[0.03] animate-pulse border border-white/[0.05]" />
 					</div>
 				</div>
 			</div>

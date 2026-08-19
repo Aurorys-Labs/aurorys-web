@@ -2,7 +2,7 @@
 
 import data from "@/lib/data/aurorys-way.json";
 import { domainPill } from "@/lib/domain-colors";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import {
 	Asterisk,
 	Database,
@@ -10,14 +10,13 @@ import {
 	FileText,
 	Globe,
 	Lock,
-	Search,
 	Shield,
 	Sparkles,
 	TrendingUp,
 	UserCheck,
 	Wrench,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import HierarchyStars from "./vfx/heirarchy-stars";
 import ShieldNetwork from "./vfx/shield-network";
 
@@ -41,15 +40,14 @@ function LargeCard({
 	body,
 	bullets,
 	isMobile,
-	isPrimed,
-}: (typeof data.largeCards)[0] & { isMobile?: boolean; isPrimed?: boolean }) {
+}: (typeof data.largeCards)[0] & { isMobile?: boolean }) {
 	const IconComponent = iconMap[icon] || Shield;
 	return (
 		<motion.div
 			initial="rest"
 			whileHover="hover"
-			animate={isMobile ? "hover" : isPrimed ? "hover" : "rest"}
-			className="glass-card glass-card-tinted-violet p-8 flex flex-col relative overflow-hidden group h-auto md:h-[580px]"
+			animate={isMobile ? "hover" : "rest"}
+			className="glass-card glass-card-tinted-violet p-8 flex flex-col relative overflow-hidden group h-[480px]"
 		>
 			{/* VFX Background */}
 			{title.includes("Security") ? (
@@ -122,15 +120,14 @@ function MediumCard({
 	subtitle,
 	body,
 	isMobile,
-	isPrimed,
-}: (typeof data.mediumCards)[0] & { isMobile?: boolean; isPrimed?: boolean }) {
+}: (typeof data.mediumCards)[0] & { isMobile?: boolean }) {
 	const IconComponent = iconMap[icon] || Sparkles;
 	return (
 		<motion.div
 			initial="rest"
 			whileHover="hover"
-			animate={isMobile ? "hover" : isPrimed ? "hover" : "rest"}
-			className="glass-card glass-card-tinted-violet p-6 flex flex-col relative overflow-hidden group h-auto md:h-[320px]"
+			animate={isMobile ? "hover" : "rest"}
+			className="glass-card glass-card-tinted-violet p-6 flex flex-col relative overflow-hidden group h-[300px]"
 		>
 			<div className="flex-1 flex flex-col justify-end z-10">
 				<motion.div
@@ -176,15 +173,14 @@ function SmallCard({
 	title,
 	body,
 	isMobile,
-	isPrimed,
-}: (typeof data.smallCards)[0] & { isMobile?: boolean; isPrimed?: boolean }) {
+}: (typeof data.smallCards)[0] & { isMobile?: boolean }) {
 	const IconComponent = iconMap[icon] || Shield;
 	return (
 		<motion.div
 			initial="rest"
 			whileHover="hover"
-			animate={isMobile ? "hover" : isPrimed ? "hover" : "rest"}
-			className="glass-card glass-card-tinted-violet p-5 flex flex-col items-center text-center relative overflow-hidden group h-auto md:h-[220px] justify-center"
+			animate={isMobile ? "hover" : "rest"}
+			className="glass-card glass-card-tinted-violet p-5 flex flex-col items-center text-center relative overflow-hidden group h-[220px] justify-center"
 		>
 			<motion.div
 				variants={{ rest: { y: 0 }, hover: { y: -4 } }}
@@ -224,39 +220,7 @@ function SmallCard({
 export function AurorysWay() {
 	const { sectionTitle, sectionSubtitle, largeCards, mediumCards, smallCards } =
 		data;
-	const totalCards =
-		largeCards.length + mediumCards.length + (smallCards?.length || 0);
 	const [isMobile, setIsMobile] = useState(false);
-	const [currentlyPrimedIndex, setCurrentlyPrimedIndex] = useState<
-		number | null
-	>(0);
-
-	const sectionRef = useRef<HTMLElement>(null);
-	const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
-	useEffect(() => {
-		if (isInView && !isMobile) {
-			// Card 0 starts open, close it after 1500ms
-			setTimeout(() => {
-				setCurrentlyPrimedIndex(null);
-			}, 1500);
-
-			// Sequence the rest of the cards
-			Array.from({ length: totalCards - 1 }).forEach((_, i) => {
-				const idx = i + 1;
-				// Start next card 500ms after the previous one closes
-				const delayStart = 1500 + i * 1200;
-
-				setTimeout(() => {
-					setCurrentlyPrimedIndex(idx);
-				}, delayStart);
-
-				setTimeout(() => {
-					setCurrentlyPrimedIndex(null);
-				}, delayStart + 900); // keep it open for 900ms
-			});
-		}
-	}, [isInView, isMobile, totalCards]);
 
 	useEffect(() => {
 		const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -265,29 +229,8 @@ export function AurorysWay() {
 		return () => window.removeEventListener("resize", checkMobile);
 	}, []);
 
-	const containerVariants = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: { staggerChildren: 0.15 },
-		},
-	};
-
-	const itemVariants = {
-		hidden: { opacity: 0, y: 30 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
-		},
-	};
-
 	return (
-		<section
-			ref={sectionRef}
-			id="aurorys-way"
-			className="section-padding border-t border-[var(--border-default)]"
-		>
+		<section className="section-padding border-t border-[var(--border-default)]">
 			<div className="content-width">
 				<div className="text-center mb-16">
 					<h2 className="font-sans font-bold text-4xl md:text-5xl mb-4 tracking-tight">
@@ -301,48 +244,24 @@ export function AurorysWay() {
 
 				{/* Tier 1 — Large cards (2 columns) */}
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-					{largeCards.map((card, i) => {
-						const globalIndex = i;
-						return (
-							<LargeCard
-								key={`large-${i}`}
-								{...card}
-								isMobile={isMobile}
-								isPrimed={currentlyPrimedIndex === globalIndex}
-							/>
-						);
-					})}
+					{largeCards.map((card, i) => (
+						<LargeCard key={i} {...card} isMobile={isMobile} />
+					))}
 				</div>
 
 				{/* Tier 2 — Medium cards (2 columns, 2 rows) */}
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-					{mediumCards.map((card, i) => {
-						const globalIndex = largeCards.length + i;
-						return (
-							<MediumCard
-								key={`medium-${i}`}
-								{...card}
-								isMobile={isMobile}
-								isPrimed={currentlyPrimedIndex === globalIndex}
-							/>
-						);
-					})}
+					{mediumCards.map((card, i) => (
+						<MediumCard key={i} {...card} isMobile={isMobile} />
+					))}
 				</div>
 
 				{/* Tier 3 — Small cards (4 columns on desktop) */}
 				{smallCards && smallCards.length > 0 && (
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-						{smallCards.map((card, i) => {
-							const globalIndex = largeCards.length + mediumCards.length + i;
-							return (
-								<SmallCard
-									key={`small-${i}`}
-									{...card}
-									isMobile={isMobile}
-									isPrimed={currentlyPrimedIndex === globalIndex}
-								/>
-							);
-						})}
+						{smallCards.map((card, i) => (
+							<SmallCard key={i} {...card} isMobile={isMobile} />
+						))}
 					</div>
 				)}
 			</div>

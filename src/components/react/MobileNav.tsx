@@ -460,13 +460,15 @@ export function MobileNav() {
 												</div>
 											</a>
 										))}
+										{/* Ghost item to ensure the last item is scrollable past the CTA */}
+										<div className="h-16 w-full shrink-0 pointer-events-none" aria-hidden="true" />
 									</motion.div>
 								</AnimatePresence>
 							</div>
 						</div>
 
 						{/* Fixed CTA at bottom */}
-						<div className="absolute bottom-0 left-0 right-0 p-6 pt-4 pb-[100px] bg-gradient-to-t from-[rgba(13,17,23,1)] via-[rgba(13,17,23,0.95)] to-transparent pointer-events-none z-10">
+						<div className="absolute bottom-0 left-0 right-0 p-6 pt-4 pb-[130px] bg-gradient-to-t from-[rgba(13,17,23,1)] via-[rgba(13,17,23,0.95)] to-transparent pointer-events-none z-10">
 							<div className="pointer-events-auto">
 								<RainbowButton
 									className="w-full justify-center py-6 rounded-2xl text-base shadow-lg shadow-black/50"
